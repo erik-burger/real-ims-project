@@ -1,1 +1,0 @@
-document.getElementById("text1").innerHTML = "Hello JavaScript!";
