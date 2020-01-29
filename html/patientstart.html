@@ -4,25 +4,43 @@
     <meta charset="UTF-utf-8">
     <meta name="description" content="Start page for patients">
     <title>Trackzheimers</title>
+    <link rel="stylesheet" href="top_menu_style.css">
   </head>
+
   <body> <!--style="background-color: blue;"> --> <!-- add for blue bg-->
-    <div class="topnav" align="right">
-        <a href="#logout">Logout</a>
+    
+    <div class="navbar" align="right">
+        <a href="login.html">Logout</a>
     </div>
+    
     <img src="LOGO.png" style="display: block;margin-left: auto;margin-right: auto;">
 
-    <button type="button" style="margin-left:auto;margin-right:auto;margin-bottom:5px;display:block;padding: 200px 175px;font-size: 100px;" value="Test">
+    <button type="button" 
+      style="margin-left:auto;margin-right:auto;margin-bottom:5px;display:block;padding: 200px 175px;font-size: 100px;" 
+      value="Test">
       TEST
     </button>
+
     <div class="btn-group" align="center">
-      <button type="button" style="display:inline-block;padding: 40px 53px;font-size: 20px;" value="Test">
+      <button type="button" 
+        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+        value="Test"> 
         GAMES
       </button>
-      <button type="button" style="display:inline-block;padding: 40px 53px;font-size: 20px;" value="Test">
+      
+      <button onclick="location.href='patientprofile.html'" 
+        type="button" 
+        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+        value="Test">
         PROFILE
       </button>
-      <button type="button" style="display:inline-block;padding: 40px 53px;font-size: 20px;" value="Test">
+
+      <button onclick="location.href='patientstatistics.html'" 
+        type="button" 
+        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+        value="Test">
         STATISTICS
       </button>
+
     </div>
   </body>

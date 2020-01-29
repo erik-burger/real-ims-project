@@ -2,36 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #c2d6d6;
-}
-
-.topnav a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #669999;
-  color: black;
-}
-</style>
+<link rel="stylesheet" href="top_menu_style.css">
 
 <!Create a search button>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -94,11 +65,12 @@ table, th, td {
 </head>
 <body>
 
-<div class="topnav">
-	<a href="doctorstart.html">Home</a>
-	<a href="contact.html">Contact</a>
-	<a href="doctorprofile.html">Profile</a>
-	<a class="active" href="doctorsearch.html">Patients</a>
+  <div class="navbar">
+    <a href="doctorstart.html">Home</a>
+    <a href="contact.html">Contact</a>
+    <a href="doctorprofile.html">Profile</a>
+    <a class="active" href="doctorsearch.html">Patients</a>
+    <a href="login.html">Logout</a>          
 </div>
 
 <div class="c">
@@ -117,6 +89,13 @@ table, th, td {
     <th>Patient id</th>
   </tr>
 </table>
+
+<p>Temporary button to view patient page from doctor side!</p>
+<button onclick="location.href='patientdoctor.html'" 
+type="button" 
+value="Test">
+VIEW PATIENT
+</button>
 
 </body>
 </html>
