@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{graphics}
 \title{%
   Trackzheimers \\
   \large  Alzheimer’s Disease progression tracking app}
@@ -28,6 +29,19 @@ The aim of the web application that we are developing is to help both Alzheimer'
 
 \section{System architecture}
 %Maybe we could describe how we think that we will build the system and what we have done so far. We could also include problems and issues that we might have or have had%
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{report/System_arch.jpg}
+    \caption{System architecture of the web application Trackzheimers. Included are some of the programming languages we are using in the different parts. }
+    \label{fig:system_arch}
+\end{figure}
+
+The basic system architecture for this web application is illustrated in figure \ref{fig:system_arch}. The database is located in the database server and is where we store all the data, for example user information and memory tests. Data travels back and forth continuously from the database to the web application. The web application is where the user interface is, meaning everything that interacts with the different users. Depending on what kind of user you are you have different rights to add or read different things from the database. For example caregivers do not have access to patient information, only to know if the patient that he or she is connected to has taken the memory test or not. When programming the web application we use PHP, HTML and JavaScript. PHP is used for the back end development of the web application, while JavaScript is for the front end. 
+
+\subsection{What we have done so far}
+When starting to build this web application we decided to start with making an ER diagram, which we than use to build the database. The ER diagram you can see in figure ..., and it contains more than the database contains at this moment. Since we wanted to build a basic web application that works as fast as possible, which we than can continue with and building on, we decided to start with two user groups; doctors and patients. The idea is to the other user groups (researchers and caregivers) as we go when we have a working basic web application. \newline
+\newline
 
 
 \bibliographystyle{plain}
