@@ -10,11 +10,11 @@ create table patient(
 	city varchar(255) not null, 
 	country varchar(255) not null, 
 	zip varchar(255) not null, 
-	date_of_birth datetime not null, 
+	date_of_birth date not null, 
 	gender varchar(255) not null, 
-	stage varchar(255) not null,
+	stage varchar(255),
 	education int not null, 
-	diagnosis_date datetime not null, 
+	diagnosis_date date not null, 
 	diagnosis_description text, 
 	primary key (patient_id)); 
 
@@ -30,28 +30,29 @@ create table question(
     primary key (question_id, test_id), 
     foreign key (test_id) references test (test_id)); 
     
-create table awnser(
+create table answer(
 	patient_id int not null, 
     question_id int not null, 
     test_id int not null, 
-    awnser_score int not null, 
+    answer_score int not null, 
     primary key (patient_id, question_id, test_id), 
     foreign key (patient_id) references patient (patient_id), 
     foreign key (question_id) references question (question_id), 
     foreign key (test_id) references test (test_id)); 
     
 create table doctor (
-	doctor_id int not null auto_increment primary key,
-    password_hash varchar(255),
-    email varchar(255) not null unique,
-    first_name varchar(255) not null,
-    middle_name varchar(255),
-    last_name varchar(255) not null,
-    street varchar(255) not null,
-    street_no varchar(255) not null,
-    zip varchar(255),
-    city varchar(255) not null,
-    country varchar(255) not null);
+	doctor_id int not null auto_increment,
+    password_hash varchar(50) not null unique,
+    email varchar(50) not null unique,
+    first_name varchar(50) not null,
+    middle_name varchar(50),
+    last_name varchar(50) not null,
+    street varchar(50) not null,
+    street_no varchar(50) not null,
+    zip varchar(50),
+    city varchar(50) not null,
+    country varchar(50) not null, 
+    primary key (doctor_id));
     
 create table patient_doctor (
 	patient_id int not null,
@@ -59,14 +60,6 @@ create table patient_doctor (
     primary key (patient_id, doctor_id), 
     foreign key (patient_id) references patient(patient_id),
     foreign key (doctor_id) references doctor(doctor_id));
-
-
-    
-select * 
-from doctor
-
-    
-
 
 
 
