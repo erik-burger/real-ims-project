@@ -10,7 +10,7 @@ create table patient(
 	city varchar(255) not null, 
 	country varchar(255) not null, 
 	zip varchar(255) not null, 
-	date_of_birth datetime not null, 
+	date_of_birth date not null, 
 	gender varchar(255) not null, 
 	stage varchar(255) not null,
 	education int not null, 
@@ -60,13 +60,6 @@ create table patient_doctor (
     primary key (patient_id, doctor_id), 
     foreign key (patient_id) references patient(patient_id),
     foreign key (doctor_id) references doctor(doctor_id));
-
-
-    
-
-
-    
-
 
 
 
