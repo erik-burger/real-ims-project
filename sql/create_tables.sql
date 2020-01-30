@@ -12,7 +12,7 @@ create table patient(
 	zip varchar(255) not null, 
 	date_of_birth date not null, 
 	gender varchar(255) not null, 
-	stage varchar(255) not null,
+	stage varchar(255),
 	education int not null, 
 	diagnosis_date datetime not null, 
 	diagnosis_description text, 
