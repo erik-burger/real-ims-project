@@ -1,1 +1,1 @@
-drop table question, patient, test, awnser, doctor, patient_doctor; 
+drop table question, patient, test, answer, doctor, patient_doctor; 
