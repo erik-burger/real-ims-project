@@ -34,7 +34,7 @@ create table answer(
 	patient_id int not null, 
     question_id int not null, 
     test_id int not null, 
-    awnser_score int not null, 
+    answer_score int not null, 
     primary key (patient_id, question_id, test_id), 
     foreign key (patient_id) references patient (patient_id), 
     foreign key (question_id) references question (question_id), 
