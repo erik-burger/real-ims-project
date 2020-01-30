@@ -14,7 +14,7 @@ create table patient(
 	gender varchar(255) not null, 
 	stage varchar(255),
 	education int not null, 
-	diagnosis_date datetime not null, 
+	diagnosis_date date not null, 
 	diagnosis_description text, 
 	primary key (patient_id)); 
 
