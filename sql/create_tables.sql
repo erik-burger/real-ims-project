@@ -3,17 +3,21 @@ create table patient(
 	first_name varchar(255) not null, 
 	middle_name varchar(255), 
 	last_name varchar(255) not null,
-	email varchar(255) not null, 
+    SSN varchar(255) not null, 
+	email varchar(255) not null unique, 
+    phone int not null, 
 	password_hash varchar(255) not null, 
 	street varchar(255) not null, 
 	street_no varchar(255) not null, 
 	city varchar(255) not null, 
 	country varchar(255) not null, 
 	zip varchar(255) not null, 
+    state varchar(255) not null, 
 	date_of_birth date not null, 
 	gender varchar(255) not null, 
 	stage varchar(255),
 	education int not null, 
+    bedroom_floor int not null, 
 	diagnosis_date date not null, 
 	diagnosis_description text, 
 	primary key (patient_id)); 
@@ -42,8 +46,9 @@ create table answer(
     
 create table doctor (
 	doctor_id int not null auto_increment,
-    password_hash varchar(50) not null unique,
+    password_hash varchar(50) not null,
     email varchar(50) not null unique,
+    phone int not null, 
     first_name varchar(50) not null,
     middle_name varchar(50),
     last_name varchar(50) not null,
@@ -60,6 +65,9 @@ create table patient_doctor (
     primary key (patient_id, doctor_id), 
     foreign key (patient_id) references patient(patient_id),
     foreign key (doctor_id) references doctor(doctor_id));
+    
+select * 
+from doctor
 
 
 
