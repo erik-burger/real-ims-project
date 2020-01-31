@@ -26,17 +26,34 @@
     }
 
     //Question 5
-    $time_of_day = $_POST['day_num'];
+    $time_of_day = $_POST['time_of_day'];
+    date_default_timezone_set('Europe/Stockholm');
+    $hour = date(G);
     switch ($time_of_day) {
       case "Morning":
-          echo "i equals 0";
+          if (5 <= $hour and $hour <= 11 ) {
+            $orientation_score++;
+          }
           break;
-      case 1:
-          echo "i equals 1";
+      case "Lunchtime":
+          if (10 <= $hour and $hour <= 14) {
+            $orientation_score++;
+          }
           break;
-      case 2:
-          echo "i equals 2";
+      case "Afternoon":
+          if (13 <= $hour and $hour <= 18) {
+            $orientation_score++;
+          }
           break;
+      case "Evening":
+          if (17 <= $hour and $hour <= 22) {
+            $orientation_score++;
+          }
+      case "Night":
+          if (20 <= $hour or $hour <= 5) {
+            $orientation_score++;
+          }
+        break;
   }
 
     echo "$orientation_score";
