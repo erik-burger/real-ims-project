@@ -1,0 +1,1 @@
+drop table question, patient, test, answer, doctor, patient_doctor; 
