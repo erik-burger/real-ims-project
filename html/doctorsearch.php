@@ -69,7 +69,7 @@ table, th, td {
     <a href="doctorstart.html">Home</a>
     <a href="contact.html">Contact</a>
     <a href="doctorprofile.html">Profile</a>
-    <a class="active" href="doctorsearch.html">Patients</a>
+    <a class="active" href="http://localhost/real-ims-project/html/doctorsearch.php">Patients</a>
     <a href="login.html">Logout</a>          
 </div>
 
@@ -81,6 +81,23 @@ table, th, td {
   <input type="text" placeholder="Search.." name="search2">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
+
+<?php
+include "/wamp/www/real-ims-project/html/php/openDB.php";
+$result = mysqli_query($link,"select first_name, last_name, doctor_id from doctor")   
+or 
+die("Could not issue MySQL query"); 
+include "/wamp/www/real-ims-project/html/php/closeDB.php";
+while($row = mysqli_fetch_row($result)){ 
+  echo "<tr><td>"; 
+  echo $row[0]; 
+  echo "</td><td>"; 
+  echo $row[1]; 
+  echo "</td></tr>"; 
+  echo $row[2];} 
+  echo "</td></tr>"; 
+  echo "</table>";  
+?> 
 
 <table style="width:70%" align="center">
   <tr>
