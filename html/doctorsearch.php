@@ -88,15 +88,15 @@ $result = mysqli_query($link,"select first_name, last_name, doctor_id from docto
 or 
 die("Could not issue MySQL query"); 
 include "/wamp/www/real-ims-project/html/php/closeDB.php";
-while($row = mysqli_fetch_row($result)){ 
-  echo "<tr><td>"; 
-  echo $row[0]; 
-  echo "</td><td>"; 
-  echo $row[1]; 
-  echo "</td></tr>"; 
-  echo $row[2];} 
-  echo "</td></tr>"; 
-  echo "</table>";  
+
+echo '<table>';
+echo '<tr><td>First Name</td> <td>Last Name</td> <td>ID</td></tr>';
+ 
+while ($row = mysqli_fetch_array($result)) 
+{
+	echo '<tr> <td>' . $row['last_name'] . '</td> <td>' . $row['first_name'] . '</td> </tr>'  . $row['doctor_id'] . '</td> </tr>';
+}
+echo '</table>';
 ?> 
 
 <table style="width:70%" align="center">
@@ -104,6 +104,7 @@ while($row = mysqli_fetch_row($result)){
     <th>Firstname</th>
     <th>Lastname</th>
     <th>Patient id</th>
+
   </tr>
 </table>
 
