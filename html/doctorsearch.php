@@ -82,30 +82,31 @@ table, th, td {
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-<?php
-include "/wamp/www/real-ims-project/html/php/openDB.php";
-$result = mysqli_query($link,"select first_name, last_name, doctor_id from doctor")   
-or 
-die("Could not issue MySQL query"); 
-include "/wamp/www/real-ims-project/html/php/closeDB.php";
-
-echo '<table>';
-echo '<tr><td>First Name</td> <td>Last Name</td> <td>ID</td></tr>';
- 
-while ($row = mysqli_fetch_array($result)) 
-{
-	echo '<tr> <td>' . $row['last_name'] . '</td> <td>' . $row['first_name'] . '</td> </tr>'  . $row['doctor_id'] . '</td> </tr>';
-}
-echo '</table>';
-?> 
 
 <table style="width:70%" align="center">
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Patient id</th>
+<tr>
+<th>First Name</th>
+<th>Last Name</th>
+<th>ID</th>
+</tr>
+<?php
 
-  </tr>
+include "/wamp/www/real-ims-project/html/php/openDB.php";
+$result = mysqli_query($link,"select first_name, last_name, patient_id from patient")   
+or 
+die("Could not issue MySQL query"); 
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row["first_name"]. "</td><td>" . $row["last_name"] . "</td><td>"
+        . $row["patient_id"]. "</td></tr>";
+}
+echo "</table>";
+} 
+
+include "/wamp/www/real-ims-project/html/php/closeDB.php";
+
+?>
 </table>
 
 <p>Temporary button to view patient page from doctor side!</p>

@@ -1,21 +1,21 @@
 create table patient(
 	patient_id int not null auto_increment, 
-	first_name varchar(255) not null, 
-	middle_name varchar(255), 
-	last_name varchar(255) not null,
-    SSN varchar(255) not null, 
-	email varchar(255) not null unique, 
+	first_name varchar(50) not null, 
+	middle_name varchar(50), 
+	last_name varchar(50) not null,
+    SSN varchar(50) not null, 
+	email varchar(50) not null unique, 
     phone int not null, 
-	password_hash varchar(255) not null, 
-	street varchar(255) not null, 
-	street_no varchar(255) not null, 
-	city varchar(255) not null, 
-	country varchar(255) not null, 
-	zip varchar(255) not null, 
-    state varchar(255) not null, 
+	password_hash varchar(50) not null, 
+	street varchar(50) not null, 
+	street_no varchar(50) not null, 
+	city varchar(50) not null, 
+	country varchar(50) not null, 
+	zip varchar(50) not null, 
+    state varchar(50) not null, 
 	date_of_birth date not null, 
-	gender varchar(255) not null, 
-	stage varchar(255),
+	gender varchar(50) not null, 
+	stage varchar(50),
 	education int not null, 
     bedroom_floor int not null, 
 	diagnosis_date date not null, 
@@ -67,7 +67,7 @@ create table patient_doctor (
     foreign key (doctor_id) references doctor(doctor_id));
     
 select * 
-from doctor
+from patient
 
 
 
