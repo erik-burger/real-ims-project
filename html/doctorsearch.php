@@ -69,7 +69,7 @@ table, th, td {
     <a href="doctorstart.html">Home</a>
     <a href="contact.html">Contact</a>
     <a href="doctorprofile.html">Profile</a>
-    <a class="active" href="http://localhost/real-ims-project/html/doctorsearch.php">Patients</a>
+    <a class="active" href="../html/doctorsearch.php">Patients</a>
     <a href="login.html">Logout</a>          
 </div>
 
