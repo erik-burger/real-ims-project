@@ -102,7 +102,7 @@ if ($result->num_rows > 0) {
         . $row["patient_id"]. "</td></tr>";
 }
 echo "</table>";
-} else { echo "0 results"; }
+} 
 
 include "/wamp/www/real-ims-project/html/php/closeDB.php";
 
