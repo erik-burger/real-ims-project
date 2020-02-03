@@ -11,7 +11,7 @@
         <div class="navbar">
             <a href="login.html">Logout</a>          
         </div>
-        
+
     <body>
 
         <script>
@@ -82,11 +82,11 @@
 
             <div id='question5' style="display:none" style="text-align:center;">
                 <h1 align="center">What time of day is it?</h1>
-                    <input type="radio" name="time_of_day" value="Morning">Morning<br>
-                    <input type="radio" name="time_of_day" value="Lunchtime">Lunchtime<br>
-                    <input type="radio" name="time_of_day" value="Afternoon">Afternoon<br>
-                    <input type="radio" name="time_of_day" value="Evening">Evening<br>
-                    <input type="radio" name="time_of_day" value="Night">Night<br>
+                    <input type="radio" name="time_of_day" value="Morning">Morning<br> <!--06-10 -->
+                    <input type="radio" name="time_of_day" value="Lunchtime">Lunchtime<br><!--10-14 -->
+                    <input type="radio" name="time_of_day" value="Afternoon">Afternoon<br><!--14-18 -->
+                    <input type="radio" name="time_of_day" value="Evening">Evening<br><!--18-22 -->
+                    <input type="radio" name="time_of_day" value="Night">Night<br><!--22-06 -->
                 <button type="button" onclick="change_question('question6','question5')">Next5</button>
             </div>
 
@@ -110,7 +110,7 @@
             </div>
 
             <div id='question8' style="display:none" style="text-align:center;">
-                <h1 align="center">In what town are you?</h1>
+                <h1 align="center">In what city/town are you?</h1>
                 <div style="text-align:center;">
                     <input type="text" name="town" align="center"
                     style="height:100px; width:300px;font-size:100px;">
