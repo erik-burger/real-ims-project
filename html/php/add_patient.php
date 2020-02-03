@@ -1,5 +1,5 @@
 <?php 
-include "/wamp/www/real-ims-project/html/php/openDB.php";
+include "../html/php/openDB.php";
 $f_name = $_POST["f_name"]; 
 $m_name = $_POST["m_name"];  
 $l_name = $_POST["l_name"]; 
@@ -31,5 +31,5 @@ if (mysqli_query($link, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
 }
 
-include "/wamp/www/real-ims-project/html/php/closeDB.php";
+include "../html/php/closeDB.php";
 ?> 

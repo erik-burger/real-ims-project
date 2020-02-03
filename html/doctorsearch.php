@@ -104,7 +104,7 @@ if ($result->num_rows > 0) {
 echo "</table>";
 } 
 
-include "/wamp/www/real-ims-project/html/php/closeDB.php";
+include "../html/php/closeDB.php";
 
 ?>
 </table>
