@@ -36,7 +36,7 @@ VALUES("123",
         "Uppsala",
         "Sweden");
         
-INSERT INTO patient (first_name, last_name, SSN, email, phone, password_hash, street, street_no, city, country, zip, date_of_birth, gender, stage, education, bedroom_floor, diagnosis_date, diagnosis_description)
+INSERT INTO patient (first_name, last_name, SSN, email, phone, password_hash, street, street_no, city, country, zip,  state, date_of_birth, gender, stage, education, bedroom_floor, diagnosis_date, diagnosis_description)
 VALUES("xyz",
 		"abc",
         "194705065645",
@@ -48,6 +48,7 @@ VALUES("xyz",
         "Uppsala",
         "Sweden",
 		"75231",
+        "state",
         "1947-05-06",
         "Male",
         "1",
@@ -56,9 +57,10 @@ VALUES("xyz",
         "2018-05-15",
         "In mattis, risus sit amet fermentum facilisis, est dolor convallis tortor, vitae sagittis lacus odio nec metus. Vestibulum mauris tellus, gravida blandit sollicitudin quis, ultricies nec augue. Nam facilisis ac nunc eget posuere. Aenean sit amet pulvinar metus, at tincidunt lectus. Vestibulum ac risus at nisi imperdiet semper. In nec.");
          
-INSERT INTO patient (first_name, last_name, SSN, email, phone, password_hash, street, street_no, city, country, zip, date_of_birth, gender, stage, education, bedroom_floor, diagnosis_date, diagnosis_description)
+INSERT INTO patient (first_name, last_name, state, SSN, email, phone, password_hash, street, street_no, city, country, zip, date_of_birth, gender, stage, education, bedroom_floor, diagnosis_date, diagnosis_description)
 VALUES("def",
 		"uvw",
+        "state",
         "196706061645",
         "def.uvw@doc.com",
         "754632167",
@@ -76,9 +78,10 @@ VALUES("def",
         "2019-02-20",
         "Maecenas cursus tortor purus, quis sollicitudin lorem posuere at. Aliquam cursus ante in metus lobortis, non sodales dolor rhoncus. Suspendisse mollis eget erat quis blandit. Nulla non erat molestie, euismod tortor at, gravida neque. In hac habitasse platea dictumst. Aenean vulputate cursus risus, pharetra blandit libero sollicitudin ac. Duis sit.");
          
-INSERT INTO patient (first_name, middle_name, last_name, SSN, email, phone, password_hash, street, street_no, city, country, zip, date_of_birth, gender, stage, education, bedroom_floor, diagnosis_date, diagnosis_description)
+INSERT INTO patient (first_name, middle_name, state, last_name, SSN, email, phone, password_hash, street, street_no, city, country, zip, date_of_birth, gender, stage, education, bedroom_floor, diagnosis_date, diagnosis_description)
 VALUES("qwerty",
 		"blahblah",
+        "state",
 		"haha",
         "195712231985",
         "qwerty.haha@doc.com",
