@@ -14,7 +14,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
 */
 //Connect to database
+<<<<<<< HEAD
 include dirname(__DIR__).'\php\openDB.php';
+=======
+
+include dirname(__DIR__).'\php\openDB.php';
+
+>>>>>>> cdbd5df8a3f10bfdcbcec32d821fc7abdcd25ddd
 
 $email = trim($_POST["email"]);
 $password = trim($_POST["psw"]);
