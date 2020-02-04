@@ -140,7 +140,44 @@
             <div id='question11' style="display:none" style="text-align:center;">
                 <h1 align="center">Write the word shown on the screen and remember them</h1>
                 <div style="text-align:center;">
-                    include text_select.php <!--find words in the database-->
+                    <?php
+                            include "../html/php/openDB.php";
+                            $result = mysqli_query($link,"select image_id, image_name from test_images");
+                            $length =$result->num_rows-1;
+                            $rand1 = rand(0,$length);
+                            $rand2 = rand(0,$length);
+                            while ($rand2 == $rand1){
+                                $rand2 = rand(0,$length);
+                            }
+                            $rand3 = rand(0,$length);
+                            while ($rand3 == $rand1 or $rand3 == $rand2){
+                                $rand3 = rand(0,$length);
+                            }
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    switch ($row[image_id]) {
+                                        case $rand1:
+                                            $option1 = $row[image_name];
+                                        break;
+                                        case $rand2:
+                                            $option2 = $row[image_name];
+                                        break;
+                                        case $rand3:
+                                            $option3 = $row[image_name];
+                                        break;
+
+                                    }
+                                }
+                                    echo "$option1, $option2, $option3";
+                                    echo "<input type='hidden' name='word_1_ans' value='$option1'>";
+                                    echo "<input type='hidden' name='word_2_ans' value='$option2'>";
+                                    echo "<input type='hidden' name='word_3_ans' value='$option3'>";
+                                    echo "<input type='text' name='word_1'>";
+                                    echo "<input type='text' name='word_2'>";
+                                    echo "<input type='text' name='word_3'>";
+                            }
+                            include "../html/php/closeDB.php";
+                    ?>
                 </div>
                 <button type="button" onclick="change_question('question12','question11')">Next11</button>
             </div>
@@ -223,6 +260,7 @@
                                 echo "<input type='radio' name='image_1' value='$option2'>$option2";
                                 echo "<input type='radio' name='image_1' value='$option3'>$option3";
                         }
+                        include "../html/php/closeDB.php";
                 ?>
 
                 </div>
