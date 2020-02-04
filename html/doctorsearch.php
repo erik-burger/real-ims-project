@@ -68,10 +68,10 @@ table, th, td {
   <div class="navbar">
     <a href="doctorstart.html">Home</a>
     <a href="contact.html">Contact</a>
-    <a href="doctorprofile.html">Profile</a>
+    <a href="../html/doctorprofile.php">Profile</a>
     <a class="active" href="../html/doctorsearch.php">Patients</a>
     <a href="login.html">Logout</a>          
-</div>
+  </div>
 
 <div class="c">
 <h1>Trackzimers</h1>
@@ -98,8 +98,9 @@ die("Could not issue MySQL query");
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["first_name"]. "</td><td>" . $row["last_name"] . "</td><td>"
-        . $row["patient_id"]. "</td></tr>";
+        echo "<tr><td>" . $row["first_name"]. "</td>
+        <td>" . $row["last_name"] . "</td>
+        <td><a href ='../html/patientdoctor.php'>". $row["patient_id"]. "</a></td></tr>";
 }
 echo "</table>";
 } 
