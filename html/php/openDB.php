@@ -1,8 +1,8 @@
 
 <?php
-$hostname = "localhost:3306"; 
+$hostname = "localhost:3308"; 
 $username = "root"; 
-$password = "riekstsdru"; 
+$password = ""; 
 $dbname   = "ims"; 
 $link = mysqli_connect($hostname, $username, $password, $dbname); 
  
