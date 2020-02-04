@@ -14,11 +14,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
 */
 //Connect to database
-<<<<<<< HEAD
+
 include dirname(__DIR__).'\php\openDB.php';
-=======
-include '../real-ims-project/html/php/openDB.php';
->>>>>>> 3287fdea633dcfcff77051aabab7eed5eb805284
+
 
 $email = trim($_POST["email"]);
 $password = trim($_POST["psw"]);
