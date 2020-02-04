@@ -1,5 +1,5 @@
 <?php 
-include "..real_ims_project/html/php/openDB.php";
+include "/wamp/www/real-ims-project/html/php/closeDB.php";
 $f_name = $_POST["f_name"]; 
 $m_name = $_POST["m_name"];  
 $l_name = $_POST["l_name"];
