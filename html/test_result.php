@@ -3,13 +3,13 @@
   <?php
 
 
-  include 'dbstarter.php';
+  include "../html/php/openDB.php";
   $answerQ6 = mysqli_query($link,"select country from patients where patient_id == ");
   $answerQ7 = mysqli_query($link,"select state from patients where patient_id == ");
   $answerQ8 = mysqli_query($link,"select city from patients where patient_id == ");
   $answerQ9 = mysqli_query($link,"select street from patients where patient_id == ");
   $answerQ10 = mysqli_query($link,"select bedroom_floor from patients where patient_id == ");
-
+  include "../html/php/closeDB.php";
   $question1 = 0;
   $question2 = 0;
   $question3 = 0;
@@ -96,9 +96,18 @@
     if ($_POST['bedroom'] == $answerQ10) {
       $question10++;
     }
+    
+    //Question 11
+    if ($_POST['word_1'] == $_POST['word_1_answer'] or $_POST['word_2_answer'] or $_POST['word_3_answer']) {
+      $question11++;
+    }
+    if ($_POST['word_2'] == $_POST['word_1_answer'] or $_POST['word_2_answer'] or $_POST['word_3_answer']) {
+      $question11++;
+    }
+    if ($_POST['word_3'] == $_POST['word_1_answer'] or $_POST['word_2_answer'] or $_POST['word_3_answer']) {
+      $question11++;
+    }
+    echo "$question1, $question2, $question3, $question4, $question5, $question6, $question7, $question8, $question9, $question10, $question11";
 
-    echo "$question1 $question2 $question3 $question4 $question5 $question6 $question7 $question8 $question9 $question10";
-    $images = mysqli_query($link,"select image_url from test_images");
-    echo "$images";
   ?>
 </html>
