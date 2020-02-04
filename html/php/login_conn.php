@@ -14,11 +14,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
 */
 //Connect to database
-<<<<<<< HEAD
 include dirname(__DIR__).'\php\openDB.php';
-=======
-include '../real-ims-project/html/php/openDB.php';
->>>>>>> 3287fdea633dcfcff77051aabab7eed5eb805284
 
 $email = trim($_POST["email"]);
 $password = trim($_POST["psw"]);
@@ -43,7 +39,7 @@ if(empty(trim($_POST["email"]))){
 if(empty($username_err) && empty($password_err)){
     $doctorsql = "select doctor_id from doctor where email = '$email' and password_hash= '$password'";
     $doctorresult = mysqli_query($link, $doctorsql)
-    or die("Coul not issue doctor MySQL query");
+    or die("Could not issue doctor MySQL query");
     $count1 = mysqli_num_rows($doctorresult);
 
     if($count1 == 1) { //if the query returns 1 result -> login at doctor
@@ -71,11 +67,7 @@ if(empty($username_err) && empty($password_err)){
     echo "Please fill in both username and password";
 }
 
-<<<<<<< HEAD
 include dirname(__DIR__).'\php\closeDB.php';
-=======
-include '../real-ims-project/html/php/closeDB.php';
->>>>>>> 3287fdea633dcfcff77051aabab7eed5eb805284
 
 ?>
 </body>
