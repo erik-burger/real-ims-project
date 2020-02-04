@@ -217,10 +217,11 @@
                                 }
                             }
                                 echo "<img src=".$image_url."><br>";
-                                echo "<button type='button' value='$ans'>$ans</button>";
-                                echo "<button type='button' value='$option1'>$option1</button>";
-                                echo "<button type='button' value='$option2'>$option2</button>";
-                                echo "<button type='button' value='$option3'>$option3</button>";
+                                echo "<input type='hidden' name='image_1_ans' value='$ans'>";
+                                echo "<input type='radio' name='image_1' value='$ans'>$ans";
+                                echo "<input type='radio' name='image_1' value='$option1'>$option1";
+                                echo "<input type='radio' name='image_1' value='$option2'>$option2";
+                                echo "<input type='radio' name='image_1' value='$option3'>$option3";
                         }
                 ?>
 
