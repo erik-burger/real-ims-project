@@ -68,10 +68,10 @@ table, th, td {
   <div class="navbar">
     <a href="doctorstart.html">Home</a>
     <a href="contact.html">Contact</a>
-    <a href="doctorprofile.html">Profile</a>
-    <a class="active" href="http://localhost/real-ims-project/html/doctorsearch.php">Patients</a>
+    <a href="../html/doctorprofile.php">Profile</a>
+    <a class="active" href="../html/doctorsearch.php">Patients</a>
     <a href="login.html">Logout</a>          
-</div>
+  </div>
 
 <div class="c">
 <h1>Trackzimers</h1>
@@ -91,20 +91,21 @@ table, th, td {
 </tr>
 <?php
 
-include "/wamp/www/real-ims-project/html/php/openDB.php";
+include "../html/php/openDB.php";
 $result = mysqli_query($link,"select first_name, last_name, patient_id from patient")   
 or 
 die("Could not issue MySQL query"); 
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["first_name"]. "</td><td>" . $row["last_name"] . "</td><td>"
-        . $row["patient_id"]. "</td></tr>";
+        echo "<tr><td>" . $row["first_name"]. "</td>
+        <td>" . $row["last_name"] . "</td>
+        <td><a href ='../html/patientdoctor.php'>". $row["patient_id"]. "</a></td></tr>";
 }
 echo "</table>";
-} else { echo "0 results"; }
+} 
 
-include "/wamp/www/real-ims-project/html/php/closeDB.php";
+include "../html/php/closeDB.php";
 
 ?>
 </table>
