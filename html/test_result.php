@@ -20,6 +20,9 @@
   $question8 = 0;
   $question9 = 0;
   $question10 = 0;
+  $question11 = 0;
+  $question12 = 0;
+  $question13 = 0;
 
     //Question 1
     if ($_POST['curr_year'] == date(Y)){
@@ -107,7 +110,16 @@
     if ($_POST['word_3'] == $_POST['word_1_answer'] or $_POST['word_2_answer'] or $_POST['word_3_answer']) {
       $question11++;
     }
-    echo "$question1, $question2, $question3, $question4, $question5, $question6, $question7, $question8, $question9, $question10, $question11";
 
+    //Question 12
+    if ($_POST['1st-sub'] ==$_POST['0st-number'] -7 ) {
+      $question12++;
+    }
+    $e = $_POST['0st-number'];
+  
+    echo $e;
+    echo "1: $question1, 2: $question2, 3: $question3, 4: $question4, 5: $question5, 6: $question6, 7: $question7, 8: $question8, 9: $question9, 10: $question10, 11: $question11, 12: $question12";
+
+    
   ?>
 </html>

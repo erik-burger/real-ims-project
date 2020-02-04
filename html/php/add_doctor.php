@@ -15,7 +15,7 @@ $psw = $_POST["psw"];
 $sql = "insert into doctor (
     first_name, middle_name, last_name, email, password_hash, 
     street, street_no, city, country, zip, phone) 
-values ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', 
+    values ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', 
     '$street_no', '$city', '$country', '$zip', '$phone_no')";  
 
 if (mysqli_query($link, $sql)) {
