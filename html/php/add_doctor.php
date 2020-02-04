@@ -12,7 +12,7 @@ $zip = $_POST["zip"];
 $email = $_POST["email"];
 $psw = $_POST["psw"];
 
-$sql = "insert into doctor (
+$sql = "insert into ims.doctor (
     first_name, middle_name, last_name, email, password_hash, 
     street, street_no, city, country, zip, phone) 
 values ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', 
