@@ -1,14 +1,10 @@
 <?php 
-<<<<<<< HEAD
 include "../html/php/openDB.php";
-=======
-include "../real-ims-project/html/php/openDB.php";
->>>>>>> 02cc1558018084520969d3bfbdabf22d5445bcbe
 $f_name = $_POST["f_name"]; 
 $m_name = $_POST["m_name"];  
 $l_name = $_POST["l_name"]; 
 $ssn = $_POST["ssn"];
-$phone_no = $_POST["phone_no"];
+$phone_no = $_POST["phone"];
 $street = $_POST["street"];
 $street_no = $_POST["street_no"];
 $city = $_POST["city"];
