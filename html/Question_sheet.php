@@ -171,7 +171,7 @@
                                     echo "$option1, $option2, $option3";
                                     echo "<input type='hidden' name='word_1_ans' value='$option1'>";
                                     echo "<input type='hidden' name='word_2_ans' value='$option2'>";
-                                    echo "<input type='hidden' name='word_3_ans' value='$option3'>";
+                                    echo "<input type='hidden' name='word_3_ans' value='$option'>";
                                     echo "<input type='text' name='word_1'>";
                                     echo "<input type='text' name='word_2'>";
                                     echo "<input type='text' name='word_3'>";
@@ -191,15 +191,22 @@
                 };
                 </script>
                 
-                <h1 align="center">Subtract 7 from <p style="display:inline" id="output"></p>, 5 times</h1>
-                <div>
-                    <input type="hidden" name="0st-number" value='<p id="output"></p>'>  <!-- need to fix this probably-->
-                    <input type="number" name="1st-sub" align="center" style="height:20px; width:40px;font-size:15px;">
-                    <input type="number" name="2st-sub" align="center" style="height:20px; width:40px;font-size:15px;">
-                    <input type="number" name="3st-sub" align="center" style="height:20px; width:40px;font-size:15px;">
-                    <input type="number" name="4st-sub" align="center" style="height:20px; width:40px;font-size:15px;">
-                    <input type="number" name="5st-sub" align="center" style="height:20px; width:40px;font-size:15px;">
-                </div>
+                <?php
+                    $numbers = array(40, 50, 60, 70, 80, 90);
+                    echo $numbers[rand(0,5)];
+                    $nuber = $numbers[rand(0,5)];
+                    echo $number;
+                    //echo '<h1>'Subtract 7 from$number 5 times'</h1>';
+                    echo "<h1>".$number."</h1>";
+                    echo "<div>";
+                    echo "<input type='hidden' name='0st-number' value='$number'>";
+                    echo "<input type='number' name='1st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
+                    echo "<input type='number' name='2st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
+                    echo "<input type='number' name='3st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
+                    echo "<input type='number' name='4st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
+                    echo "<input type='number' name='5st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
+                    echo "</div>";
+                ?>
                 <button type="button" onclick="change_question('question13','question12')">Next12</button>
             </div>
 
