@@ -91,7 +91,7 @@ table, th, td {
 </tr>
 <?php
 
-include "/wamp/www/real-ims-project/html/php/openDB.php";
+include "../html/php/openDB.php";
 $result = mysqli_query($link,"select first_name, last_name, patient_id from patient")   
 or 
 die("Could not issue MySQL query"); 
@@ -104,7 +104,7 @@ if ($result->num_rows > 0) {
 echo "</table>";
 } 
 
-include "/wamp/www/real-ims-project/html/php/closeDB.php";
+include "../html/php/closeDB.php";
 
 ?>
 </table>
