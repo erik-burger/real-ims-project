@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-utf-8">
-        <meta name="description" content="Statistics page for patients">
+        <meta name="description" content="questions_sheet">
         <title>Trackzheimers</title>   
         <link rel="stylesheet" href="top_menu_style.css">
     </head>
@@ -13,6 +13,7 @@
         </div>
 
     <body>
+        
 
         <script>
             function change_question(new_question, old_question) {
@@ -176,18 +177,60 @@
             </div>
 
             <div id='question14' style="display:none" style="text-align:center;">
-                <h1 align="center">Write the words you that you were to remember (order does not matter).</h1>
+                <h1 align="center">Name these images.</h1>
                 <div>
-                    <input type="text" name="image_1" align="center">
-                    <input type="text" name="image_2" align="center">
-                    <input type="text" name="image_3" align="center">
+                    <?php
+                        include "../html/php/openDB.php";
+                        $result = mysqli_query($link,"select image_id, image_url, image_name from test_images");
+                        $length =$result->num_rows-1;
+                        $image_num = rand(0,$length);
+                        //First random number
+                        $rand1 = rand(0,$length);
+                        while ($rand1 == $image_num){
+                            $rand1 = rand(0,$length);
+                        }
+                        $rand2 = rand(0,$length);
+                        while ($rand2 == $image_num or $rand2 == $rand1){
+                            $rand2 = rand(0,$length);
+                        }
+                        $rand3 = rand(0,$length);
+                        while ($rand3 == $image_num or $rand3 == $rand1 or $rand3 == $rand2){
+                            $rand3 = rand(0,$length);
+                        }
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                switch ($row[image_id]) {
+                                    case $image_num:
+                                        $image_url = $row[image_url];
+                                        $ans = $row[image_name];
+                                    break;
+                                    case $rand1:
+                                        $option1 = $row[image_name];
+                                    break;
+                                    case $rand2:
+                                        $option2 = $row[image_name];
+                                    break;
+                                    case $rand3:
+                                        $option3 = $row[image_name];
+                                    break;
+
+                                }
+                            }
+                                echo "<img src=".$image_url."><br>";
+                                echo "<input type='hidden' name='image_1_ans' value='$ans'>";
+                                echo "<input type='radio' name='image_1' value='$ans'>$ans";
+                                echo "<input type='radio' name='image_1' value='$option1'>$option1";
+                                echo "<input type='radio' name='image_1' value='$option2'>$option2";
+                                echo "<input type='radio' name='image_1' value='$option3'>$option3";
+                        }
+                ?>
+
                 </div>
-                <button type="button" onclick="change_question('question15','question14')">Next14</button>
                 <button type="submit" value="Submit">Submit</button>
             </div>
+
 
         </form>
 
     </body>
-
 </html>

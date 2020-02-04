@@ -9,46 +9,43 @@
         <div class="navbar">
             <a href="doctorstart.html">Home</a>
             <a href="contact.html">Contact</a>
-            <a class="active" href="doctorprofile.html">Profile</a>
+            <a class="active" href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
             <a href="login.html">Logout</a>          
         </div>
 
+        <h1>Profile</h1>
+
     <?php
         include "../html/php/openDB.php";
-        $result = mysqli_query($link,"select first_name, 
-        last_name, 
-        doctor_id, 
-        telephone, 
-        street, 
-        street_no, 
-        city, 
-        country, 
+        $result = mysqli_query($link,"select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
         from doctor
         where doctor_id = 1")   
         or 
         die("Could not issue MySQL query"); 
         
         while ($row = $result->fetch_assoc()) {
-            $field1name = $row["col1"];
-            $field2name = $row["col2"];
-            $field3name = $row["col3"];
-            $field4name = $row["col4"];
-            $field5name = $row["col5"];
+            $first_name = $row["first_name"];
+            $last_name = $row["last_name"];
+            $doctor_id = $row["doctor_id"];
+            $street = $row["street"];
+            $street_no = $row["street_no"];
+            $zip = $row["zip"]; 
+            $city = $row["city"];
+            $country = $row["country"];
+            $phone = $row["phone"]; 
      
-            echo '<b>'.$field1name.$field2name.'</b><br />';
-            echo $field5name.'<br />';
-            echo $field5name.'<br />';
-            echo $field5name;
+            echo '<b>'."Name: ".'</b>'.$first_name." ".$last_name.'<br />';
+            echo '<b>'."ID: ".'</b>' .$doctor_id.'<br />';
+            echo '<b>'."Telephone: ".'</b>'.$phone.'<br />';
+            echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
         }
         
         include "../html/php/closeDB.php";
 
     ?>
-        <h1>Profile</h1>
-        <p>Name: Dr Doctor</p>
-        <p>Telephone: 12345678</p>
-        <p>Adress: Doctorstreet 123</p>
+
+    <p>Change your information <a href="#">here</a>.</p>
 
     </body>
 

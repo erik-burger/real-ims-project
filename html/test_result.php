@@ -73,30 +73,32 @@
     }
     
     //Question 6 
-    if ($_POST['country'] == $answerQ6 {
+    if ($_POST['country'] == $answerQ6) {
       $question6++;
     }
     
     //Question 7
-     if ($_POST['state'] == $answerQ7 {
+     if ($_POST['state'] == $answerQ7) {
       $question7++;
     }
 
     //Question 8
-    if ($_POST['town'] == $answerQ8 {
+    if ($_POST['town'] == $answerQ8) {
       $question8++;
     }
 
     //Question 9
-    if ($_POST['street'] == $answerQ9 {
+    if ($_POST['street'] == $answerQ9) {
       $question9++;
     }
 
     //Question 10
-    if ($_POST['bedroom'] == $answerQ10 {
+    if ($_POST['bedroom'] == $answerQ10) {
       $question10++;
     }
 
     echo "$question1 $question2 $question3 $question4 $question5 $question6 $question7 $question8 $question9 $question10";
+    $images = mysqli_query($link,"select image_url from test_images");
+    echo "$images";
   ?>
 </html>
