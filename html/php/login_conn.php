@@ -39,26 +39,26 @@ if(empty(trim($_POST["email"]))){
 if(empty($username_err) && empty($password_err)){
     $doctorsql = "select doctor_id from doctor where email = '$email' and password_hash= '$password'";
     $doctorresult = mysqli_query($link, $doctorsql)
-    or die("Coul not issue MySQL query");
+    or die("Coul not issue doctor MySQL query");
     $count1 = mysqli_num_rows($doctorresult);
 
     if($count1 == 1) { //if the query returns 1 result -> login at doctor
         session_start();
         $_SESSION["loggedin"] = true;
         $_SESSION["email"] = $email;
-        header("location: http://localhost/real-ims-project/html/doctorstart.html"); 
+        header("location: ../doctorstart.html"); 
 
     }else { //if it gives no result try the patient table
         $patientsql = "select patient_id from patient where email = '$email' and password_hash = '$password'";
         $patientresult = mysqli_query($link, $patientsql)
-        or die("Coul not issue MySQL query");
+        or die("Coul not issue patient MySQL query");
         $count2 = mysqli_num_rows($patientresult);
 
         if($count2 == 1) { //returns 1 column -> login at patient
             session_start();
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $email;
-            header("location:../patientstart.html"); 
+            header("location: ../patientstart.html"); 
 
         } else{ //if it does not return anything here either, email or password are wrong
             echo "Email adress or password invalid";}
