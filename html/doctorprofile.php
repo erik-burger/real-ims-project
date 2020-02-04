@@ -11,7 +11,7 @@
             <a href="contact.html">Contact</a>
             <a class="active" href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
-            <a href="login.html">Logout</a>          
+            <a href="../html/php/logout.php">Logout</a>          
         </div>
 
         <h1>Profile</h1>
