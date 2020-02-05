@@ -3,8 +3,9 @@
 <?php
 session_start();
 /*if ( isset($_SESSION["id"]) === false) {
-    header("location: /php/login.php");
-}*/
+    header("location: ../html/php/login.php");
+}
+*/
 ?>
     <head>
         <meta charset="UTF-8">
