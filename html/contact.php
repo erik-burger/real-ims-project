@@ -1,4 +1,13 @@
 <html>
+
+<?php
+session_start();
+/*if ( isset($_SESSION["id"]) === false) {
+    header("location: ../html/php/login.php");
+}
+*/
+?>
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +16,7 @@
     <body>
         <div class="navbar">
             <a href="doctorstart.html">Home</a>
-            <a class="active" href="contact.html">Contact</a>
+            <a class="active" href="contact.php">Contact</a>
             <a href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
             <a href="../html/php/logout.php">Logout</a>          

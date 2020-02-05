@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+
+<?php
+session_start();
+/*if ( isset($_SESSION["id"]) === false) {
+    header("location: ../html/php/login.php");
+}
+*/
+?>
   <head>
     <meta charset="UTF-utf-8">
     <meta name="description" content="Start page for patients">

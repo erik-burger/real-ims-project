@@ -16,7 +16,7 @@ session_start();
     <body>
         <div class="navbar">
             <a class="active" href="doctorstart.php">Home</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.php">Contact</a>
             <a href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
             <a href="../html/php/logout.php">Logout</a>          

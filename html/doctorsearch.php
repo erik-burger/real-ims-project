@@ -67,7 +67,7 @@ table, th, td {
 
   <div class="navbar">
     <a href="doctorstart.html">Home</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.php">Contact</a>
     <a href="../html/doctorprofile.php">Profile</a>
     <a class="active" href="../html/doctorsearch.php">Patients</a>
     <a href="../html/php/logout.php">Logout</a>          
