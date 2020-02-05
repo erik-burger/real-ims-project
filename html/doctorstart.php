@@ -2,7 +2,11 @@
 
 <?php
 session_start();
-/*if ( isset($_SESSION["id"]) === false) {
+/*if ( isset($_SESSION["user"]) == "P") { // if the user is a patient -> logout
+    $_SESSION = array();
+    session_destroy();
+    header("location: ../html/php/login.php");
+} elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
     header("location: ../html/php/login.php");
 }
 */
