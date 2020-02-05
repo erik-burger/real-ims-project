@@ -39,7 +39,7 @@ if(empty(trim($_POST["email"]))){
 if(empty($username_err) && empty($password_err)){
     $doctorsql = "select doctor_id from doctor where email = '$email' and password_hash= '$password'";
     $doctorresult = mysqli_query($link, $doctorsql)
-    or die("Coul not issue doctor MySQL query");
+    or die("Could not issue doctor MySQL query");
     $count1 = mysqli_num_rows($doctorresult);
 
     if($count1 == 1) { //if the query returns 1 result -> login at doctor

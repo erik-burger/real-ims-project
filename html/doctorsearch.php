@@ -70,7 +70,7 @@ table, th, td {
     <a href="contact.html">Contact</a>
     <a href="../html/doctorprofile.php">Profile</a>
     <a class="active" href="../html/doctorsearch.php">Patients</a>
-    <a href="login.html">Logout</a>          
+    <a href="../html/php/logout.php">Logout</a>          
   </div>
 
 <div class="c">
