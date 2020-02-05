@@ -10,7 +10,7 @@
         <a href="contact.html">Contact</a>
         <a href="../html/doctorprofile.php">Profile</a>
         <a href="../html/doctorsearch.php">Patients</a>
-        <a href="login.html">Logout</a>          
+        <a href="logout.php">Logout</a>          
     </div>
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo"><br>
