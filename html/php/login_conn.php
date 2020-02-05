@@ -14,7 +14,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
 */
 //Connect to database
-include dirname(__DIR__).'\php\openDB.php';
+include dirname(__DIR__).'/php/openDB.php';
 
 $email = trim($_POST["email"]);
 $password = trim($_POST["psw"]);
@@ -46,7 +46,7 @@ if(empty($username_err) && empty($password_err)){
         session_start();
         $_SESSION["loggedin"] = true;
         $_SESSION["email"] = $email;
-        header("location: ../doctorstart.html"); 
+        header("location: ../doctorstart.php"); 
 
     }else { //if it gives no result try the patient table
         $patientsql = "select patient_id from patient where email = '$email' and password_hash = '$password'";
@@ -67,7 +67,7 @@ if(empty($username_err) && empty($password_err)){
     echo "Please fill in both username and password";
 }
 
-include dirname(__DIR__).'\php\closeDB.php';
+include dirname(__DIR__).'/php/closeDB.php';
 
 ?>
 </body>

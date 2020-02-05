@@ -10,7 +10,7 @@
         <a href="contact.html">Contact</a>
         <a href="../html/doctorprofile.php">Profile</a>
         <a href="../html/doctorsearch.php">Patients</a>
-        <a href="login.html">Logout</a>          
+        <a href="logout.php">Logout</a>          
     </div>
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo"><br>
@@ -18,7 +18,7 @@
 <h1>Patient Profile</h1>
 
 <?php
-        include dirname(__DIR__).'\php\openDB.php';
+        include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
         where patient_id = 1")   
@@ -53,7 +53,7 @@
             echo '<h3>'."About".'</h3>';
             echo $desc.'<br/>';
         }
-        include dirname(__DIR__).'\php\closeDB.php';
+        include dirname(__DIR__).'/html/php/closeDB.php';
  ?>
 
 <h3>Statistics</h3>

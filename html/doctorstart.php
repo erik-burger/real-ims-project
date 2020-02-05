@@ -1,4 +1,11 @@
 <html>
+
+<?php
+session_start();
+if ( isset($_SESSION["email"]) === false) {
+    header("location: /php/login.php");
+}
+?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +18,7 @@
             <a href="contact.html">Contact</a>
             <a href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
-            <a href="login.html">Logout</a>          
+            <a href="../html/php/logout.php">Logout</a>          
         </div>
 
         <h1>TRACKZHEIMERS LOGO</h1>

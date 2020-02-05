@@ -70,7 +70,7 @@ table, th, td {
     <a href="contact.html">Contact</a>
     <a href="../html/doctorprofile.php">Profile</a>
     <a class="active" href="../html/doctorsearch.php">Patients</a>
-    <a href="login.html">Logout</a>          
+    <a href="../html/php/logout.php">Logout</a>          
   </div>
 
 <div class="c">
@@ -90,8 +90,9 @@ table, th, td {
 <th>ID</th>
 </tr>
 <?php
+session_start();
 
-include dirname(__DIR__).'\php\openDB.php';
+include dirname(__DIR__).'/html/php/openDB.php';
 $result = mysqli_query($link,"select first_name, last_name, patient_id from patient")   
 or 
 die("Could not issue MySQL query"); 
@@ -105,17 +106,9 @@ if ($result->num_rows > 0) {
 echo "</table>";
 } 
 
-include dirname(__DIR__).'\php\closeDB.php';
+include dirname(__DIR__).'/html/php/closeDB.php';
 
 ?>
 </table>
-
-<p>Temporary button to view patient page from doctor side!</p>
-<button onclick="location.href='patientdoctor.html'" 
-type="button" 
-value="Test">
-VIEW PATIENT
-</button>
-
 </body>
 </html>

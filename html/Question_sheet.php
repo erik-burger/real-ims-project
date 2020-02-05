@@ -141,7 +141,7 @@
                 <h1 align="center">Write the word shown on the screen and remember them</h1>
                 <div style="text-align:center;">
                     <?php
-                            include "../html/php/openDB.php";
+                            include dirname(__DIR__)."/html/php/openDB.php";
                             $result = mysqli_query($link,"select image_id, image_name from test_images");
                             $length =$result->num_rows-1;
                             $rand1 = rand(0,$length);
@@ -176,7 +176,7 @@
                                     echo "<input type='text' name='word_2'>";
                                     echo "<input type='text' name='word_3'>";
                             }
-                            include "../html/php/closeDB.php";
+                            include dirname(__DIR__)."/html/php/closeDB.php";
                     ?>
                 </div>
                 <button type="button" onclick="change_question('question12','question11')">Next11</button>
@@ -224,7 +224,7 @@
                 <h1 align="center">Name these images.</h1>
                 <div>
                     <?php
-                        include "../html/php/openDB.php";
+                        include dirname(__DIR__)."/html/php/openDB.php";
                         $result = mysqli_query($link,"select image_id, image_url, image_name from test_images");
                         $length =$result->num_rows-1;
                         $image_num = rand(0,$length);
@@ -267,7 +267,7 @@
                                 echo "<input type='radio' name='image_1' value='$option2'>$option2";
                                 echo "<input type='radio' name='image_1' value='$option3'>$option3";
                         }
-                        include "../html/php/closeDB.php";
+                        include dirname(__DIR__)."/html/php/closeDB.php";
                 ?>
 
                 </div>
