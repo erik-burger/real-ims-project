@@ -11,7 +11,7 @@
 
     <div class="navbar">
       <a href="patientstart.html">Go Back</a>
-      <a href="../html/php/login.php">Logout</a>          
+      <a href="../html/php/logout.php">Logout</a>          
     </div>
 
     <h1>Profile</h1>
@@ -85,44 +85,6 @@
 
     ?>
     <p>Change your information <a href="#">here</a>.</p>
-
- <h1>Statistics</h1>
- <script>
-    window.onload = function () {
-
-    var chart = new CanvasJS.Chart("chartContainer", {
-    	animationEnabled: false,
-    	theme: "light2",
-    	title:{
-    		text: "MMSE score over time."
-    	},
-    	axisY:{
-    		includeZero: true
-    	},
-    	data: [{
-    		type: "line",
-    		dataPoints: [
-    			{ y: 20 },
-    			{ y: 21},
-    			{ y: 18},
-    			{ y: 18 },
-    			{ y: 20 },
-    			{ y: 17 },
-    			{ y: 16 },
-    			{ y: 14 },
-    			{ y: 13 },
-    			{ y: 10 },
-    			{ y: 11 },
-    			{ y: 5 }
-    		]
-    	}]
-    });
-    chart.render();
-}
-</script>
-<div id="chartContainer" style="height: 600px; width: 100%;">
-</div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </body> 
 </html>
