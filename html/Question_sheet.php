@@ -155,15 +155,15 @@
                             }
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    switch ($row[image_id]) {
+                                    switch ($row["image_id"]) {
                                         case $rand1:
-                                            $option1 = $row[image_name];
+                                            $option1 = $row["image_name"];
                                         break;
                                         case $rand2:
-                                            $option2 = $row[image_name];
+                                            $option2 = $row["image_name"];
                                         break;
                                         case $rand3:
-                                            $option3 = $row[image_name];
+                                            $option3 = $row["image_name"];
                                         break;
 
                                     }
