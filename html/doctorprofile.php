@@ -51,7 +51,7 @@
 
     ?>
 
-    <p>Change your information <a href="#">here</a>.</p>
+    <p>Change your information <a href="../html/change_info_doctor.php">here</a>.</p>
 
     </body>
 

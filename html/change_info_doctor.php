@@ -29,7 +29,7 @@
             $psw = $row["password_hash"]; 
         }    
     ?> 
-    <form action="php/add_doctor.php" method="POST">
+    <form action="update_doctor.php" method="POST">
       <h3>Register</h3>
       <p>Please fill in this form to create an account.</p>
       
