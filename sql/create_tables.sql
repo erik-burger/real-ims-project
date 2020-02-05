@@ -22,28 +22,6 @@ create table patient(
 	diagnosis_description text, 
 	primary key (patient_id)); 
 
-create table test(
-	test_id int not null auto_increment, 
-	test_date datetime not null, 
-	primary key (test_id)); 
- 
-create table question(
-	question_id int not null, 
-    test_id int not null, 
-    category varchar(255),
-    primary key (question_id, test_id), 
-    foreign key (test_id) references test (test_id)); 
-    
-create table answer(
-	patient_id int not null, 
-    question_id int not null, 
-    test_id int not null, 
-    answer_score int not null, 
-    primary key (patient_id, question_id, test_id), 
-    foreign key (patient_id) references patient (patient_id), 
-    foreign key (question_id) references question (question_id), 
-    foreign key (test_id) references test (test_id)); 
-    
 create table doctor (
 	doctor_id int not null auto_increment,
     password_hash varchar(50) not null,
@@ -66,9 +44,26 @@ create table patient_doctor (
     foreign key (patient_id) references patient(patient_id),
     foreign key (doctor_id) references doctor(doctor_id));
     
+create table test(
+	test_id int not null auto_increment, 
+	patient_id int not null,
+	test_date datetime not null, 
+	score_1 int not null,
+	score_2 int not null,
+	score_4 int not null,
+	score_5 int not null,
+	score_6 int not null,
+	score_7 int not null,
+	score_8 int not null,
+	score_9 int not null,
+	score_10 int not null,
+	score_11 int not null,
+	score_12 int not null,
+	score_13 int not null,
+	score_14 int not null,
+	primary key (test_id),
+	foreign key(patient_id) references patient(patient_id));
+    
 select * 
 from patient
-
-
-
 

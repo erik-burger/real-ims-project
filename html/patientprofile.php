@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta charset="UTF-utf-8">
+    <meta name="description" content="Statistics page for patients">
+    <title>Trackzheimers</title>
     <link rel="stylesheet" href="top_menu_style.css">
-</head>
+  </head>
+  
+  <body>
 
-<body>
     <div class="navbar">
-        <a href="doctorstart.html">Home</a>
-        <a href="contact.html">Contact</a>
-        <a href="../html/doctorprofile.php">Profile</a>
-        <a href="../html/doctorsearch.php">Patients</a>
-        <a href="login.html">Logout</a>          
+      <a href="patientstart.html">Go Back</a>
+      <a href="../html/php/login.php">Logout</a>          
     </div>
 
-<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo"><br>
+    <h1>Profile</h1>
 
-<h1>Patient Profile</h1>
-
-<?php
+    <?php
         include dirname(__DIR__).'\html\php\openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
@@ -56,8 +55,39 @@
         include dirname(__DIR__).'\html\php\closeDB.php';
  ?>
 
-<h3>Statistics</h3>
-<script>
+<h3>Your Doctor</h3>
+<?php
+        include dirname(__DIR__).'\html\php\openDB.php';
+        $result = mysqli_query($link,"select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
+        from doctor
+        where doctor_id = 1")   
+        or 
+        die("Could not issue MySQL query"); 
+        
+        while ($row = $result->fetch_assoc()) {
+            $first_name = $row["first_name"];
+            $last_name = $row["last_name"];
+            $doctor_id = $row["doctor_id"];
+            $street = $row["street"];
+            $street_no = $row["street_no"];
+            $zip = $row["zip"]; 
+            $city = $row["city"];
+            $country = $row["country"];
+            $phone = $row["phone"]; 
+     
+            echo '<b>'."Name: ".'</b>'.$first_name." ".$last_name.'<br />';
+            echo '<b>'."ID: ".'</b>' .$doctor_id.'<br />';
+            echo '<b>'."Telephone: ".'</b>'.$phone.'<br />';
+            echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
+        }
+        
+        include dirname(__DIR__).'\html\php\closeDB.php';
+
+    ?>
+    <p>Change your information <a href="#">here</a>.</p>
+
+ <h1>Statistics</h1>
+ <script>
     window.onload = function () {
 
     var chart = new CanvasJS.Chart("chartContainer", {
@@ -93,5 +123,6 @@
 <div id="chartContainer" style="height: 600px; width: 100%;">
 </div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-</body>
+
+</body> 
 </html>
