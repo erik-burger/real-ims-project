@@ -60,9 +60,11 @@ if(empty($username_err) && empty($password_err)){
         if($count2 == 1) { //returns 1 column -> login at patient
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $email;
-            $SESSION["id"] = mysqli_query($link, "select patient_id from patient where email = '$email'")
+            $result = mysqli_query($link, "select patient_id from patient where email = '$email'")
             or die("Could not issue patient session MySQL query");
-            header("location: ../patientstart.html"); 
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION["id"] = $row["patient_id"];
+            header("location: ../patientstart.php"); 
 
         } else{ //if it does not return anything here either, email or password are wrong
             echo "Email adress or password invalid";}
