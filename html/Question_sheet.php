@@ -171,13 +171,14 @@
                                     echo "$option1, $option2, $option3";
                                     echo "<input type='hidden' name='word_1_ans' value='$option1'>";
                                     echo "<input type='hidden' name='word_2_ans' value='$option2'>";
-                                    echo "<input type='hidden' name='word_3_ans' value='$option'>";
-                                    echo "<input type='text' name='word_1'>";
-                                    echo "<input type='text' name='word_2'>";
-                                    echo "<input type='text' name='word_3'>";
+                                    echo "<input type='hidden' name='word_3_ans' value='$option3'>";
+                                    
                             }
                             include dirname(__DIR__)."/html/php/closeDB.php";
                     ?>
+                    <input type='text' name='word_1'>
+                    <input type='text' name='word_2'>
+                    <input type='text' name='word_3'>
                 </div>
                 <button type="button" onclick="change_question('question12','question11')">Next11</button>
             </div>
@@ -193,11 +194,10 @@
                 
                 <?php
                     $numbers = array(40, 50, 60, 70, 80, 90);
-                    echo $numbers[rand(0,5)];
-                    $nuber = $numbers[rand(0,5)];
-                    echo $number;
+                    $number = $numbers[array_rand($numbers)];
+                    $title_str = "Subtract 7 from ".$number.", 5 times";
                     //echo '<h1>'Subtract 7 from$number 5 times'</h1>';
-                    echo "<h1>".$number."</h1>";
+                    echo "<h1 align='center'>".$title_str."</h1>";
                     echo "<div>";
                     echo "<input type='hidden' name='0st-number' value='$number'>";
                     echo "<input type='number' name='1st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
@@ -213,14 +213,14 @@
             <div id='question13' style="display:none" style="text-align:center;">
                 <h1 align="center">Write the words you that you were to remember (order does not matter).</h1>
                 <div>
-                    <input type="text" name="word_1" align="center">
-                    <input type="text" name="word_2" align="center">
-                    <input type="text" name="word_3" align="center">
+                    <input type="text" name="word_1_rem" align="center">
+                    <input type="text" name="word_2_rem" align="center">
+                    <input type="text" name="word_3_rem" align="center">
                 </div>
-                <button type="button" onclick="change_question('question14','question13')">Next13</button>
+                <button type="button" onclick="change_question('question14_1','question13')">Next13</button>
             </div>
 
-            <div id='question14' style="display:none" style="text-align:center;">
+            <div id='question14_1' style="display:none" style="text-align:center;">
                 <h1 align="center">Name these images.</h1>
                 <div>
                     <?php
@@ -246,33 +246,87 @@
                                 switch ($row[image_id]) {
                                     case $image_num:
                                         $image_url = $row[image_url];
-                                        $ans = $row[image_name];
+                                        $ans_1 = $row[image_name];
                                     break;
                                     case $rand1:
-                                        $option1 = $row[image_name];
+                                        $option1_1 = $row[image_name];
                                     break;
                                     case $rand2:
-                                        $option2 = $row[image_name];
+                                        $option2_1 = $row[image_name];
                                     break;
                                     case $rand3:
-                                        $option3 = $row[image_name];
+                                        $option3_1 = $row[image_name];
                                     break;
 
                                 }
                             }
                                 echo "<img src=".$image_url."><br>";
-                                echo "<input type='hidden' name='image_1_ans' value='$ans'>";
-                                echo "<input type='radio' name='image_1' value='$ans'>$ans";
-                                echo "<input type='radio' name='image_1' value='$option1'>$option1";
-                                echo "<input type='radio' name='image_1' value='$option2'>$option2";
-                                echo "<input type='radio' name='image_1' value='$option3'>$option3";
+                                echo "<input type='hidden' name='image_1_ans' value='$ans_1'>";
+                                echo "<input type='radio' name='image_1' value='$ans_1'>$ans_1";
+                                echo "<input type='radio' name='image_1' value='$option1_1'>$option1_1";
+                                echo "<input type='radio' name='image_1' value='$option2_1'>$option2_1";
+                                echo "<input type='radio' name='image_1' value='$option3_1'>$option3_1";
                         }
                         include dirname(__DIR__)."/html/php/closeDB.php";
                 ?>
 
                 </div>
-                <button type="submit" value="Submit">Submit</button>
+                <button type="button" onclick="change_question('question14_2','question14_1')">Next14_1</button>
             </div>
+            <div id='question14_2' style="display:none" style="text-align:center;">
+                <h1 align="center">Name these images.</h1>
+                <div>
+                    <?php
+                        include dirname(__DIR__)."/html/php/openDB.php";
+                        $result = mysqli_query($link,"select image_id, image_url, image_name from test_images");
+                        $length =$result->num_rows-1;
+                        $prev_num = $image_num;
+                        $image_num = rand(0,$length);
+                        while ($image_num == $prev_num){
+                            $image_num= rand(0,$length);
+                        }
+                        //First random number
+                        $rand1 = rand(0,$length);
+                        while ($rand1 == $image_num){
+                            $rand1 = rand(0,$length);
+                        }
+                        $rand2 = rand(0,$length);
+                        while ($rand2 == $image_num or $rand2 == $rand1){
+                            $rand2 = rand(0,$length);
+                        }
+                        $rand3 = rand(0,$length);
+                        while ($rand3 == $image_num or $rand3 == $rand1 or $rand3 == $rand2){
+                            $rand3 = rand(0,$length);
+                        }
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                switch ($row[image_id]) {
+                                    case $image_num:
+                                        $image_url = $row[image_url];
+                                        $ans_2 = $row[image_name];
+                                    break;
+                                    case $rand1:
+                                        $option1_2 = $row[image_name];
+                                    break;
+                                    case $rand2:
+                                        $option2_2 = $row[image_name];
+                                    break;
+                                    case $rand3:
+                                        $option3_2 = $row[image_name];
+                                    break;
+
+                                }
+                            }
+                                echo "<img src=".$image_url."><br>";
+                                echo "<input type='hidden' name='image_2_ans' value='$ans_2'>";
+                                echo "<input type='radio' name='image_2' value='$ans_2'>$ans_2";
+                                echo "<input type='radio' name='image_2' value='$option1_2'>$option1_2";
+                                echo "<input type='radio' name='image_2' value='$option2_2'>$option2_2";
+                                echo "<input type='radio' name='image_2' value='$option3_2'>$option3_2";
+                        }
+                        include dirname(__DIR__)."/html/php/closeDB.php";
+                ?>
+                <button type="submit" value="Submit">Submit</button>
 
 
         </form>

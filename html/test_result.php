@@ -23,6 +23,7 @@
   $question11 = 0;
   $question12 = 0;
   $question13 = 0;
+  $question14 = 0;
 
     //Question 1
     if ($_POST['curr_year'] == date(Y)){
@@ -101,13 +102,13 @@
     }
     
     //Question 11
-    if ($_POST['word_1'] == $_POST['word_1_answer'] or $_POST['word_2_answer'] or $_POST['word_3_answer']) {
+    if ($_POST['word_1'] == $_POST['word_1_ans'] or $_POST['word_1'] == $_POST['word_2_ans'] or $_POST['word_1'] == $_POST['word_3_ans']) {
       $question11++;
     }
-    if ($_POST['word_2'] == $_POST['word_1_answer'] or $_POST['word_2_answer'] or $_POST['word_3_answer']) {
+    if ($_POST['word_2'] == $_POST['word_1_ans'] or $_POST['word_2'] == $_POST['word_2_ans'] or $_POST['word_2'] == $_POST['word_3_ans']) {
       $question11++;
     }
-    if ($_POST['word_3'] == $_POST['word_1_answer'] or $_POST['word_2_answer'] or $_POST['word_3_answer']) {
+    if ($_POST['word_3'] == $_POST['word_1_ans'] or $_POST['word_3'] == $_POST['word_2_ans'] or $_POST['word_3'] == $_POST['word_3_ans']) {
       $question11++;
     }
 
@@ -115,10 +116,40 @@
     if ($_POST['1st-sub'] ==$_POST['0st-number'] -7 ) {
       $question12++;
     }
-    $e = $_POST['0st-number'];
-  
-    echo $e;
-    echo "1: $question1, 2: $question2, 3: $question3, 4: $question4, 5: $question5, 6: $question6, 7: $question7, 8: $question8, 9: $question9, 10: $question10, 11: $question11, 12: $question12";
+    if ($_POST['2st-sub'] ==$_POST['0st-number'] -(7*2) ) {
+      $question12++;
+    }
+    if ($_POST['3st-sub'] ==$_POST['0st-number'] -(7*3) ) {
+      $question12++;
+    }
+    if ($_POST['4st-sub'] ==$_POST['0st-number'] -(7*4) ) {
+      $question12++;
+    }
+    if ($_POST['5st-sub'] ==$_POST['0st-number'] -(7*5) ) {
+      $question12++;
+    }
+
+    //Question 13
+    if ($_POST['word_1_rem'] == $_POST['word_1_ans'] or $_POST['word_1_rem'] == $_POST['word_2_ans'] or $_POST['word_1_rem'] == $_POST['word_3_ans']) {
+      $question13++;
+    }
+    if ($_POST['word_2_rem'] == $_POST['word_1_ans'] or $_POST['word_2_rem'] == $_POST['word_2_ans'] or $_POST['word_2_rem'] == $_POST['word_3_ans']) {
+      $question13++;
+    }
+    if ($_POST['word_3_rem'] == $_POST['word_1_ans'] or $_POST['word_3_rem'] == $_POST['word_2_ans'] or $_POST['word_3_rem'] == $_POST['word_3_ans']) {
+      $question13++;
+    }
+
+    //Question 13
+    if ($_POST['image_1'] == $_POST['image_1_ans']) {
+      $question14++;
+    }
+    if ($_POST['image_2'] == $_POST['image_2_ans']) {
+      $question14++;
+    }
+
+
+    echo "1: $question1, 2: $question2, 3: $question3, 4: $question4, 5: $question5, 6: $question6, 7: $question7, 8: $question8, 9: $question9, 10: $question10, 11: $question11, 12: $question12, 13: $question13, 14: $question14";
 
     
   ?>
