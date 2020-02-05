@@ -5,12 +5,12 @@
     <h1>Change your information</h1>    
     <?php
         session_start();
-        $doctoremail = $_SESSION["email"];
+        $id = $_SESSION["id"];
         include dirname(__DIR__).'/html/php/openDB.php';
 
         $result = mysqli_query($link,"select *
         from doctor 
-        where doctor_id = 1")   
+        where doctor_id = '$id'")   
         or 
         die("Could not issue MySQL query"); 
         
@@ -29,7 +29,7 @@
             $psw = $row["password_hash"]; 
         }    
     ?> 
-    <form action="php/add_doctor.php" method="POST">
+    <form action="update_doctor.php" method="POST">
       <h3>Register</h3>
       <p>Please fill in this form to create an account.</p>
       

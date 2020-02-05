@@ -91,13 +91,16 @@ table, th, td {
 </tr>
 <?php
 session_start();
+$id = $_SESSION["id"];
 /*if ( isset($_SESSION["id"]) === false) {
     header("location: ../html/php/login.php");
 }
 */
 
 include dirname(__DIR__).'/html/php/openDB.php';
-$result = mysqli_query($link,"select first_name, last_name, patient_id from patient")   
+$result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
+                              from patient as p, patient_doctor as p_d
+                    where p.patient_id = p_d.patient_id and p_d.doctor_id = '$id'")   
 or 
 die("Could not issue MySQL query"); 
 

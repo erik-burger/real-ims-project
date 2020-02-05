@@ -1,6 +1,9 @@
 
 <?php 
-include dirname(__DIR__).'/php/openDB.php';
+session_start();
+$id = $_SESSION["id"];
+include dirname(__DIR__).'/html/php/openDB.php';
+
 $f_name = $_POST["f_name"]; 
 $m_name = $_POST["m_name"];  
 $l_name = $_POST["l_name"];
@@ -13,11 +16,18 @@ $zip = $_POST["zip"];
 $email = $_POST["email"];
 $psw = $_POST["psw"];
 
-$sql = "insert into doctor (
-    first_name, middle_name, last_name, email, password_hash, 
-    street, street_no, city, country, zip, phone) 
-    values ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', 
-    '$street_no', '$city', '$country', '$zip', '$phone_no')";  
+$sql = "update doctor set first_name = '$f_name', 
+    middle_name = '$m_name', 
+    last_name = '$l_name', 
+    email = '$email', 
+    password_hash = '$psw', 
+    street = '$street', 
+    street_no = '$street_no', 
+    city = '$city', 
+    country = '$country', 
+    zip = '$zip', 
+    phone = '$phone_no'
+    where doctor_id = '$id'";  
 
 if (mysqli_query($link, $sql)) {
     echo "New record created successfully";
@@ -25,5 +35,5 @@ if (mysqli_query($link, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
 }
 
-include dirname(__DIR__).'/php/closeDB.php';
+include dirname(__DIR__).'/html/php/closeDB.php';
 ?> 
