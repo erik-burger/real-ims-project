@@ -94,7 +94,7 @@
             <div id='question6' style="display:none" style="text-align:center;">
                 <h1 align="center">In what country are you in?</h1>
                 <div style="text-align:center;">
-                    <input type="text" name="country" align="center"
+                    <input type="text" name="country" align="center" autocomplete="new-password"
                     style="height:100px; width:300px;font-size:100px;">
                 </div>
                 <button type="button" onclick="change_question('question7','question6')">Next6</button>
@@ -104,7 +104,7 @@
             <div id='question7' style="display:none" style="text-align:center;">
                 <h1 align="center">In what county/state are you in?</h1>
                 <div style="text-align:center;">
-                    <input type="text" name="state" align="center"
+                    <input type="text" name="state" align="center" autocomplete="new-password"
                     style="height:100px; width:300px;font-size:100px;">
                 </div>
                 <button type="button" onclick="change_question('question8','question7')">Next7</button>
@@ -113,7 +113,7 @@
             <div id='question8' style="display:none" style="text-align:center;">
                 <h1 align="center">In what city/town are you?</h1>
                 <div style="text-align:center;">
-                    <input type="text" name="town" align="center"
+                    <input type="text" name="town" align="center" autocomplete="new-password"
                     style="height:100px; width:300px;font-size:100px;">
                 </div>
                 <button type="button" onclick="change_question('question9','question8')">Next8</button>
@@ -122,7 +122,7 @@
             <div id='question9' style="display:none" style="text-align:center;">
                 <h1 align="center">On what street are you?</h1>
                 <div style="text-align:center;">
-                    <input type="text" name="street" align="center"
+                    <input type="text" name="street" align="center" autocomplete="new-password"
                     style="height:100px; width:300px;font-size:100px;">
                 </div>
                 <button type="button" onclick="change_question('question10','question9')">Next9</button>
@@ -176,9 +176,9 @@
                             }
                             include dirname(__DIR__)."/html/php/closeDB.php";
                     ?>
-                    <input type='text' name='word_1'>
-                    <input type='text' name='word_2'>
-                    <input type='text' name='word_3'>
+                    <input type='text' name='word_1' autocomplete='new-password'>
+                    <input type='text' name='word_2' autocomplete='new-password'>
+                    <input type='text' name='word_3' autocomplete='new-password'>
                 </div>
                 <button type="button" onclick="change_question('question12','question11')">Next11</button>
             </div>
@@ -213,9 +213,9 @@
             <div id='question13' style="display:none" style="text-align:center;">
                 <h1 align="center">Write the words you that you were to remember (order does not matter).</h1>
                 <div>
-                    <input type="text" name="word_1_rem" align="center">
-                    <input type="text" name="word_2_rem" align="center">
-                    <input type="text" name="word_3_rem" align="center">
+                    <input type="text" name="word_1_rem" align="center" autocomplete="new-password">
+                    <input type="text" name="word_2_rem" align="center" autocomplete="new-password">
+                    <input type="text" name="word_3_rem" align="center" autocomplete="new-password">
                 </div>
                 <button type="button" onclick="change_question('question14_1','question13')">Next13</button>
             </div>
