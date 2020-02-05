@@ -2,9 +2,9 @@
 
 <?php
 session_start();
-if ( isset($_SESSION["email"]) === false) {
+/*if ( isset($_SESSION["id"]) === false) {
     header("location: /php/login.php");
-}
+}*/
 ?>
     <head>
         <meta charset="UTF-8">
@@ -14,7 +14,7 @@ if ( isset($_SESSION["email"]) === false) {
 
     <body>
         <div class="navbar">
-            <a class="active" href="doctorstart.html">Home</a>
+            <a class="active" href="doctorstart.php">Home</a>
             <a href="contact.html">Contact</a>
             <a href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
