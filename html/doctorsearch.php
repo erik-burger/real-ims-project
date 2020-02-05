@@ -91,7 +91,7 @@ table, th, td {
 </tr>
 <?php
 
-include dirname(__DIR__).'\html\php\openDB.php';
+include dirname(__DIR__).'/html/php/openDB.php';
 $result = mysqli_query($link,"select first_name, last_name, patient_id from patient")   
 or 
 die("Could not issue MySQL query"); 
@@ -105,7 +105,7 @@ if ($result->num_rows > 0) {
 echo "</table>";
 } 
 
-include dirname(__DIR__).'\html\php\closeDB.php';
+include dirname(__DIR__).'/html/php/closeDB.php';
 
 ?>
 </table>
