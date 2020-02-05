@@ -21,7 +21,7 @@
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
-        where patient_id = 1")   
+        where patient_id = ")   
         or 
         die("Could not issue MySQL query"); 
         

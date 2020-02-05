@@ -9,7 +9,7 @@
     </head>
 
         <div class="navbar">
-            <a href="login.html">Logout</a>          
+            <a href="../html/php/logout.php">Logout</a>          
         </div>
 
     <body>
