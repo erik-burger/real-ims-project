@@ -155,8 +155,8 @@
       $question14++;
     }
 
-    echo $answerQ6;
-    echo "1: $question1, 2: $question2, 3: $question3, 4: $question4, 5: $question5, 6: $question6, 7: $question7, 8: $question8, 9: $question9, 10: $question10, 11: $question11, 12: $question12, 13: $question13, 14: $question14";
+
+    //echo "1: $question1, 2: $question2, 3: $question3, 4: $question4, 5: $question5, 6: $question6, 7: $question7, 8: $question8, 9: $question9, 10: $question10, 11: $question11, 12: $question12, 13: $question13, 14: $question14";
 
     
 
