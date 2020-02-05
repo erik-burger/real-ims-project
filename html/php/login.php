@@ -1,4 +1,18 @@
 <html>
+
+<?php
+session_start();
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+  if ($_SESSION["user"] == "D") {
+      header("location:../doctorstart.php");
+  }elseif($_SESSION["user"] == "P"){
+      header("location: ../patientstart.php");
+  }else {
+  }
+  exit;
+}
+?>
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
