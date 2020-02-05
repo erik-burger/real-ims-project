@@ -7,12 +7,12 @@
 session_start();
 
 //Check if the user is already logged in
-/*
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location:../doctorstart.html"); //!!!This has to go to either patienr or doctor
+    header("location:../doctorstart.php"); //!!!This has to go to either patienr or doctor
     exit;
 }
-*/
+
 //Connect to database
 include dirname(__DIR__).'/php/openDB.php';
 
@@ -43,9 +43,12 @@ if(empty($username_err) && empty($password_err)){
     $count1 = mysqli_num_rows($doctorresult);
 
     if($count1 == 1) { //if the query returns 1 result -> login at doctor
-        session_start();
         $_SESSION["loggedin"] = true;
         $_SESSION["email"] = $email;
+        $result = mysqli_query($link, "select doctor_id from doctor where email = '$email'")
+        or die("Could not issue doctor session MySQL query");
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION["id"] = $row["doctor_id"];
         header("location: ../doctorstart.php"); 
 
     }else { //if it gives no result try the patient table
@@ -55,9 +58,10 @@ if(empty($username_err) && empty($password_err)){
         $count2 = mysqli_num_rows($patientresult);
 
         if($count2 == 1) { //returns 1 column -> login at patient
-            session_start();
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $email;
+            $SESSION["id"] = mysqli_query($link, "select patient_id from patient where email = '$email'")
+            or die("Could not issue patient session MySQL query");
             header("location: ../patientstart.html"); 
 
         } else{ //if it does not return anything here either, email or password are wrong
@@ -66,6 +70,7 @@ if(empty($username_err) && empty($password_err)){
 } else{//if there is something in the error variables username or password are empty
     echo "Please fill in both username and password";
 }
+
 
 include dirname(__DIR__).'/php/closeDB.php';
 
