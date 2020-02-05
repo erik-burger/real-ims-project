@@ -15,9 +15,11 @@
         </div>
 
         <h1>Profile</h1>
+   
 
     <?php
-        include dirname(__DIR__).'\html\php\openDB.php';
+        include dirname(__DIR__).'/html/php/openDB.php';
+
         $result = mysqli_query($link,"select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
         from doctor
         where doctor_id = 1")   
@@ -41,7 +43,7 @@
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
         }
         
-        include dirname(__DIR__).'\html\php\closeDB.php';
+        include dirname(__DIR__).'/html/php/closeDB.php';
 
     ?>
 
