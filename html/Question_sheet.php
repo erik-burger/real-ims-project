@@ -9,7 +9,7 @@
     </head>
 
         <div class="navbar">
-            <a href="login.html">Logout</a>          
+            <a href="../html/php/logout.php">Logout</a>          
         </div>
 
     <body>
@@ -155,15 +155,15 @@
                             }
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    switch ($row[image_id]) {
+                                    switch ($row["image_id"]) {
                                         case $rand1:
-                                            $option1 = $row[image_name];
+                                            $option1 = $row["image_name"];
                                         break;
                                         case $rand2:
-                                            $option2 = $row[image_name];
+                                            $option2 = $row["image_name"];
                                         break;
                                         case $rand3:
-                                            $option3 = $row[image_name];
+                                            $option3 = $row["image_name"];
                                         break;
 
                                     }
@@ -243,19 +243,19 @@
                         }
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
-                                switch ($row[image_id]) {
+                                switch ($row["image_id"]) {
                                     case $image_num:
-                                        $image_url = $row[image_url];
-                                        $ans_1 = $row[image_name];
+                                        $image_url = $row["image_url"];
+                                        $ans_1 = $row["image_name"];
                                     break;
                                     case $rand1:
-                                        $option1_1 = $row[image_name];
+                                        $option1_1 = $row["image_name"];
                                     break;
                                     case $rand2:
-                                        $option2_1 = $row[image_name];
+                                        $option2_1 = $row["image_name"];
                                     break;
                                     case $rand3:
-                                        $option3_1 = $row[image_name];
+                                        $option3_1 = $row["image_name"];
                                     break;
 
                                 }
@@ -300,19 +300,19 @@
                         }
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
-                                switch ($row[image_id]) {
+                                switch ($row["image_id"]) {
                                     case $image_num:
-                                        $image_url = $row[image_url];
-                                        $ans_2 = $row[image_name];
+                                        $image_url = $row["image_url"];
+                                        $ans_2 = $row["image_name"];
                                     break;
                                     case $rand1:
-                                        $option1_2 = $row[image_name];
+                                        $option1_2 = $row["image_name"];
                                     break;
                                     case $rand2:
-                                        $option2_2 = $row[image_name];
+                                        $option2_2 = $row["image_name"];
                                     break;
                                     case $rand3:
-                                        $option3_2 = $row[image_name];
+                                        $option3_2 = $row["image_name"];
                                     break;
 
                                 }
