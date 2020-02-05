@@ -69,11 +69,7 @@ if(empty($username_err) && empty($password_err)){
     echo "Please fill in both username and password";
 }
 
-<<<<<<< HEAD
 include dirname(__DIR__).'\php\closeDB.php';
-=======
-include '../real-ims-project/html/php/closeDB.php';
->>>>>>> 3287fdea633dcfcff77051aabab7eed5eb805284
 
 ?>
 </body>
