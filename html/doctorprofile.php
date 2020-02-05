@@ -18,11 +18,13 @@
    
 
     <?php
+        session_start();
+        $doctoremail = $_SESSION["email"];
         include dirname(__DIR__).'/html/php/openDB.php';
 
         $result = mysqli_query($link,"select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
         from doctor
-        where doctor_id = 1")   
+        where email = '$doctoremail'")   
         or 
         die("Could not issue MySQL query"); 
         

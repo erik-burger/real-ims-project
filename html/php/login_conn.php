@@ -46,7 +46,7 @@ if(empty($username_err) && empty($password_err)){
         session_start();
         $_SESSION["loggedin"] = true;
         $_SESSION["email"] = $email;
-        header("location: ../doctorstart.html"); 
+        header("location: ../doctorstart.php"); 
 
     }else { //if it gives no result try the patient table
         $patientsql = "select patient_id from patient where email = '$email' and password_hash = '$password'";

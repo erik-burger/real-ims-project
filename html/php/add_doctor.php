@@ -1,5 +1,5 @@
 <?php 
-include dirname(__DIR__).'\php\openDB.php';
+include dirname(__DIR__).'/php/openDB.php';
 $f_name = $_POST["f_name"]; 
 $m_name = $_POST["m_name"];  
 $l_name = $_POST["l_name"];
@@ -24,5 +24,5 @@ if (mysqli_query($link, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
 }
 
-include dirname(__DIR__).'\php\closeDB.php';
+include dirname(__DIR__).'/php/closeDB.php';
 ?> 
