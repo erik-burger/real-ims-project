@@ -8,7 +8,7 @@
     <body>
         <div class="navbar">
             <a href="doctorstart.html">Home</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.php">Contact</a>
             <a class="active" href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
             <a href="../html/php/logout.php">Logout</a>          
@@ -19,10 +19,11 @@
 
     <?php
         session_start();
-        /*if ( isset($_SESSION["id"]) === false) {
-            header("location: ../html//php/login.php");
+       /*if ( isset($_SESSION["id"]) === false) {
+        header("location: ../html/php/login.php");
         }
-*/
+        */
+
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
         from doctor
@@ -51,7 +52,7 @@
 
     ?>
 
-    <p>Change your information <a href="#">here</a>.</p>
+    <p>Change your information <a href="../html/change_info_doctor.php">here</a>.</p>
 
     </body>
 

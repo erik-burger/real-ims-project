@@ -10,7 +10,7 @@
   <body>
 
     <div class="navbar">
-      <a href="patientstart.html">Go Back</a>
+      <a href="patientstart.php">Go Back</a>
       <a href="../html/php/logout.php">Logout</a>          
     </div>
 
@@ -18,6 +18,10 @@
 
     <?php
         session_start(); 
+        /*if ( isset($_SESSION["id"]) === false) {
+        header("location: ../html/php/login.php");
+        }
+        */
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
