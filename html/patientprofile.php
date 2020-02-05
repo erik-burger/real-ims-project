@@ -21,7 +21,7 @@
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
-        where patient_id = '$_SESSION[id]'")   
+        where patient_id = $_SESSION[id]")   
         or 
         die("Could not issue MySQL query"); 
         
@@ -61,7 +61,7 @@
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select d.first_name, d.last_name, d.doctor_id, d.phone, d.street, d.street_no, d.zip, d.city, d.country 
         from doctor as d, patient_doctor as p_d
-        where d.doctor_id = p_d.doctor_id and p_d.patient_id = '$_SESSION[id]'")   
+        where d.doctor_id = p_d.doctor_id and p_d.patient_id = $_SESSION[id]")   
         or 
         die("Could not issue MySQL query"); 
         

@@ -91,6 +91,9 @@ table, th, td {
 </tr>
 <?php
 session_start();
+if ( isset($_SESSION["email"]) === false) {
+    header("location: /php/login.php");
+}
 
 include dirname(__DIR__).'/html/php/openDB.php';
 $result = mysqli_query($link,"select first_name, last_name, patient_id from patient")   

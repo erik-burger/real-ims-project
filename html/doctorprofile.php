@@ -19,12 +19,14 @@
 
     <?php
         session_start();
-        $doctoremail = $_SESSION["email"];
+        /*if ( isset($_SESSION["id"]) === false) {
+            header("location: ../html//php/login.php");
+        }
+*/
         include dirname(__DIR__).'/html/php/openDB.php';
-
-        $result = mysqli_query($link,"select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
+        $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
         from doctor
-        where email = '$doctoremail'")   
+        where doctor_id = $_SESSION[id]")   
         or 
         die("Could not issue MySQL query"); 
         
