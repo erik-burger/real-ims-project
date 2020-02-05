@@ -17,10 +17,11 @@
     <h1>Profile</h1>
 
     <?php
+        session_start(); 
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
-        where patient_id = 1")   
+        where patient_id = '$_SESSION[id]'")   
         or 
         die("Could not issue MySQL query"); 
         
@@ -58,9 +59,9 @@
 <h3>Your Doctor</h3>
 <?php
         include dirname(__DIR__).'/html/php/openDB.php';
-        $result = mysqli_query($link,"select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
-        from doctor
-        where doctor_id = 1")   
+        $result = mysqli_query($link,"select d.first_name, d.last_name, d.doctor_id, d.phone, d.street, d.street_no, d.zip, d.city, d.country 
+        from doctor as d, patient_doctor as p_d
+        where d.doctor_id = p_d.doctor_id and p_d.patient_id = '$_SESSION[id]'")   
         or 
         die("Could not issue MySQL query"); 
         
