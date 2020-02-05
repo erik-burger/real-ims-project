@@ -11,7 +11,7 @@
 
     <div class="navbar">
       <a href="patientstart.html">Go Back</a>
-      <a href="../html/php/login.php">Logout</a>          
+      <a href="../html/php/logout.php">Logout</a>          
     </div>
 
     <h1>Profile</h1>
