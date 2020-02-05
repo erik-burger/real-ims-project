@@ -1,15 +1,15 @@
 <html>  
 
   <?php
-
-
-  include "../html/php/openDB.php";
-  $answerQ6 = mysqli_query($link,"select country from patients where patient_id == ");
+  session_start();
+  $patient_id = $_SESSION["id"];
+  include dirname(__DIR__)."/html/php/openDB.php";
+  $answerQ6 = mysqli_query($link,"select country from patients where patient_id == $patient_id");
   $answerQ7 = mysqli_query($link,"select state from patients where patient_id == ");
   $answerQ8 = mysqli_query($link,"select city from patients where patient_id == ");
   $answerQ9 = mysqli_query($link,"select street from patients where patient_id == ");
   $answerQ10 = mysqli_query($link,"select bedroom_floor from patients where patient_id == ");
-  include "../html/php/closeDB.php";
+  include dirname(__DIR__)."/html/php/closeDB.php";
   $question1 = 0;
   $question2 = 0;
   $question3 = 0;
@@ -148,9 +148,17 @@
       $question14++;
     }
 
-
+    echo $_SESSION['id'];
+    echo "$patient_id";
+    echo "$answerQ6";
     echo "1: $question1, 2: $question2, 3: $question3, 4: $question4, 5: $question5, 6: $question6, 7: $question7, 8: $question8, 9: $question9, 10: $question10, 11: $question11, 12: $question12, 13: $question13, 14: $question14";
 
     
+
+  include dirname(__DIR__)."/html/php/openDB.php";
+  $test_date = date("Y-m-d H:i:s");
+  $sql = "insert into test (patien_id, test_date, score_1, score_2, score_3, score_4, score_5, score_6, score_7, score_8, score_9, score_10, score_11, score_12, score_13, score_14)
+  VALUES ($patient_id, $test_date, $question1, $question2, $question3, $question4, $question5, $question6, $question7, $question8, $question9, $question10, $question11, $question12, $question13, $question14)";
+  include dirname(__DIR__)."/html/php/closeDB.php";
   ?>
 </html>
