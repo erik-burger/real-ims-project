@@ -9,7 +9,11 @@ session_start();
 //Check if the user is already logged in
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location:../doctorstart.php"); //!!!This has to go to either patienr or doctor
+    if ($_SESSION["user"] == "D") {
+        header("location:../doctorstart.php");
+    }elseif($_SESSION["user"] == "P"){
+        header("location: ../patientstart.php");
+    }
     exit;
 }
 
@@ -49,6 +53,7 @@ if(empty($username_err) && empty($password_err)){
         or die("Could not issue doctor session MySQL query");
         $row = mysqli_fetch_assoc($result);
         $_SESSION["id"] = $row["doctor_id"];
+        $_SESSION["user"] = "D";
         header("location: ../doctorstart.php"); 
 
     }else { //if it gives no result try the patient table
@@ -64,6 +69,7 @@ if(empty($username_err) && empty($password_err)){
             or die("Could not issue patient session MySQL query");
             $row = mysqli_fetch_assoc($result);
             $_SESSION["id"] = $row["patient_id"];
+            $_SESSION["user"] = "P";
             header("location: ../patientstart.php"); 
 
         } else{ //if it does not return anything here either, email or password are wrong
