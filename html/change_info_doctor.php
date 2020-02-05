@@ -5,12 +5,12 @@
     <h1>Change your information</h1>    
     <?php
         session_start();
-        $doctoremail = $_SESSION["email"];
+        $id = $_SESSION["id"];
         include dirname(__DIR__).'/html/php/openDB.php';
 
         $result = mysqli_query($link,"select *
         from doctor 
-        where doctor_id = 1")   
+        where doctor_id = '$id'")   
         or 
         die("Could not issue MySQL query"); 
         

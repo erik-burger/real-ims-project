@@ -1,6 +1,9 @@
 
 <?php 
+session_start();
+$id = $_SESSION["id"];
 include dirname(__DIR__).'/html/php/openDB.php';
+
 $f_name = $_POST["f_name"]; 
 $m_name = $_POST["m_name"];  
 $l_name = $_POST["l_name"];
@@ -24,7 +27,7 @@ $sql = "update doctor set first_name = '$f_name',
     country = '$country', 
     zip = '$zip', 
     phone = '$phone_no'
-    where doctor_id = 1";  
+    where doctor_id = '$id'";  
 
 if (mysqli_query($link, $sql)) {
     echo "New record created successfully";
