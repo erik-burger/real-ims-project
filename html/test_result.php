@@ -7,11 +7,11 @@
   $result = mysqli_query($link,"select country, state, city, street, bedroom_floor from patient where patient_id = $patient_id");
   if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_array($result)) {
-      $answerQ6 = $row[country];
-      $answerQ7 = $row[state];
-      $answerQ8 = $row[city];
-      $answerQ9 = $row[street];
-      $answerQ10 = $row[bedroom_floor];
+      $answerQ6 = $row["country"];
+      $answerQ7 = $row["state"];
+      $answerQ8 = $row["city"];
+      $answerQ9 = $row["street"];
+      $answerQ10 = $row["bedroom_floor"];
 
  }
 }
