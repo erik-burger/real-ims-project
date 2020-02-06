@@ -94,7 +94,7 @@
             <div id='question6' style="display:none" style="text-align:center;">
                 <h1 align="center">In what country are you in?</h1>
                 <div style="text-align:center;">
-                    <input type="text" name="country" align="center" autocomplete="new-password"
+                    <input type="text" name="country" align="center" autocomplete="new-password" autocomplete="off"
                     style="height:100px; width:300px;font-size:100px;">
                 </div>
                 <button type="button" onclick="change_question('question7','question6')">Next6</button>
