@@ -18,6 +18,7 @@
 <h1>Patient Profile</h1>
 
 <?php
+        echo $_GET['id']; 
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
