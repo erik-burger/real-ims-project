@@ -54,6 +54,7 @@ if(empty($username_err) && empty($password_err)){
         $row = mysqli_fetch_assoc($result);
         $_SESSION["id"] = $row["doctor_id"];
         $_SESSION["user"] = "D";
+        $_SESSION["timestamp"] = time();
         header("location: ../doctorstart.php"); 
 
     }else { //if it gives no result try the patient table
@@ -70,6 +71,7 @@ if(empty($username_err) && empty($password_err)){
             $row = mysqli_fetch_assoc($result);
             $_SESSION["id"] = $row["patient_id"];
             $_SESSION["user"] = "P";
+            $_SESSION["timestamp"] = time();
             header("location: ../patientstart.php"); 
 
         } else{ //if it does not return anything here either, email or password are wrong
