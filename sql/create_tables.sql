@@ -6,7 +6,7 @@ create table patient(
     SSN varchar(50) not null, 
 	email varchar(50) not null unique, 
     phone int not null, 
-	password_hash varchar(50) not null, 
+	password_hash varchar(255) not null, 
 	street varchar(50) not null, 
 	street_no varchar(50) not null, 
 	city varchar(50) not null, 
@@ -24,7 +24,7 @@ create table patient(
 
 create table doctor (
 	doctor_id int not null auto_increment,
-    password_hash varchar(50) not null,
+    password_hash varchar(255) not null,
     email varchar(50) not null unique,
     phone int not null, 
     first_name varchar(50) not null,
