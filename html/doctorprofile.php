@@ -1,4 +1,5 @@
 <html>
+<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
