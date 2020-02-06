@@ -62,6 +62,7 @@ create table test(
 	score_12 int not null,
 	score_13 int not null,
 	score_14 int not null,
+    total_score int not null,
 	primary key (test_id),
 	foreign key(patient_id) references patient(patient_id));
     
