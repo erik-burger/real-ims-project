@@ -1,5 +1,5 @@
 <html>
-
+<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
 <?php
 session_start();
 /*if ( isset($_SESSION["id"]) === false) {

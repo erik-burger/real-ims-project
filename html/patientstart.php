@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
 <?php
 session_start();
 /*if ( isset($_SESSION["user"]) == "D") { // if the user is a patient -> logout
@@ -10,6 +10,8 @@ session_start();
 } elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
   header("location: ../html/php/login.php");
 }*/
+$_SESSION["timestamp"] = time();
+
 ?>
   <head>
     <meta charset="UTF-utf-8">

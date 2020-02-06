@@ -50,11 +50,12 @@ if(empty($username_err) && empty($password_err)){
         $_SESSION["loggedin"] = true;
         $_SESSION["email"] = $email;
         $result = mysqli_query($link, "select doctor_id from doctor where email = '$email'")
-        or die("Could not issue doctor session MySQL query");
+        or die("Could not issue doctor session MySQL query"); //get the doctor id from unique email
         $row = mysqli_fetch_assoc($result);
         $_SESSION["id"] = $row["doctor_id"];
-        $_SESSION["user"] = "D";
-        header("location: ../doctorstart.php"); 
+        $_SESSION["user"] = "D"; //for automatic logout if wrong user type acceses a page
+        $_SESSION["timestamp"] = time(); //needed for logout after inactivity
+        header("location: ../doctorstart.php"); //redirect to doctor start page
 
     }else { //if it gives no result try the patient table
         $patientsql = "select patient_id from patient where email = '$email' and password_hash = '$password'";
@@ -66,11 +67,12 @@ if(empty($username_err) && empty($password_err)){
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $email;
             $result = mysqli_query($link, "select patient_id from patient where email = '$email'")
-            or die("Could not issue patient session MySQL query");
+            or die("Could not issue patient session MySQL query"); //get the patient id from unique email
             $row = mysqli_fetch_assoc($result);
             $_SESSION["id"] = $row["patient_id"];
-            $_SESSION["user"] = "P";
-            header("location: ../patientstart.php"); 
+            $_SESSION["user"] = "P"; //for automatic logout if wrong user type acceses a page
+            $_SESSION["timestamp"] = time(); //needed for logout after inactivity
+            header("location: ../patientstart.php"); //redirect to patient start page
 
         } else{ //if it does not return anything here either, email or password are wrong
             echo "Email adress or password invalid";}

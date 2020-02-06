@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
 <head>
     <link rel="stylesheet" href="top_menu_style.css">
 </head>
@@ -18,6 +19,7 @@
 <h1>Patient Profile</h1>
 
 <?php
+        echo $_GET['id']; 
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
