@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,43 +29,43 @@
 <form action="php/add_doctor.php" method="POST">
       <h3>Register</h3>
       <p>Please fill in this form to create an account.</p>
+            
+      	<label for="f_name"><b>First name</b></label>
+      	<input type="text" placeholder="Enter first name" name="f_name" required">
+		
+      	<label for="m_name"><b>Middle name</b></label>
+      	<input type="text" placeholder="Enter middle name" name="m_name">
+
+      	<label for="l_name"><b>Last name</b></label>
+      	<input type="text" placeholder="Enter last name" name="l_name" required><br>
       
-      <label for="f_name"><b>First name</b></label>
-      <input type="text" placeholder="Enter first name" name="f_name" required>
+      	<label for="phone"><b>Phone number</b></label>
+      	<input type="number" placeholder="Enter Phone number" name="phone" required><br>
 
-      <label for="m_name"><b>Middle name</b></label>
-      <input type="text" placeholder="Enter middle name" name="m_name">
+      	<label for="street"><b>Street</b></label>
+      	<input type="text" placeholder="Enter Street" name="street" required>
 
-      <label for="l_name"><b>Last name</b></label>
-      <input type="text" placeholder="Enter last name" name="l_name" required><br>
-      
-      <label for="phone_no"><b>Phone number</b></label>
-      <input type="number" placeholder="Enter Phone number" name="phone_no" required><br>
+      	<label for="street_no"><b>Street number</b></label>
+      	<input type="text" placeholder="Enter Street number" name="street_no" required>
 
-      <label for="street"><b>Street</b></label>
-      <input type="text" placeholder="Enter Street" name="street" required>
+  	    <label for="city"><b>City</b></label>
+   	    <input type="text" placeholder="Enter city" name="city" required>
 
-      <label for="street_no"><b>Street number</b></label>
-      <input type="text" placeholder="Enter Street number" name="street_no" required>
+      	<label for="country"><b>Country</b></label>
+      	<input type="text" placeholder="Enter country" name="country" required>
 
-      <label for="city"><b>City</b></label>
-      <input type="text" placeholder="Enter city" name="city" required>
-
-      <label for="country"><b>Country</b></label>
-      <input type="text" placeholder="Enter country" name="country" required>
-
-      <label for="zip"><b>Zip</b></label>
-      <input type="text" placeholder="Enter Zip" name="zip" required><br>
+      	<label for="zip"><b>Zip</b></label>
+      	<input type="text" placeholder="Enter Zip" name="zip" required><br>
   
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required><br>
+      	<label for="email"><b>Email</b></label>
+      	<input type="text" placeholder="Enter Email" name="email" required><br>
   
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      	<label for="psw"><b>Password</b></label>
+      	<input type="password" placeholder="Enter Password" name="psw" required>
   
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-      
+      	<label for="psw_repeat"><b>Repeat Password</b></label>
+      	<input type="password" placeholder="Repeat Password" name="psw_repeat" required>
+            
       <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
       <button type="submit">Register</button>
     
