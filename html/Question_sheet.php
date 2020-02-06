@@ -13,6 +13,26 @@
         </div>
 
     <body>
+        <style>
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance:textfield;
+            }
+
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+        </style>
 
         <script>
             function change_question(new_question, old_question) {
@@ -49,6 +69,8 @@
                 });
             }
         </script>
+
+        
 
         <form action=test_result.php method="POST">
 
@@ -244,11 +266,11 @@
                     echo "<h1 align='center'>".$title_str."</h1>";
                     echo "<div>";
                     echo "<input type='hidden' name='0st-number' value='$number'>";
-                    echo "<input type='number' name='1st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
-                    echo "<input type='number' name='2st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
-                    echo "<input type='number' name='3st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
-                    echo "<input type='number' name='4st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
-                    echo "<input type='number' name='5st-sub' align='center' style='height:20px; width:40px;font-size:15px;'>";
+                    echo "<input type='number' name='1st-sub' align='center' style='height:20px; width:40px;font-size:15px;'><br>";
+                    echo "<input type='number' name='2st-sub' align='center' style='height:20px; width:40px;font-size:15px;'><br>";
+                    echo "<input type='number' name='3st-sub' align='center' style='height:20px; width:40px;font-size:15px;'><br>";
+                    echo "<input type='number' name='4st-sub' align='center' style='height:20px; width:40px;font-size:15px;'><br>";
+                    echo "<input type='number' name='5st-sub' align='center' style='height:20px; width:40px;font-size:15px;'><br>";
                     echo "</div>";
                 ?>
                 <button type="button" onclick="change_question('question11','question12')">Back</button>
