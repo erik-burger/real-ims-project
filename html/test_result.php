@@ -33,29 +33,29 @@
   $question14 = 0;
 
     //Question 1
-    if ($_POST['curr_year'] == date(Y)){
+    if ($_POST['curr_year'] == date('Y')){
       $question1++;
     }
 
     //Question 2
-    if ($_POST['month'] == date(F)){
+    if ($_POST['month'] == date('F')){
       $question2++;
     }
 
     //Question 3
-    if ($_POST['day_word'] == date(l)){
+    if ($_POST['day_word'] == date('l')){
       $question3++;
     }
 
     //Question 4
-    if ($_POST['day_num'] == date(j)){
+    if ($_POST['day_num'] == date('j')){
       $question4++;
     }
 
     //Question 5
     $time_of_day = $_POST['time_of_day'];
     date_default_timezone_set('Europe/Stockholm');
-    $hour = date(G);
+    $hour = date('G');
     switch ($time_of_day) {
       case "Morning":
           if (5 <= $hour and $hour <= 11 ) {
