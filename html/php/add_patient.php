@@ -4,11 +4,7 @@ $f_name = $_POST["f_name"];
 $m_name = $_POST["m_name"];  
 $l_name = $_POST["l_name"]; 
 $ssn = $_POST["ssn"];
-<<<<<<< HEAD
-$phone = $_POST["phone"];
-=======
-$phone_no = $_POST["phone_no"];
->>>>>>> fd9ed557a728f399ab3560c3afcedff33665f299
+$phone = $_POST["phone_no"];
 $street = $_POST["street"];
 $street_no = $_POST["street_no"];
 $city = $_POST["city"];
