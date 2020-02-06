@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
   <head>
     <meta charset="UTF-utf-8">
     <meta name="description" content="Statistics page for patients">
