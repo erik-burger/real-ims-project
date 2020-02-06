@@ -3,6 +3,21 @@
 <body>
 
 <?php 
+<<<<<<< HEAD
+=======
+include dirname(__DIR__).'/php/openDB.php';
+$f_name = $_POST["f_name"]; 
+$m_name = $_POST["m_name"];  
+$l_name = $_POST["l_name"];
+$phone_no = $_POST["phone_no"]; 
+$street = $_POST["street"];
+$street_no = $_POST["street_no"];
+$city = $_POST["city"];
+$country = $_POST["country"];
+$zip = $_POST["zip"];
+$email = $_POST["email"];
+$psw = $_POST["psw"];
+>>>>>>> fd9ed557a728f399ab3560c3afcedff33665f299
 
 // Starting the session
 session_start();
@@ -57,5 +72,10 @@ if (count($errors) == 0) {
 include dirname(__DIR__).'\php\closeDB.php';
 ?> 
 
+<<<<<<< HEAD
 </body>
 </html>
+=======
+include dirname(__DIR__).'/php/closeDB.php';
+?> 
+>>>>>>> fd9ed557a728f399ab3560c3afcedff33665f299

@@ -50,6 +50,7 @@ create table test(
 	test_date datetime not null, 
 	score_1 int not null,
 	score_2 int not null,
+    score_3 int not null,
 	score_4 int not null,
 	score_5 int not null,
 	score_6 int not null,
@@ -61,18 +62,10 @@ create table test(
 	score_12 int not null,
 	score_13 int not null,
 	score_14 int not null,
-	score_15 int not null,
-	score_16 int not null,
-	score_17 int not null,
-	score_18 int not null,
-	score_19 int not null,
-	score_20 int not null,
 	primary key (test_id),
 	foreign key(patient_id) references patient(patient_id));
     
+    
 select * 
 from patient
-
-
-
 

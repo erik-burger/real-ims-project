@@ -7,20 +7,27 @@
 
     <body>
         <div class="navbar">
-            <a href="doctorstart.html">Home</a>
-            <a href="contact.html">Contact</a>
+            <a href="doctorstart.php">Home</a>
+            <a href="contact.php">Contact</a>
             <a class="active" href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
-            <a href="login.html">Logout</a>          
+            <a href="../html/php/logout.php">Logout</a>          
         </div>
 
         <h1>Profile</h1>
+   
 
     <?php
-        include dirname(__DIR__).'\php\openDB.php';
-        $result = mysqli_query($link,"select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
+        session_start();
+       /*if ( isset($_SESSION["id"]) === false) {
+        header("location: ../html/php/login.php");
+        }
+        */
+
+        include dirname(__DIR__).'/html/php/openDB.php';
+        $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
         from doctor
-        where doctor_id = 1")   
+        where doctor_id = $_SESSION[id]")   
         or 
         die("Could not issue MySQL query"); 
         
@@ -41,11 +48,11 @@
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
         }
         
-        include dirname(__DIR__).'\php\closeDB.php';
+        include dirname(__DIR__).'/html/php/closeDB.php';
 
     ?>
 
-    <p>Change your information <a href="#">here</a>.</p>
+    <p>Change your information <a href="../html/change_info_doctor.php">here</a>.</p>
 
     </body>
 

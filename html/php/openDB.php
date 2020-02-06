@@ -2,7 +2,7 @@
 <?php
 $hostname = "localhost:3306"; 
 $username = "root"; 
-$password = "root"; 
+$password = ""; 
 $dbname   = "ims"; 
 $link = mysqli_connect($hostname, $username, $password, $dbname); 
  

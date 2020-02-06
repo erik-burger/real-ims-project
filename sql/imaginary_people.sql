@@ -99,4 +99,12 @@ VALUES("qwerty",
         "3",
         "2016-04-01",
         "Sed nec vulputate nisl, mattis dapibus erat. Quisque vulputate erat eu felis ornare maximus a eu lorem. Cras vel nulla sit amet lorem eleifend aliquam eu sed nisi. Sed sed rutrum felis, eu efficitur turpis. Pellentesque id odio fermentum, pellentesque metus eget, tincidunt massa. Nulla efficitur dui sed elit ornare.");
-        
+
+insert into patient_doctor(patient_id, doctor_id)
+values(1, 2); 
+
+insert into patient_doctor(patient_id, doctor_id)
+values(2, 1); 
+
+insert into patient_doctor(patient_id, doctor_id)
+values(3, 3); 

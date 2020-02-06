@@ -66,11 +66,11 @@ table, th, td {
 <body>
 
   <div class="navbar">
-    <a href="doctorstart.html">Home</a>
-    <a href="contact.html">Contact</a>
+    <a href="doctorstart.php">Home</a>
+    <a href="contact.php">Contact</a>
     <a href="../html/doctorprofile.php">Profile</a>
     <a class="active" href="../html/doctorsearch.php">Patients</a>
-    <a href="login.html">Logout</a>          
+    <a href="../html/php/logout.php">Logout</a>          
   </div>
 
 <div class="c">
@@ -90,9 +90,17 @@ table, th, td {
 <th>ID</th>
 </tr>
 <?php
+session_start();
+$id = $_SESSION["id"];
+/*if ( isset($_SESSION["id"]) === false) {
+    header("location: ../html/php/login.php");
+}
+*/
 
-include dirname(__DIR__).'\php\openDB.php';
-$result = mysqli_query($link,"select first_name, last_name, patient_id from patient")   
+include dirname(__DIR__).'/html/php/openDB.php';
+$result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
+                              from patient as p, patient_doctor as p_d
+                    where p.patient_id = p_d.patient_id and p_d.doctor_id = '$id'")   
 or 
 die("Could not issue MySQL query"); 
 
@@ -105,17 +113,9 @@ if ($result->num_rows > 0) {
 echo "</table>";
 } 
 
-include dirname(__DIR__).'\php\closeDB.php';
+include dirname(__DIR__).'/html/php/closeDB.php';
 
 ?>
 </table>
-
-<p>Temporary button to view patient page from doctor side!</p>
-<button onclick="location.href='patientdoctor.html'" 
-type="button" 
-value="Test">
-VIEW PATIENT
-</button>
-
 </body>
 </html>
