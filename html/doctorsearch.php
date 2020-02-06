@@ -66,7 +66,7 @@ table, th, td {
 <body>
 
   <div class="navbar">
-    <a href="doctorstart.html">Home</a>
+    <a href="doctorstart.php">Home</a>
     <a href="contact.php">Contact</a>
     <a href="../html/doctorprofile.php">Profile</a>
     <a class="active" href="../html/doctorsearch.php">Patients</a>

@@ -7,7 +7,7 @@
 
     <body>
         <div class="navbar">
-            <a href="doctorstart.html">Home</a>
+            <a href="doctorstart.php">Home</a>
             <a href="contact.php">Contact</a>
             <a class="active" href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
