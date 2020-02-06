@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
+<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
 <head>
     <link rel="stylesheet" href="top_menu_style.css">
 </head>
 
 <body>
     <div class="navbar">
-        <a href="doctorstart.html">Home</a>
-        <a href="contact.html">Contact</a>
+        <a href="doctorstart.php">Home</a>
+        <a href="contact.php">Contact</a>
         <a href="../html/doctorprofile.php">Profile</a>
         <a href="../html/doctorsearch.php">Patients</a>
-        <a href="logout.php">Logout</a>          
+        <a href="../html/php/logout.php">Logout</a>          
     </div>
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo"><br>
@@ -18,10 +19,11 @@
 <h1>Patient Profile</h1>
 
 <?php
+        $p_id = $_GET['id'];           
         include dirname(__DIR__).'/html/php/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
-        where patient_id = 1")   
+        where patient_id = $p_id")   
         or 
         die("Could not issue MySQL query"); 
         

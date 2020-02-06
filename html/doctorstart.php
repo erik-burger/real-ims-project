@@ -1,10 +1,16 @@
 <html>
-
+<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
 <?php
 session_start();
-if ( isset($_SESSION["email"]) === false) {
-    header("location: /php/login.php");
+/*if ( isset($_SESSION["user"]) == "P") { // if the user is a patient -> logout
+    $_SESSION = array();
+    session_destroy();
+    header("location: ../html/php/login.php");
+} elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
+    header("location: ../html/php/login.php");
 }
+*/
+
 ?>
     <head>
         <meta charset="UTF-8">
@@ -14,8 +20,8 @@ if ( isset($_SESSION["email"]) === false) {
 
     <body>
         <div class="navbar">
-            <a class="active" href="doctorstart.html">Home</a>
-            <a href="contact.html">Contact</a>
+            <a class="active" href="doctorstart.php">Home</a>
+            <a href="contact.php">Contact</a>
             <a href="../html/doctorprofile.php">Profile</a>
             <a href="../html/doctorsearch.php">Patients</a>
             <a href="../html/php/logout.php">Logout</a>          
