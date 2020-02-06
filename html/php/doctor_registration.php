@@ -29,7 +29,7 @@
 
 <h1>Register as a Doctor</h1>
 
-<form metod = "POST" action = "doctor_connect.php"> 
+<form metod = "POST" action = "doctor_connect.php" autocomplete="false"> 
 
       <h3>Register</h3>
       <p>Please fill in this form to create an account.</p>
