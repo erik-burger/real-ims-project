@@ -1,13 +1,6 @@
 <?php
 //Connect to database
-include dirname(__DIR__).'\php\openDB.php';
-
-// Function to test for PHP and HTML indjections
-function test_input($data){
-	$data = trim($data);
-	$data = stripslashes($data);
-	$data = htmlspecialchars($data);
-}
+include dirname(__DIR__).'general/openDB.php';;
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = '';
 $errors = array('f_name' =>'', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -19,59 +12,50 @@ if(isset($_POST["submit"])){
 		$errors['f_name'] = "First name is required";
 	}else{
 		$f_name = $_POST["f_name"];
-//		$f_name = mysqli_real_escape_string($link,$_POST['f_name']); 
 	}
 	
 	$m_name = $_POST["m_name"];
-//	$m_name = mysqli_real_escape_string($link,$_POST['m_name']); 
 
 	if (empty($_POST["l_name"])){
 		$errors['l_name'] = "Last name is required";
 	}else{
 		$l_name = $_POST["l_name"];
-//		$l_name = mysqli_real_escape_string($link,$_POST['l_name']); 
 	}
 	
 	if (empty($_POST["phone"])){
 		$errors['phone'] = "Phone number is required";
 	}else{
 		$phone = $_POST["phone"];
-//		$phone = mysqli_real_escape_string($link,$_POST['phone']); 
 	}
 	
 	if (empty($_POST["street"])){
 		$errors['street'] = "Street is required";
 	}else{
 		$street = $_POST["street"];
-//		$street = mysqli_real_escape_string($link,$_POST['street']); 
 	}		
 	
 	if (empty($_POST["street_no"])){
 		$errors['street_no'] = "Street number is required";
 	}else{
 		$street_no = $_POST["street_no"];
-//		$street_no = mysqli_real_escape_string($link,$_POST['street_no']); 
 	}
 	
 	if (empty($_POST["city"])){
 		$errors['city'] = "City is required";
 	}else{
 		$city = $_POST["city"];
-//		$city = mysqli_real_escape_string($link,$_POST['city']); 
 	}
 	
 	if (empty($_POST["country"])){
 		$errors['country'] = "Country is required";
 	}else{
 		$country = $_POST["country"];
-//		$country = mysqli_real_escape_string($link,$_POST['country']); 
 	}
 
 	if (empty($_POST["zip"])){
 		$errors['zip'] = "Zip is required";
 	}else{
 		$zip = $_POST["zip"];
-//		$zip = mysqli_real_escape_string($link,$_POST['zip']); 
 	}
 	
 	if (empty($_POST["email"])){
@@ -81,7 +65,6 @@ if(isset($_POST["submit"])){
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
 		}
-//		$email = mysqli_real_escape_string($link,$_POST['email']); 
 	}
 	
 	if (empty($_POST['psw'])){
@@ -95,6 +78,7 @@ if(isset($_POST["submit"])){
 	}
 	
 	if(array_filter($errors)){
+	 // Go back to the form
 	} else {
 	// Removing MySQL injections before adding the data to the database 
 		$f_name = mysqli_real_escape_string($link,$_POST['f_name']);
@@ -221,6 +205,6 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'\php\closeDB.php';
+include dirname(__DIR__).'general/openDB.php';;
 	
 ?>
