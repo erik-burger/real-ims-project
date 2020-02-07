@@ -13,8 +13,7 @@
 
 	// Data validation
 	$f_nameErr = $l_nameErr = $phoneErr = $streetErr = $street_noErr = $cityErr = $countryErr = $zipErr = $emailErr = $pswErr = "";
-	$f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $psw_repeat ="";
-	
+
 	// Function to test for PHP and HTML indjections
 	function test_input($data){
 		$data = trim($data);
@@ -22,7 +21,7 @@
 		$data = htmlspecialchars($data);
 	}
 	
-	if(isset($_POST["submit"])){
+if(isset($_POST["submit"])){
 	
 	if (empty($_POST["f_name"])){
 		$f_nameErr = "First name is required";
