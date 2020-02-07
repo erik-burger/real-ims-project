@@ -22,6 +22,8 @@
 		$data = htmlspecialchars($data);
 	}
 	
+	if(isset($_POST["submit"])){
+	
 	if (empty($_POST["f_name"])){
 		$f_nameErr = "First name is required";
 	}else{
@@ -93,7 +95,9 @@
 	}
 	
 	if (empty($f_nameErr) && empty($l_nameErr) && empty($phoneErr) && empty($streetErr) && empty($street_noErr)
-	&& empty($cityErr) && empty($countryErr) && empty($zipErr) && empty($emailErr) && empty($pswErr) ){
+	&& empty($cityErr) && empty($countryErr) && empty($zipErr) && empty($emailErr) && empty($pswErr) && isset($f_name)
+	&& isset($l_name) && isset($phone) && isset($street) && isset($street_no) && isset($city) && isset($country) && isset($zip)
+	&& isset($email) && isset($psw)){
 	
 		$sql = "insert into doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
 		values ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone')";  
@@ -104,6 +108,7 @@
 		 	echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 	}
+}
 	
 include dirname(__DIR__).'\php\closeDB.php';
 	
