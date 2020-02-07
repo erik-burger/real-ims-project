@@ -74,29 +74,29 @@ table, th, td {
     <a href="../general/logout.php">Logout</a>          
   </div>
 
-        <script>
-            function update_table(new_search, old_search) {
-                var new_ = document.getElementById(new_search);
-                var old_ = document.getElementById(old_search);
-                if (new_.style.display === "none") {
-                    new_.style.display = "block";
-                } else {
-                    new_.style.display = "none";
-                }
-                if (old_.style.display === "none") {
-                    old_.style.display = "block";
-                } else {
-                    old_.style.display = "none";
-                }
-            }
-        </script>
+<script>
+      function update_table(new_search, old_search) {
+          var new_ = document.getElementById(new_search);
+          var old_ = document.getElementById(old_search);
+          if (new_.style.display === "none") {
+              new_.style.display = "block";
+          } else {
+              new_.style.display = "none";
+          }
+          if (old_.style.display === "none") {
+              old_.style.display = "block";
+          } else {
+              old_.style.display = "none";
+          }
+      }
+  </script>
 
 <div class="c">
 <h1>Trackzheimers</h1>
 <p>Search for a patient</p>
 <form class="example" action="" method = "post" style="margin:auto;max-width:300px">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" name = "submit" onclick = "update_search('start', 'search')"><i class="fa fa-search"></i></button>
+  <button type="button" name = "submit" onclick = "update_table('search','start')"><i class="fa fa-search"></i></button>
 </form>
 
 <div id = "start">
@@ -135,26 +135,32 @@ $id = $_SESSION["id"];
 </table>
 </div>
 
-<div id = search>
+<div id = "search" style="display:none;text-align:center;">
+    
 <table style="width:70%" align="center">
     <tr>
     <th>First Name</th>
     <th>Last Name</th>
     <th>ID</th>
     </tr>
+<<<<<<< HEAD
 <?php
 if(isset($_POST['submit'])){
   if(isset($_POST['search'])){
     include dirname(__DIR__).'../general/openDB.php';
     $search = $_POST['search']; 
     
+=======
+
+<?php 
+ 
+    echo "hello!"; 
+    include dirname(__DIR__).'/html/php/openDB.php';
+>>>>>>> b439291090638031cecebe73036f1d6f619d1e07
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
-                                  where p.patient_id = p_d.patient_id   
-                                  and p_d.doctor_id = '$id' 
-                                  and (p.patient_id = '$search' 
-                                  or last_name like '%$search%' 
-                                  or first_name like '%$search%')")   
+                                  where p.patient_id = p_d.patient_id 
+                                  and p_d.doctor_id = '$id' and p.patient_id = 2")   
     or 
     die("Could not issue MySQL query"); 
     
@@ -167,10 +173,14 @@ if(isset($_POST['submit'])){
     }
     echo "</table>";
     }   
+<<<<<<< HEAD
     include dirname(__DIR__).'../general/closeDB.php';
+=======
+    include dirname(__DIR__).'/html/php/closeDB.php';    
+>>>>>>> b439291090638031cecebe73036f1d6f619d1e07
 ?> 
+</table>
 </div>
-
 
 </body>
 </html>
