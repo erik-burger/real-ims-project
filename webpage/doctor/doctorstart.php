@@ -1,11 +1,11 @@
 <html>
-<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
+<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
 <?php
 session_start();
 /*if ( isset($_SESSION["user"]) == "P") { // if the user is a patient -> logout
     $_SESSION = array();
     session_destroy();
-    header("location: ../html/php/login.php");
+    header("location: ../general/login.php");
 } elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
     header("location: ../html/php/login.php");
 }
@@ -21,10 +21,10 @@ session_start();
     <body>
         <div class="navbar">
             <a class="active" href="doctorstart.php">Home</a>
-            <a href="contact.php">Contact</a>
-            <a href="../html/doctorprofile.php">Profile</a>
-            <a href="../html/doctorsearch.php">Patients</a>
-            <a href="../html/php/logout.php">Logout</a>          
+            <a href="../general/contact.php">Contact</a>
+            <a href="doctorprofile.php">Profile</a>
+            <a href="doctorsearch.php">Patients</a>
+            <a href="../general/logout.php">Logout</a>          
         </div>
 
         <h1>TRACKZHEIMERS LOGO</h1>
