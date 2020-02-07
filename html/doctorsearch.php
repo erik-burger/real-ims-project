@@ -63,6 +63,7 @@ table, th, td {
 }
 </style>
 </head>
+
 <body>
 
   <div class="navbar">
@@ -73,14 +74,14 @@ table, th, td {
     <a href="../html/php/logout.php">Logout</a>          
   </div>
 
-  <script>
-      function update_search(old_search, new_serach) {
-        var new_ = document.getElementById(new_search);
-        var old_ = document.getElementById(old_search);
-        if (new_.style.display === "none") {
+        <script>
+            function update_table(new_search, old_search) {
+                var new_ = document.getElementById(new_search);
+                var old_ = document.getElementById(old_search);
+                if (new_.style.display === "none") {
                     new_.style.display = "block";
-        } else {
-             new_.style.display = "none";
+                } else {
+                    new_.style.display = "none";
                 }
                 if (old_.style.display === "none") {
                     old_.style.display = "block";
@@ -88,16 +89,17 @@ table, th, td {
                     old_.style.display = "none";
                 }
             }
-  </script>
+        </script>
 
 <div class="c">
-<h1>Trackzimers</h1>
+<h1>Trackzheimers</h1>
 <p>Search for a patient</p>
 <form class="example" action="" method = "post" style="margin:auto;max-width:300px">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" name = "submit" onclick = "update_search("><i class="fa fa-search"></i></button>
+  <button type="submit" name = "submit" onclick = "update_search('start', 'search')"><i class="fa fa-search"></i></button>
 </form>
 
+<div id = "start">
 <table style="width:70%" align="center">
     <tr>
     <th>First Name</th>
@@ -128,8 +130,19 @@ $id = $_SESSION["id"];
     }
     echo "</table>";
     }   
-    include dirname(__DIR__).'/html/php/closeDB.php';
+    include dirname(__DIR__).'/html/php/closeDB.php';    
+?> 
+</table>
+</div>
 
+<div id = search>
+<table style="width:70%" align="center">
+    <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>ID</th>
+    </tr>
+<?php
 if(isset($_POST['submit'])){
   if(isset($_POST['search'])){
     include dirname(__DIR__).'/html/php/openDB.php';
@@ -155,11 +168,9 @@ if(isset($_POST['submit'])){
     echo "</table>";
     }   
     include dirname(__DIR__).'/html/php/closeDB.php';
-    
-  }
-}
-
 ?> 
-</table>
+</div>
+
+
 </body>
 </html>
