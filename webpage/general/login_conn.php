@@ -10,15 +10,15 @@ session_start();
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     if ($_SESSION["user"] == "D") {
-        header("location:../doctorstart.php");
+        header("location:../doctor/doctorstart.php");
     }elseif($_SESSION["user"] == "P"){
-        header("location: ../patientstart.php");
+        header("location:../patient/patientstart.php");
     }
     exit;
 }
 
 //Connect to database
-include dirname(__DIR__).'/php/openDB.php';
+include dirname(__DIR__).'/general/openDB.php';
 
 $email = trim($_POST["email"]);
 $password = trim($_POST["psw"]);
@@ -62,7 +62,7 @@ if(empty($username_err) && empty($password_err)){
             $_SESSION["id"] = $row["doctor_id"];
             $_SESSION["user"] = "D"; //for automatic logout if wrong user type acceses a page
             $_SESSION["timestamp"] = time(); //needed for logout after inactivity
-            header("location: ../doctorstart.php"); //redirect to doctor start page
+            header("location: ../doctor/doctorstart.php"); //redirect to doctor start page
         } else {
             echo "Password is invalid";}
 
@@ -88,7 +88,7 @@ if(empty($username_err) && empty($password_err)){
                 $_SESSION["id"] = $row["patient_id"];
                 $_SESSION["user"] = "P"; //for automatic logout if wrong user type acceses a page
                 $_SESSION["timestamp"] = time(); //needed for logout after inactivity
-                header("location: ../patientstart.php"); //redirect to patient start page
+                header("location: ../patient/patientstart.php"); //redirect to patient start page
 
             }else{
                 echo "Passsword is invalid";
@@ -101,7 +101,7 @@ if(empty($username_err) && empty($password_err)){
 }
 
 
-include dirname(__DIR__).'/php/closeDB.php';
+include dirname(__DIR__).'/general/closeDB.php';
 
 ?>
 </body>
