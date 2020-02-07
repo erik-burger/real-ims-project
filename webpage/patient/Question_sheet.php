@@ -9,7 +9,7 @@
     </head>
 
         <div class="navbar">
-            <a href="../html/php/logout.php">Logout</a>          
+            <a href="../general/logout.php">Logout</a>          
         </div>
 
     <body>
@@ -196,7 +196,7 @@
 
                 <div style="text-align:center;">
                     <?php
-                            include dirname(__DIR__)."/html/php/openDB.php";
+                            include dirname(__DIR__)."/general/openDB.php";
                             $result = mysqli_query($link,"select image_id, image_name from test_images");
                             $length =$result->num_rows-1;
                             $rand1 = rand(0,$length);
@@ -237,7 +237,7 @@
                                     echo "<input type='hidden' name='word_2_ans' value='$option2'>";
                                     echo "<input type='hidden' name='word_3_ans' value='$option3'>";
                                     
-                            include dirname(__DIR__)."/html/php/closeDB.php";
+                            include dirname(__DIR__)."/general/closeDB.php";
                     ?>
                     <div id='options' style="display:none;text-align:center;">
                     <input type='text' name='word_1' autocomplete='new-password'>
@@ -292,7 +292,7 @@
                 <h1 align="center">Name these images.</h1>
                 <div>
                     <?php
-                        include dirname(__DIR__)."/html/php/openDB.php";
+                        include dirname(__DIR__)."/general/openDB.php";
                         $result = mysqli_query($link,"select image_id, image_url, image_name from test_images");
                         $length =$result->num_rows-1;
                         $image_num = rand(0,$length);
@@ -335,7 +335,7 @@
                                 echo "<input type='radio' name='image_1' value='$option2_1'>$option2_1";
                                 echo "<input type='radio' name='image_1' value='$option3_1'>$option3_1";
                         }
-                        include dirname(__DIR__)."/html/php/closeDB.php";
+                        include dirname(__DIR__)."/general/closeDB.php";
                 ?>
 
                 </div>
@@ -346,7 +346,7 @@
                 <h1 align="center">Name these images.</h1>
                 <div>
                     <?php
-                        include dirname(__DIR__)."/html/php/openDB.php";
+                        include dirname(__DIR__)."/general/openDB.php";
                         $result = mysqli_query($link,"select image_id, image_url, image_name from test_images");
                         $length =$result->num_rows-1;
                         $prev_num = $image_num;
@@ -393,11 +393,11 @@
                                 echo "<input type='radio' name='image_2' value='$option2_2'>$option2_2";
                                 echo "<input type='radio' name='image_2' value='$option3_2'>$option3_2";
                         }
-                        include dirname(__DIR__)."/html/php/closeDB.php";
+                        include dirname(__DIR__)."/general/closeDB.php";
                 ?>
                 <br>
                 <button type="button" onclick="change_question('question14_1','question14_2')">Back</button>
-                <button type="submit" onclick="window.location.href = '../html/patientstart.php';"value="Submit">Submit</button>
+                <button type="submit" onclick="window.location.href = '../patient/patientstart.php';"value="Submit">Submit</button>
                 
 
 

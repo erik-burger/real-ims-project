@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
+<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
 <?php
 session_start();
 /*if ( isset($_SESSION["user"]) == "D") { // if the user is a patient -> logout
@@ -23,7 +23,7 @@ $_SESSION["timestamp"] = time();
   <body> <!--style="background-color: blue;"> --> <!-- add for blue bg-->
     
     <div class="navbar" align="right">
-        <a href="../html/php/logout.php">Logout</a>
+        <a href="../general/logout.php">Logout</a>
     </div>
     
     <img src="LOGO.png" style="display: block;margin-left: auto;margin-right: auto;">
@@ -42,14 +42,14 @@ $_SESSION["timestamp"] = time();
         GAMES
       </button>
       
-      <button onclick="location.href='../html/patientprofile.php'" 
+      <button onclick="location.href='patientprofile.php'" 
         type="button" 
         style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
         value="Test">
         PROFILE
       </button>
 
-      <button onclick="location.href='patientstatistics.html'" 
+      <button onclick="location.href='fix_this_path.html'" 
         type="button" 
         style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
         value="Test">

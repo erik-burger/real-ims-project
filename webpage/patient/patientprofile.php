@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
+<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
   <head>
     <meta charset="UTF-utf-8">
     <meta name="description" content="Statistics page for patients">
@@ -12,7 +12,7 @@
 
     <div class="navbar">
       <a href="patientstart.php">Go Back</a>
-      <a href="../html/php/logout.php">Logout</a>          
+      <a href="../general/logout.php">Logout</a>          
     </div>
 
     <h1>Profile</h1>
@@ -23,7 +23,7 @@
         header("location: ../html/php/login.php");
         }
         */
-        include dirname(__DIR__).'../html/php/openDB.php';
+        include dirname(__DIR__).'../general/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
         where patient_id = $_SESSION[id]")   
@@ -58,12 +58,12 @@
             echo '<h3>'."About".'</h3>';
             echo $desc.'<br/>';
         }
-        include dirname(__DIR__).'../html/php/closeDB.php';
+        include dirname(__DIR__).'../general/closeDB.php';
  ?>
 
 <h3>Your Doctor</h3>
 <?php
-        include dirname(__DIR__).'../html/php/openDB.php';
+        include dirname(__DIR__).'../general/openDB.php';
         $result = mysqli_query($link,"select d.first_name, d.last_name, d.doctor_id, d.phone, d.street, d.street_no, d.zip, d.city, d.country 
         from doctor as d, patient_doctor as p_d
         where d.doctor_id = p_d.doctor_id and p_d.patient_id = $_SESSION[id]")   
@@ -87,7 +87,7 @@
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
         }
         
-        include dirname(__DIR__).'../html/php/closeDB.php';
+        include dirname(__DIR__).'../general/closeDB.php';
 
     ?>
     <p>Change your information <a href="#">here</a>.</p>
