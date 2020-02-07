@@ -19,7 +19,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     <body>   
         <div class="navbar">
             <a class="active" href="login.php">Login</a>
-            <a href="../info.html">About</a>
+            <a href="info.html">About</a>
             <div class="dropdown">
                 <button class="dropbtn">Register
                   <i class="fa fa-caret-down"></i>
