@@ -10,15 +10,15 @@ session_start();
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     if ($_SESSION["user"] == "D") {
-        header("location:../doctorstart.php");
+        header("location:../doctor/doctorstart.php");
     }elseif($_SESSION["user"] == "P"){
-        header("location: ../patientstart.php");
+        header("location:../patient/patientstart.php");
     }
     exit;
 }
 
 //Connect to database
-include dirname(__DIR__).'/php/openDB.php';
+include dirname(__DIR__).'/general/openDB.php';
 
 $email = trim($_POST["email"]);
 $password = trim($_POST["psw"]);
@@ -101,7 +101,7 @@ if(empty($username_err) && empty($password_err)){
 }
 
 
-include dirname(__DIR__).'/php/closeDB.php';
+include dirname(__DIR__).'/general/closeDB.php';
 
 ?>
 </body>

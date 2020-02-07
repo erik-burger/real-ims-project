@@ -4,9 +4,9 @@
 session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
   if ($_SESSION["user"] == "D") {
-      header("location:../doctorstart.php");
+      header("location:../doctor/doctorstart.php");
   }elseif($_SESSION["user"] == "P"){
-      header("location: ../patientstart.php");}
+      header("location: ../patient/patientstart.php");}
 }
 ?>
 
@@ -25,8 +25,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                   <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                  <a href="../registration.html">Patient</a>
-                  <a href="../doctor_registration.html">Doctor</a>
+                  <a href="../patient/registration.html">Patient</a>
+                  <a href="../doctor/doctor_registration.html">Doctor</a>
                 </div>
               </div>       
         </div>
