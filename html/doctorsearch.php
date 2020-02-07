@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="top_menu_style.css">
@@ -74,12 +73,29 @@ table, th, td {
     <a href="../html/php/logout.php">Logout</a>          
   </div>
 
+  <script>
+      function update_search(old_search, new_serach) {
+        var new_ = document.getElementById(new_search);
+        var old_ = document.getElementById(old_search);
+        if (new_.style.display === "none") {
+                    new_.style.display = "block";
+        } else {
+             new_.style.display = "none";
+                }
+                if (old_.style.display === "none") {
+                    old_.style.display = "block";
+                } else {
+                    old_.style.display = "none";
+                }
+            }
+  </script>
+
 <div class="c">
 <h1>Trackzimers</h1>
 <p>Search for a patient</p>
 <form class="example" action="" method = "post" style="margin:auto;max-width:300px">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" name = "submit"><i class="fa fa-search"></i></button>
+  <button type="submit" name = "submit" onclick = "update_search("><i class="fa fa-search"></i></button>
 </form>
 
 <table style="width:70%" align="center">

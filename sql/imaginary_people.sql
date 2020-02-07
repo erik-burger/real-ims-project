@@ -104,7 +104,7 @@ insert into patient_doctor(patient_id, doctor_id)
 values(1, 2); 
 
 insert into patient_doctor(patient_id, doctor_id)
-values(2, 1); 
+values(2, 3); 
 
 insert into patient_doctor(patient_id, doctor_id)
-values(3, 3); 
+values(3, 1); 
