@@ -62,7 +62,7 @@ if(empty($username_err) && empty($password_err)){
             $_SESSION["id"] = $row["doctor_id"];
             $_SESSION["user"] = "D"; //for automatic logout if wrong user type acceses a page
             $_SESSION["timestamp"] = time(); //needed for logout after inactivity
-            header("location: ../doctorstart.php"); //redirect to doctor start page
+            header("location: ../doctor/doctorstart.php"); //redirect to doctor start page
         } else {
             echo "Password is invalid";}
 
@@ -88,7 +88,7 @@ if(empty($username_err) && empty($password_err)){
                 $_SESSION["id"] = $row["patient_id"];
                 $_SESSION["user"] = "P"; //for automatic logout if wrong user type acceses a page
                 $_SESSION["timestamp"] = time(); //needed for logout after inactivity
-                header("location: ../patientstart.php"); //redirect to patient start page
+                header("location: ../patient/patientstart.php"); //redirect to patient start page
 
             }else{
                 echo "Passsword is invalid";
