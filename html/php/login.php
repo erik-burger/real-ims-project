@@ -6,12 +6,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
   if ($_SESSION["user"] == "D") {
       header("location:../doctorstart.php");
   }elseif($_SESSION["user"] == "P"){
-      header("location: ../patientstart.php");
-  }else {
-  }
-  exit;
+      header("location: ../patientstart.php");}
 }
-
 ?>
 
     <head>

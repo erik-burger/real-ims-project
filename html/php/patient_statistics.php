@@ -1,6 +1,24 @@
+<?php
+ 
+session_start();
+        $patient_id = $_SESSION["patient_id"];
+        include dirname(__DIR__).'/html/php/openDB.php';
+
+        $result = mysqli_query($link,"select total_score, test_date from test where patient_id = '$patient_id'")   
+        or 
+        die("Could not issue MySQL query"); 
+
+        $data = array();
+        foreach ($result as $row) {
+          $data[] = $row;
+        }
+
+        result -> close();
+
+?>
+
 <!DOCTYPE html>
 <html>
-<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
   <head>
     <meta charset="UTF-utf-8">
     <meta name="description" content="Statistics page for patients">
@@ -11,7 +29,7 @@
   <body>
 
     <div class="navbar">
-      <a href="patientstart.php">Go Back</a>
+      <a href="patientstart.html">Go Back</a>
       <a href="../html/php/logout.php">Logout</a>          
   	</div>
     
@@ -30,20 +48,7 @@
     	},
     	data: [{
     		type: "line",
-    		dataPoints: [
-    			{ y: 20 },
-    			{ y: 21},
-    			{ y: 18},
-    			{ y: 18 },
-    			{ y: 20 },
-    			{ y: 17 },
-    			{ y: 16 },
-    			{ y: 14 },
-    			{ y: 13 },
-    			{ y: 10 },
-    			{ y: 11 },
-    			{ y: 5 }
-    		]
+    		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
     	}]
     });
     chart.render();

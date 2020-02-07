@@ -1,5 +1,5 @@
 <html>
-
+<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
 <?php
 session_start();
 /*if ( isset($_SESSION["user"]) == "P") { // if the user is a patient -> logout
@@ -10,6 +10,7 @@ session_start();
     header("location: ../html/php/login.php");
 }
 */
+
 ?>
     <head>
         <meta charset="UTF-8">

@@ -116,7 +116,11 @@
 
 <h1>Register as a Doctor</h1>
 
+<<<<<<< HEAD
 <form metod = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+=======
+<form metod = "POST" action = "doctor_connect.php" autocomplete="false"> 
+>>>>>>> dffd970d12ffa4a1e6e0e8d158e49085c99ae506
 
       <h3>Register</h3>
       <p>Please fill in this form to create an account.</p>
