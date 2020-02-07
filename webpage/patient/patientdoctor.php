@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
+<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
 <head>
     <link rel="stylesheet" href="top_menu_style.css">
 </head>
@@ -9,9 +9,9 @@
     <div class="navbar">
         <a href="doctorstart.php">Home</a>
         <a href="contact.php">Contact</a>
-        <a href="../html/doctorprofile.php">Profile</a>
-        <a href="../html/doctorsearch.php">Patients</a>
-        <a href="../html/php/logout.php">Logout</a>          
+        <a href="doctorprofile.php">Profile</a>
+        <a href="doctorsearch.php">Patients</a>
+        <a href="../general/logout.php">Logout</a>          
     </div>
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo"><br>
@@ -20,7 +20,7 @@
 
 <?php
         $p_id = $_GET['id'];           
-        include dirname(__DIR__).'/html/php/openDB.php';
+        include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link,"select * 
         from patient
         where patient_id = $p_id")   
@@ -55,7 +55,7 @@
             echo '<h3>'."About".'</h3>';
             echo $desc.'<br/>';
         }
-        include dirname(__DIR__).'/html/php/closeDB.php';
+        include dirname(__DIR__).'/general/closeDB.php';
  ?>
 
 <h3>Statistics</h3>

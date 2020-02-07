@@ -1,5 +1,5 @@
 <html>
-<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
+<meta http-equiv="refresh" content="3600;url=logout.php" />
 <?php
 session_start();
 /*if ( isset($_SESSION["id"]) === false) {
@@ -17,9 +17,9 @@ session_start();
         <div class="navbar">
             <a href="doctorstart.php">Home</a>
             <a class="active" href="contact.php">Contact</a>
-            <a href="../html/doctorprofile.php">Profile</a>
-            <a href="../html/doctorsearch.php">Patients</a>
-            <a href="../html/php/logout.php">Logout</a>          
+            <a href="../doctor/doctorprofile.php">Profile</a>
+            <a href="../doctor/doctorsearch.php">Patients</a>
+            <a href="..logout.php">Logout</a>          
         </div>
 
         <h1>TRACKZHIMERS LOGO</h1>
