@@ -29,7 +29,7 @@
 
 <?php
 	// Connection to DB
-	include dirname(__DIR__).'\php\openDB.php';
+	include dirname(__DIR__).'../openDB.php';
 
 	// Data validation
 	$f_nameErr = $l_nameErr = $phoneErr = $streetErr = $street_noErr = $cityErr = $countryErr = $zipErr = $emailErr = $pswErr = "";
@@ -116,11 +116,7 @@
 
 <h1>Register as a Doctor</h1>
 
-<<<<<<< HEAD
 <form metod = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-=======
-<form metod = "POST" action = "doctor_connect.php" autocomplete="false"> 
->>>>>>> dffd970d12ffa4a1e6e0e8d158e49085c99ae506
 
       <h3>Register</h3>
       <p>Please fill in this form to create an account.</p>
@@ -194,7 +190,7 @@
 		}
 	}
 	
-include dirname(__DIR__).'\php\closeDB.php';
+include dirname(__DIR__).'../closeDB.php';
 ?>
 </body>
 </html>
