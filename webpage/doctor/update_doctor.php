@@ -2,7 +2,7 @@
 <?php 
 session_start();
 $id = $_SESSION["id"];
-include dirname(__DIR__).'/html/php/openDB.php';
+include dirname(__DIR__).'../general/openDB.php';
 
 $f_name = $_POST["f_name"]; 
 $m_name = $_POST["m_name"];  
@@ -35,5 +35,5 @@ if (mysqli_query($link, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
 }
 
-include dirname(__DIR__).'/html/php/closeDB.php';
+include dirname(__DIR__).'../general/closeDB.php';
 ?> 

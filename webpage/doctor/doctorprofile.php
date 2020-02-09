@@ -1,5 +1,5 @@
 <html>
-<meta http-equiv="refresh" content="3600;url=../html/php/logout.php" />
+<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +9,10 @@
     <body>
         <div class="navbar">
             <a href="doctorstart.php">Home</a>
-            <a href="contact.php">Contact</a>
-            <a class="active" href="../html/doctorprofile.php">Profile</a>
-            <a href="../html/doctorsearch.php">Patients</a>
-            <a href="../html/php/logout.php">Logout</a>          
+            <a href="../general/contact.php">Contact</a>
+            <a class="active" href="doctorprofile.php">Profile</a>
+            <a href="doctorsearch.php">Patients</a>
+            <a href="../general/logout.php">Logout</a>          
         </div>
 
         <h1>Profile</h1>
@@ -21,11 +21,11 @@
     <?php
         session_start();
        /*if ( isset($_SESSION["id"]) === false) {
-        header("location: ../html/php/login.php");
+        header("location: ../general/login.php");
         }
         */
 
-        include dirname(__DIR__).'/html/php/openDB.php';
+        include dirname(__DIR__).'../general/openDB.php';
         $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
         from doctor
         where doctor_id = $_SESSION[id]")   
@@ -49,11 +49,11 @@
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
         }
         
-        include dirname(__DIR__).'/html/php/closeDB.php';
+        include dirname(__DIR__).'../general/closeDB.php';
 
     ?>
 
-    <p>Change your information <a href="../html/change_info_doctor.php">here</a>.</p>
+    <p>Change your information <a href="change_info_doctor.php">here</a>.</p>
 
     </body>
 

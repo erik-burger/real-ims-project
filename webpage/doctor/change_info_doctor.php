@@ -6,7 +6,7 @@
     <?php
         session_start();
         $id = $_SESSION["id"];
-        include dirname(__DIR__).'/html/php/openDB.php';
+        include dirname(__DIR__).'../general/openDB.php';
 
         $result = mysqli_query($link,"select *
         from doctor 
@@ -27,7 +27,8 @@
             $country = $row["country"];
             $phone = $row["phone"]; 
             $psw = $row["password_hash"]; 
-        }    
+        }  
+        include dirname(__DIR__).'../general/closeDB.php';  
     ?> 
     <form action="update_doctor.php" method="POST">
       <h3>Register</h3>

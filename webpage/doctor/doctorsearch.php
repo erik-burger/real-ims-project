@@ -68,10 +68,10 @@ table, th, td {
 
   <div class="navbar">
     <a href="doctorstart.php">Home</a>
-    <a href="contact.php">Contact</a>
-    <a href="../html/doctorprofile.php">Profile</a>
-    <a class="active" href="../html/doctorsearch.php">Patients</a>
-    <a href="../html/php/logout.php">Logout</a>          
+    <a href="../general/contact.php">Contact</a>
+    <a href="doctorprofile.php">Profile</a>
+    <a class="active" href="doctorsearch.php">Patients</a>
+    <a href="../general/logout.php">Logout</a>          
   </div>
 
 <script>
@@ -111,10 +111,10 @@ table, th, td {
 session_start();
 $id = $_SESSION["id"];
  /*if ( isset($_SESSION["id"]) === false) {
-        header("location: ../html/php/login.php");
+        header("location: ../general/login.php");
     }
     */
-    include dirname(__DIR__).'/html/php/openDB.php';
+    include dirname(__DIR__).'../general/openDB.php';
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
                         where p.patient_id = p_d.patient_id and p_d.doctor_id = '$id'")   
@@ -126,11 +126,11 @@ $id = $_SESSION["id"];
             $p_id = $row["patient_id"];
             echo "<tr><td>" . $row["first_name"]. "</td>
             <td>" . $row["last_name"] . "</td>
-            <td><a href ='../html/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+            <td><a href ='patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
     }   
-    include dirname(__DIR__).'/html/php/closeDB.php';    
+    include dirname(__DIR__).'../general/closeDB.php';    
 ?> 
 </table>
 </div>
@@ -143,11 +143,20 @@ $id = $_SESSION["id"];
     <th>Last Name</th>
     <th>ID</th>
     </tr>
+<<<<<<< HEAD
+<?php
+if(isset($_POST['submit'])){
+  if(isset($_POST['search'])){
+    include dirname(__DIR__).'../general/openDB.php';
+    $search = $_POST['search']; 
+    
+=======
 
 <?php 
  
     echo "hello!"; 
     include dirname(__DIR__).'/html/php/openDB.php';
+>>>>>>> b439291090638031cecebe73036f1d6f619d1e07
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
                                   where p.patient_id = p_d.patient_id 
@@ -164,7 +173,11 @@ $id = $_SESSION["id"];
     }
     echo "</table>";
     }   
+<<<<<<< HEAD
+    include dirname(__DIR__).'../general/closeDB.php';
+=======
     include dirname(__DIR__).'/html/php/closeDB.php';    
+>>>>>>> b439291090638031cecebe73036f1d6f619d1e07
 ?> 
 </table>
 </div>
