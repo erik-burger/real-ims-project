@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +5,7 @@
     <meta name="description" content="Statistics page for patients">
     <title>Trackzheimers</title>   
     <link rel="stylesheet" href="top_menu_style.css">
-    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
 
   <body>
@@ -20,7 +18,7 @@
  
       session_start();
           $patient_id = $_SESSION["id"];
-          include dirname(__DIR__)."/general/openDB.php";
+          include dirname(__DIR__)."general/openDB.php";
           $result = mysqli_query($link,"select test_date, total_score from test where patient_id = $patient_id")
           or 
           die("Could not issue MySQL query");
@@ -31,26 +29,23 @@
                 $score_data[] = $row["total_score"];
               }
     ?>
+    <div id='myDiv'></div>
     <script>
+      
       var dates_arr = <?php echo json_encode($dates_data); ?>;
       var score_arr = <?php echo json_encode($score_data); ?>;
+      document.write(score_arr.length);
       var trace50 = {
         x: dates_arr,
         y: score_arr,
         type: 'scatter'
         };
-
-        var trace1 = {
-          x: [1, 2, 3, 4],
-          y: [10, 15, 13, 17],
-          type: 'scatter'
-        };
-
-        var data = trace1;
+        var data = [trace50];
 
         Plotly.newPlot('myDiv', data);
-    </script>
-    <div id='myDiv'></div>
+      </script>
+      
+
 <!--
 <script>
     window.onload = function () {

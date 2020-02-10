@@ -23,7 +23,7 @@
         header("location: ../html/php/login.php");
         }
         */
-        include dirname(__DIR__).'/general/openDB.php';
+        include dirname(__DIR__).'general/openDB.php';
         $result = mysqli_query($link,"select * from patient where patient_id = $_SESSION[id]")   
         or 
         die("Could not issue MySQL query"); 
