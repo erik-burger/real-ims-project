@@ -49,7 +49,7 @@ $_SESSION["timestamp"] = time();
         PROFILE
       </button>
 
-      <button onclick="location.href='fix_this_path.html'" 
+      <button onclick="location.href='patient_statistics.php'" 
         type="button" 
         style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
         value="Test">
