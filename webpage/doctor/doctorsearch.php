@@ -143,20 +143,12 @@ $id = $_SESSION["id"];
     <th>Last Name</th>
     <th>ID</th>
     </tr>
-<<<<<<< HEAD
 <?php
 if(isset($_POST['submit'])){
   if(isset($_POST['search'])){
     include dirname(__DIR__).'../general/openDB.php';
     $search = $_POST['search']; 
     
-=======
-
-<?php 
- 
-    echo "hello!"; 
-    include dirname(__DIR__).'/html/php/openDB.php';
->>>>>>> b439291090638031cecebe73036f1d6f619d1e07
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
                                   where p.patient_id = p_d.patient_id 
@@ -173,11 +165,7 @@ if(isset($_POST['submit'])){
     }
     echo "</table>";
     }   
-<<<<<<< HEAD
     include dirname(__DIR__).'../general/closeDB.php';
-=======
-    include dirname(__DIR__).'/html/php/closeDB.php';    
->>>>>>> b439291090638031cecebe73036f1d6f619d1e07
 ?> 
 </table>
 </div>
