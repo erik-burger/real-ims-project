@@ -18,7 +18,7 @@
  
       session_start();
           $patient_id = $_SESSION["id"];
-          include dirname(__DIR__)."general/openDB.php";
+          include dirname(__DIR__)."/general/openDB.php";
           $result = mysqli_query($link,"select test_date, total_score from test where patient_id = $patient_id")
           or 
           die("Could not issue MySQL query");
