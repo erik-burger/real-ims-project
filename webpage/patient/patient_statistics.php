@@ -38,11 +38,21 @@
       var trace50 = {
         x: dates_arr,
         y: score_arr,
-        type: 'scatter'
+        mode: 'lines',
+        line: {
+          color: 'rgb(0, 200, 300)',
+          width: 3
+        }
         };
+
+        var layout = {
+            title: 'MMSE score over time',
+            showlegend: false
+        };
+        
         var data = [trace50];
 
-        Plotly.newPlot('myDiv', data);
+        Plotly.newPlot('myDiv', data, layout, {displayModeBar: false});
       </script>
       
 
