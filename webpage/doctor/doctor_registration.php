@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 159edd02dfbb54dcf7fb45865ff872cacb4f02f5
 <!DOCTYPE html>
 <html>
   <head>
@@ -27,9 +31,17 @@
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
 
+<<<<<<< HEAD
 <?php
 	// Connection to DB
 	include dirname(__DIR__).'../general/openDB.php';
+=======
+
+<?php
+//Connect to database
+include dirname(__DIR__).'general/openDB.php';;
+
+>>>>>>> 159edd02dfbb54dcf7fb45865ff872cacb4f02f5
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = '';
 $errors = array('f_name' =>'', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -172,7 +184,6 @@ if(isset($_POST["submit"])){
 
 <h1>Register as a Doctor</h1>
 
-<<<<<<< HEAD
 <form metod = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 
       <h3>Register</h3>
@@ -187,7 +198,6 @@ if(isset($_POST["submit"])){
     <p>Please fill in this form to create an account.</p>
 
 	<form action = "doctor_registration.php" method = "POST">
->>>>>>> b439291090638031cecebe73036f1d6f619d1e07
 		
 		<label for="f_name"><b>First name</b></label>
       	<input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -258,14 +268,10 @@ if(isset($_POST["submit"])){
 		}
 	}
 	
-include dirname(__DIR__).'..\general\closeDB.php';
+
+include dirname(__DIR__).'../general/closeDB.php';
+
 ?>
-=======
->>>>>>> b439291090638031cecebe73036f1d6f619d1e07
+
 </body>
 </html>
-
-<?php 
-include dirname(__DIR__).'general/openDB.php';;
-	
-?>
