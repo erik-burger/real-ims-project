@@ -34,7 +34,6 @@
       
       var dates_arr = <?php echo json_encode($dates_data); ?>;
       var score_arr = <?php echo json_encode($score_data); ?>;
-      document.write(score_arr.length);
       var trace50 = {
         x: dates_arr,
         y: score_arr,
@@ -54,35 +53,7 @@
 
         Plotly.newPlot('myDiv', data, layout, {displayModeBar: false});
       </script>
-      
 
-<!--
-<script>
-    window.onload = function () {
-
-    var chart = new CanvasJS.Chart("chartContainer", {
-    	animationEnabled: false,
-    	theme: "light2",
-    	title:{
-    		text: "MMSE score over time."
-    	},
-    	axisY:{
-    		includeZero: true
-    	},
-    	data: [{
-    		type: "line",
-    		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-    	}]
-    });
-    chart.render();
-
-}
-</script>
-
-<div id="chartContainer" style="height: 600px; width: 100%;">
-</div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
--->
   </body>
 
 </html>
