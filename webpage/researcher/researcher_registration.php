@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 159edd02dfbb54dcf7fb45865ff872cacb4f02f5
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,23 +21,16 @@
         <div class="dropdown-content">
           <a href="../patient/registration.html">Patient</a>
           <a href="doctor_registration.html">Doctor</a>
+          <a href="researcher_registration.html">Researcher</a>
         </div>
       </div>       
 </div>
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
 
-<<<<<<< HEAD
 <?php
 	// Connection to DB
 	include dirname(__DIR__).'../general/openDB.php';
-=======
-
-<?php
-//Connect to database
-include dirname(__DIR__).'general/openDB.php';;
-
->>>>>>> 159edd02dfbb54dcf7fb45865ff872cacb4f02f5
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = '';
 $errors = array('f_name' =>'', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -138,7 +127,7 @@ if(isset($_POST["submit"])){
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
+		$sql = "INSERT INTO researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone')";  
 		
 		if (mysqli_query($link, $sql)) {
@@ -167,15 +156,15 @@ if(isset($_POST["submit"])){
 <body>
 
 <div class="navbar">
-    <a href="login.html">Login</a>
-    <a href="info.html">About</a>  
+    <a href="../general/login.php">Login</a>
+    <a href="../general/info.html">About</a>  
     <div class="dropdown">
         <button class="dropbtn">Register
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="registration.html">Patient</a>
-          <a href="doctor_registration.html">Doctor</a>
+          <a href="../patient/registration.html">Patient</a>
+          <a href="../doctor/doctor_registration.html">Doctor</a>
         </div>
       </div>       
 </div>
@@ -192,12 +181,6 @@ if(isset($_POST["submit"])){
      	<label for="f_name"><b>First name</b></label>
       	<input type="text" placeholder="Enter first name" name="f_name" value = "<?php echo $f_name; ?>">
       	<span class="error"> <?php echo $f_nameErr; ?> </span><br>
-=======
-<section class="container grey-text"> 
-	<h4 class="center">Register</h4>
-    <p>Please fill in this form to create an account.</p>
-
-	<form action = "doctor_registration.php" method = "POST">
 		
 		<label for="f_name"><b>First name</b></label>
       	<input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -251,14 +234,13 @@ if(isset($_POST["submit"])){
       	
 </section>
 
-<<<<<<< HEAD
 <?php
 	if (empty($f_nameErr) && empty($l_nameErr) && empty($phoneErr) && empty($streetErr) && empty($street_noErr)
 	&& empty($cityErr) && empty($countryErr) && empty($zipErr) && empty($emailErr) && empty($pswErr) && isset($f_name)
 	&& isset($l_name) && isset($phone) && isset($street) && isset($street_no) && isset($city) && isset($country) && isset($zip)
 	&& isset($email) && isset($psw)){
 	
-		$sql = "insert into doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
+		$sql = "insert into researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
 		values ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone')";  
 		
 		if (mysqli_query($link, $sql)) {
@@ -268,10 +250,12 @@ if(isset($_POST["submit"])){
 		}
 	}
 	
-
-include dirname(__DIR__).'../general/closeDB.php';
-
+include dirname(__DIR__).'..\general\closeDB.php';
 ?>
-
 </body>
 </html>
+
+<?php 
+include dirname(__DIR__).'general/openDB.php';;
+	
+?>

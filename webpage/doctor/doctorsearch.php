@@ -143,7 +143,6 @@ $id = $_SESSION["id"];
     <th>Last Name</th>
     <th>ID</th>
     </tr>
-
 <?php
 if(isset($_POST['submit'])){
   if(isset($_POST['search'])){
