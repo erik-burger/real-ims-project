@@ -119,7 +119,7 @@ if(empty($username_err) && empty($password_err)){
 
             }else{ //if it does not return anything here either, email or password are wrong
                 echo "Email adress or password invalid";}
-            }
+            }}
 }else{//if there is something in the error variables username or password are empty
     echo "Please fill in both username and password";}
 
