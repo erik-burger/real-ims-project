@@ -117,6 +117,54 @@ if(isset($_POST["submit"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="top_menu_style.css">
     <style>
+    	*{
+    	box-sizing: border-box;
+    	}
+    	
+    	input[type = text], select , textarea{
+    		width: 100%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    	}
+    	
+    	input[type = number], select , textarea{
+    		width: 100%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    	}
+    	
+    	label {
+    		padding: 12px 12px 12px 0;
+    		display: inline-block;
+    	}
+    	
+    	input[type = submit]{
+    		background-color: #4CAF50;
+  			color: white;
+  			padding: 12px 20px;
+ 		 	border: none;
+  			border-radius: 4px;
+  			cursor: pointer;
+  			float: right;
+  		}
+  		
+  		input[type=submit]:hover {
+  			background-color: #45a049;
+		}
+		
+		.container {
+ 		 	border-radius: 5px;
+  			background-color: #f2f2f2;
+  			padding: 20px;
+  			width:70%;
+  			margin-right: auto;
+  			margin-left:auto;
+		}
+  		
     	.error {
     		color: #FF0000;
     	}
@@ -141,12 +189,11 @@ if(isset($_POST["submit"])){
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
 
-<h1>Register as a Doctor</h1>
-
 <section class="container grey-text"> 
-	<h4 class="center">Register</h4>
+	<h1 class="center">Register as a Doctor</h1>
     <p>Please fill in this form to create an account.</p>
 
+	<div class="container">
 	<form action = "doctor_registration.php" method = "POST">
 		
 		<label for="f_name"><b>First name</b></label>
@@ -155,7 +202,7 @@ if(isset($_POST["submit"])){
       	
       	<label for="m_name"><b>Middle name</b></label>
       	<input type="text" name="m_name" value = "<?php echo htmlspecialchars($m_name); ?>"><br>
-
+      	
       	<label for="l_name"><b>Last name</b></label>
       	<input type="text" name="l_name" value = "<?php echo htmlspecialchars($l_name); ?>">
       	<div class="error"><?php echo $errors['l_name']; ?></div><br>
@@ -198,7 +245,8 @@ if(isset($_POST["submit"])){
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit">    
       	<p>Already have an account? <a href="#">Sign in</a>.</p>
-      	
+   </form>
+</div>   	
 </section>
 
 </body>
