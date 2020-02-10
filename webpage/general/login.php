@@ -6,8 +6,12 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
   if ($_SESSION["user"] == "D") {
       header("location:../doctor/doctorstart.php");
   }elseif($_SESSION["user"] == "P"){
-      header("location: ../patient/patientstart.php");}
-}
+      header("location: ../patient/patientstart.php");
+  }elseif($_SESSION["user"] == "R"){
+      header("location: ../researcher/researcherstart.php");
+  }elseif($_SESSION["user"] == "C"){
+      header("location: ../caregiver/caregiverstart.php");}}
+
 ?>
 
     <head>
@@ -28,6 +32,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                   <a href="../patient/registration.html">Patient</a>
                   <a href="../doctor/doctor_registration.html">Doctor</a>
                   <a href="../researcher/researcher_registration.html">Researcher</a>
+                  <a href="../caregiver/caregiver_registration.html">Caregiver</a>
                 </div>
               </div>       
         </div>
