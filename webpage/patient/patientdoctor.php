@@ -82,7 +82,7 @@
         y: score_arr,
         mode: 'lines',
         line: {
-          color: 'rgb(190, 216, 215)',
+          color: 'rgb(88, 155, 155)',
           width: 5
         }
         };
