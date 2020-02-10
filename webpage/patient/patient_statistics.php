@@ -45,10 +45,21 @@
         };
 
         var layout = {
-            title: 'MMSE score over time',
-            showlegend: false
+            title: {
+            text:'Total MMSE score over time'
+          },
+          xaxis: {
+            title: {
+              text: 'Date'
+            },
+          },
+          yaxis: {
+            title: {
+              text: 'Score'
+            }
+          }
         };
-        
+              
         var data = [trace50];
 
         Plotly.newPlot('myDiv', data, layout, {displayModeBar: false});
