@@ -13,19 +13,19 @@ if($newpsw != $repeatpsw) {
 }
 
 //get the hashed password
-$psw_result = mysqli_query($link, "select password_hash from researcher where researcher_id = $id");
+$psw_result = mysqli_query($link, "select password_hash from doctor where doctor_id = $id");
 $psw_row = mysqli_fetch_row($psw_result);
 $password_hash = $psw_row[0];
 
 if(password_verify($oldpsw, $password_hash)){
     $password_hash_new = password_hash($newpsw, PASSWORD_DEFAULT);
-    $sql = "update researcher set password_hash = '$password_hash_new'
-        where researcher_id = $id";  
+    $sql = "update doctor set password_hash = '$password_hash_new'
+        where doctor_id = $id";  
 
     if (mysqli_query($link, $sql)) {
         echo "New record created successfully";
         include dirname(__DIR__).'../general/closeDB.php';
-        header("location: researcherprofile.php");
+        header("location: doctorprofile.php");
 
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($link);
@@ -33,7 +33,7 @@ if(password_verify($oldpsw, $password_hash)){
 }else{
     echo "Password incorrect.";
     include dirname(__DIR__).'../general/closeDB.php';
-    header("location: change_password_researcher.php");
+    header("location: change_password_doctor.php");
 }
 
 include dirname(__DIR__).'../general/closeDB.php';
