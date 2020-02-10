@@ -136,36 +136,32 @@ $id = $_SESSION["id"];
 </div>
 
 <div id = "search" style="display:none;text-align:center;"> 
-<div id = "search" style="display:none;text-align:center;"> 
 <table style="width:70%" align="center">
     <tr>
     <th>First Name</th>
     <th>Last Name</th>
     <th>ID</th>
     </tr>
+
 <?php
-if(isset($_POST['submit'])){
-  if(isset($_POST['search'])){
-    include dirname(__DIR__).'../general/openDB.php';
-    $search = $_POST['search']; 
-    
-    $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
-                                  from patient as p, patient_doctor as p_d
-                                  where p.patient_id = p_d.patient_id 
-                                  and p_d.doctor_id = '$id' and p.patient_id = 2")   
-    or 
-    die("Could not issue MySQL query"); 
-    
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $p_id = $row["patient_id"];
-            echo "<tr><td>".$row["first_name"]. "</td>
-            <td>" . $row["last_name"] . "</td>
-            <td><a href ='../html/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
-    }
-    echo "</table>";
-    }   
-    include dirname(__DIR__).'../general/closeDB.php';
+  echo $_POST['search']; 
+   include dirname(__DIR__).'../general/openDB.php';
+   $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
+                                 from patient as p, patient_doctor as p_d
+                       where p.patient_id = p_d.patient_id and p_d.doctor_id = 2")   
+   or 
+   die("Could not issue MySQL query"); 
+   
+   if ($result->num_rows > 0) {
+       while($row = $result->fetch_assoc()) {
+           $p_id = $row["patient_id"];
+           echo "<tr><td>" . $row["first_name"]. "</td>
+           <td>" . $row["last_name"] . "</td>
+           <td><a href ='patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+   }
+   echo "</table>";
+   }   
+   include dirname(__DIR__).'../general/closeDB.php';    
 ?> 
 </table>
 </div>
