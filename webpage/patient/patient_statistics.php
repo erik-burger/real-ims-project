@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +5,7 @@
     <meta name="description" content="Statistics page for patients">
     <title>Trackzheimers</title>   
     <link rel="stylesheet" href="top_menu_style.css">
-    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
 
   <body>
@@ -31,26 +29,33 @@
                 $score_data[] = $row["total_score"];
               }
     ?>
+    <div id='myDiv'></div>
     <script>
+      
       var dates_arr = <?php echo json_encode($dates_data); ?>;
       var score_arr = <?php echo json_encode($score_data); ?>;
+      document.write(score_arr.length);
       var trace50 = {
         x: dates_arr,
         y: score_arr,
-        type: 'scatter'
+        mode: 'lines',
+        line: {
+          color: 'rgb(0, 200, 300)',
+          width: 3
+        }
         };
 
-        var trace1 = {
-          x: [1, 2, 3, 4],
-          y: [10, 15, 13, 17],
-          type: 'scatter'
+        var layout = {
+            title: 'MMSE score over time',
+            showlegend: false
         };
+        
+        var data = [trace50];
 
-        var data = trace1;
+        Plotly.newPlot('myDiv', data, layout, {displayModeBar: false});
+      </script>
+      
 
-        Plotly.newPlot('myDiv', data);
-    </script>
-    <div id='myDiv'></div>
 <!--
 <script>
     window.onload = function () {
