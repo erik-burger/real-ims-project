@@ -114,7 +114,7 @@ $id = $_SESSION["id"];
         header("location: ../general/login.php");
     }
     */
-    include dirname(__DIR__).'../general/openDB.php';
+    include dirname(__DIR__).'/general/openDB.php';
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
                         where p.patient_id = p_d.patient_id and p_d.doctor_id = '$id'")   
@@ -126,7 +126,7 @@ $id = $_SESSION["id"];
             $p_id = $row["patient_id"];
             echo "<tr><td>" . $row["first_name"]. "</td>
             <td>" . $row["last_name"] . "</td>
-            <td><a href ='patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+            <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
     }   
