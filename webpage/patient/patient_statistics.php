@@ -39,8 +39,8 @@
         y: score_arr,
         mode: 'lines',
         line: {
-          color: 'rgb(0, 200, 300)',
-          width: 3
+          color: 'rgb(190, 216, 215)',
+          width: 5
         }
         };
 
