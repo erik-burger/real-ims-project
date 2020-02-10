@@ -1,4 +1,18 @@
-    <head>
+<html>
+<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
+<?php
+session_start();
+/*if ( isset($_SESSION["user"]) == "R") { // if the user is a patient -> logout
+    $_SESSION = array();
+    session_destroy();
+    header("location: ../general/login.php");
+} elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
+    header("location: ../html/php/login.php");
+}
+*/
+?>
+
+<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">

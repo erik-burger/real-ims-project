@@ -20,7 +20,7 @@
         </button>
         <div class="dropdown-content">
           <a href="../patient/registration.html">Patient</a>
-          <a href="doctor_registration.html">Doctor</a>
+          <a href="../doctor/doctor_registration.html">Doctor</a>
           <a href="researcher_registration.html">Researcher</a>
         </div>
       </div>       
@@ -254,8 +254,3 @@ include dirname(__DIR__).'..\general\closeDB.php';
 ?>
 </body>
 </html>
-
-<?php 
-include dirname(__DIR__).'general/openDB.php';;
-	
-?>
