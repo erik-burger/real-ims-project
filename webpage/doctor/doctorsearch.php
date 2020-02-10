@@ -95,8 +95,8 @@ table, th, td {
 <h1>Trackzheimers</h1>
 <p>Search for a patient</p>
 <form class="example" action="" method = "post" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search.." name="search">
-  <button type="button" name = "submit" onclick = "update_table('search','start')"><i class="fa fa-search"></i></button>
+  <input type="text" placeholder="Search.." name="search_text", id="search_text">
+  <button type="submitt" name = "submit" onclick = "update_table('search','start')"><i class="fa fa-search"></i></button>
 </form>
 
 <div id = "start">
@@ -136,7 +136,6 @@ $id = $_SESSION["id"];
 </div>
 
 <div id = "search" style="display:none;text-align:center;"> 
-<div id = "search" style="display:none;text-align:center;"> 
 <table style="width:70%" align="center">
     <tr>
     <th>First Name</th>
@@ -144,30 +143,28 @@ $id = $_SESSION["id"];
     <th>ID</th>
     </tr>
 <?php
-if(isset($_POST['submit'])){
-  if(isset($_POST['search'])){
-    include dirname(__DIR__).'../general/openDB.php';
-    $search = $_POST['search']; 
-    
-    $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
-                                  from patient as p, patient_doctor as p_d
-                                  where p.patient_id = p_d.patient_id 
-                                  and p_d.doctor_id = '$id' and p.patient_id = 2")   
-    or 
-    die("Could not issue MySQL query"); 
-    
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $p_id = $row["patient_id"];
-            echo "<tr><td>".$row["first_name"]. "</td>
-            <td>" . $row["last_name"] . "</td>
-            <td><a href ='../html/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
-    }
-    echo "</table>";
-    }   
-    include dirname(__DIR__).'../general/closeDB.php';
+      $search = $_POST["search_text"]; 
+      include dirname(__DIR__).'../general/openDB.php';
+      $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
+                                    from patient as p, patient_doctor as p_d
+                          where p.patient_id = p_d.patient_id and p_d.doctor_id = '$id'
+                          and (p.patient_id = '$search')")   
+      or 
+      die("Could not issue MySQL query"); 
+      
+      if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+              $p_id = $row["patient_id"];
+              echo "<tr><td>" . $row["first_name"]. "</td>
+              <td>" . $row["last_name"] . "</td>
+              <td><a href ='patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+      }
+      echo "</table>";
+      }   
+      include dirname(__DIR__).'../general/closeDB.php';  
 ?> 
-</table>
+
+</table> 
 </div>
 
 </body>
