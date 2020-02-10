@@ -27,6 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 <div class="dropdown-content">
                   <a href="../patient/registration.html">Patient</a>
                   <a href="../doctor/doctor_registration.html">Doctor</a>
+                  <a href="../researcher/researcher_registration.html">Researcher</a>
                 </div>
               </div>       
         </div>

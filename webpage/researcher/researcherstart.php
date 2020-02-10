@@ -1,8 +1,8 @@
 <html>
-<meta http-equiv="refresh" content="3600;url=../general/logout.php" /> 
+<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
 <?php
 session_start();
-/*if ( isset($_SESSION["user"]) == "P") { // if the user is a patient -> logout
+/*if ( isset($_SESSION["user"]) == "R") { // if the user is a patient -> logout
     $_SESSION = array();
     session_destroy();
     header("location: ../general/login.php");
@@ -10,9 +10,9 @@ session_start();
     header("location: ../html/php/login.php");
 }
 */
-
 ?>
-    <head>
+
+<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
@@ -20,10 +20,8 @@ session_start();
 
     <body>
         <div class="navbar">
-            <a class="active" href="doctorstart.php">Home</a>
-            <a href="../general/contact.php">Contact</a>
-            <a href="doctorprofile.php">Profile</a>
-            <a href="doctorsearch.php">Patients</a>
+            <a class="active" href="researcherstart.php">Home</a>
+            <a href="researcherprofile.php">Profile</a>
             <a href="../general/logout.php">Logout</a>          
         </div>
 

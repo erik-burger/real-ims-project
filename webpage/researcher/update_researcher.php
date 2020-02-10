@@ -16,7 +16,7 @@ $zip = $_POST["zip"];
 $email = $_POST["email"];
 $psw = $_POST["psw"];
 
-$sql = "update doctor set first_name = '$f_name', 
+$sql = "update researcher set first_name = '$f_name', 
     middle_name = '$m_name', 
     last_name = '$l_name', 
     email = '$email', 
@@ -27,7 +27,7 @@ $sql = "update doctor set first_name = '$f_name',
     country = '$country', 
     zip = '$zip', 
     phone = '$phone_no'
-    where doctor_id = '$id'";  
+    where researcher_id = '$id'";  
 
 if (mysqli_query($link, $sql)) {
     echo "New record created successfully";
@@ -36,4 +36,5 @@ if (mysqli_query($link, $sql)) {
 }
 
 include dirname(__DIR__).'../general/closeDB.php';
+header("location: researcherprofile.php") ;
 ?> 

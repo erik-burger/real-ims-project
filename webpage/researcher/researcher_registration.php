@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 159edd02dfbb54dcf7fb45865ff872cacb4f02f5
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,24 +20,17 @@
         </button>
         <div class="dropdown-content">
           <a href="../patient/registration.html">Patient</a>
-          <a href="doctor_registration.html">Doctor</a>
+          <a href="../doctor/doctor_registration.html">Doctor</a>
+          <a href="researcher_registration.html">Researcher</a>
         </div>
       </div>       
 </div>
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
 
-<<<<<<< HEAD
 <?php
 	// Connection to DB
 	include dirname(__DIR__).'../general/openDB.php';
-=======
-
-<?php
-//Connect to database
-include dirname(__DIR__).'general/openDB.php';;
-
->>>>>>> 159edd02dfbb54dcf7fb45865ff872cacb4f02f5
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = '';
 $errors = array('f_name' =>'', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -138,7 +127,7 @@ if(isset($_POST["submit"])){
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
+		$sql = "INSERT INTO researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone')";  
 		
 		if (mysqli_query($link, $sql)) {
@@ -158,54 +147,6 @@ if(isset($_POST["submit"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="top_menu_style.css">
     <style>
-    	*{
-    	box-sizing: border-box;
-    	}
-    	
-    	input[type = text], select , textarea{
-    		width: 100%;
-    		padding: 12px;
-    		border: 1px solid #ccc;
-    		border-radius; 4px;
-    		resize: vertical;
-    	}
-    	
-    	input[type = number], select , textarea{
-    		width: 100%;
-    		padding: 12px;
-    		border: 1px solid #ccc;
-    		border-radius; 4px;
-    		resize: vertical;
-    	}
-    	
-    	label {
-    		padding: 12px 12px 12px 0;
-    		display: inline-block;
-    	}
-    	
-    	input[type = submit]{
-    		background-color: #4CAF50;
-  			color: white;
-  			padding: 12px 20px;
- 		 	border: none;
-  			border-radius: 4px;
-  			cursor: pointer;
-  			float: right;
-  		}
-  		
-  		input[type=submit]:hover {
-  			background-color: #45a049;
-		}
-		
-		.container {
- 		 	border-radius: 5px;
-  			background-color: #f2f2f2;
-  			padding: 20px;
-  			width:70%;
-  			margin-right: auto;
-  			margin-left:auto;
-		}
-  		
     	.error {
     		color: #FF0000;
     	}
@@ -215,23 +156,21 @@ if(isset($_POST["submit"])){
 <body>
 
 <div class="navbar">
-    <a href="login.html">Login</a>
-    <a href="info.html">About</a>  
+    <a href="../general/login.php">Login</a>
+    <a href="../general/info.html">About</a>  
     <div class="dropdown">
         <button class="dropbtn">Register
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="registration.html">Patient</a>
-          <a href="doctor_registration.html">Doctor</a>
+          <a href="../patient/registration.html">Patient</a>
+          <a href="../doctor/doctor_registration.html">Doctor</a>
         </div>
       </div>       
 </div>
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
 
-<<<<<<< HEAD
-=======
 <h1>Register as a Doctor</h1>
 
 <form metod = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
@@ -242,14 +181,6 @@ if(isset($_POST["submit"])){
      	<label for="f_name"><b>First name</b></label>
       	<input type="text" placeholder="Enter first name" name="f_name" value = "<?php echo $f_name; ?>">
       	<span class="error"> <?php echo $f_nameErr; ?> </span><br>
-=======
->>>>>>> 4a81c7bbd98c06499d6abe6a8f831c3ce6ade4ee
-<section class="container grey-text"> 
-	<h1 class="center">Register as a Doctor</h1>
-    <p>Please fill in this form to create an account.</p>
-
-	<div class="container">
-	<form action = "doctor_registration.php" method = "POST">
 		
 		<label for="f_name"><b>First name</b></label>
       	<input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -257,7 +188,7 @@ if(isset($_POST["submit"])){
       	
       	<label for="m_name"><b>Middle name</b></label>
       	<input type="text" name="m_name" value = "<?php echo htmlspecialchars($m_name); ?>"><br>
-      	
+
       	<label for="l_name"><b>Last name</b></label>
       	<input type="text" name="l_name" value = "<?php echo htmlspecialchars($l_name); ?>">
       	<div class="error"><?php echo $errors['l_name']; ?></div><br>
@@ -300,18 +231,16 @@ if(isset($_POST["submit"])){
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit">    
       	<p>Already have an account? <a href="#">Sign in</a>.</p>
-   </form>
-</div>   	
+      	
 </section>
 
-<<<<<<< HEAD
 <?php
 	if (empty($f_nameErr) && empty($l_nameErr) && empty($phoneErr) && empty($streetErr) && empty($street_noErr)
 	&& empty($cityErr) && empty($countryErr) && empty($zipErr) && empty($emailErr) && empty($pswErr) && isset($f_name)
 	&& isset($l_name) && isset($phone) && isset($street) && isset($street_no) && isset($city) && isset($country) && isset($zip)
 	&& isset($email) && isset($psw)){
 	
-		$sql = "insert into doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
+		$sql = "insert into researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
 		values ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone')";  
 		
 		if (mysqli_query($link, $sql)) {
@@ -321,10 +250,7 @@ if(isset($_POST["submit"])){
 		}
 	}
 	
-
-include dirname(__DIR__).'../general/closeDB.php';
-
+include dirname(__DIR__).'..\general\closeDB.php';
 ?>
-
 </body>
 </html>

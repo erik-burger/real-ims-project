@@ -46,7 +46,7 @@ $password_hash = password_hash($psw, PASSWORD_DEFAULT);
 
 // When form is error free register user
 if (count($errors) == 0) {
-	$sql = "insert into doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
+	$sql = "insert into researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
 	values ('$f_name', '$m_name', '$l_name', '$email', '$password_hash', '$street', '$street_no', '$city', '$country', '$zip', '$phone')";  
 		
 	if (mysqli_query($link, $sql)) {

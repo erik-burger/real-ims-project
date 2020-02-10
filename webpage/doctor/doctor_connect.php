@@ -9,7 +9,7 @@
     
 <?php
 	// Connection to DB
-	include dirname(__DIR__).'\php\openDB.php';
+	include dirname(__DIR__).'../general/openDB.php';
 
 	// Data validation
 	$f_nameErr = $l_nameErr = $phoneErr = $streetErr = $street_noErr = $cityErr = $countryErr = $zipErr = $emailErr = $pswErr = "";
@@ -109,7 +109,7 @@ if(isset($_POST["submit"])){
 	}
 }
 	
-include dirname(__DIR__).'\php\closeDB.php';
+include dirname(__DIR__).'../general/closeDB.php';
 	
 ?>
 </body>
