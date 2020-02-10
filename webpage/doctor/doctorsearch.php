@@ -135,28 +135,21 @@ $id = $_SESSION["id"];
 </table>
 </div>
 
-<div id = "search" style="display:none;text-align:center;">
-    
+<div id = "search" style="display:none;text-align:center;"> 
+<div id = "search" style="display:none;text-align:center;"> 
 <table style="width:70%" align="center">
     <tr>
     <th>First Name</th>
     <th>Last Name</th>
     <th>ID</th>
     </tr>
-<<<<<<< HEAD
+
 <?php
 if(isset($_POST['submit'])){
   if(isset($_POST['search'])){
     include dirname(__DIR__).'../general/openDB.php';
     $search = $_POST['search']; 
     
-=======
-
-<?php 
- 
-    echo "hello!"; 
-    include dirname(__DIR__).'/html/php/openDB.php';
->>>>>>> b439291090638031cecebe73036f1d6f619d1e07
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
                                   where p.patient_id = p_d.patient_id 
@@ -167,17 +160,13 @@ if(isset($_POST['submit'])){
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $p_id = $row["patient_id"];
-            echo "<tr><td>" . $row["first_name"]. "</td>
+            echo "<tr><td>".$row["first_name"]. "</td>
             <td>" . $row["last_name"] . "</td>
             <td><a href ='../html/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
     }   
-<<<<<<< HEAD
     include dirname(__DIR__).'../general/closeDB.php';
-=======
-    include dirname(__DIR__).'/html/php/closeDB.php';    
->>>>>>> b439291090638031cecebe73036f1d6f619d1e07
 ?> 
 </table>
 </div>
