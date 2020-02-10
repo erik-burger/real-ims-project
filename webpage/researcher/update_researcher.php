@@ -16,25 +16,38 @@ $zip = $_POST["zip"];
 $email = $_POST["email"];
 $psw = $_POST["psw"];
 
-$sql = "update researcher set first_name = '$f_name', 
-    middle_name = '$m_name', 
-    last_name = '$l_name', 
-    email = '$email', 
-    password_hash = '$psw', 
-    street = '$street', 
-    street_no = '$street_no', 
-    city = '$city', 
-    country = '$country', 
-    zip = '$zip', 
-    phone = '$phone_no'
-    where researcher_id = '$id'";  
+//get the hashed password
+$psw_result = mysqli_query($link, "select password_hash from researcher where researcher_id = $id");
+$psw_row = mysqli_fetch_row($psw_result);
+$password_hash = $psw_row[0];
 
-if (mysqli_query($link, $sql)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($link);
+if(password_verify($psw, $password_hash)){
+
+    $sql = "update researcher set first_name = '$f_name', 
+        middle_name = '$m_name', 
+        last_name = '$l_name', 
+        email = '$email',  
+        street = '$street', 
+        street_no = '$street_no', 
+        city = '$city', 
+        country = '$country', 
+        zip = '$zip', 
+        phone = '$phone_no'
+        where researcher_id = '$id'";  
+
+    if (mysqli_query($link, $sql)) {
+        echo "New record created successfully";
+        include dirname(__DIR__).'../general/closeDB.php';
+        header("location: researcherprofile.php");
+
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($link);
+    }
+}else{
+    echo "Password incorrect.";
+    include dirname(__DIR__).'../general/closeDB.php';
+    header("location: change_info_researcher.php");
 }
 
 include dirname(__DIR__).'../general/closeDB.php';
-header("location: researcherprofile.php") ;
 ?> 
