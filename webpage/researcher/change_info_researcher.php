@@ -25,8 +25,7 @@
             $email = $row["email"]; 
             $city = $row["city"];
             $country = $row["country"];
-            $phone = $row["phone"]; 
-            $psw = $row["password_hash"]; 
+            $phone = $row["phone"];
         }  
         include dirname(__DIR__).'../general/closeDB.php';
          
@@ -66,7 +65,7 @@
       <input type="text" value= "<?php echo $email;?>" name="email"><br>
   
       <label for="psw"><b>Password</b></label>
-      <input type="password" value= "<?php echo $psw;?>" name="psw">
+      <input type="password" value= "" name="psw"><br>
         
       <button type="Submit Changes">Change Information</button>
     

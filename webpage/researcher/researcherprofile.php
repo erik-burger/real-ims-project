@@ -49,6 +49,7 @@
     ?>
 
     <p>Change your information <a href="change_info_researcher.php">here</a>.</p>
+    <p>Change your password <a href="change_password_researcher.php">here</a>.</p>
 
     </body>
 

@@ -25,15 +25,14 @@
             $email = $row["email"]; 
             $city = $row["city"];
             $country = $row["country"];
-            $phone = $row["phone"]; 
-            $psw = $row["password_hash"]; 
+            $phone = $row["phone"];  
         }  
         include dirname(__DIR__).'../general/closeDB.php';
          
     ?> 
     <form action="update_caregiver.php" method="POST">
       <h3>Register</h3>
-      <p>Please fill in this form to create an account.</p>
+      <p>Please fill in this form to change your profile information.</p>
       
       <label for="f_name"><b>First name</b></label>
       <input type="text" value= "<?php echo $first_name;?>" name="f_name" >
@@ -66,7 +65,7 @@
       <input type="text" value= "<?php echo $email;?>" name="email"><br>
   
       <label for="psw"><b>Password</b></label>
-      <input type="password" value= "<?php echo $psw;?>" name="psw">
+      <input type="password" value= "" name="psw">
         
       <button type="Submit Changes">Change Information</button>
     

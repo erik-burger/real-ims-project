@@ -17,36 +17,37 @@ $email = $_POST["email"];
 $psw = $_POST["psw"];
 
 //get the hashed password
-$psw_result = mysqli_query($link, "select password_hash from doctor where doctor_id = $id");
+$psw_result = mysqli_query($link, "select password_hash from caregiver where caregiver_id = $id");
 $psw_row = mysqli_fetch_row($psw_result);
 $password_hash = $psw_row[0];
 
 if(password_verify($psw, $password_hash)){
 
-    $sql = "update doctor set first_name = '$f_name', 
+    $sql = "update caregiver set first_name = '$f_name', 
         middle_name = '$m_name', 
         last_name = '$l_name', 
-        email = '$email', 
+        email = '$email',  
         street = '$street', 
         street_no = '$street_no', 
         city = '$city', 
         country = '$country', 
         zip = '$zip', 
         phone = '$phone_no'
-        where doctor_id = '$id'";  
+        where caregiver_id = '$id'";  
 
     if (mysqli_query($link, $sql)) {
         echo "New record created successfully";
         include dirname(__DIR__).'../general/closeDB.php';
-        header("location: doctorprofile.php");
+        header("location: caregiverprofile.php");
 
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($link);}
-
+        echo "Error: " . $sql . "<br>" . mysqli_error($link);
+    }
 }else{
     echo "Password incorrect.";
     include dirname(__DIR__).'../general/closeDB.php';
-    header("location: change_info_doctor.php");}
+    header("location: change_info_caregiver.php");
+}
 
 include dirname(__DIR__).'../general/closeDB.php';
 ?> 
