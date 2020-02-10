@@ -34,11 +34,3 @@ create table patient_caregiver (
     primary key (patient_id, caregiver_id), 
     foreign key (patient_id) references patient(patient_id),
     foreign key (caregiver_id) references caregiver(caregiver_id));
-
-create table doctor_researcher (
-	researcher_id int not null,
-    doctor_id int not null,
-    primary key (researcher_id, doctor_id), 
-    foreign key (researcher_id) references researcher(researcher_id),
-    foreign key (doctor_id) references doctor(doctor_id));
-    
