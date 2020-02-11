@@ -69,9 +69,10 @@
       y: score_arr,
       line: {
           shape: 'line' ,
-          color: 'red'
+          color: 'red',
+          width: 5
       },
-
+      visible: true,
       name: 'Data set 1',
       };
 
@@ -80,8 +81,10 @@
       y: orientation_arr,
       line: {
           shape: 'line' ,
-          color: 'red'
+          color: 'red',
+          width: 5
       },
+      visible: false,
       name: 'Data set 2',
       };
 
@@ -90,8 +93,10 @@
       y: immediate_arr,
       line: {
           shape: 'line' ,
-          color: 'red'
+          color: 'red',
+          width: 5
       },
+      visible: false,
       name: 'Data set 3',
       };
 
@@ -100,8 +105,10 @@
       y: attention_arr,
       line: {
           shape: 'line' ,
-          color: 'red'
+          color: 'red',
+          width: 5
       },
+      visible: false,
       name: 'Data set 4',
       };
 
@@ -110,8 +117,10 @@
       y: delayed_arr,
       line: {
           shape: 'line' ,
-          color: 'red'
+          color: 'red',
+          width: 5
       },
+      visible: false,
       name: 'Data set 5',
       };
 
@@ -120,8 +129,10 @@
       y: language_arr,
       line: {
           shape: 'line' ,
-          color: 'red'
+          color: 'red',
+          width: 5
       },
+      visible: false,
       name: 'Data set 6',
       };
 
