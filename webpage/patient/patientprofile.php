@@ -6,14 +6,34 @@
     <meta name="description" content="Statistics page for patients">
     <title>Trackzheimers</title>
     <link rel="stylesheet" href="top_menu_style.css">
+    <style>
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .logo {
+                display: inline-block;
+                float: left; 
+            }
+        </style>
   </head>
   
   <body>
 
-    <div class="navbar">
-      <a href="patientstart.php">Go Back</a>
-      <a href="../general/logout.php">Logout</a>          
-    </div>
+  <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="patientstart.php">Home</a></li>            
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <h1>Profile</h1>
 
