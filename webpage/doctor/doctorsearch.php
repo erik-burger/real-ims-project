@@ -66,6 +66,15 @@ table, th, td {
 
 <body>
 
+<?php 
+session_start();
+$id = $_SESSION["id"];
+ /*if ( isset($_SESSION["id"]) === false) {
+        header("location: ../general/login.php");
+    }
+    */
+?> 
+
   <div class="navbar">
     <a href="doctorstart.php">Home</a>
     <a href="../general/contact.php">Contact</a>
@@ -73,33 +82,27 @@ table, th, td {
     <a class="active" href="doctorsearch.php">Patients</a>
     <a href="../general/logout.php">Logout</a>          
   </div>
-
-<script>
-      function update_table(new_search, old_search) {
-          var new_ = document.getElementById(new_search);
-          var old_ = document.getElementById(old_search);
-          if (new_.style.display === "none") {
-              new_.style.display = "block";
-          } else {
-              new_.style.display = "none";
-          }
-          if (old_.style.display === "none") {
-              old_.style.display = "block";
-          } else {
-              old_.style.display = "none";
-          }
+  
+  <script>
+      function update_search(new_search, old_search) {
+        var new_ = document.getElementById(new_search);
+        var old_ = document.getElementById(old_search);         
+        if (new_.style.display === "none") {               
+                    new_.style.display = "block";
+                    old_.style.display = "none";
+        }
       }
   </script>
 
 <div class="c">
 <h1>Trackzheimers</h1>
 <p>Search for a patient</p>
-<form class="example" action="" method = "post" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search.." name="search_text", id="search_text">
-  <button type="submitt" name = "submit" onclick = "update_table('search','start')"><i class="fa fa-search"></i></button>
+
+<form action="" method = "post" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search.." name="search_text">
+  <button type="submit" name = "submit"><i class="fa fa-search"></i></button>
 </form>
 
-<div id = "start">
 <table style="width:70%" align="center">
     <tr>
     <th>First Name</th>
@@ -108,12 +111,7 @@ table, th, td {
     </tr>
 
 <?php 
-session_start();
-$id = $_SESSION["id"];
- /*if ( isset($_SESSION["id"]) === false) {
-        header("location: ../general/login.php");
-    }
-    */
+   
     include dirname(__DIR__).'../general/openDB.php';
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
@@ -126,46 +124,58 @@ $id = $_SESSION["id"];
             $p_id = $row["patient_id"];
             echo "<tr><td>" . $row["first_name"]. "</td>
             <td>" . $row["last_name"] . "</td>
-            <td><a href ='patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+            <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
     }   
+    
     include dirname(__DIR__).'../general/closeDB.php';    
-?> 
-</table>
-</div>
 
-<div id = "search" style="display:none;text-align:center;"> 
-<table style="width:70%" align="center">
-    <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>ID</th>
-    </tr>
-<?php
-      $search = $_POST["search_text"]; 
-      include dirname(__DIR__).'../general/openDB.php';
-      $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
-                                    from patient as p, patient_doctor as p_d
-                          where p.patient_id = p_d.patient_id and p_d.doctor_id = '$id'
-                          and (p.patient_id = '$search')")   
-      or 
-      die("Could not issue MySQL query"); 
-      
-      if ($result->num_rows > 0) {
+    if(isset($_POST['submit'])){
+      if(isset($_POST['search_text'])){
+        include dirname(__DIR__).'../general/openDB.php';
+        $search = $_POST['search_text']; 
+        
+        $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
+                                      from patient as p, patient_doctor as p_d
+                                      where p.patient_id = p_d.patient_id   
+                                      and p_d.doctor_id = '$id' 
+                                      and (p.patient_id = '$search' 
+                                      or last_name like '%$search%' 
+                                      or first_name like '%$search%')")   
+        or 
+        die("Could not issue MySQL query"); 
+        
+        if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
               $p_id = $row["patient_id"];
               echo "<tr><td>" . $row["first_name"]. "</td>
               <td>" . $row["last_name"] . "</td>
-              <td><a href ='patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+              <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
       }
       echo "</table>";
-      }   
-      include dirname(__DIR__).'../general/closeDB.php';  
+      } 
+      include dirname(__DIR__).'../general/closeDB.php'; 
+    }
+  }  
 ?> 
+</table>
 
+
+
+<div id = 'search' style = "display:none;text-align:center;">
+<table style="width:70%" align="center">
+      <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>ID</th>
+      </tr>
+  <?php
+    
+?> 
 </table> 
 </div>
 
+</div>
 </body>
 </html>
