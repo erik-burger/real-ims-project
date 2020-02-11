@@ -80,7 +80,7 @@
                     <input type="number" name="curr_year" align="center"
                     style="height:100px; width:300px;font-size:100px;">
                 </div>
-                <button type="button" onclick="change_question('question2','question1')">Next1</button>
+                <input type="button" onclick="change_question('question2','question1')">Next1</input>
             </div>
 
 
