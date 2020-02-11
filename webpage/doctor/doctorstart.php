@@ -27,7 +27,7 @@ session_start();
             <a href="../general/logout.php">Logout</a>          
         </div>
 
-        <h1>TRACKZHEIMERS LOGO</h1>
+        <img src="../general/logo_full.png" width="600">
 
         <h2>Information...</h2>
         <p1>
