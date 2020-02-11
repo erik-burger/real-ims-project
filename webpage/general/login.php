@@ -18,10 +18,20 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
+
+        <style>
+          .logo {
+                display: inline-block;
+                float: left; 
+            }
+        </style>
     </head>
 
     <body>   
         <div class="navbar">
+        <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
             <a class="active" href="login.php">Login</a>
             <a href="info.html">About</a>
             <div class="dropdown">

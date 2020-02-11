@@ -18,15 +18,30 @@ $_SESSION["timestamp"] = time();
     <meta name="description" content="Start page for patients">
     <title>Trackzheimers</title>
     <link rel="stylesheet" href="top_menu_style.css">
+    <style>
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .logo {
+                display: inline-block;
+                float: left; 
+            }
+        </style>
   </head>
 
   <body> <!--style="background-color: blue;"> --> <!-- add for blue bg-->
     
-    <div class="navbar" align="right">
-        <a href="../general/logout.php">Logout</a>
-    </div>
-    
-    <img src="LOGO.png" style="display: block;margin-left: auto;margin-right: auto;">
+  <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <button onclick="location.href='Question_sheet.php'"
       type="button" 
