@@ -27,7 +27,7 @@ session_start();
             <a href="../general/logout.php">Logout</a>          
         </div>
 
-        <img src="../general/logo_full.png" width="600">
+        <img src="../general/logo_grey.png" width="400">
 
         <h2>Information...</h2>
         <p1>

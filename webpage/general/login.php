@@ -37,7 +37,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
               </div>       
         </div>
 
-        <img src="logo_full.png" width="600">
+        <img src="logo_grey.png" width="600">
 
         <form action="login_conn.php" method="post">
           
