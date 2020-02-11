@@ -1,0 +1,8 @@
+git branch branchname
+git checkout branchname 	%move to the new branch
+git push origin branchname	%push the new origin to github
+.... do everything you want on your branch
+git checkout master 		%swith to master branch
+git merge branchname		%merge branch to master 
+git branch -d branchname 	%delete branch on you local repository
+git push origin :branchname	%delete branch on github

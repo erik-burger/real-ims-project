@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="top_menu_style.css">
+  </head>
+
+<body>
+
+<div class="navbar">
+    <a href="../general/login.php">Login</a>
+    <a href="../general/info.html">About</a>  
+    <div class="dropdown">
+        <button class="dropbtn">Register
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="registration.html">Patient</a>
+          <a href="../doctor/doctor_registration.html">Doctor</a>
+        </div>
+      </div>       
+</div>
+
+<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
+
+<h1>Register as a Patient</h1>
+
+<form action="add_patient.php" method="POST">
+      <h3>Register</h3>
+      <p>Please fill in this form to create an account.</p>
+      
+      <label for="f_name"><b>First name</b></label>
+      <input type="text" placeholder="Enter first name" name="f_name" required>
+
+      <label for="m_name"><b>Middle name</b></label>
+      <input type="text" placeholder="Enter middle name" name="m_name">
+
+      <label for="l_name"><b>Last name</b></label>
+      <input type="text" placeholder="Enter last name" name="l_name" required><br>
+      
+      <label for="ssn"><b>Social security number</b></label>
+      <input type="text" placeholder="Enter Social security number" name="ssn" required><br>
+      
+      <label for="phone_no"><b>Phone number</b></label>
+      <input type="number" placeholder="Enter Phone number" name="phone_no" required><br>
+
+      <label for="street"><b>Street</b></label>
+      <input type="text" placeholder="Enter Street" name="street" required>
+
+      <label for="street_no"><b>Street number</b></label>
+      <input type="text" placeholder="Enter Street number" name="street_no" required>
+
+      <label for="city"><b>City</b></label>
+      <input type="text" placeholder="Enter city" name="city" required>
+      
+      <label for="state_county"><b>State/County</b></label>
+      <input type="text" placeholder="Enter State/County" name="state_county" required>
+
+      <label for="country"><b>Country</b></label>
+      <input type="text" placeholder="Enter country" name="country" required>
+
+      <label for="zip"><b>Zip</b></label>
+      <input type="text" placeholder="Enter Zip" name="zip" required><br>
+
+      <label for="date_of_birth"><b>Date of birth</b></label>
+      <input type="date" placeholder="Enter date of birth" name="date_of_birth" required><br>
+
+      <label for="gender"><b>Gender</b></label>
+      <select name = "gender">
+	        <option selected = "selected">Select gender</option>
+          <option value = "male">Male</option>
+          <option value = "female">Female</option>
+          <option value = "custom">Custom</option>
+      </select><br>
+      
+      <label for="education"><b>Education</b></label>
+      <input type="number" placeholder="Enter Education" name="education" required><br>
+
+      <label for="stage"><b>Stage</b></label>
+      <input type="text" placeholder="Enter Stage" name="stage"><br>
+
+      <label for="diagnosis_date"><b>Diagnosis date</b></label>
+      <input type="date" placeholder="Enter diagnosis date" name="diagnosis_date" required>
+
+      <label for="diagnosis_desc"><b>Diagnosis description</b></label>
+      <input type="text" placeholder="Enter diagnosis description (optional)" name="diagnosis_desc"><br>
+  
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required><br>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+  
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      
+  
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+      <button type="submit">Register</button>
+    
+      <p>Already have an account? <a href="#">Sign in</a>.</p>
+   
+</form> 
+
+</body>
+</html>

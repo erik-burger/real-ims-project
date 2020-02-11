@@ -1,1 +1,0 @@
-drop table patient, test, doctor, patient_doctor; 
