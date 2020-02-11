@@ -72,7 +72,7 @@
 
         
 
-        <form target="_blank" action=test_result.php method="POST">
+        <form action=test_result.php method="POST">
 
             <div id='question1' style="text-align:center;">
                 <h1 align="center">Write the current year</h1>
@@ -397,11 +397,7 @@
                 ?>
                 <br>
                 <button type="button" onclick="change_question('question14_1','question14_2')">Back</button>
-                <button type="submit" onclick="window.location.href = '../patient/patientstart.php';"value="Submit">Submit</button>
-                
-
-
+                <button type="submit" value="Submit">Submit</button>
         </form>
-
     </body>
 </html>

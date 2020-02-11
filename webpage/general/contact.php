@@ -19,7 +19,7 @@ session_start();
             <a class="active" href="contact.php">Contact</a>
             <a href="../doctor/doctorprofile.php">Profile</a>
             <a href="../doctor/doctorsearch.php">Patients</a>
-            <a href="..logout.php">Logout</a>          
+            <a href="logout.php">Logout</a>          
         </div>
 
         <h1>TRACKZHIMERS LOGO</h1>

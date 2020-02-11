@@ -9,8 +9,8 @@
         include dirname(__DIR__).'../general/openDB.php';
 
         $result = mysqli_query($link,"select *
-        from doctor 
-        where doctor_id = '$id'")   
+        from caregiver 
+        where caregiver_id = '$id'")   
         or 
         die("Could not issue MySQL query"); 
         
@@ -18,7 +18,7 @@
             $first_name = $row["first_name"];
             $middle_name = $row["middle_name"]; 
             $last_name = $row["last_name"];
-            $doctor_id = $row["doctor_id"];
+            $caregiver_id = $row["caregiver_id"];
             $street = $row["street"];
             $street_no = $row["street_no"];
             $zip = $row["zip"]; 
@@ -27,11 +27,12 @@
             $country = $row["country"];
             $phone = $row["phone"];  
         }  
-        include dirname(__DIR__).'../general/closeDB.php';  
+        include dirname(__DIR__).'../general/closeDB.php';
+         
     ?> 
-    <form action="update_doctor.php" method="POST">
+    <form action="update_caregiver.php" method="POST">
       <h3>Register</h3>
-      <p>Please fill in this form to create an account.</p>
+      <p>Please fill in this form to change your profile information.</p>
       
       <label for="f_name"><b>First name</b></label>
       <input type="text" value= "<?php echo $first_name;?>" name="f_name" >
@@ -64,9 +65,9 @@
       <input type="text" value= "<?php echo $email;?>" name="email"><br>
   
       <label for="psw"><b>Password</b></label>
-      <input type="password" value= "" name="psw"><br>
+      <input type="password" value= "" name="psw">
         
-      <button type="Submit Changes">Register</button>
+      <button type="Submit Changes">Change Information</button>
     
     </form>
     

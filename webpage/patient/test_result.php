@@ -166,9 +166,14 @@
   VALUES ('$patient_id', '$test_date', '$question1', '$question2', '$question3', '$question4', '$question5', '$question6', '$question7', '$question8', '$question9', '$question10', '$question11', '$question12', '$question13', '$question14', '$total_score')";
   if (mysqli_query($link, $sql)) {
     //echo "New record created successfully";
+
+    echo '<script>; window.location.replace("../patient/patientstart.php"); </script>';
+
+
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
   }
   include dirname(__DIR__)."/general/closeDB.php";
+  
   ?>
 </html>
