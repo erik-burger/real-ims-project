@@ -37,7 +37,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
               </div>       
         </div>
 
-        <h1>TRACKZHEIMERS LOGO</h1>
+        <img src="logo_grey.png" width="800">
 
         <form action="login_conn.php" method="post">
           
