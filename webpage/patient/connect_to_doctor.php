@@ -1,12 +1,12 @@
 
 <?php
     session_start();
-    $d_id = $_SESSION["id"];
+    $p_id = $_SESSION["id"];
 
     include dirname(__DIR__).'/general/openDB.php';
-    $p_id = $_POST["patient_id"]; 
+    $d_id = $_POST["doctor_id"]; 
 
-    $sql1 = "insert into patient_doctor(patient_id, doctor_id, doctor_accept) 
+    $sql1 = "insert into patient_doctor(patient_id, doctor_id, patient_accept) 
     values ('$p_id', '$d_id', true);";  
     $sql2 = "update patient_doctor
     set both_accept = true 
@@ -14,11 +14,11 @@
     
     if (mysqli_query($link, $sql1)) {
         mysqli_query($link, $sql2); 
-        $message = "You have linked your account to the patient with id $p_id";
-        echo "<script>alert('$message'); window.location.href = 'doctorsearch.php';</script>";
+        $message = "You have linked your account to the doctor with id $p_id";
+        echo "<script>alert('$message'); window.location.href = 'patientprofile.php';</script>";
     } else {
         $message = "Connection failed"; 
-        echo "<script>alert('$message'); window.location.href = 'doctorsearch.php';</script>";
+        echo "<script>alert('$message'); window.location.href = 'patientprofile.php';</script>";
     }
     
     include dirname(__DIR__).'/general/openDB.php';

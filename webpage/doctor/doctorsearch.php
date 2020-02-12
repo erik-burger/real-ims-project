@@ -80,7 +80,7 @@ table, th, td {
         }
     
     	input[type = text], select , textarea{
-    		padding: 12px;
+    		padding: 15px;
     		border: 1px solid #ccc;
     		border-radius; 4px;
       }
@@ -88,7 +88,7 @@ table, th, td {
       background-color: #669999; 
       border: none;
       color: white;
-      padding: 15px 32px;
+      padding: 14px 32px;
       text-align: center;
       text-decoration: none;
       display: inline-block;

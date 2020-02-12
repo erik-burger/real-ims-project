@@ -24,17 +24,41 @@
                 display: inline-block; 
             }
 
-            .med_button, .prof_button, .pass_button{
+            .med_button, .prof_button, .pass_button, .doc_button{
                 background-color: #669999; 
                 border: none;
                 color: white;
-                padding: 15px 10px;
+                padding: 14px 10px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;   
-                margin: 10px;             
-            }         
+                margin-top: 10px;
+                margin-bottom: 10px; 
+                margin-left: 1px;              
+            }      
+            * {
+            box-sizing: border-box;
+            }
+
+            .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px; 
+            }
+
+            .page:after {
+            content: "";
+            display: table;
+            clear: both;
+            }  
+
+            input[type = text], select , textarea{
+    		padding: 15px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+      }
 
         </style>
   </head>
@@ -55,9 +79,11 @@
         </div>
     </nav>
 
+    <div class="page">
+    
+    <div class = "column">
     <h1>Profile</h1>
 
-   
    <?php
         session_start(); 
         /*if ( isset($_SESSION["id"]) === false) {
@@ -100,7 +126,7 @@
         include dirname(__DIR__).'/general/closeDB.php';
  ?>
 
-<form action="change_info_patient.php" class = "profile">
+    <form action="change_info_patient.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
     <form action="change_password_patient.php" class = "profile">
@@ -129,8 +155,10 @@ include dirname(__DIR__).'/general/closeDB.php';
 <form action="change_medication.php" class = "medication">
     <button type = "submit" class = "med_button">Change Medication</button>
 </form></br>
+</div>
 
 
+<div class = "column">
 <h1>Your Doctors</h1>
 
 <?php
@@ -156,12 +184,19 @@ include dirname(__DIR__).'/general/closeDB.php';
             echo '<b>'."ID: ".'</b>' .$doctor_id.'<br />';
             echo '<b>'."Telephone: ".'</b>'.$phone.'<br />';
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
+            echo '</br>';
         }
         
         include dirname(__DIR__).'/general/closeDB.php';
 
     ?>
-   
+
+    <form action="connect_to_doctor.php", method = "POST">
+        <input type="text" placeholder="Doctor ID" name="doctor_id" >
+        <button type = "submit" class = "doc_button">Connect to Doctor</button>
+    </form></br>
+    </div>
+</div> 
 
 </body> 
 </html>
