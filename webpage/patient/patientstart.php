@@ -58,3 +58,4 @@ $_SESSION["timestamp"] = time();
 
     </div>
   </body>
+</html>
