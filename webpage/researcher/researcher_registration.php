@@ -91,11 +91,6 @@ if(isset($_POST["submit"])){
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
 		}
-		$sql_email = "SELECT * FROM doctor WHERE email = '$email'";
-		$result = mysqli_query($link, $sql);
-		if(mysqli_num_rows($result)>0){
-			$errors['email'] = "Email adress already registered, please use another email";
-		}
 	}
 	
 	if (empty($_POST['psw'])){
@@ -123,12 +118,13 @@ if(isset($_POST["submit"])){
 		$zip = mysqli_real_escape_string($link,$_POST['zip']);
 		$email = mysqli_real_escape_string($link,$_POST['email']);
 
+
 	// Hashing password
 		$psw = password_hash($psw, PASSWORD_DEFAULT);
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
+		$sql = "INSERT INTO researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone')";  
 		
 		if (mysqli_query($link, $sql)) {
@@ -146,7 +142,7 @@ if(isset($_POST["submit"])){
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="top_menu_style.css">
+    <link rel="stylesheet" href="top_menu_style.css">
     <style>
     	*{
     	box-sizing: border-box;
@@ -208,16 +204,16 @@ if(isset($_POST["submit"])){
 <body>
 
 <div class="navbar">
-    <a href="login.html">Login</a>
-    <a href="info.html">About</a>  
+    <a href="../general/login.php">Login</a>
+    <a href="../general/info.html">About</a>  
     <div class="dropdown">
         <button class="dropbtn">Register
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
           <a href="../patient/patient_registration.php">Patient</a>
-          <a href="doctor_registration.php">Doctor</a>
-          <a href="../researcher/researcher_registration.php">Researcher</a>
+          <a href="../doctor/doctor_registration.php">Doctor</a>
+          <a href="researcher_registration.php">Researcher</a>
           <a href="../caregiver/caregiver_registration.php">Caregiver</a>
         </div>
       </div>       
@@ -228,10 +224,10 @@ if(isset($_POST["submit"])){
 <section class="container grey-text"> 
 
 	<div class="container">
-	<h1 class="center">Register as a Doctor</h1>
-    <p>Please fill in this form to create an account as a doctor</p>
+	<h1 class="center">Register as a Researcher</h1>
+    <p>Please fill in this form to create an account as a researcher</p>
 
-	<form action = "doctor_registration.php" method = "POST">
+	<form action = "researcher_registration.php" method = "POST">
 		
 		<label for="f_name"><b>First name</b></label>
       	<input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -269,7 +265,7 @@ if(isset($_POST["submit"])){
       	<input type="text" name="zip" value = "<?php echo htmlspecialchars($zip); ?>">
         <div class="error"><?php echo $errors['zip']; ?></div><br>
 
-      	<label for="email"><b>Email</b></label>
+      	<label for="email"><b>Your Email</b></label>
       	<input type="text" name="email" value = "<?php echo htmlspecialchars($email); ?>">
         <div class="error"><?php echo $errors['email']; ?></div><br>
 
@@ -284,13 +280,10 @@ if(isset($_POST["submit"])){
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    
       	<p>Already have an account? <a href="#">Sign in</a>.</p>
    </form>
-</div>   	
-</section>
-
+   
 </body>
 </html>
 
 <?php 
-include dirname(__DIR__).'general/closeDB.php';;
-	
+include dirname(__DIR__).'general/closeDB.php';;	
 ?>
