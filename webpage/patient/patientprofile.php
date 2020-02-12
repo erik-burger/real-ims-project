@@ -16,6 +16,26 @@
                 display: inline-block;
                 float: left; 
             }
+            .profile{
+                display: inline-block;  
+            }
+
+            .medication{
+                display: inline-block; 
+            }
+
+            .med_button, .prof_button, .pass_button{
+                background-color: #669999; 
+                border: none;
+                color: white;
+                padding: 15px 10px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;   
+                margin: 10px;             
+            }         
+
         </style>
   </head>
   
@@ -37,7 +57,8 @@
 
     <h1>Profile</h1>
 
-    <?php
+   
+   <?php
         session_start(); 
         /*if ( isset($_SESSION["id"]) === false) {
         header("location: ../html/php/login.php");
@@ -79,6 +100,37 @@
         include dirname(__DIR__).'/general/closeDB.php';
  ?>
 
+<form action="change_info_patient.php" class = "profile">
+        <button type = "submit" class = "prof_button">Change Information</button>
+    </form>
+    <form action="change_password_patient.php" class = "profile">
+        <button type = "submit" class = "pass_button">Change Password</button>
+    </form></br>
+
+<h3>Medication</h3>
+
+<?php
+include dirname(__DIR__).'/general/openDB.php';
+
+$medication = mysqli_query($link, "select m.medication_name, pm.dose, pm.medication_interval
+from patient_medication pm
+join medication m on pm.medication_id = m.medication_id
+where pm.patient_id = $_SESSION[id]")
+or die("Could not issue MySQL query");
+while ($row = $medication->fetch_assoc()) {
+    $medication_name = $row["medication_name"];
+    $dose = $row["dose"];
+    $medication_interval = $row["medication_interval"];
+    echo '<b>'."- ".'</b>'.$medication_name."($dose) to be taken ".$medication_interval.'<br />';}
+
+include dirname(__DIR__).'/general/closeDB.php';
+?>
+
+<form action="change_medication.php" class = "medication">
+    <button type = "submit" class = "med_button">Change Medication</button>
+</form></br>
+
+
 <h1>Your Doctors</h1>
 
 <?php
@@ -109,31 +161,7 @@
         include dirname(__DIR__).'/general/closeDB.php';
 
     ?>
-
-    
-
-    <h3>Medication</h3>
-
-    <?php
-    include dirname(__DIR__).'/general/openDB.php';
-
-    $medication = mysqli_query($link, "select m.medication_name, pm.dose, pm.medication_interval
-    from patient_medication pm
-    join medication m on pm.medication_id = m.medication_id
-    where pm.patient_id = $_SESSION[id]")
-    or die("Could not issue MySQL query");
-    while ($row = $medication->fetch_assoc()) {
-        $medication_name = $row["medication_name"];
-        $dose = $row["dose"];
-        $medication_interval = $row["medication_interval"];
-        echo '<b>'."- ".'</b>'.$medication_name."($dose) to be taken ".$medication_interval.'<br />';}
-
-    include dirname(__DIR__).'../general/closeDB.php';
-    ?>
-
-    <p>Change your profile information <a href="change_info_patient.php">here</a>.</p>
-    <p>Change your password <a href="change_password_patient.php">here</a>.</p>
-    <p>Add medication information <a href="change_medication.php">here</a>.</p>
+   
 
 </body> 
 </html>
