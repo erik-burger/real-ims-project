@@ -160,7 +160,7 @@ include dirname(__DIR__).'/general/closeDB.php';
 
 
 <div class = "column">
-<h1>Your Doctors</h1>
+<h1>Your Doctor</h1>
 
 <?php
         include dirname(__DIR__).'/general/openDB.php';

@@ -62,28 +62,28 @@ $_SESSION["timestamp"] = time();
     <hr>
     <button onclick="location.href='Question_sheet.php'"
       type="button" 
-      style="margin-left:auto;margin-right:auto;margin-bottom:5px;display:block;padding: 200px 175px;font-size: 100px;" 
+      style="margin-left:auto;margin-right:auto;margin-bottom:5px;display:block;padding: 100px 150px;font-size: 100px;" 
       value="Test">
       TEST
     </button>
 
     <div class="btn-group" align="center">
       <button type="button" 
-        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
         value="Test"> 
         GAMES
       </button>
       
       <button onclick="location.href='patientprofile.php'" 
         type="button" 
-        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         PROFILE
       </button>
 
       <button onclick="location.href='patient_statistics.php'" 
         type="button" 
-        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         STATISTICS
       </button>
