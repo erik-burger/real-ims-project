@@ -5,8 +5,12 @@
     <meta name="description" content="Statistics page for patients">
     <title>Trackzheimers</title>   
     <link rel="stylesheet" href="top_menu_style.css">
+    <link rel="stylesheet" href="../general/IMS_Style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
+            body{
+                background-color: ghostwhite;
+            }
             ul{
                 list-style-type: none;
                 margin: 0;
@@ -107,7 +111,7 @@
             fill: 'tozeroy',
             line: {
                 shape: 'line' ,
-                color: 'blue'
+                color: '#669999'
             },
             visible: i.name == 'total score',
             name: i.name,
@@ -177,6 +181,7 @@
           font: {
             family: 'Arial',
             size: 30,
+            color: 'black',
           }
         },
         xaxis: {
@@ -185,6 +190,7 @@
             font: {
               family: 'Arial',
               size: 18,
+              color: 'black',
             }
           },
           rangeselector: selectorOptions,
@@ -197,9 +203,12 @@
             font: {
               family: 'Arial',
               size: 18,
+              color: 'black',
             }
           },
-        }
+        },
+        plot_bgcolor: "ghostwhite",
+        paper_bgcolor: "ghostwhite"
       };
 
       Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});

@@ -6,7 +6,11 @@
         <meta name="description" content="questions_sheet">
         <title>Trackzheimers</title>   
         <link rel="stylesheet" href="top_menu_style.css">
+        
         <style>
+            body{
+                background-color: ghostwhite;
+            }
             ul{
                 list-style-type: none;
                 margin: 0;
@@ -15,6 +19,80 @@
             .logo {
                 display: inline-block;
                 float: left; 
+            }
+
+            hr {
+                border: 10px solid ghostwhite;
+            }
+
+            button {
+                background-color: #669999;
+                border: none;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 30px;
+            }
+
+            
+            input[type=number] {
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                height:100px; 
+                width:300px;
+                font-size:100px;
+                border: 2px solid #669999;
+            }
+            input[type=text] {
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                height:100px; 
+                width:800px;
+                font-size:70px;
+                border: 2px solid #669999;
+            }
+            
+            
+            .radio_group {
+                margin: 0 auto;
+                width:200px;
+                text-align: left;
+                font-size:30px
+            }
+            input[type=radio] {
+                transform:scale(1.8);
+                margin: 10px 10px;
+                margin-top: -1px;
+                vertical-align: middle;
+
+
+            }
+
+            .image_label {
+                font-size:30px
+            }
+
+            .test_image {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                height: 400px;
+            }
+
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance:textfield;
             }
         </style>
     </head>
@@ -33,29 +111,7 @@
         </div>
     </nav>
 
-
     <body>
-        <style>
-            /* Chrome, Safari, Edge, Opera */
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-            }
-
-            /* Firefox */
-            input[type=number] {
-            -moz-appearance:textfield;
-            }
-
-            .test_image {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                height: 300px;
-            }
-        </style>
-
         <script>
             function go_back(link){
                 var r = confirm("Are you sure you want to end the test? All your progress in this test can be lost");
@@ -104,19 +160,19 @@
         <form action=test_result.php method="POST">
 
             <div id='question1' style="text-align:center;">
-                <h1 align="center">Write the current year</h1>
+                <h1 backgroundcolor="ghostwhite" align="center">Write the current year</h1>
                 <div style="text-align:center;">
                     <input type="number" name="curr_year" align="center"
-                    style="height:100px; width:300px;font-size:100px;"
                     onkeydown="return event.key != 'Enter';">
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question2','question1')">Next</button>
             </div>
 
 
             <div id='question2' style="display:none;text-align:center;">
                 <h1 align="center">Select the current month</h1>
-                <div style="text-align:center;">
+                <div class = 'radio_group'>
                 <input type="radio" name="month" value="January"
                 onkeydown="return event.key != 'Enter';">January<br>
                 <input type="radio" name="month" value="February"
@@ -142,12 +198,14 @@
                 <input type="radio" name="month" value="December"
                 onkeydown="return event.key != 'Enter';">December<br>
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question1','question2')">Back</button>
                 <button type="button" onclick="change_question('question3','question2')">Next</button>
             </div>
 
             <div id='question3' style="display:none;text-align:center;">
                 <h1 align="center">Select current day</h1>
+                <div class = 'radio_group'>
                 <input type="radio" name="day_word" value="Monday"
                 onkeydown="return event.key != 'Enter';">Monday<br>
                 <input type="radio" name="day_word" value="Tuesday"
@@ -162,17 +220,19 @@
                 onkeydown="return event.key != 'Enter';">Saturday<br>
                 <input type="radio" name="day_word" value="Sunday"
                 onkeydown="return event.key != 'Enter';">Sunday<br>
+                </div>
+                <hr>
                 <button type="button" onclick="change_question('question2','question3')">Back</button>
                 <button type="button" onclick="change_question('question4','question3')">Next</button> 
             </div>
 
             <div id='question4' style="display:none;text-align:center;">
-                <h1 align="center">Select current daynumber????</h1>
+                <h1 align="center">Write current daynumber</h1>
                 <div style="text-align:center;">
                     <input type="number" name="day_num" align="center"
-                    style="height:100px; width:300px;font-size:100px;"
                     onkeydown="return event.key != 'Enter';">
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question3','question4')">Back</button>
                 <button type="button" onclick="change_question('question5','question4')">Next</button>
                 
@@ -180,6 +240,7 @@
 
             <div id='question5' style="display:none;text-align:center;">
                 <h1 align="center">What time of day is it?</h1>
+                <div class = 'radio_group'>
                     <input type="radio" name="time_of_day" value="Morning"
                     onkeydown="return event.key != 'Enter';">Morning<br> <!--06-10 -->
                     <input type="radio" name="time_of_day" value="Lunchtime"
@@ -190,6 +251,8 @@
                     onkeydown="return event.key != 'Enter';">Evening<br><!--18-22 -->
                     <input type="radio" name="time_of_day" value="Night"
                     onkeydown="return event.key != 'Enter';">Night<br><!--22-06 -->
+                </div>
+                <hr>
                 <button type="button" onclick="change_question('question4','question5')">Back</button>
                 <button type="button" onclick="change_question('question6','question5')">Next</button>
             </div>
@@ -198,9 +261,9 @@
                 <h1 align="center">In what country are you in?</h1>
                 <div style="text-align:center;">
                     <input type="text" name="country" align="center" autocomplete="new-password"
-                    style="height:100px; width:300px;font-size:100px;"
                     onkeydown="return event.key != 'Enter';">
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question5','question6')">Back</button>
                 <button type="button" onclick="change_question('question7','question6')">Next</button>
             </div>
@@ -210,9 +273,9 @@
                 <h1 align="center">In what county/state are you in?</h1>
                 <div style="text-align:center;">
                     <input type="text" name="state" align="center" autocomplete="new-password"
-                    style="height:100px; width:300px;font-size:100px;"
                     onkeydown="return event.key != 'Enter';">
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question6','question7')">Back</button>
                 <button type="button" onclick="change_question('question8','question7')">Next</button>  
             </div>
@@ -221,9 +284,9 @@
                 <h1 align="center">In what city/town are you?</h1>
                 <div style="text-align:center;">
                     <input type="text" name="town" align="center" autocomplete="new-password"
-                    style="height:100px; width:300px;font-size:100px;"
                     onkeydown="return event.key != 'Enter';">
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question7','question8')">Back</button>
                 <button type="button" onclick="change_question('question9','question8')">Next</button>
             </div>
@@ -232,9 +295,9 @@
                 <h1 align="center">On what street are you?</h1>
                 <div style="text-align:center;">
                     <input type="text" name="street" align="center" autocomplete="new-password"
-                    style="height:100px; width:300px;font-size:100px;"
                     onkeydown="return event.key != 'Enter';">
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question8','question9')">Back</button>
                 <button type="button" onclick="change_question('question10','question9')">Next</button>
             </div>
@@ -243,9 +306,9 @@
                 <h1 align="center">On what floor is your bedroom?</h1>
                 <div style="text-align:center;">
                     <input type="number" name="bedroom" align="center"
-                    style="height:100px; width:300px;font-size:100px;"
                     onkeydown="return event.key != 'Enter';">
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question9','question10')">Back</button>
                 <button type="button" onclick="change_question('question11','question10')">Next</button>
                 
@@ -306,11 +369,13 @@
                     onkeydown="return event.key != 'Enter';">
                     <input type='text' name='word_3' autocomplete='new-password'
                     onkeydown="return event.key != 'Enter';">
+                    <hr>
+                    <button type="button" onclick="change_question('question10','question11')">Back</button>
+                    <button type="button" onclick="change_question('question12','question11')">Next</button>
+ 
                     </div>
                 </div>
-                <button type="button" onclick="change_question('question10','question11')">Back</button>
-                <button type="button" onclick="change_question('question12','question11')">Next</button>
-            </div>
+                           </div>
 
             <div id='question12' style="display:none;text-align:center;">                
                 <?php
@@ -322,12 +387,13 @@
                 ?>
                 <div>
                 <input type='hidden' name='0st-number' value='<?php echo $number; ?>'>
-                <input type='number' name='1st-sub' align='center' style='height:20px; width:40px;font-size:15px;' onkeydown='return event.key != "Enter";'><br>
-                <input type='number' name='2st-sub' align='center' style='height:20px; width:40px;font-size:15px;' onkeydown='return event.key != "Enter";'><br>
-                <input type='number' name='3st-sub' align='center' style='height:20px; width:40px;font-size:15px;' onkeydown='return event.key != "Enter";'><br>
-                <input type='number' name='4st-sub' align='center' style='height:20px; width:40px;font-size:15px;' onkeydown='return event.key != "Enter";'><br>
-                <input type='number' name='5st-sub' align='center' style='height:20px; width:40px;font-size:15px;' onkeydown='return event.key != "Enter";'><br>
+                <input type='number' name='1st-sub' align='center' onkeydown='return event.key != "Enter";'><br>
+                <input type='number' name='2st-sub' align='center' onkeydown='return event.key != "Enter";'><br>
+                <input type='number' name='3st-sub' align='center' onkeydown='return event.key != "Enter";'><br>
+                <input type='number' name='4st-sub' align='center' onkeydown='return event.key != "Enter";'><br>
+                <input type='number' name='5st-sub' align='center' onkeydown='return event.key != "Enter";'><br>
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question11','question12')">Back</button>
                 <button type="button" onclick="change_question('question13','question12')">Next</button>
             </div>
@@ -339,6 +405,7 @@
                     <input type="text" name="word_2_rem" align="center" autocomplete="new-password" onkeydown="return event.key != 'Enter';">
                     <input type="text" name="word_3_rem" align="center" autocomplete="new-password" onkeydown="return event.key != 'Enter';">
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question12','question13')">Back</button>
                 <button type="button" onclick="change_question('question14_1','question13')">Next</button>
             </div>
@@ -390,13 +457,14 @@
                         }
                         include dirname(__DIR__)."/general/closeDB.php";
                         ?>
+                        <div class='image_label'>
                         <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $ans_1; ?>'><?php echo $ans_1; ?>
                         <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option1_1; ?>'><?php echo $option1_1; ?>
                         <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option2_1; ?>'><?php echo $option2_1; ?>
                         <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option3_1; ?>'><?php echo $option3_1; ?>
-                       
-
+                       </div>
                 </div>
+                <hr>
                 <button type="button" onclick="change_question('question13','question14_1')">Back</button>
                 <button type="button" onclick="change_question('question14_2','question14_1')">Next</button>
             </div>
@@ -449,11 +517,13 @@
                         }
                         include dirname(__DIR__)."/general/closeDB.php";
                         ?>
-
+                        
+                        <div class='image_label'>
                         <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $ans_2; ?>'><?php echo $ans_2; ?>
                         <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option1_2; ?>'><?php echo $option1_2; ?>
                         <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option2_2; ?>'><?php echo $option2_2; ?>
                         <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option3_2; ?>'><?php echo $option3_2; ?>
+                        </div>
                         
                 <br>
                 <button type="button" onclick="change_question('question14_1','question14_2')">Back</button>
