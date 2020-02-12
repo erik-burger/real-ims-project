@@ -61,16 +61,20 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
-        ul{
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            .logo {
-                display: inline-block;
-                float: left; 
-            }
-       
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.logo {
+    display: inline-block;
+    float: left; 
+}
+
+.sideBySide{
+display: inline-block;
+padding: 20px
+}
 
 </style>
 </head>
@@ -114,12 +118,17 @@ $id = $_SESSION["id"];
   </script>
 
 <div class="c">
-<h1>Trackzheimers</h1>
-<p>Search for a patient</p>
+<h1>Your Patients</h1>
 
-<form action="" method = "post" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search.." name="search_text">
+
+<form id = "form_search" class = sideBySide action="" method = "post" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search..." name="search_text">
   <button type="submit" name = "submit"><i class="fa fa-search"></i></button>
+</form>
+
+<form id = "form_connect" class = sideBySide action="connect_to_patient.php" method = "post" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Patient ID" name="patient_id">
+  <button type="submit" name = "connect">Connect</button>
 </form>
 
 <table style="width:70%" align="center">
