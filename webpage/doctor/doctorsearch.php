@@ -151,7 +151,8 @@ $id = $_SESSION["id"];
       $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                     from patient as p, patient_doctor as p_d
                                     where p.patient_id = p_d.patient_id   
-                                    and p_d.doctor_id = '$id' 
+                                    and p_d.doctor_id = '$id'
+                                    and p_d.both_accept = true
                                     and (p.patient_id = '$search' 
                                     or last_name like '%$search%' 
                                     or first_name like '%$search%')")   
@@ -181,7 +182,9 @@ $id = $_SESSION["id"];
     include dirname(__DIR__).'/general/openDB.php';
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
-                        where p.patient_id = p_d.patient_id and p_d.doctor_id = '$id'")   
+                                  where p.patient_id = p_d.patient_id 
+                                  and p_d.doctor_id = '$id'
+                                  and p_d.both_accept = true")   
     or 
     die("Could not issue MySQL query"); 
 
