@@ -93,6 +93,7 @@ table, th, td {
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
+      
     }
 
 </style>
