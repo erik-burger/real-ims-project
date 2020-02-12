@@ -135,11 +135,5 @@
     <p>Change your password <a href="change_password_patient.php">here</a>.</p>
     <p>Add medication information <a href="change_medication.php">here</a>.</p>
 
-    include dirname(__DIR__).'/general/closeDB.php';
-    ?>
-
-    <p>Change your profile information <a href="#">here</a>.</p>
-    <p>Add medication information <a href="change_medication.php">here</a>.</p>
-
 </body> 
 </html>
