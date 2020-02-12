@@ -30,8 +30,9 @@
             <ul class="nav navbar-nav">
             <li><a href="../doctor/doctorstart.php">Home</a></li>
             <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="../doctor/doctorprofile.php">Profile</a></li>
             <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
-            </ul>
+          </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
             </ul>
