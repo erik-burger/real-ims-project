@@ -85,6 +85,22 @@
 
 <h3>Statistics</h3>
 <?php
+            $dates_data = [];
+            $score_data = [];
+            $score1_data = [];
+            $score2_data = [];
+            $score3_data = [];
+            $score4_data = [];
+            $score5_data = [];
+            $score6_data = [];
+            $score7_data = [];
+            $score8_data = [];
+            $score9_data = [];
+            $score10_data = [];
+            $score11_data = [];
+            $score12_data = [];
+            $score13_data = [];
+            $score14_data = [];
           include dirname(__DIR__)."/general/openDB.php";
           $attributes = "test_date, total_score, score_1, score_2, score_3, score_4, score_5, score_6, score_7, score_8, score_9, score_10, score_11, score_12, score_13, score_14";
           $result = mysqli_query($link,"select $attributes from test where patient_id = $patient_id")
@@ -110,7 +126,7 @@
             $score13_data[] = $row['score_13'];
             $score14_data[] = $row['score_14'];
           }
-
+        
         $orientation_score = array_map(function () {
             return array_sum(func_get_args());
         }, $score1_data, $score2_data, $score3_data, $score4_data, $score5_data, $score6_data, $score7_data, $score8_data, $score9_data, $score10_data);
