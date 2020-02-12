@@ -58,9 +58,12 @@ Text-align: center;
 <!Create a table>
 <style>
 table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
+                padding: 15px; 
+                border: 1px white;
+                border-collapse: collapse;
+                border-bottom: 1px solid #ddd;
+                border-top: 1px solid #ddd;
+            }
 ul{
   list-style-type: none;
   margin: 0;
