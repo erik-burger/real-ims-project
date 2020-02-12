@@ -9,19 +9,16 @@
   </head>
 
   <body>
+
+
   <?php
     session_start();
     $patient_id = $_SESSION["id"];
   ?>
-  
 
-    <div class="navbar">
-      <a href="patientstart.php">Go Back</a>
-      <a href="../general/logout.php">Logout</a>          
-    </div>
-    <div id='myDiv'></div>
+    
+  <!-- Retrive all the data -->
     <?php
-
           include dirname(__DIR__)."/general/openDB.php";
           $attributes = "test_date, total_score, score_1, score_2, score_3, score_4, score_5, score_6, score_7, score_8, score_9, score_10, score_11, score_12, score_13, score_14";
           $result = mysqli_query($link,"select $attributes from test where patient_id = $patient_id")
@@ -53,6 +50,18 @@
         }, $score1_data, $score2_data, $score3_data, $score4_data, $score5_data, $score6_data, $score7_data, $score8_data, $score9_data, $score10_data);
 
     ?>
+  <!--contatn of page-->
+    <div class="navbar">
+      <a href="patientstart.php">Go Back</a>
+      <a href="../general/logout.php">Logout</a>          
+    </div>
+    <h1>Statistics</h1>
+    <b>Number of tests taken:</b> <?php echo count($dates_data);?><br>
+    <b>Latest test:</b> <?php echo end($dates_data);?><br>
+    <b>Latest score:</b> <?php echo end($score_data);?><br>
+    <div id='myDiv'></div>
+
+  <!--end of content-->
 
     <script>
 
@@ -64,99 +73,57 @@
       var delayed_arr = <?php echo json_encode($score13_data); ?>;
       var language_arr = <?php echo json_encode($score14_data); ?>;
       
-      score_curve = {
-      x: dates_arr,
-      y: score_arr,
-      line: {
-          shape: 'line' ,
-          color: 'red',
-          width: 5
-      },
-      visible: true,
-      name: 'Data set 1',
-      };
+      array_of_array = [
+        {data: score_arr, name: 'total score', dates: dates_arr},
+        {data: orientation_arr, name: 'orientation score', dates: dates_arr},
+        {data: immediate_arr, name: 'immediate score', dates: dates_arr},
+        {data: attention_arr, name: 'attention score', dates: dates_arr},
+        {data: delayed_arr, name: 'dealyed score', dates: dates_arr},
+        {data: language_arr, name: 'language score', dates: dates_arr}
+      ]
 
-      orientation_curve = {
-      x: dates_arr,
-      y: orientation_arr,
-      line: {
-          shape: 'line' ,
-          color: 'red',
-          width: 5
-      },
-      visible: false,
-      name: 'Data set 2',
-      };
-
-      immediate_curve = {
-      x: dates_arr,
-      y: immediate_arr,
-      line: {
-          shape: 'line' ,
-          color: 'red',
-          width: 5
-      },
-      visible: false,
-      name: 'Data set 3',
-      };
-
-      attention_curve = {
-      x: dates_arr,
-      y: attention_arr,
-      line: {
-          shape: 'line' ,
-          color: 'red',
-          width: 5
-      },
-      visible: false,
-      name: 'Data set 4',
-      };
-
-      delayed_curve = {
-      x: dates_arr,
-      y: delayed_arr,
-      line: {
-          shape: 'line' ,
-          color: 'red',
-          width: 5
-      },
-      visible: false,
-      name: 'Data set 5',
-      };
-
-      language_curve = {
-      x: dates_arr,
-      y: language_arr,
-      line: {
-          shape: 'line' ,
-          color: 'red',
-          width: 5
-      },
-      visible: false,
-      name: 'Data set 6',
-      };
-
-      var options_curve = [score_curve, orientation_curve, immediate_curve, attention_curve, delayed_curve, language_curve];
-
-      Plotly.newPlot('myDiv', options_curve, {
-          updatemenus: [{
-              y: 0.8,
-              yanchor: 'top',
-              buttons: [{
-                  method: 'restyle',
-                  args: ['line.color', 'red'],
-                  label: 'red'
-              }, {
-                  method: 'restyle',
-                  args: ['line.color', 'blue'],
-                  label: 'blue'
-              }, {
-                  method: 'restyle',
-                  args: ['line.color', 'green'],
-                  label: 'green'
-              }]
+      function makeTrace(i) {
+        return {
+            y: i.data,
+            x: i.dates,
+            fill: 'tozeroy',
+            line: {
+                shape: 'line' ,
+                color: 'blue'
+            },
+            visible: i.name == 'total score',
+            name: i.name,
+        };
+      }
+      var selectorOptions = {
+          buttons: [{
+              step: 'month',
+              stepmode: 'backward',
+              count: 1,
+              label: '1m'
           }, {
-              y: 1,
+              step: 'month',
+              stepmode: 'backward',
+              count: 6,
+              label: '6m'
+          }, {
+              step: 'year',
+              stepmode: 'todate',
+              count: 1,
+              label: 'YTD'
+          }, {
+              step: 'year',
+              stepmode: 'backward',
+              count: 1,
+              label: '1y'
+          }, {
+              step: 'all',
+          }],
+      };
+
+      var updatemenus = [{
+              y: 1.4,
+              x: 1,
               yanchor: 'top',
               buttons: [{
                   method: 'restyle',
@@ -183,42 +150,42 @@
                   args: ['visible', [false, false, false, false, false, true]],
                   label: 'Language score'
               }]
-          }],
-      });
+          }]
 
-
-      /*
-      var trace50 = {
-        x: dates_arr,
-        y: score_arr,
-        mode: 'lines',
-        line: {
-          color: 'rgb(88, 155, 155)',
-          width: 5
-        }
-        };
-
-        var layout = {
-            title: {
-            text:'Total MMSE score over time'
-          },
-          xaxis: {
-            title: {
-              text: 'Date'
-            },
-          },
-          yaxis: {
-            title: {
-              text: 'Score'
-            }
+      var layout = {
+        updatemenus: updatemenus,
+        title: {
+          text: '<b>Score over time</b>',
+          font: {
+            family: 'Arial',
+            size: 30,
           }
-        };
-              
-        var data = [trace50];
+        },
+        xaxis: {
+          title: {
+            text: '<b>Date</b>',
+            font: {
+              family: 'Arial',
+              size: 18,
+            }
+          },
+          rangeselector: selectorOptions,
+          rangeslider: {}
+        },
+        yaxis: {
+          fixedrange: true,
+          title: {
+            text: '<b>Score</b>',
+            font: {
+              family: 'Arial',
+              size: 18,
+            }
+          },
+        }
+      };
 
-        Plotly.newPlot('myDiv', data, layout, {displayModeBar: false});
-      }
-      */
+      Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});
+
     </script>
 
   </body>
