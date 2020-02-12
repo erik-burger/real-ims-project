@@ -128,7 +128,8 @@
     include dirname(__DIR__).'../general/closeDB.php';
     ?>
 
-    <p>Change your profile information <a href="#">here</a>.</p>
+    <p>Change your profile information <a href="change_info_patient.php">here</a>.</p>
+    <p>Change your password <a href="change_password_patient.php">here</a>.</p>
     <p>Add medication information <a href="change_medication.php">here</a>.</p>
 >>>>>>> 29bf900086eaabac2cb64212d6298c145dcc5cca
 
