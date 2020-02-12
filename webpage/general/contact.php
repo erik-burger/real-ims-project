@@ -12,17 +12,37 @@ session_start();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
+        <style>
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .logo {
+                display: inline-block;
+                float: left; 
+            }
+        </style>
     </head>
-    <body>
-        <div class="navbar">
-            <a href="../doctor/doctorstart.php">Home</a>
-            <a class="active" href="contact.php">Contact</a>
-            <a href="../doctor/doctorprofile.php">Profile</a>
-            <a href="../doctor/doctorsearch.php">Patients</a>
-            <a href="logout.php">Logout</a>          
-        </div>
 
-        <img src="logo_full.png" width="600">
+    <body>
+        <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li><a href="../doctor/doctorstart.php">Home</a></li>
+            <li class="active"><a href="../general/contact.php">Contact</a></li>
+            <li><a href="../doctor/doctorsearch.php">Patients</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        <img src="logo_grey.png" width="400">
         
         <p>Some text...</p>
         

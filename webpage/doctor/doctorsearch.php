@@ -61,6 +61,21 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.logo {
+    display: inline-block;
+    float: left; 
+}
+
+.sideBySide{
+display: inline-block;
+padding: 20px
+}
+
 </style>
 </head>
 
@@ -75,13 +90,21 @@ $id = $_SESSION["id"];
     */
 ?> 
 
-  <div class="navbar">
-    <a href="doctorstart.php">Home</a>
-    <a href="../general/contact.php">Contact</a>
-    <a href="doctorprofile.php">Profile</a>
-    <a class="active" href="doctorsearch.php">Patients</a>
-    <a href="../general/logout.php">Logout</a>          
-  </div>
+<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li><a href="doctorstart.php">Home</a></li>
+            <li><a href="../general/contact.php">Contact</a></li>
+            <li class="active"><a href="doctorsearch.php">Patients</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
   
   <script>
       function update_search(new_search, old_search) {
@@ -95,12 +118,17 @@ $id = $_SESSION["id"];
   </script>
 
 <div class="c">
-<h1>Trackzheimers</h1>
-<p>Search for a patient</p>
+<h1>Your Patients</h1>
 
-<form action="" method = "post" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search.." name="search_text">
+
+<form id = "form_search" class = sideBySide action="" method = "post" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search..." name="search_text">
   <button type="submit" name = "submit"><i class="fa fa-search"></i></button>
+</form>
+
+<form id = "form_connect" class = sideBySide action="connect_to_patient.php" method = "post" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Patient ID" name="patient_id">
+  <button type="submit" name = "connect">Connect</button>
 </form>
 
 <table style="width:70%" align="center">
