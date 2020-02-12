@@ -20,14 +20,11 @@
   </head>
 
   <body>
-  
-
 
   <?php
     session_start();
     $patient_id = $_SESSION["id"];
   ?>
-
     
   <!-- Retrive all the data -->
     <?php
