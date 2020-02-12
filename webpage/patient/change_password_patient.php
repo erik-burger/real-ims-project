@@ -10,7 +10,7 @@
 
          
     ?> 
-    <form action="update_password_researcher.php" method="POST">
+    <form action="update_password_patient.php" method="POST">
       
       <p>Please fill in this form to change your password.</p>
       
