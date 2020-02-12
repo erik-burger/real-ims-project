@@ -6,7 +6,7 @@
     <?php
         session_start();
         $id = $_SESSION["id"];
-        include dirname(__DIR__).'../general/openDB.php';
+        include dirname(__DIR__).'/general/openDB.php';
 
         $result = mysqli_query($link,"select *
         from doctor 
@@ -27,11 +27,11 @@
             $country = $row["country"];
             $phone = $row["phone"];  
         }  
-        include dirname(__DIR__).'../general/closeDB.php';  
+        include dirname(__DIR__).'/general/closeDB.php';  
     ?> 
     <form action="update_doctor.php" method="POST">
-      <h3>Register</h3>
-      <p>Please fill in this form to create an account.</p>
+      <h3></h3>
+      <p>Please fill in this form to change your account information.</p>
       
       <label for="f_name"><b>First name</b></label>
       <input type="text" value= "<?php echo $first_name;?>" name="f_name" >
@@ -66,7 +66,7 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" value= "" name="psw"><br>
         
-      <button type="Submit Changes">Register</button>
+      <button type="Submit Changes">Submit changes</button>
     
     </form>
     
