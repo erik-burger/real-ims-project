@@ -6,9 +6,21 @@
     <title>Trackzheimers</title>   
     <link rel="stylesheet" href="top_menu_style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .logo {
+                display: inline-block;
+                float: left; 
+            }
+        </style>
   </head>
 
   <body>
+  
 
 
   <?php
@@ -50,11 +62,20 @@
         }, $score1_data, $score2_data, $score3_data, $score4_data, $score5_data, $score6_data, $score7_data, $score8_data, $score9_data, $score10_data);
 
     ?>
-  <!--contatn of page-->
-    <div class="navbar">
-      <a href="patientstart.php">Go Back</a>
-      <a href="../general/logout.php">Logout</a>          
-    </div>
+  <!--content of page-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="patientstart.php">Home</a></li>            
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
     <h1>Statistics</h1>
     <b>Number of tests taken:</b> <?php echo count($dates_data);?><br>
     <b>Latest test:</b> <?php echo end($dates_data);?><br>
