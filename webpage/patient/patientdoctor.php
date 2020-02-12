@@ -4,16 +4,39 @@
 <head>
     <link rel="stylesheet" href="top_menu_style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+        .logo {
+            display: inline-block;
+            float: left; 
+        }
+</style>
 </head>
 
 <body>
-    <div class="navbar">
-        <a href="doctorstart.php">Home</a>
-        <a href="contact.php">Contact</a>
-        <a href="doctorprofile.php">Profile</a>
-        <a href="doctorsearch.php">Patients</a>
-        <a href="../general/logout.php">Logout</a>          
-    </div>
+<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li><a href="../doctor/doctorstart.php">Home</a></li>
+            <li><a href="../general/contact.php">Contact</a></li>
+            <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
 <img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo"><br>
 
