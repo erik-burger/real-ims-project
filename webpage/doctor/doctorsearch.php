@@ -149,7 +149,7 @@ $id = $_SESSION["id"];
 <?php 
   if(isset($_POST['submit'])){
     if(isset($_POST['search_text'])){
-      include dirname(__DIR__).'../general/openDB.php';
+      include dirname(__DIR__).'/general/openDB.php';
       $search = $_POST['search_text']; 
       
       $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
