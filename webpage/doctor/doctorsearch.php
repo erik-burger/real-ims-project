@@ -64,30 +64,37 @@ table, th, td {
                 border-bottom: 1px solid #ddd;
                 border-top: 1px solid #ddd;
             }
-ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.logo {
-    display: inline-block;
-    float: left; 
-}
+          ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+          }
+          .logo {
+              display: inline-block;
+              float: left; 
+          }
 
-.sideBySide{
-display: inline-block;
-padding: 20px
-}
-*{
-    	box-sizing: border-box;
-    	}
-input[type = text], select , textarea{
-    		width: 100%;
+          .sideBySide{
+        display: inline-block;
+        padding: 20px
+        }
+    
+    	input[type = text], select , textarea{
     		padding: 12px;
     		border: 1px solid #ccc;
     		border-radius; 4px;
-    		resize: vertical;
-    	}
+      }
+      .button {
+      background-color: #669999; 
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+
 </style>
 </head>
 
@@ -118,33 +125,21 @@ $id = $_SESSION["id"];
             </ul>
         </div>
     </nav>
-  
-  <script>
-      function update_search(new_search, old_search) {
-        var new_ = document.getElementById(new_search);
-        var old_ = document.getElementById(old_search);         
-        if (new_.style.display === "none") {               
-                    new_.style.display = "block";
-                    old_.style.display = "none";
-        }
-      }
-  </script>
 
 <div class="c">
 <h1>Your Patients</h1>
 
-
-<form id = "form_search" class = sideBySide action="" method = "post" style="margin:auto;max-width:300px">
+<div class="container">
+<form id = "form_search" class = sideBySide action="" method = "post" style="margin:auto;">
   <input type="text" placeholder="Search..." name="search_text">
-  <button type="submit" name = "submit"><i class="fa fa-search"></i></button>
+  <button type="submit" class = "button" name = "submit"><i class="fa fa-search"></i></button>
 </form>
 
-<form id = "form_connect" class = sideBySide action="connect_to_patient.php" method = "post" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Patient ID" name="patient_id">
-  <button type="submit" name = "connect">Connect</button>
+<form id = "form_connect" class = sideBySide action="connect_to_patient.php" method = "post" style="margin:auto;">
+  <input type="text" placeholder="Patient ID" name="patient_id" >
+  <button type="submit" class = "button" name = "connect">Connect</button>
 </form>
-
-
+</div>
 
 <?php 
   if(isset($_POST['submit'])){
@@ -160,16 +155,16 @@ $id = $_SESSION["id"];
                                     or last_name like '%$search%' 
                                     or first_name like '%$search%')")   
       or 
-      die("Could not issue MySQL query"); 
-
+      die("Could not issue MySQL query");
+      
       echo "<table style='width:70%' align='center'>
       <tr>
       <th>First Name</th>
       <th>Last Name</th>
       <th>ID</th>
       </tr>"; 
-      
-      if ($result->num_rows > 0) {
+
+      if ($result->num_rows > 0) {       
         while($row = $result->fetch_assoc()) {
             $p_id = $row["patient_id"];
             echo "<tr><td>" . $row["first_name"]. "</td>
