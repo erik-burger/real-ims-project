@@ -83,7 +83,7 @@ session_start();
 
 <?php 
     $id = $_SESSION['id']; 
-    include dirname(__DIR__).'../general/openDB.php';
+    include dirname(__DIR__).'/general/openDB.php';
     $result = mysqli_query($link,"select t.patient_id, p.first_name, p.last_name, t.total_score, max(t.test_date) as test_date
     from test as t, patient as p, patient_doctor as p_d
     where p.patient_id = t.patient_id = p_d.patient_id and p_d.doctor_id = '$id' 
@@ -103,7 +103,7 @@ session_start();
     echo "</table>";
     }   
     
-    include dirname(__DIR__).'../general/closeDB.php'; 
+    include dirname(__DIR__).'/general/closeDB.php'; 
     ?>
     </body>
 </html>
