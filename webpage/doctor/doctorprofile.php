@@ -4,16 +4,37 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
+        <style>
+            ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.logo {
+    display: inline-block;
+    float: left; 
+}
+
+        </style>
     </head>
 
     <body>
-        <div class="navbar">
-            <a href="doctorstart.php">Home</a>
-            <a href="../general/contact.php">Contact</a>
-            <a class="active" href="doctorprofile.php">Profile</a>
-            <a href="doctorsearch.php">Patients</a>
-            <a href="../general/logout.php">Logout</a>          
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li><a href="doctorstart.php">Home</a></li>
+            <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="doctorprofile.php">Profile</a></li>
+            <li class="active"><a href="doctorsearch.php">Patients</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
         </div>
+    </nav>
 
         <h1>Profile</h1>
    

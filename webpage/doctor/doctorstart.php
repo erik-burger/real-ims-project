@@ -56,6 +56,7 @@ session_start();
             <ul class="nav navbar-nav">
             <li class="active"><a href="doctorstart.php">Home</a></li>
             <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="doctorprofile.php">Profile</a></li>
             <li><a href="doctorsearch.php">Patients</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

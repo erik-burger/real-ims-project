@@ -78,7 +78,16 @@ ul{
 display: inline-block;
 padding: 20px
 }
-
+*{
+    	box-sizing: border-box;
+    	}
+input[type = text], select , textarea{
+    		width: 100%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    	}
 </style>
 </head>
 
@@ -101,6 +110,7 @@ $id = $_SESSION["id"];
             <ul class="nav navbar-nav">
             <li><a href="doctorstart.php">Home</a></li>
             <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="doctorprofile.php">Profile</a></li>
             <li class="active"><a href="doctorsearch.php">Patients</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
