@@ -109,7 +109,28 @@
         include dirname(__DIR__).'/general/closeDB.php';
 
     ?>
+<<<<<<< HEAD
     
+=======
+    <h3>Medication</h3>
+    <?php
+    include dirname(__DIR__).'../general/openDB.php';
+    $medication = mysqli_query($link, "select m.medication_name, pm.dose, pm.medication_interval
+    from patient_medication pm
+    join medication m on pm.medication_id = m.medication_id
+    where pm.patient_id = $_SESSION[id]")
+    or die("Could not issue MySQL query");
+    while ($row = $medication->fetch_assoc()) {
+        $medication_name = $row["medication_name"];
+        $dose = $row["dose"];
+        $medication_interval = $row["medication_interval"];
+        echo '<b>'."- ".'</b>'.$medication_name."($dose) to be taken ".$medication_interval.'<br />';}
+    include dirname(__DIR__).'../general/closeDB.php';
+    ?>
+
+    <p>Change your profile information <a href="#">here</a>.</p>
+    <p>Add medication information <a href="change_medication.php">here</a>.</p>
+>>>>>>> 29bf900086eaabac2cb64212d6298c145dcc5cca
 
 </body> 
 </html>
