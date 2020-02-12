@@ -58,9 +58,12 @@ Text-align: center;
 <!Create a table>
 <style>
 table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
+                padding: 15px; 
+                border: 1px white;
+                border-collapse: collapse;
+                border-bottom: 1px solid #ddd;
+                border-top: 1px solid #ddd;
+            }
 ul{
   list-style-type: none;
   margin: 0;
@@ -131,21 +134,57 @@ $id = $_SESSION["id"];
   <button type="submit" name = "connect">Connect</button>
 </form>
 
-<table style="width:70%" align="center">
-    <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>ID</th>
-    </tr>
+
 
 <?php 
-   
+  if(isset($_POST['submit'])){
+    if(isset($_POST['search_text'])){
+      include dirname(__DIR__).'../general/openDB.php';
+      $search = $_POST['search_text']; 
+      
+      $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
+                                    from patient as p, patient_doctor as p_d
+                                    where p.patient_id = p_d.patient_id   
+                                    and p_d.doctor_id = '$id' 
+                                    and (p.patient_id = '$search' 
+                                    or last_name like '%$search%' 
+                                    or first_name like '%$search%')")   
+      or 
+      die("Could not issue MySQL query"); 
+
+      echo "<table style='width:70%' align='center'>
+      <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>ID</th>
+      </tr>"; 
+      
+      if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $p_id = $row["patient_id"];
+            echo "<tr><td>" . $row["first_name"]. "</td>
+            <td>" . $row["last_name"] . "</td>
+            <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+    }
+    echo "</table>";
+    } 
+    include dirname(__DIR__).'../general/closeDB.php'; 
+  }
+}
+  else{ 
     include dirname(__DIR__).'../general/openDB.php';
     $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                   from patient as p, patient_doctor as p_d
                         where p.patient_id = p_d.patient_id and p_d.doctor_id = '$id'")   
     or 
     die("Could not issue MySQL query"); 
+
+    echo "<table style='width:70%' align='center'>
+    <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>ID</th>
+    </tr>"; 
     
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -155,39 +194,11 @@ $id = $_SESSION["id"];
             <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
-    }   
-    
-    include dirname(__DIR__).'../general/closeDB.php';    
-
-    if(isset($_POST['submit'])){
-      if(isset($_POST['search_text'])){
-        include dirname(__DIR__).'../general/openDB.php';
-        $search = $_POST['search_text']; 
-        
-        $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
-                                      from patient as p, patient_doctor as p_d
-                                      where p.patient_id = p_d.patient_id   
-                                      and p_d.doctor_id = '$id' 
-                                      and (p.patient_id = '$search' 
-                                      or last_name like '%$search%' 
-                                      or first_name like '%$search%')")   
-        or 
-        die("Could not issue MySQL query"); 
-        
-        if ($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-              $p_id = $row["patient_id"];
-              echo "<tr><td>" . $row["first_name"]. "</td>
-              <td>" . $row["last_name"] . "</td>
-              <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
-      }
-      echo "</table>";
-      } 
-      include dirname(__DIR__).'../general/closeDB.php'; 
-    }
+    }     
+    include dirname(__DIR__).'../general/closeDB.php';   
   }  
 ?> 
-</table>
+
 
 
 
