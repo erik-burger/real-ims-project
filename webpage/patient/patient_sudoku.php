@@ -27,18 +27,31 @@
             width: 50%;
         }
     </style>
+<?php 
 
+
+$sudoku = array(
+  array(0, 0, 7, 0, 0, 4, 0, 2, 0),
+  array(0, 0, 4, 0, 0, 1, 0, 0, 0),
+  array(0, 0, 0, 0, 0, 6, 8, 0, 4),
+  array(9, 0, 8, 6, 0, 5, 0, 1, 0),
+  array(5, 6, 0, 0, 0, 0, 7, 0, 0),
+  array(0, 0, 2, 7, 0, 3, 6, 9, 5),
+  array(7, 8, 0, 0, 6, 2, 1, 0, 0),
+  array(0, 0, 9, 1, 3, 8, 0, 0, 0),
+  array(1, 3, 0, 0, 0, 7, 4, 0, 2));
+?>
   <form action="check_sudoku.php" method="POST">
       
-    <input type="number" name="11" class="sudoku" value = 5 readonly>
-    <input type="number" name="12" class="sudoku" value = 3 readonly>
-    <input type="number" name="13" required class="sudoku">
-    <input type="number" name="14" required class="sudoku">
-    <input type="number" name="15" required class="sudoku" value = 7 readonly>
-    <input type="number" name="16" required class="sudoku">
-    <input type="number" name="17" required class="sudoku">
-    <input type="number" name="18" required class="sudoku">
-    <input type="number" name="19" required class="sudoku"><br><br>
+    <input type="number" name="11" class="sudoku" value = <?php if($sudoku[0][0] != 0){print $sudoku[0][0]; print "readonly";}?>>
+    <input type="number" name="12" class="sudoku" value = <?php if($sudoku[0][1] != 0){print $sudoku[0][1]; print "readonly";}?>>
+    <input type="number" name="13" required class="sudoku" value = <?php if($sudoku[0][2] != 0){print $sudoku[0][2]; print "readonly";}?>>
+    <input type="number" name="14" required class="sudoku" value = <?php if($sudoku[0][3] != 0){print $sudoku[0][3]; print "readonly";}?>>
+    <input type="number" name="15" required class="sudoku" value = <?php if($sudoku[0][4] != 0){print $sudoku[0][4]; print "readonly";}?>>
+    <input type="number" name="16" required class="sudoku" value = <?php if($sudoku[0][5] != 0){print $sudoku[0][5]; print "readonly";}?>>
+    <input type="number" name="17" required class="sudoku" value = <?php if($sudoku[0][6] != 0){print $sudoku[0][6]; print "readonly";}?>>
+    <input type="number" name="18" required class="sudoku" value = <?php if($sudoku[0][7] != 0){print $sudoku[0][7]; print "readonly";}?>>
+    <input type="number" name="19" required class="sudoku" value = <?php if($sudoku[0][8] != 0){print $sudoku[0][8]; print "readonly";}?>><br><br>
    
     <input type="number" name="21" required class="sudoku" value = 6 readonly>
     <input type="number" name="22" required class="sudoku">
@@ -127,6 +140,7 @@
     <button type="submit">Submit</button>
 
 </form>
+?>
     <?php
 
 

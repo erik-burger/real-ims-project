@@ -101,6 +101,17 @@ $fields = array(
             array($field81, $field82, $field83, $field84, $field85, $field86, $field87, $field88, $field89),
             array($field91, $field92, $field93, $field94, $field95, $field96, $field97, $field98, $field99));
 
+$solution = array(
+  array(6, 9, 7, 8, 5, 4, 3, 2, 1),
+  array(8, 5, 4, 3, 2, 1, 9, 7, 6),
+  array(3, 2, 1, 9, 7, 6, 8, 5, 4),
+  array(9, 7, 8, 6, 4, 5, 2, 1, 3),
+  array(5, 6, 3, 2, 1, 9, 7, 4, 8),
+  array(4, 1, 2, 7, 8, 3, 6, 9, 5),
+  array(7, 8, 5, 4, 6, 2, 1, 3, 9),
+  array(2, 4, 9, 1, 3, 8, 5, 6, 0),
+  array(1, 3, 6, 5, 9, 7, 4, 8, 2));
+
 $error = 0;
 
 $column1 = 0;
