@@ -35,7 +35,6 @@
                 display: inline-block;
                 font-size: 30px;
             }
-
             
             input[type=number] {
                 padding: 12px 20px;
@@ -55,8 +54,7 @@
                 font-size:70px;
                 border: 2px solid #669999;
             }
-            
-            
+              
             .radio_group {
                 margin: 0 auto;
                 width:200px;
@@ -65,11 +63,9 @@
             }
             input[type=radio] {
                 transform:scale(1.8);
-                margin: 10px 10px;
+                margin: 30px 10px;
                 margin-top: -1px;
                 vertical-align: middle;
-
-
             }
 
             .image_label {
