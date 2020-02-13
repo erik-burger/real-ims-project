@@ -196,6 +196,42 @@ include dirname(__DIR__).'/general/closeDB.php';
         <input type="text" placeholder="Doctor ID" name="doctor_id" >
         <button type = "submit" class = "doc_button">Connect to Doctor</button>
     </form></br>
+
+
+    <?php
+        include dirname(__DIR__).'/general/openDB.php';
+        $result = mysqli_query($link,"select c.first_name, c.last_name, c.caregiver_id, c.phone, c.street, c.street_no, c.zip, c.city, c.country 
+        from caregiver as c, patient_caregiver as p_c
+        where c.caregiver_id = p_c.caregiver_id and p_c.patient_id = $_SESSION[id] and p_c.both_accept = true")   
+        or 
+        die("Could not issue MySQL query"); 
+        
+        while ($row = $result->fetch_assoc()) {
+            $first_name = $row["first_name"];
+            $last_name = $row["last_name"];
+            $caregiver_id = $row["caregiver_id"];
+            $street = $row["street"];
+            $street_no = $row["street_no"];
+            $zip = $row["zip"]; 
+            $city = $row["city"];
+            $country = $row["country"];
+            $phone = $row["phone"]; 
+     
+            echo '<b>'."Name: ".'</b>'.$first_name." ".$last_name.'<br />';
+            echo '<b>'."ID: ".'</b>' .$caregiver_id.'<br />';
+            echo '<b>'."Telephone: ".'</b>'.$phone.'<br />';
+            echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
+            echo '</br>';
+        }
+        
+        include dirname(__DIR__).'/general/closeDB.php';
+
+    ?>
+
+    <form action="patient_connect_to_caregiver.php", method = "POST">
+        <input type="text" placeholder="Caregiver ID" name="caregiver_id" >
+        <button type = "submit" class = "doc_button">Connect to Caregiver</button>
+    </form></br>
     </div>
 </div> 
 

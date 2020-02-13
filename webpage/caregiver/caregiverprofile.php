@@ -51,6 +51,11 @@
     <p>Change your information <a href="change_info_caregiver.php">here</a>.</p>
     <p>Change your password <a href="change_password_caregiver.php">here</a>.</p>
 
+    <form action="caregiver_connect_to_patient.php", method = "POST">
+        <input type="text" placeholder="Patient ID" name="patient_id" >
+        <button type = "submit" class = "doc_button">Connect to Patient</button>
+    </form></br>
+
     </body>
 
 </html>
