@@ -45,7 +45,7 @@ $sudoku = array(
       
     <input type="number" name="11" class="sudoku" value = <?php if($sudoku[0][0] != 0){print $sudoku[0][0]; print "readonly";}?>>
     <input type="number" name="12" class="sudoku" value = <?php if($sudoku[0][1] != 0){print $sudoku[0][1]; print "readonly";}?>>
-    <input type="number" name="13" required class="sudoku" value = <?php if($sudoku[0][2] != 0){print $sudoku[0][2]; print "readonly";}?>>
+    <input type="number" name="13" required class="sudoku" value = <?php print $sudoku[0][2]; if(True){echo "readonly";}  ?>>
     <input type="number" name="14" required class="sudoku" value = <?php if($sudoku[0][3] != 0){print $sudoku[0][3]; print "readonly";}?>>
     <input type="number" name="15" required class="sudoku" value = <?php if($sudoku[0][4] != 0){print $sudoku[0][4]; print "readonly";}?>>
     <input type="number" name="16" required class="sudoku" value = <?php if($sudoku[0][5] != 0){print $sudoku[0][5]; print "readonly";}?>>
