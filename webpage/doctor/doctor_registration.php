@@ -141,11 +141,16 @@ if(isset($_POST["submit"])){
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="top_menu_style.css">
+	<link rel="stylesheet" type="text/css" href="top_menu_style.css">
+	<link href="IMS_Style.css" rel="stylesheet">
     <style>
     	*{
     	box-sizing: border-box;
-    	}
+		}
+		.logo {
+                display: inline-block;
+                float: left; 
+            }
     	
     	input[type = text], select , textarea{
     		width: 100%;
@@ -200,6 +205,9 @@ if(isset($_POST["submit"])){
 <body>
 
 <div class="navbar">
+<div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
     <a href="login.html">Login</a>
     <a href="info.html">About</a>  
     <div class="dropdown">
@@ -213,7 +221,6 @@ if(isset($_POST["submit"])){
       </div>       
 </div>
 
-<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
 
 <section class="container grey-text"> 
 	<h1 class="center">Register as a Doctor</h1>
