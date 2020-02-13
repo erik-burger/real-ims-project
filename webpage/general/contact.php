@@ -36,6 +36,7 @@ session_start();
             <ul class="nav navbar-nav">
             <li><a href="../doctor/doctorstart.php">Home</a></li>
             <li class="active"><a href="../general/contact.php">Contact</a></li>
+            <li><a href="../doctor/doctorprofile.php">Profile</a></li>
             <li><a href="../doctor/doctorsearch.php">Patients</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

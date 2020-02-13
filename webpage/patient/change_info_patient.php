@@ -6,32 +6,32 @@
     <?php
         session_start();
         $id = $_SESSION["id"];
-        include dirname(__DIR__).'/general/openDB.php';
+        include dirname(__DIR__).'../general/openDB.php';
 
         $result = mysqli_query($link,"select *
-        from doctor 
-        where doctor_id = '$id'")   
-        or 
-        die("Could not issue MySQL query"); 
+        from patient 
+        where patient_id = '$id'")   
+        or die("Could not issue MySQL query"); 
         
         while ($row = $result->fetch_assoc()) {
             $first_name = $row["first_name"];
             $middle_name = $row["middle_name"]; 
             $last_name = $row["last_name"];
-            $doctor_id = $row["doctor_id"];
+            $patient_id = $row["patient_id"];
             $street = $row["street"];
             $street_no = $row["street_no"];
             $zip = $row["zip"]; 
             $email = $row["email"]; 
             $city = $row["city"];
             $country = $row["country"];
-            $phone = $row["phone"];  
+            $phone = $row["phone"];
         }  
-        include dirname(__DIR__).'/general/closeDB.php';  
+        include dirname(__DIR__).'../general/closeDB.php';
+         
     ?> 
-    <form action="update_doctor.php" method="POST">
-      <h3></h3>
-      <p>Please fill in this form to change your account information.</p>
+    <form action="update_patient.php" method="POST">
+      <h3>Change your profile information</h3>
+      <p>Please fill in this form to change your information.</p>
       
       <label for="f_name"><b>First name</b></label>
       <input type="text" value= "<?php echo $first_name;?>" name="f_name" >
@@ -66,7 +66,7 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" value= "" name="psw"><br>
         
-      <button type="Submit Changes">Submit changes</button>
+      <button type="Submit Changes">Change Information</button>
     
     </form>
     

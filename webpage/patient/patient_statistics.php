@@ -6,16 +6,31 @@
     <title>Trackzheimers</title>   
     <link rel="stylesheet" href="top_menu_style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+            body{
+                background-color: ghostwhite;
+            }
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .logo {
+                display: inline-block;
+                float: left; 
+            }
+            body{
+                background-color: ghostwhite;
+            }
+        </style>
   </head>
 
   <body>
-
 
   <?php
     session_start();
     $patient_id = $_SESSION["id"];
   ?>
-
     
   <!-- Retrive all the data -->
     <?php
@@ -50,12 +65,21 @@
         }, $score1_data, $score2_data, $score3_data, $score4_data, $score5_data, $score6_data, $score7_data, $score8_data, $score9_data, $score10_data);
 
     ?>
-  <!--contatn of page-->
-    <div class="navbar">
-      <a href="patientstart.php">Go Back</a>
-      <a href="../general/logout.php">Logout</a>          
-    </div>
-    <h1>Statistics</h1>
+  <!--content of page-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="patientstart.php">Home</a></li>            
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1 align="center">Statistics</h1>
     <b>Number of tests taken:</b> <?php echo count($dates_data);?><br>
     <b>Latest test:</b> <?php echo end($dates_data);?><br>
     <b>Latest score:</b> <?php echo end($score_data);?><br>
@@ -89,7 +113,7 @@
             fill: 'tozeroy',
             line: {
                 shape: 'line' ,
-                color: 'blue'
+                color: '#669999'
             },
             visible: i.name == 'total score',
             name: i.name,
@@ -159,6 +183,7 @@
           font: {
             family: 'Arial',
             size: 30,
+            color: 'black',
           }
         },
         xaxis: {
@@ -167,6 +192,7 @@
             font: {
               family: 'Arial',
               size: 18,
+              color: 'black',
             }
           },
           rangeselector: selectorOptions,
@@ -179,9 +205,12 @@
             font: {
               family: 'Arial',
               size: 18,
+              color: 'black',
             }
           },
-        }
+        },
+        plot_bgcolor: "ghostwhite",
+        paper_bgcolor: "ghostwhite"
       };
 
       Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});
