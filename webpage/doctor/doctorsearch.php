@@ -208,9 +208,6 @@ $id = $_SESSION["id"];
   }  
 ?> 
 
-
-
-
 <div id = 'search' style = "display:none;text-align:center;">
 <table style="width:70%" align="center">
       <tr>
