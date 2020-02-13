@@ -69,7 +69,8 @@ $_SESSION["timestamp"] = time();
     </button>
 
     <div class="btn-group" align="center">
-      <button type="button" 
+      <button onclick="location.href='patient_sudoku.php'"
+        type="button" 
         style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
         value="Test"> 
         GAMES
@@ -91,3 +92,4 @@ $_SESSION["timestamp"] = time();
 
     </div>
   </body>
+</html>
