@@ -21,7 +21,7 @@
         if (mysqli_query($link, $sql)) {           
             $message = "You have linked your account to the doctor with id $p_id";
             echo "<script>alert('$message'); window.location.href = 'patientprofile.php';</script>";
-        } else {
+        } else { 
             $message = "Connection failed"; 
             echo "<script>alert('$message'); window.location.href = 'patientprofile.php';</script>";
         }
