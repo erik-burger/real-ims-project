@@ -20,7 +20,7 @@
         }
         */
 
-        include dirname(__DIR__).'../general/openDB.php';
+        include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link, "select first_name, last_name, researcher_id, phone, street, street_no, zip, city, country 
         from researcher
         where researcher_id = $_SESSION[id]")   
@@ -44,7 +44,7 @@
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
         }
         
-        include dirname(__DIR__).'../general/closeDB.php';
+        include dirname(__DIR__).'/general/closeDB.php';
 
     ?>
 
