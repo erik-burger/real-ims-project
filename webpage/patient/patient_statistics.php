@@ -5,7 +5,6 @@
     <meta name="description" content="Statistics page for patients">
     <title>Trackzheimers</title>   
     <link rel="stylesheet" href="top_menu_style.css">
-    <link rel="stylesheet" href="../general/IMS_Style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
             body{
@@ -19,6 +18,9 @@
             .logo {
                 display: inline-block;
                 float: left; 
+            }
+            body{
+                background-color: ghostwhite;
             }
         </style>
   </head>
@@ -77,7 +79,7 @@
             </ul>
         </div>
     </nav>
-    <h1>Statistics</h1>
+    <h1 align="center">Statistics</h1>
     <b>Number of tests taken:</b> <?php echo count($dates_data);?><br>
     <b>Latest test:</b> <?php echo end($dates_data);?><br>
     <b>Latest score:</b> <?php echo end($score_data);?><br>

@@ -63,8 +63,8 @@
             }
             input[type=radio] {
                 transform:scale(1.8);
-                margin: 30px 10px;
-                margin-top: -1px;
+                margin: 20px 10px;
+                margin-top: 10px;
                 vertical-align: middle;
             }
 
