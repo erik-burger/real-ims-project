@@ -59,13 +59,6 @@
                 margin: 0 auto;
                 width:200px;
                 text-align: left;
-                font-size:30px
-            }
-            input[type=radio] {
-                transform:scale(1.8);
-                margin: 20px 10px;
-                margin-top: 10px;
-                vertical-align: middle;
             }
 
             .image_label {
@@ -89,6 +82,70 @@
             /* Firefox */
             input[type=number] {
             -moz-appearance:textfield;
+            }
+            
+            .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            }
+
+            /* Hide the browser's default radio button */
+            .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+            }
+
+            /* Create a custom radio button */
+            .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+            }
+
+            /* On mouse-over, add a grey background color */
+            .container:hover input ~ .checkmark {
+            background-color: #ccc;
+            }
+
+            /* When the radio button is checked, add a blue background */
+            .container input:checked ~ .checkmark {
+            background-color: #669999;
+            }
+
+            /* Create the indicator (the dot/circle - hidden when not checked) */
+            .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            }
+
+            /* Show the indicator (dot/circle) when checked */
+            .container input:checked ~ .checkmark:after {
+            display: block;
+            }
+
+            /* Style the indicator (dot/circle) */
+            .container .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: ghostwhite;
             }
         </style>
     </head>
@@ -169,30 +226,77 @@
             <div id='question2' style="display:none;text-align:center;">
                 <h1 align="center">Select the current month</h1>
                 <div class = 'radio_group'>
-                <input type="radio" name="month" value="January"
-                onkeydown="return event.key != 'Enter';">January<br>
-                <input type="radio" name="month" value="February"
-                onkeydown="return event.key != 'Enter';">Februay<br>
-                <input type="radio" name="month" value="March"
-                onkeydown="return event.key != 'Enter';">March<br>
-                <input type="radio" name="month" value="April"
-                onkeydown="return event.key != 'Enter';">April<br>
-                <input type="radio" name="month" value="May"
-                onkeydown="return event.key != 'Enter';">May<br>
-                <input type="radio" name="month" value="June"
-                onkeydown="return event.key != 'Enter';">June<br>
-                <input type="radio" name="month" value="July"
-                onkeydown="return event.key != 'Enter';">July<br>
-                <input type="radio" name="month" value="August"
-                onkeydown="return event.key != 'Enter';">August<br>
-                <input type="radio" name="month" value="September"
-                onkeydown="return event.key != 'Enter';">September<br>
-                <input type="radio" name="month" value="October"
-                onkeydown="return event.key != 'Enter';">October<br>
-                <input type="radio" name="month" value="November"
-                onkeydown="return event.key != 'Enter';">November<br>
-                <input type="radio" name="month" value="December"
-                onkeydown="return event.key != 'Enter';">December<br>
+                    <label class="container">
+                    <input type="radio" name="month" value="January"
+                    onkeydown="return event.key != 'Enter';">January
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="February"
+                    onkeydown="return event.key != 'Enter';">Februay
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="March"
+                    onkeydown="return event.key != 'Enter';">March
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="April"
+                    onkeydown="return event.key != 'Enter';">April
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="May"
+                    onkeydown="return event.key != 'Enter';">May
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="June"
+                    onkeydown="return event.key != 'Enter';">June
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="July"
+                    onkeydown="return event.key != 'Enter';">July
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="August"
+                    onkeydown="return event.key != 'Enter';">August
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="September"
+                    onkeydown="return event.key != 'Enter';">September
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="October"
+                    onkeydown="return event.key != 'Enter';">October
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="November"
+                    onkeydown="return event.key != 'Enter';">November
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="month" value="December"
+                    onkeydown="return event.key != 'Enter';">December
+                    <span class="checkmark"></span>
+                    </label><br>
                 </div>
                 <hr>
                 <button type="button" onclick="change_question('question1','question2')">Back</button>
@@ -202,20 +306,47 @@
             <div id='question3' style="display:none;text-align:center;">
                 <h1 align="center">Select current day</h1>
                 <div class = 'radio_group'>
-                <input type="radio" name="day_word" value="Monday"
-                onkeydown="return event.key != 'Enter';">Monday<br>
-                <input type="radio" name="day_word" value="Tuesday"
-                onkeydown="return event.key != 'Enter';">Tuesday<br>
-                <input type="radio" name="day_word" value="Wednesday"
-                onkeydown="return event.key != 'Enter';">Wednesday<br>
-                <input type="radio" name="day_word" value="Thursday"
-                onkeydown="return event.key != 'Enter';">Thursday<br>
-                <input type="radio" name="day_word" value="Friday"
-                onkeydown="return event.key != 'Enter';">Friday<br>
-                <input type="radio" name="day_word" value="Saturday"
-                onkeydown="return event.key != 'Enter';">Saturday<br>
-                <input type="radio" name="day_word" value="Sunday"
-                onkeydown="return event.key != 'Enter';">Sunday<br>
+                    <label class="container">
+                    <input type="radio" name="day_word" value="Monday"
+                    onkeydown="return event.key != 'Enter';">Monday
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="day_word" value="Tuesday"
+                    onkeydown="return event.key != 'Enter';">Tuesday
+                    <span class="checkmark"></span>
+                    </label><br>
+                    
+                    <label class="container">
+                    <input type="radio" name="day_word" value="Wednesday"
+                    onkeydown="return event.key != 'Enter';">Wednesday
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="day_word" value="Thursday"
+                    onkeydown="return event.key != 'Enter';">Thursday
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="day_word" value="Friday"
+                    onkeydown="return event.key != 'Enter';">Friday
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="day_word" value="Saturday"
+                    onkeydown="return event.key != 'Enter';">Saturday
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
+                    <input type="radio" name="day_word" value="Sunday"
+                    onkeydown="return event.key != 'Enter';">Sunday
+                    <span class="checkmark"></span>
+                    </label><br>
                 </div>
                 <hr>
                 <button type="button" onclick="change_question('question2','question3')">Back</button>
@@ -237,16 +368,35 @@
             <div id='question5' style="display:none;text-align:center;">
                 <h1 align="center">What time of day is it?</h1>
                 <div class = 'radio_group'>
+                    <label class="container">
                     <input type="radio" name="time_of_day" value="Morning"
                     onkeydown="return event.key != 'Enter';">Morning<br> <!--06-10 -->
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
                     <input type="radio" name="time_of_day" value="Lunchtime"
                     onkeydown="return event.key != 'Enter';">Lunchtime<br><!--10-14 -->
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
                     <input type="radio" name="time_of_day" value="Afternoon"
                     onkeydown="return event.key != 'Enter';">Afternoon<br><!--14-18 -->
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
                     <input type="radio" name="time_of_day" value="Evening"
                     onkeydown="return event.key != 'Enter';">Evening<br><!--18-22 -->
+                    <span class="checkmark"></span>
+                    </label><br>
+
+                    <label class="container">
                     <input type="radio" name="time_of_day" value="Night"
                     onkeydown="return event.key != 'Enter';">Night<br><!--22-06 -->
+                    <span class="checkmark"></span>
+                    </label><br>
                 </div>
                 <hr>
                 <button type="button" onclick="change_question('question4','question5')">Back</button>
@@ -454,10 +604,25 @@
                         include dirname(__DIR__)."/general/closeDB.php";
                         ?>
                         <div class='image_label'>
-                        <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $ans_1; ?>'><?php echo $ans_1; ?>
-                        <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option1_1; ?>'><?php echo $option1_1; ?>
-                        <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option2_1; ?>'><?php echo $option2_1; ?>
-                        <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option3_1; ?>'><?php echo $option3_1; ?>
+                            <label class="container">
+                            <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $ans_1; ?>'><?php echo $ans_1; ?>
+                            <span class="checkmark"></span>
+                            </label><br>
+
+                            <label class="container">
+                            <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option1_1; ?>'><?php echo $option1_1; ?>
+                            <span class="checkmark"></span>
+                            </label><br>
+
+                            <label class="container">
+                            <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option2_1; ?>'><?php echo $option2_1; ?>
+                            <span class="checkmark"></span>
+                            </label><br>
+
+                            <label class="container">
+                            <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $option3_1; ?>'><?php echo $option3_1; ?>
+                            <span class="checkmark"></span>
+                            </label><br>
                        </div>
                 </div>
                 <hr>
@@ -515,10 +680,25 @@
                         ?>
                         
                         <div class='image_label'>
-                        <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $ans_2; ?>'><?php echo $ans_2; ?>
-                        <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option1_2; ?>'><?php echo $option1_2; ?>
-                        <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option2_2; ?>'><?php echo $option2_2; ?>
-                        <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option3_2; ?>'><?php echo $option3_2; ?>
+                            <label class="container">
+                            <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $ans_2; ?>'><?php echo $ans_2; ?>
+                            <span class="checkmark"></span>
+                            </label><br>
+
+                            <label class="container">
+                            <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option1_2; ?>'><?php echo $option1_2; ?>
+                            <span class="checkmark"></span>
+                            </label><br>
+
+                            <label class="container">
+                            <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option2_2; ?>'><?php echo $option2_2; ?>
+                            <span class="checkmark"></span>
+                            </label><br>
+
+                            <label class="container">
+                            <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option3_2; ?>'><?php echo $option3_2; ?>
+                            <span class="checkmark"></span>
+                            </label><br>
                         </div>
                         
                 <br>
