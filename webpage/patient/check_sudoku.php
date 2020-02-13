@@ -109,68 +109,22 @@ $solution = array(
   array(5, 6, 3, 2, 1, 9, 7, 4, 8),
   array(4, 1, 2, 7, 8, 3, 6, 9, 5),
   array(7, 8, 5, 4, 6, 2, 1, 3, 9),
-  array(2, 4, 9, 1, 3, 8, 5, 6, 0),
+  array(2, 4, 9, 1, 3, 8, 5, 6, 7),
   array(1, 3, 6, 5, 9, 7, 4, 8, 2));
 
-$error = 0;
 
-$column1 = 0;
-$column2 = 0;
-$column3 = 0;
-$column4 = 0;
-$column5 = 0;
-$column6 = 0;
-$column7 = 0;
-$column8 = 0;
-$column9 = 0;
-
-$rowerror = 0;
-
-for($row = 0; $row < 9; $row++){
-
-    $rowsum = array_sum($fields[$row]);
-    $column0 = $column9 + $fields[$row][0];
-    $column1 = $column1 + $fields[$row][1];
-    $column2 = $column2 + $fields[$row][2];
-    $column3 = $column3 + $fields[$row][3];
-    $column4 = $column4 + $fields[$row][4];
-    $column5 = $column5 + $fields[$row][5];
-    $column6 = $column6 + $fields[$row][6];
-    $column7 = $column7 + $fields[$row][7];
-    $column8 = $column8 + $fields[$row][8];
-    
-    if($rowsum != 0)
-        $rowerror = $rowerror +1;}
-
-
-if($column0 != 9 || $column1 != 9 || $column2 != 9 || $column3 != 9 || $column4 != 9 || $column5 != 9 || 
-    $column6 != 9 || $column7 != 9 || $column7 != 9 || $column8 != 9 || $column9 != 9 || $rowerror != 0){
-echo "Not correct, try again";
-
+$correct = 0;
+for ($row = 0; $row < 9; $row++) {
+  for($each = 0; $each < 9; $each++){
+    if ($fields[$row][$each] == $solution[$row][$each]){
+    $correct = $correct + 1;
+} } }
+if ($correct == 81){
+  echo "Your solution is correct";
 }else{
-echo "Good Job!";
+  echo "Oh no, try again";
+  echo "<br><a href = 'patient_sudoku.php'>Go back</a>";
+
 }
 
-
-
-
-    //if($rowsum != 45){
-     //   $error = $rowerror + 1;
-//}
-
-
-echo "what $rowsum, and $column8";
-
-
-/*
-for ($row = 0; $row < 4; $row++) {
-    echo "<p><b>Row number $row</b></p>";
-    echo "<ul>";
-    for ($col = 0; $col < 3; $col++) {
-      echo "<li>".$cars[$row][$col]."</li>";
-    }
-    echo "</ul>";
-  }
-echo "what $row1";
-*/
 ?>
