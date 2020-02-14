@@ -3,7 +3,6 @@
 <meta http-equiv="refresh" content="3600;url=../general/logout.php" />
 <head>
     <link rel="stylesheet" href="top_menu_style.css">
-    <link rel="stylesheet" href="../general/IMS_Style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         table, th, td {
@@ -57,25 +56,17 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
-            </div>
-            <ul class="nav navbar-nav">
-            <li><a href="../doctor/doctorstart.php">Home</a></li>
-            <li><a href="../general/contact.php">Contact</a></li>
-            <li><a href="../doctor/doctorprofile.php">Profile</a></li>
-            <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
-          </ul>
-            <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
+                <li><a href="caregiverstart.php">Home</a></li> 
+                <li class="active"><a href="caregiverprofile.php">Profile</a></li>            
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
 
-<<<<<<< HEAD
-<img id ="b" src="../general/logo_grey.png" width = "300"><br>
-
-=======
-    <div class = "column left"> 
->>>>>>> 9884e74be2e504562bad817621a42ced936c0a99
+<div class = "column left"> 
 <h1>Patient Profile</h1>
 
 <?php

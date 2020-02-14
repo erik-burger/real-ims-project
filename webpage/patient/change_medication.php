@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="../general/IMS_Style.css">
-</head>
+
+        <meta charset="UTF-utf-8">
+        <meta name="description" content="page to change change medication">
+        <title>Trackzheimers</title>  
+        <link rel="stylesheet" href="top_menu_style.css">
+        <link rel="stylesheet" href="../general/IMS_Style.css">
 <body>
     <h1>Add Medication Information</h1>    
       
@@ -13,7 +16,7 @@
       <label for="medication_id"><b>Medication Name</b></label><br>
       <select name = "medication_id" form = "meds" required>
         <?php
-        include dirname(__DIR__).'../general/openDB.php';
+        include dirname(__DIR__).'/general/openDB.php';
         $sql = "select medication_id, medication_name from medication";
         $result = mysqli_query($link, $sql) 
         or die("Could not issue MySQL query");
@@ -21,7 +24,7 @@
             $medication_id = $row["medication_id"];
             $medication_name = $row["medication_name"];
             print "<option value='$medication_id'>$medication_name</option>";}
-        include dirname(__DIR__).'../general/closeDB.php';
+        include dirname(__DIR__).'/general/closeDB.php';
         ?> </select><br>
 
       <label for="dose"><b>Dose</b></label><br>

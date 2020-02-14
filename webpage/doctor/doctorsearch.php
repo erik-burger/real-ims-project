@@ -209,20 +209,6 @@ $id = $_SESSION["id"];
   }  
 ?> 
 
-
-
-
-<div id = 'search' style = "display:none;text-align:center;">
-<table style="width:70%" align="center">
-      <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>ID</th>
-      </tr>
-  <?php
-    
-?> 
-</table> 
 </div>
 
 </div>

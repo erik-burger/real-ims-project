@@ -3,13 +3,6 @@
 
 <body>
     <h1>Change your password</h1>    
-    <?php
-        session_start();
-        $id = $_SESSION["id"];
-        include dirname(__DIR__).'../general/openDB.php';
-
-         
-    ?> 
     <form action="update_password_doctor.php" method="POST">
       
       <p>Please fill in this form to change your password.</p>
@@ -26,6 +19,7 @@
       <button type="Submit Changes">Change Password</button>
     
     </form>
+
     
 </body>
 

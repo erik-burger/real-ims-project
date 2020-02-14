@@ -1,6 +1,6 @@
 <?php
 //Connect to database
-include dirname(__DIR__).'../general/openDB.php';
+include dirname(__DIR__).'/general/openDB.php';
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = '';
 $errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -288,6 +288,6 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'../general/openDB.php';;
+include dirname(__DIR__).'/general/openDB.php';;
 	
 ?>

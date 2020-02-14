@@ -60,6 +60,7 @@ $_SESSION["timestamp"] = time();
         </div>
     </nav>
     <hr>
+    
     <button onclick="location.href='Question_sheet.php'"
       type="button" 
       style="margin-left:auto;margin-right:auto;margin-bottom:5px;display:block;padding: 100px 150px;font-size: 100px;" 
@@ -68,7 +69,8 @@ $_SESSION["timestamp"] = time();
     </button>
 
     <div class="btn-group" align="center">
-      <button type="button" 
+      <button onclick="location.href='patient_sudoku.php'"
+        type="button" 
         style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
         value="Test"> 
         GAMES
@@ -90,3 +92,4 @@ $_SESSION["timestamp"] = time();
 
     </div>
   </body>
+</html>

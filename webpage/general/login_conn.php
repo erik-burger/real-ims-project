@@ -36,6 +36,8 @@ if(empty(trim($_POST["email"]))){
 } else{
     $password = trim($_POST["psw"]);}
 
+$email = mysqli_real_escape_string($link, $email);
+
 //If both are filled in (=both error variables are empty) -> check if email is from doctor
 if(empty($username_err) && empty($password_err)){   
     $doctorsql = "select doctor_id from doctor where email = '$email'";
@@ -118,9 +120,33 @@ if(empty($username_err) && empty($password_err)){
                     echo "Password is invalid.";}
 
             }else{ //if it does not return anything here either, email or password are wrong
-                echo "Email adress or password invalid";}
-            }
-    }
+                $caregiversql = "select caregiver_id from caregiver where email = '$email'";
+                $caregiverresult = mysqli_query($link, $caregiversql)
+                or die("Coul not issue caregiver MySQL query");
+                $count4 = mysqli_num_rows($caregiverresult);
+
+                if($count4 == 1){
+                    $psw_result = mysqli_query($link, "select password_hash from caregiver where email = '$email'");
+                    $psw_row = mysqli_fetch_row($psw_result);
+                    $password_hash = $psw_row[0];
+
+                    if(password_verify($password, $password_hash)){//Verify the string password with the hashed password
+                        //Set all the necessary session variables
+                        $_SESSION["loggedin"] = true;
+                        $_SESSION["email"] = $email;
+                        $result = mysqli_query($link, "select caregiver_id from caregiver where email = '$email'")
+                        or die("Could not issue caregiver session MySQL query"); //get the patient id from unique email
+                        $row = mysqli_fetch_assoc($result);
+                        $_SESSION["id"] = $row["caregiver_id"];
+                        $_SESSION["user"] = "C"; //for automatic logout if wrong user type acceses a page
+                        $_SESSION["timestamp"] = time(); //needed for logout after inactivity
+                        header("location: ../caregiver/caregiverstart.php"); //redirect to patient start page
+    
+                    }else{
+                        echo "Password is invalid.";}
+                }
+        }
+        }}
 }else{//if there is something in the error variables username or password are empty
     echo "Please fill in both username and password";}
 

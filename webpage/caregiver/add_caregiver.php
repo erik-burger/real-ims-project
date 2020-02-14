@@ -8,7 +8,7 @@
 session_start();
 
 // Connection to DB
-include dirname(__DIR__).'../general/openDB.php';
+include dirname(__DIR__).'/general/openDB.php';
 
 // Registration form
 	
@@ -56,7 +56,7 @@ if (count($errors) == 0) {
 	}
 }
 
-include dirname(__DIR__).'../general/closeDB.php';
+include dirname(__DIR__).'/general/closeDB.php';
 ?> 
 
 </body>
