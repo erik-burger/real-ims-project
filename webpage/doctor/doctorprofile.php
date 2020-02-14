@@ -4,16 +4,54 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
+        <link href="IMS_Style.css" rel="stylesheet">
+        <style>
+            ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.logo {
+    display: inline-block;
+    float: left; 
+}
+.prof_button, .pass_button{
+                background-color: #669999; 
+                border: none;
+                color: white;
+                padding: 14px 10px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;   
+                margin-top: 10px;
+                margin-bottom: 10px; 
+                margin-left: 1px;              
+            }     
+            .profile{
+                display: inline-block;  
+            } 
+
+        </style>
     </head>
 
     <body>
-        <div class="navbar">
-            <a href="doctorstart.php">Home</a>
-            <a href="../general/contact.php">Contact</a>
-            <a class="active" href="doctorprofile.php">Profile</a>
-            <a href="doctorsearch.php">Patients</a>
-            <a href="../general/logout.php">Logout</a>          
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li><a href="doctorstart.php">Home</a></li>
+            <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="doctorprofile.php">Profile</a></li>
+            <li class="active"><a href="doctorsearch.php">Patients</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
         </div>
+    </nav>
 
         <h1>Profile</h1>
    
@@ -25,7 +63,7 @@
         }
         */
 
-        include dirname(__DIR__).'../general/openDB.php';
+        include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
         from doctor
         where doctor_id = $_SESSION[id]")   
@@ -49,11 +87,18 @@
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
         }
         
-        include dirname(__DIR__).'../general/closeDB.php';
+        include dirname(__DIR__).'/general/closeDB.php';
 
     ?>
 
-    <p>Change your information <a href="change_info_doctor.php">here</a>.</p>
+    <form action="change_info_doctor.php" class = "profile">
+        <button type = "submit" class = "prof_button">Change Information</button>
+    </form>
+    <form action="change_password_doctor.php" class = "profile">
+        <button type = "submit" class = "pass_button">Change Password</button>
+    </form></br>
+    </div>
+
 
     </body>
 

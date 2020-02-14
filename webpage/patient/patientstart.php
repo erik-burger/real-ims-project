@@ -18,43 +18,78 @@ $_SESSION["timestamp"] = time();
     <meta name="description" content="Start page for patients">
     <title>Trackzheimers</title>
     <link rel="stylesheet" href="top_menu_style.css">
+    <link rel="stylesheet" href="../general/IMS_Style.css">
+    <style>
+            body{
+                background-color: ghostwhite;
+            }
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .logo {
+                display: inline-block;
+                float: left; 
+            }
+            hr {
+                border: 10px solid ghostwhite;
+            }
+            button {
+                background-color: #669999;
+                border: none;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 30px;
+            }
+        </style>
   </head>
 
   <body> <!--style="background-color: blue;"> --> <!-- add for blue bg-->
     
-    <div class="navbar" align="right">
-        <a href="../general/logout.php">Logout</a>
-    </div>
+  <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <hr>
     
-    <img src="LOGO.png" style="display: block;margin-left: auto;margin-right: auto;">
-
     <button onclick="location.href='Question_sheet.php'"
       type="button" 
-      style="margin-left:auto;margin-right:auto;margin-bottom:5px;display:block;padding: 200px 175px;font-size: 100px;" 
+      style="margin-left:auto;margin-right:auto;margin-bottom:5px;display:block;padding: 100px 150px;font-size: 100px;" 
       value="Test">
       TEST
     </button>
 
     <div class="btn-group" align="center">
-      <button type="button" 
-        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+      <button onclick="location.href='patient_sudoku.php'"
+        type="button" 
+        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
         value="Test"> 
         GAMES
       </button>
       
       <button onclick="location.href='patientprofile.php'" 
         type="button" 
-        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         PROFILE
       </button>
 
       <button onclick="location.href='patient_statistics.php'" 
         type="button" 
-        style="display:inline-block;padding: 40px 53px;font-size: 20px;" 
+        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         STATISTICS
       </button>
 
     </div>
   </body>
+</html>

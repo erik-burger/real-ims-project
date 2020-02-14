@@ -3,7 +3,6 @@
 <head>
 <link rel="stylesheet" href="../general/IMS_Style.css">
 </head>
-
 <body>
     <h1>Change your information</h1>    
     <?php
@@ -12,16 +11,15 @@
         include dirname(__DIR__).'/general/openDB.php';
 
         $result = mysqli_query($link,"select *
-        from researcher 
-        where researcher_id = '$id'")   
-        or 
-        die("Could not issue MySQL query"); 
+        from patient 
+        where patient_id = '$id'")   
+        or die("Could not issue MySQL query"); 
         
         while ($row = $result->fetch_assoc()) {
             $first_name = $row["first_name"];
             $middle_name = $row["middle_name"]; 
             $last_name = $row["last_name"];
-            $researcher_id = $row["researcher_id"];
+            $patient_id = $row["patient_id"];
             $street = $row["street"];
             $street_no = $row["street_no"];
             $zip = $row["zip"]; 
@@ -33,9 +31,9 @@
         include dirname(__DIR__).'/general/closeDB.php';
          
     ?> 
-    <form action="update_researcher.php" method="POST">
-      <h3>Register</h3>
-      <p>Please fill in this form to create an account.</p>
+    <form action="update_patient.php" method="POST">
+      <h3>Change your profile information</h3>
+      <p>Please fill in this form to change your information.</p>
       
       <label for="f_name"><b>First name</b></label>
       <input type="text" value= "<?php echo $first_name;?>" name="f_name" >

@@ -18,10 +18,46 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
+        <link href="IMS_Style.css" rel="stylesheet">
+
+        <style>
+          .logo {
+                display: inline-block;
+                float: left; 
+            }
+                        
+          input[type = text], select , textarea
+          {
+          width: 100%;
+    		  padding: 12px;
+    		  border: 1px solid #ccc;
+    		  border-radius; 4px;
+    		  resize: vertical;
+          }
+          input[type = password], select , textarea{
+    		  width: 100%;
+    		  padding: 12px;
+    		  border: 1px solid #ccc;
+    		  border-radius; 4px;
+    		  resize: vertical;
+          }
+          .container {
+ 		 	    border-radius: 5px;
+  			  background-color: ghostwhite;
+  			  padding: 20px;
+  			  width:70%;
+  			  margin-right: auto;
+  			  margin-left:auto;
+		      }
+      
+        </style>
     </head>
 
     <body>   
         <div class="navbar">
+        <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
             <a class="active" href="login.php">Login</a>
             <a href="info.html">About</a>
             <div class="dropdown">
@@ -36,9 +72,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 </div>
               </div>       
         </div>
-
-        <h1>TRACKZHEIMERS LOGO</h1>
-
+                <img id="b" src="logo_grey.png" width=800>
+        
         <form action="login_conn.php" method="post">
           
             <div class="container">

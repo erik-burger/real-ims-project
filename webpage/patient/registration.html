@@ -208,11 +208,22 @@ if(isset($_POST["submit"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="top_menu_style.css">
+
+    <style>
+      .logo {
+            display: inline-block;
+            float: left; 
+        }
+    </style>
+
   </head>
 
 <body>
 
 <div class="navbar">
+  <div class="navbar-header">
+    <img class="logo" src="../general/logo_small.png" width = 50>
+</div>
     <a href="../general/login.php">Login</a>
     <a href="../general/info.html">About</a>  
     <div class="dropdown">
@@ -220,13 +231,13 @@ if(isset($_POST["submit"])){
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="registration.html">Patient</a>
+          <a href="../patient/registration.html">Patient</a>
           <a href="../doctor/doctor_registration.html">Doctor</a>
+          <a href="../researcher/researcher_registration.html">Researcher</a>
+          <a href="../caregiver/caregiver_registration.html">Caregiver</a>
         </div>
       </div>       
 </div>
-
-<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
 
 <h1>Register as a Patient</h1>
 

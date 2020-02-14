@@ -6,7 +6,7 @@
 	
 
 //Connect to database
-include('../general/openDB.php');
+include dirname(__DIR__).'/general/openDB.php';
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
 $errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -150,11 +150,15 @@ if(isset($_POST["submit"])){
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="top_menu_style.css">
+	<link rel="stylesheet" type="text/css" href="top_menu_style.css">
     <style>
     	*{
     	box-sizing: border-box;
-    	}
+		}
+		.logo {
+                display: inline-block;
+                float: left; 
+            }
     	
     	input[type = text], select , textarea{
     		width: 100%;
@@ -197,9 +201,10 @@ if(isset($_POST["submit"])){
  		 	border-radius: 12px;
   			background-color: #f2f2f2;
   			padding: 20px;
-  			width:70%;
+  			width:80%;
   			margin-right: auto;
-  			margin-left:auto;
+			margin-left:auto;
+			align: center;
 		}
   		
     	.error {
@@ -212,6 +217,9 @@ if(isset($_POST["submit"])){
 <body>
 
 <div class="navbar">
+<div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
     <a href="login.html">Login</a>
     <a href="info.html">About</a>  
     <div class="dropdown">
@@ -227,11 +235,10 @@ if(isset($_POST["submit"])){
       </div>       
 </div>
 
-<section class="container grey-text"> 
 
-	<div class="container">
+<section class="container grey-text"> 
 	<h1 class="center">Register as a Doctor</h1>
-    <p>Please fill in this form to create an account as a doctor</p>
+    <p id="a">Please fill in this form to create an account</p>
 
 	<form action = "doctor_registration.php" method = "POST">
 		
@@ -293,6 +300,6 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'../general/closeDB.php';;
+include dirname(__DIR__).'/general/closeDB.php';;
 	
 ?>

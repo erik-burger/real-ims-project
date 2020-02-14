@@ -16,15 +16,37 @@ session_start();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
+        <link rel="stylesheet" href="../general/IMS_Style.css">
+        <style>
+        ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .logo {
+                display: inline-block;
+                float: left; 
+            }
+            hr {
+                border: 10px solid ghostwhite;
+            }
+        </style>
     </head>
 
     <body>
-        <div class="navbar">
-            <a class="active" href="caregiverstart.php">Home</a>
-            <a href="caregiverprofile.php">Profile</a>
-            <a href="../general/logout.php">Logout</a>          
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+                <ul class="nav navbar-nav">
+                <li class="active"><a href="caregiverstart.php">Home</a></li> 
+                <li><a href="caregiverprofile.php">Profile</a></li>            
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
         </div>
-
+    </nav>
         <h1>TRACKZHEIMERS LOGO</h1>
 
         <h2>Information...</h2>
