@@ -5,7 +5,7 @@
         <meta name="description" content="page to change change medication">
         <title>Trackzheimers</title>  
         <link rel="stylesheet" href="top_menu_style.css">
-
+        <link rel="stylesheet" href="../general/IMS_Style.css">
 <body>
     <h1>Change Medication Information</h1>    
       

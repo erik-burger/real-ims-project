@@ -26,10 +26,12 @@
             
             }
             .right {
-            width: 70%;
+            width: 70%; 
+           
             }
             .column {
             float: left; 
+            background: white;
             padding-bottom: 50px; 
             }
             .page:after {
@@ -253,10 +255,10 @@
               }]
           }]
 
-      var layout = {
+      var layout = {      
         updatemenus: updatemenus,
         title: {
-          text: '<b>Score over time</b>',
+          text: '<b>MMSE Score Over time</b>',
           font: {
             family: 'Arial',
             size: 18,
@@ -282,7 +284,7 @@
             font: {
               family: 'Arial',
               size: 18,
-              
+              color: 'black'
             }
           },
         }

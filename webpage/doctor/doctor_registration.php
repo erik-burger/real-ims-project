@@ -191,9 +191,10 @@ if(isset($_POST["submit"])){
  		 	border-radius: 5px;
   			background-color: #f2f2f2;
   			padding: 20px;
-  			width:70%;
+  			width:80%;
   			margin-right: auto;
-  			margin-left:auto;
+			margin-left:auto;
+			align: center;
 		}
   		
     	.error {
@@ -224,7 +225,7 @@ if(isset($_POST["submit"])){
 
 <section class="container grey-text"> 
 	<h1 class="center">Register as a Doctor</h1>
-    <p>Please fill in this form to create an account.</p>
+    <p id="a">Please fill in this form to create an account</p>
 
 	<div class="container">
 	<form action = "doctor_registration.php" method = "POST">
