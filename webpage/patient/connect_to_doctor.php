@@ -3,9 +3,8 @@
     session_start();
     $p_id = $_SESSION["id"];
     $d_id = $_POST["doctor_id"];
-
     include dirname(__DIR__).'/general/openDB.php';
-
+    $d_id = mysqli_real_escape_string($d_id);
     //Query to check if the patient doctor connection exists 
     $result = mysqli_query($link, "select *
                             from patient_doctor 

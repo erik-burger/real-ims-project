@@ -146,35 +146,35 @@
       };
 
       var updatemenus = [{
-              y: 1.4,
-              x: 1,
-              yanchor: 'top',
-              buttons: [{
-                  method: 'restyle',
-                  args: ['visible', [true, false, false, false, false, false]],
-                  label: 'Total score'
-              }, {
-                  method: 'restyle',
-                  args: ['visible', [false, true, false, false, false, false]],
-                  label: 'Orientation score'
-              }, {
-                  method: 'restyle',
-                  args: ['visible', [false, false, true, false, false, false]],
-                  label: 'Immediate repeat score'
-              }, {
-                  method: 'restyle',
-                  args: ['visible', [false, false, false, true, false, false]],
-                  label: 'Attention score'
-              }, {
-                  method: 'restyle',
-                  args: ['visible', [false, false, false, false, true, false]],
-                  label: 'Delayed repeat score'
-              }, {
-                  method: 'restyle',
-                  args: ['visible', [false, false, false, false, false, true]],
-                  label: 'Language score'
-              }]
-          }]
+        y: 1.4,
+        x: 1,
+        yanchor: 'top',
+        buttons: [{
+            method: 'restyle',
+            args: ['visible', [true, false, false, false, false, false]],
+            label: 'Total score'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, true, false, false, false, false]],
+            label: 'Orientation score'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, true, false, false, false]],
+            label: 'Immediate repeat score'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, false, true, false, false]],
+            label: 'Attention score'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, false, false, true, false]],
+            label: 'Delayed repeat score'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, false, false, false, true]],
+            label: 'Language score'
+        }]
+      }]
 
       var layout = {
         updatemenus: updatemenus,

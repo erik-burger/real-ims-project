@@ -6,7 +6,7 @@
     <?php
         session_start();
         $id = $_SESSION["id"];
-        include dirname(__DIR__).'../general/openDB.php';
+        include dirname(__DIR__).'/general/openDB.php';
 
          
     ?> 
@@ -26,6 +26,9 @@
       <button type="Submit Changes">Change Password</button>
     
     </form>
+    <?php
+      include dirname(__DIR__).'/general/closeDB.php';
+    ?>
     
 </body>
 

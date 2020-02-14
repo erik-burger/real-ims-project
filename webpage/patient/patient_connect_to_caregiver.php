@@ -2,6 +2,7 @@
     session_start();
     $p_id = $_SESSION["id"];
     $c_id = $_POST["caregiver_id"];
+    $c_id = mysql_real_escape_string($c_id);
 
     include dirname(__DIR__).'/general/openDB.php';
 

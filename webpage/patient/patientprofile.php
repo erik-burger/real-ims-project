@@ -7,62 +7,60 @@
     <title>Trackzheimers</title>
     <link rel="stylesheet" href="top_menu_style.css">
     <style>
-            ul{
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            .logo {
-                display: inline-block;
-                float: left; 
-            }
-            .profile{
-                display: inline-block;  
-            }
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .logo {
+            display: inline-block;
+            float: left; 
+        }
+        .profile{
+            display: inline-block;  
+        }
 
-            .medication{
-                display: inline-block; 
-            }
+        .medication{
+            display: inline-block; 
+        }
 
-            .med_button, .prof_button, .pass_button, .doc_button{
-                background-color: #669999; 
-                border: none;
-                color: white;
-                padding: 14px 10px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;   
-                margin-top: 10px;
-                margin-bottom: 10px; 
-                margin-left: 1px;              
-            }      
-            * {
-            box-sizing: border-box;
-            }
+        .med_button, .prof_button, .pass_button, .doc_button{
+            background-color: #669999; 
+            border: none;
+            color: white;
+            padding: 14px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;   
+            margin-top: 10px;
+            margin-bottom: 10px; 
+            margin-left: 1px;              
+        }      
+        * {
+        box-sizing: border-box;
+        }
 
-            .column {
-            float: left;
-            width: 50%;
-            padding: 10px;
-            height: 300px; 
-            }
+        .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+        height: 300px; 
+        }
 
-            .page:after {
-            content: "";
-            display: table;
-            clear: both;
-            }  
+        .page:after {
+        content: "";
+        display: table;
+        clear: both;
+        }  
 
-            input[type = text], select , textarea{
-    		padding: 15px;
-    		border: 1px solid #ccc;
-    		border-radius; 4px;
-      }
-
-        </style>
+        input[type = text], select , textarea{
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius; 4px;
+    }
+    </style>
   </head>
-  
   <body>
 
   <nav class="navbar navbar-inverse">
