@@ -2,7 +2,7 @@
 <?php 
 session_start();
 $id = $_SESSION["id"];
-include dirname(__DIR__).'../general/openDB.php';
+include dirname(__DIR__).'/general/openDB.php';
 
 $oldpsw = mysqli_real_escape_string($link,$_POST['oldpsw']); 
 $newpsw = mysqli_real_escape_string($link,$_POST['newpsw']); 
@@ -24,7 +24,7 @@ if(password_verify($oldpsw, $password_hash)){
 
     if (mysqli_query($link, $sql)) {
         echo "New record created successfully";
-        include dirname(__DIR__).'../general/closeDB.php';
+        include dirname(__DIR__).'/general/closeDB.php';
         header("location: caregiverprofile.php");
 
     } else {
@@ -32,9 +32,9 @@ if(password_verify($oldpsw, $password_hash)){
     }
 }else{
     echo "Password incorrect.";
-    include dirname(__DIR__).'../general/closeDB.php';
+    include dirname(__DIR__).'/general/closeDB.php';
     header("location: change_password_caregiver.php");
 }
 
-include dirname(__DIR__).'../general/closeDB.php';
+include dirname(__DIR__).'/general/closeDB.php';
 ?> 
