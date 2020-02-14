@@ -6,7 +6,7 @@
     <?php
         session_start();
         $id = $_SESSION["id"];
-        include dirname(__DIR__).'../general/openDB.php';
+        include dirname(__DIR__).'/general/openDB.php';
 
         $result = mysqli_query($link,"select *
         from caregiver 
@@ -27,7 +27,7 @@
             $country = $row["country"];
             $phone = $row["phone"];  
         }  
-        include dirname(__DIR__).'../general/closeDB.php';
+        include dirname(__DIR__).'/general/closeDB.php';
          
     ?> 
     <form action="update_caregiver.php" method="POST">

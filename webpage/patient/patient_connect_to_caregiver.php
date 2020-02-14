@@ -3,7 +3,7 @@
     $p_id = $_SESSION["id"];
     $c_id = $_POST["caregiver_id"];
     include dirname(__DIR__).'/general/openDB.php';
-    $c_id = mysqli_real_escape_string($c_id);
+    $c_id = mysqli_real_escape_string($link, $c_id);
 
     
 

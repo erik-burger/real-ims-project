@@ -5,25 +5,25 @@ $id = $_SESSION["id"];
 include dirname(__DIR__).'/general/openDB.php';
 
 $f_name = $_POST["f_name"]; 
-$f_name = mysqli_real_escape_string($f_name);
+$f_name = mysqli_real_escape_string($link, $f_name);
 $m_name = $_POST["m_name"];  
-$m_name = mysqli_real_escape_string($m_name);
+$m_name = mysqli_real_escape_string($link, $m_name);
 $l_name = $_POST["l_name"];
-$l_name = mysqli_real_escape_string($l_name);
+$l_name = mysqli_real_escape_string($link, $l_name);
 $phone_no = $_POST["phone_no"]; 
-$phone_no = mysqli_real_escape_string($phone_no);
+$phone_no = mysqli_real_escape_string($link, $phone_no);
 $street = $_POST["street"];
-$street = mysqli_real_escape_string($street);
+$street = mysqli_real_escape_string($link, $street);
 $street_no = $_POST["street_no"];
-$street_no = mysqli_real_escape_string($street_no);
+$street_no = mysqli_real_escape_string($link, $street_no);
 $city = $_POST["city"];
-$city = mysqli_real_escape_string($city);
+$city = mysqli_real_escape_string($link, $city);
 $country = $_POST["country"];
-$country = mysqli_real_escape_string($country);
+$country = mysqli_real_escape_string($link, $country);
 $zip = $_POST["zip"];
-$zip = mysqli_real_escape_string($zip);
+$zip = mysqli_real_escape_string($link, $zip);
 $email = $_POST["email"];
-$email = mysqli_real_escape_string($email);
+$email = mysqli_real_escape_string($link, $email);
 $psw = $_POST["psw"];
 
 //get the hashed password
