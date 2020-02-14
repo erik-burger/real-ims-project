@@ -22,7 +22,7 @@
 
             .medication{
                 display: inline-block; 
-            }
+            } 
 
             .med_button, .prof_button, .pass_button, .doc_button{
                 background-color: #669999; 
@@ -80,7 +80,6 @@
     </nav>
 
     <div class="page">
-    
     <div class = "column">
     <h1>Profile</h1>
 
