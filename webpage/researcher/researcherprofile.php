@@ -15,7 +15,23 @@
             hr {
                 border: 10px solid ghostwhite;
             }
-        </style>
+            .prof_button, .pass_button, .patient_button{
+                background-color: #669999; 
+                border: none;
+                color: white;
+                padding: 14px 10px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;   
+                margin-top: 10px;
+                margin-bottom: 10px; 
+                margin-left: 1px;              
+            } 
+            .profile{
+                display: inline-block;  
+            }
+        </style> 
     </head>
 
     <body>
@@ -70,9 +86,12 @@
 
     ?>
 
-    <p>Change your information <a href="change_info_researcher.php">here</a>.</p>
-    <p>Change your password <a href="change_password_researcher.php">here</a>.</p>
-
+    <form action="change_info_researcher.php" class = "profile">
+        <button type = "submit" class = "prof_button">Change Information</button>
+    </form>
+    <form action="change_password_researcher.php" class = "profile">
+        <button type = "submit" class = "pass_button">Change Password</button>
+    </form></br>
     </body>
 
 </html>
