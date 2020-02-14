@@ -25,22 +25,27 @@
             width: 30%;
             
             }
-
             .right {
-            width: 70%; 
+            width: 70%;
             }
             .column {
             float: left; 
-            background: white;
+            padding-bottom: 50px; 
             }
             .page:after {
             content: "";
             display: table;
             clear: both;
-            }  
-            .body{
-                background: grey;
-            }
+            } 
+            table, th, td {
+                padding: 15px; 
+                border: 1px white;
+                border-collapse: collapse;
+                border-bottom: 1px solid #ddd;
+                border-top: 1px solid #ddd;
+                Text-align: center;
+            } 
+                       
 </style>
 </head>
 
@@ -104,7 +109,7 @@
 </div> 
 
 <div class = "column right">
-<h3>Statistics</h3>
+
 <?php
             $dates_data = [];
             $score_data = [];
@@ -154,9 +159,7 @@
 
     ?>
   <!--content of page-->
-    <b>Number of tests taken:</b> <?php echo count($dates_data);?><br>
-    <b>Latest test:</b> <?php echo end($dates_data);?><br>
-    <b>Latest score:</b> <?php echo end($score_data);?><br>
+    
     <div id='myDiv'></div>
 
   <!--end of content-->
@@ -187,7 +190,7 @@
             fill: 'tozeroy',
             line: {
                 shape: 'line' ,
-                color: 'blue'
+                color: '#669999'
             },
             visible: i.name == 'total score',
             name: i.name,
@@ -220,7 +223,7 @@
       };
 
       var updatemenus = [{
-              y: 1.4,
+              y: 1.2,
               x: 1,
               yanchor: 'top',
               buttons: [{
@@ -256,7 +259,8 @@
           text: '<b>Score over time</b>',
           font: {
             family: 'Arial',
-            size: 30,
+            size: 18,
+            color: 'black'
           }
         },
         xaxis: {
@@ -265,6 +269,7 @@
             font: {
               family: 'Arial',
               size: 18,
+              color: 'black'
             }
           },
           rangeselector: selectorOptions,
@@ -277,14 +282,29 @@
             font: {
               family: 'Arial',
               size: 18,
+              
             }
           },
         }
       };
 
       Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});
-
+      
     </script>
+    
+    <table style='width:70%' align = center>
+        <tr>
+        <th>Number of tests taken</th>
+        <th>Latest test</th>
+        <th>Latest score</th>
+        </tr>
+        <tr>
+            <td><?php echo count($dates_data);?></td>
+            <td><?php echo end($dates_data);?></td>
+            <td><?php echo end($score_data);?></td>
+        </tr>
+
 </div>
+      
 </body>
 </html>
