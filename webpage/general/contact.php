@@ -45,7 +45,7 @@ session_start();
         </div>
     </nav>
 
-        <img src="logo_grey.png" width="400">
+        <img id="b" src="logo_grey.png" width="400">
         
         <p>Some text...</p>
         

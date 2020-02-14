@@ -1,6 +1,8 @@
 
 <html>
-
+<head>
+<link rel="stylesheet" href="../general/IMS_Style.css">
+</head>
 <body>
     <h1>Change your information</h1>    
     <?php

@@ -23,6 +23,7 @@ session_start();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
+        <link href="IMS_Style.css" rel="stylesheet">
         <style>
             ul{
                 list-style-type: none;
@@ -65,12 +66,12 @@ session_start();
         </div>
     </nav>
 
-        <img src="../general/logo_grey.png" width="400">
+        <img id="b" src="../general/logo_grey.png" width="400">
 
-        <h1>Information...</h1>
-        <p1>
+        <h1>Information</h1>
+        <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna justo, sagittis in bibendum vitae, auctor in ex. Nullam posuere, ex nec condimentum accumsan, sapien erat interdum erat, mattis accumsan tellus erat in tortor. Suspendisse a varius risus. Maecenas consectetur ligula elit, laoreet pharetra eros suscipit eget. Nunc molestie finibus mattis. Mauris quam lorem, placerat nec consequat a, laoreet vitae lorem. Donec a est at neque posuere varius quis consectetur orci. Phasellus justo justo, ornare ac elementum vel, dignissim ac lacus. Nam interdum nisl in neque molestie rutrum.
-        </p1>
+        </p>
         <h1>Latest Updates</h1>
             
     <table style="width:70%" align="center">

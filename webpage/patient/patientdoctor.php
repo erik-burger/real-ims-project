@@ -3,6 +3,7 @@
 <meta http-equiv="refresh" content="3600;url=../general/logout.php" />
 <head>
     <link rel="stylesheet" href="top_menu_style.css">
+    <link rel="stylesheet" href="../general/IMS_Style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         table, th, td {
@@ -39,7 +40,7 @@
         </div>
     </nav>
 
-<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo"><br>
+<img id ="b" src="../general/logo_grey.png" width = "300"><br>
 
 <h1>Patient Profile</h1>
 

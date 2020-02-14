@@ -6,7 +6,7 @@
         <meta name="description" content="questions_sheet">
         <title>Trackzheimers</title>   
         <link rel="stylesheet" href="top_menu_style.css">
-        
+        <link rel="stylesheet" href="../general/IMS_Style.css">
         <style>
             body{
                 background-color: ghostwhite;

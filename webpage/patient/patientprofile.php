@@ -6,6 +6,7 @@
     <meta name="description" content="Statistics page for patients">
     <title>Trackzheimers</title>
     <link rel="stylesheet" href="top_menu_style.css">
+    <link rel="stylesheet" href="../general/IMS_Style.css">
     <style>
             ul{
                 list-style-type: none;
