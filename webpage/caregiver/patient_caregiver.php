@@ -26,14 +26,11 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
-            </div>
-            <ul class="nav navbar-nav">
-            <li><a href="../doctor/doctorstart.php">Home</a></li>
-            <li><a href="../general/contact.php">Contact</a></li>
-            <li><a href="../doctor/doctorprofile.php">Profile</a></li>
-            <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
-          </ul>
-            <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
+                <li><a href="caregiverstart.php">Home</a></li> 
+                <li class="active"><a href="caregiverprofile.php">Profile</a></li>            
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
             </ul>
         </div>
