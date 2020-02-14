@@ -3,7 +3,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
         <style>
-        ul{
+            ul{
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
