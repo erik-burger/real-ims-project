@@ -1,16 +1,22 @@
 <?php
+// ------ ADD TO THIS FILE:
+	//  ADD THE ATRIBUTE BEDROOM_FLOOR
+	// RULES FOR THE PASSWORD
+	// SEND EMAIL WHEN REGESTERING
+	//JAVASCRIPT INJECTIONS
+
 
 //Connect to database
-include dirname(__DIR__).'general/openDB.php';;
+include('../general/openDB.php');
 
 // Introduce variables 
-$f_name = $m_name = $l_name = $ssn = $date_of_birth = $phone = $street = $street_no = $city = '';
-$state_county = $country = $zip = $diagnosis_date = $diagnosis_desc = $education = $email = $psw = '';
+$f_name = $m_name = $l_name = $ssn = $date_of_birth = $phone = $street = $street_no = $city = $bedroom_floor = '';
+$state_county = $country = $zip = $diagnosis_date = $diagnosis_desc = $education = $email = $psw = $verification_hash ='';
 
 // Introduce variables for error handling
 $errors = array('f_name' => '', 'm_name' => '', 'l_name' => '', 'ssn' => '', 'date_of_birth' => '', 'phone' => '',
 'street' => '', 'street_no' => '', 'city' => '', 'state_county' => '', 'country' => '', 'zip' => '',
-'diagnosis_date' => '', 'education' => '', 'email' => '', 'psw' => '');
+'diagnosis_date' => '', 'education' => '', 'email' => '', 'psw' => '', 'bedroom_floor' => '');
 
 // Validation of the form 
 if(isset($_POST["submit"])){
@@ -18,23 +24,24 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["f_name"])){
 		$errors['f_name'] = "First name is required";
 	}else{
-		$f_name = $_POST["f_name"];
+		$f_name = $link->real_escape_string($_POST["f_name"]);
 		if(!preg_match('/^[a-z A-Z -]+$/', $f_name)){
 			$errors['f_name'] = "Name can be letters and dashes only";
 		}
 	}
 	
-	if(!empty($_POST["m_name"])){
-		$m_name = $_POST["m_name"];	
-		if(!preg_match('/^[a-z A-Z - \s]+$/', $m_name)){
-			$errors['m_name'] = "Middle name can be letters, spacing and dashes only";
+	if(!empty($_POST["m_name"])){	
+		if(!preg_match('/[a-z A-Z - \s]+/', $_POST["m_name"])){
+			$errors['m_name'] = "Middle can must be letters, spacing and dashes only";
+		}else{
+			$m_name = $link->real_escape_string($_POST["m_name"]);
 		}
 	}
 
 	if (empty($_POST["l_name"])){
 		$errors['l_name'] = "Last name is required";
 	}else{
-		$l_name = $_POST["l_name"];
+		$l_name = $link->real_escape_string($_POST["l_name"]);
 		if(!preg_match('/^[a-z A-Z -]+$/', $l_name)){
 			$errors['l_name']= "Last name can be letters and dashes only";
 		}
@@ -49,8 +56,8 @@ if(isset($_POST["submit"])){
 	if(empty($_POST["ssn"])){
 		$errors['ssn'] = "Social security number is required";
 	}else{
-		$ssn = $_POST["ssn"];
-		if(!preg_match('/^[0-9]+[-][0-9]+$/', $ssn)){
+		$ssn = $link->real_escape_string($_POST["ssn"]);
+		if(!preg_match('/([0-9]{6}+[-][0-9]{4})/', $ssn)){
 			$errors['ssn'] = "Must be only numbers";
 		}
 	}
@@ -58,8 +65,8 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["street"])){
 		$errors['street'] = "Street is required";
 	}else{
-		$street = $_POST["street"];
-		if(!preg_match('/^[a-z A-Z \s]+$/')){
+		$street = $link->real_escape_string($_POST["street"]);
+		if(!preg_match('/^[a-z A-Z \s]+$/', $street)){
 			$errors['street'] = "Street can be letters and spacing only";
 		}
 	}		
@@ -67,8 +74,8 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["street_no"])){
 		$errors['street_no'] = "Street number is required";
 	}else{
-		$street_no = $_POST["street_no"];
-		if(!preg_match('/^[0-9]+[a-z A-Z]/', $street_no)){
+		$street_no = $link->real_escape_string($_POST["street_no"]);
+		if(!preg_match('/^[0-9]+[a-z A-Z]?/', $street_no)){
 			$errors['street_no'] = "Must be number and can contain a letter";
 		}
 	}
@@ -76,7 +83,7 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["city"])){
 		$errors['city'] = "City is required";
 	}else{
-		$city = $_POST["city"];
+		$city = $link->real_escape_string($_POST["city"]);
 		if(!preg_match('/^[a-z A-Z]+$/', $city)){
 			$errors['city'] = "Must contain letters only";
 		}
@@ -85,7 +92,7 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["state_county"])){
 		$errors['state_county'] = "State or county is required";
 	}else{
-		$state_county = $_POST["state_county"];
+		$state_county = $link->real_escape_string($_POST["state_county"]);
 		if (!preg_match('/^[a-z A-Z]+$/', $state_county)){
 			$errors["state_county"] = "Must contain only letters";
 		}
@@ -94,7 +101,7 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["country"])){
 		$errors['country'] = "Country is required";
 	}else{
-		$country = $_POST["country"];
+		$country = $link->real_escape_string($_POST["country"]);
 		if(!preg_match('/^[a-z A-Z]+$/', $country)){
 			$errors['country'] = "Must contain letters only";
 		}		
@@ -103,7 +110,7 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["zip"])){
 		$errors['zip'] = "Zip is required";
 	}else{
-		$zip = $_POST["zip"];
+		$zip = $link->real_escape_string($_POST["zip"]);
 		if(!preg_match('/^[0-9]+$/', $zip)){
 			$errors['zip'] = "Must be numbers only";
 		}
@@ -112,8 +119,8 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["date_of_birth"])){
 		$errors["date_of_birth"] = "Date of birth is required";
 	}else{
-		$date_of_birth = $_POST["date_of_birth"];
-		if (!preg_match('/[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/', $date_of_birth)){
+		$date_of_birth = $link->real_escape_string($_POST["date_of_birth"]);
+		if (!preg_match('/[12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/', $date_of_birth)){
 			$errors["date_of_birth"] = "Must be numbers and have the following format YYYY-MM-DD";
 		}
 	}
@@ -121,8 +128,8 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["diagnosis_date"])){
 		$errors["diagnosis_date"] = "Diagnosis is required";
 	}else{
-		$diagnosis_date = $_POST["diagnosis_date"];
-		if (!preg_match('/[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/', $diagnosis_date)){
+		$diagnosis_date = $link->real_escape_string($_POST["diagnosis_date"]);
+		if (!preg_match('/[12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/', $diagnosis_date)){
 			$errors["diagnosis_date"] = "Must be numbers and have the following format YYYY-MM-DD";
 		}
 	}
@@ -130,22 +137,37 @@ if(isset($_POST["submit"])){
 	if (empty($_POST['education'])){
 		$errors['education'] = "Number of years of education is required";
 	}else{
-		$education = $_POST['education'];
-		if(!preg_match('/^[0-9]+$', $education)){
+		$education = $link->real_escape_string($_POST['education']);
+		if(!preg_match('/^[0-9]+$/', $education)){
 			$errors['education'] = "Must be numbers";
+		}
+	}
+	
+	if (empty($_POST['bedroom_floor'])){
+		$errors['bedroom_floor'] = "Bedroom floor ir required";
+	}else{
+		$bedroom_floor = $link->real_escape_string($_POST['bedroom_floor']);
+		if(!preg_match('/^[0-9]+$/', $bedroom_floor)){
+			$errors['bedroom_floor'] = "Must be numbers";
 		}
 	}
 	
 	if (empty($_POST["email"])){
 		$errors['email'] = "Email is required";
 	}else{
-		$email = $_POST["email"];
+		$email = $link->real_escape_string($_POST["email"]);
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
+		}else{			
+			$sql_email = "SELECT * FROM patient WHERE email = '$email'";
+			$result = mysqli_query($link, $sql_email);
+			if(mysqli_num_rows($result)>0){
+				$errors['email'] = "Email adress already registered, please use another email";
+			}
 		}
 	}
-	
+
 	if (empty($_POST['psw'])){
 		$errors['psw']= 'Please enter a password';
 	}elseif(empty($_POST['psw_repeat'])){
@@ -153,30 +175,18 @@ if(isset($_POST["submit"])){
 	}elseif($_POST['psw']!= $_POST['psw_repeat']){
 		$errors['psw'] = "Passwords do not match, pleas try again!";
 	}else{
-		$psw = $_POST['psw'];
+		$psw = $link->real_escape_string($_POST['psw']);
 	}
+	
+	$verification_hash = md5(rand(0,10000));
+	
 	
 	if(array_filter($errors)){
 	 // Go back to the form
 	} else {
 	// Removing MySQL injections before adding the data to the database 
-		$f_name = mysqli_real_escape_string($link,$_POST['f_name']);
-		$m_name = mysqli_real_escape_string($link,$_POST['m_name']);
-		$l_name = mysqli_real_escape_string($link,$_POST['l_name']);
-		$ssn = mysqli_real_escape_string($link, $_POST['ssn']);
-		$date_of_birth = mysqli_real_escape_string($link, $_POST['date_of_birth']);
-		$phone = mysqli_real_escape_string($link,$_POST['phone']);
-		$street = mysqli_real_escape_string($link,$_POST['street']);
-		$street_no = mysqli_real_escape_string($link,$_POST['street_no']);
-		$city = mysqli_real_escape_string($link,$_POST['city']);
-		$state_county = mysqli_real_escape_string($link, $_POST['state_county']);
-		$country = mysqli_real_escape_string($link,$_POST['country']);
-		$zip = mysqli_real_escape_string($link,$_POST['zip']);
-		$education = mysqli_real_escape_string($link, $_POST['education']);
-		$gender = mysqli_real_escape_string($link, $_POST['gender']);
-		$diagnosis_date = mysqli_real_escape_string($link, $_POST['diagnosis_date']);
-		$diagnosis_desc = mysqli_real_escape_string($link, $_POST['diagnosis_desc']);
-		$email = mysqli_real_escape_string($link,$_POST['email']);
+		$gender = $link->real_escape_string($_POST['gender']);
+		$diagnosis_desc = $link->real_escape_string($_POST['diagnosis_desc']);
 
 	// Hashing password
 		$psw = password_hash($psw, PASSWORD_DEFAULT);
@@ -185,10 +195,11 @@ if(isset($_POST["submit"])){
 			
 		$sql = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
 		street, street_no, city, country, zip, date_of_birth, gender, education, diagnosis_date,
-		diagnosis_description, SSN, phone, state) 
+		diagnosis_description, SSN, phone, state, verification_hash, bedroom_floor) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$password_hash', '$street', 
 		'$street_no', '$city', '$country', '$zip', '$date_of_birth', 
-		'$gender', $education, '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county')";  
+		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', 
+		'$verification_hash', '$bedroom_floor')";  
 		
 		if (mysqli_query($link, $sql)) {
    			echo "New record created successfully";
@@ -362,13 +373,17 @@ if(isset($_POST["submit"])){
         <label for="education"><b>Number of education years</b></label>
         <input type="number" name="education" value="<?php echo htmlspecialchars($education); ?>">
         <div class="error"><?php echo $errors['education']; ?></div><br>
+        
+        <label for="bedroom_floor"><b>On what floor is your bedroom?</b></label>
+        <input type="text" name="bedroom_floor" value="<?php echo htmlspecialchars($bedroom_floor); ?>">
+        <div class="error"><?php echo $errors['bedroom_floor']; ?></div><br>
 
 		<label for="diagnosis_date"><b>Diagnosis date</b></label>
 		<input type="date" name="diagnosis_date" value="<?php echo htmlspecialchars($diagnosis_date); ?>">
 		<div class="error"><?php echo $errors['diagnosis_date']; ?></div><br>
 		
-      	<label for="diagnosis_desc"><b>Diagnosis description</b></label>
-      	<input type="text" placeholder="Enter diagnosis description (optional)" name="diagnosis_desc"><br>
+      	<label for="diagnosis_desc"><b>Diagnosis description (optional)</b></label>
+      	<input type="text" name="diagnosis_desc" value="<?php echo htmlspecialchars($diagnosis_desc); ?>"><br>
       
       	<label for="email"><b>Email</b></label>
       	<input type="text" name="email" value = "<?php echo htmlspecialchars($email); ?>">
