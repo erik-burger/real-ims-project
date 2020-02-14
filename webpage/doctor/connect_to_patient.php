@@ -5,6 +5,7 @@
     $p_id = $_POST["patient_id"];
 
     include dirname(__DIR__).'/general/openDB.php';
+    $p_id = mysqli_real_escape_string($p_id);
 
     //Query to check if the patient doctor connection exists 
     $result = mysqli_query($link, "select *
