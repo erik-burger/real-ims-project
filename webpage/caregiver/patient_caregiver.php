@@ -18,6 +18,34 @@
             display: inline-block;
             float: left; 
         }
+        * {
+            box-sizing: border-box;
+            }
+            .left {
+            width: 30%;
+            
+            }
+            .right {
+            width: 70%;
+            }
+            .column {
+            float: left; 
+            padding-bottom: 50px; 
+            }
+            .page:after {
+            content: "";
+            display: table;
+            clear: both;
+            } 
+            table, th, td {
+                padding: 15px; 
+                border: 1px white;
+                border-collapse: collapse;
+                border-bottom: 1px solid #ddd;
+                border-top: 1px solid #ddd;
+                Text-align: center;
+            } 
+                       
 </style>
 </head>
 
@@ -26,19 +54,17 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
-            </div>
-            <ul class="nav navbar-nav">
-            <li><a href="../doctor/doctorstart.php">Home</a></li>
-            <li><a href="../general/contact.php">Contact</a></li>
-            <li><a href="../doctor/doctorprofile.php">Profile</a></li>
-            <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
-          </ul>
-            <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
+                <li><a href="caregiverstart.php">Home</a></li> 
+                <li class="active"><a href="caregiverprofile.php">Profile</a></li>            
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
 
+<div class = "column left"> 
 <h1>Patient Profile</h1>
 
 <?php
@@ -80,8 +106,10 @@
         }
         include dirname(__DIR__).'/general/closeDB.php';
  ?>
+</div> 
 
-<h3>Statistics</h3>
+<div class = "column right">
+
 <?php
             $dates_data = [];
             $score_data = [];
@@ -131,9 +159,7 @@
 
     ?>
   <!--content of page-->
-    <b>Number of tests taken:</b> <?php echo count($dates_data);?><br>
-    <b>Latest test:</b> <?php echo end($dates_data);?><br>
-    <b>Latest score:</b> <?php echo end($score_data);?><br>
+    
     <div id='myDiv'></div>
 
   <!--end of content-->
@@ -164,7 +190,7 @@
             fill: 'tozeroy',
             line: {
                 shape: 'line' ,
-                color: 'blue'
+                color: '#669999'
             },
             visible: i.name == 'total score',
             name: i.name,
@@ -197,7 +223,7 @@
       };
 
       var updatemenus = [{
-              y: 1.4,
+              y: 1.2,
               x: 1,
               yanchor: 'top',
               buttons: [{
@@ -233,7 +259,8 @@
           text: '<b>Score over time</b>',
           font: {
             family: 'Arial',
-            size: 30,
+            size: 18,
+            color: 'black'
           }
         },
         xaxis: {
@@ -242,6 +269,7 @@
             font: {
               family: 'Arial',
               size: 18,
+              color: 'black'
             }
           },
           rangeselector: selectorOptions,
@@ -254,14 +282,29 @@
             font: {
               family: 'Arial',
               size: 18,
+              
             }
           },
         }
       };
 
       Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});
-
+      
     </script>
+    
+    <table style='width:70%' align = center>
+        <tr>
+        <th>Number of tests taken</th>
+        <th>Latest test</th>
+        <th>Latest score</th>
+        </tr>
+        <tr>
+            <td><?php echo count($dates_data);?></td>
+            <td><?php echo end($dates_data);?></td>
+            <td><?php echo end($score_data);?></td>
+        </tr>
 
+</div>
+      
 </body>
 </html>
