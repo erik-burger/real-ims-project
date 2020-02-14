@@ -18,6 +18,29 @@
             display: inline-block;
             float: left; 
         }
+        * {
+            box-sizing: border-box;
+            }
+            .left {
+            width: 30%;
+            
+            }
+
+            .right {
+            width: 70%; 
+            }
+            .column {
+            float: left; 
+            background: white;
+            }
+            .page:after {
+            content: "";
+            display: table;
+            clear: both;
+            }  
+            .body{
+                background: grey;
+            }
 </style>
 </head>
 
@@ -36,6 +59,7 @@
         </div>
     </nav>
 
+<div class = "column left"> 
 <h1>Patient Profile</h1>
 
 <?php
@@ -77,7 +101,9 @@
         }
         include dirname(__DIR__).'/general/closeDB.php';
  ?>
+</div> 
 
+<div class = "column right">
 <h3>Statistics</h3>
 <?php
             $dates_data = [];
@@ -259,6 +285,6 @@
       Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});
 
     </script>
-
+</div>
 </body>
 </html>
