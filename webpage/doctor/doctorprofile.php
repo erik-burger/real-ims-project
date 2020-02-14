@@ -53,7 +53,7 @@
         </div>
     </nav>
 
-        <h1>Profile</h1>
+        <h1>Your profile</h1>
    
 
     <?php

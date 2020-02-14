@@ -1,8 +1,76 @@
-
+<!DOCTYPE html>
 <html>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="top_menu_style.css">
+        <link rel="stylesheet" href="../general/IMS_Style.css">
+    <style>
+        	*{
+    	box-sizing: border-box;
+		}
+		.logo {
+                display: inline-block;
+                float: left; 
+            }
+    	
+    	input[type = text], select , textarea{
+    		width: 100%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    	}
+    	
+    	input[type = number], select , textarea{
+    		width: 100%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    	}
+    	
+    	label {
+    		padding: 12px 12px 12px 0;
+    		display: inline-block;
+    	}
+    	
+    	button[type = "Submit Changes"]{
+    		background-color: #c2d6d6;
+  			color: black;
+  			padding: 12px 20px;
+ 		 	border: none;
+  			border-radius: 4px;
+  			cursor: pointer;
+  			float: right;
+  		}
+  		
+  		button[type = "Submit Changes"] {
+  			background-color: #b3cccc;
+		}
+		
+		.container {
+ 		 	border-radius: 5px;
+  			background-color: #f2f2f2;
+  			padding: 20px;
+  			width:80%;
+  			margin-right: auto;
+			margin-left:auto;
+			align: center;
+		}
+  		
+    	.error {
+    		color: #FF0000;
+    	}
+    </style>
+</head>
 <body>
-    <h1>Change your information</h1>    
+<div class="navbar">
+<div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <a href="info.html">About</a>
+            </div>
     <?php
         session_start();
         $id = $_SESSION["id"];
@@ -30,8 +98,9 @@
         include dirname(__DIR__).'/general/closeDB.php';  
     ?> 
     <form action="update_doctor.php" method="POST">
-      <h3></h3>
-      <p>Please fill in this form to change your account information.</p>
+    <section class="container grey-text"> 
+    <h1 class="center">Change your information</h1>  
+      <p id="a">Please fill in this form to change your account information</p>
       
       <label for="f_name"><b>First name</b></label>
       <input type="text" value= "<?php echo $first_name;?>" name="f_name" >
