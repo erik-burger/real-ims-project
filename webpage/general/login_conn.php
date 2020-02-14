@@ -36,6 +36,9 @@ if(empty(trim($_POST["email"]))){
 } else{
     $password = trim($_POST["psw"]);}
 
+$email = mysqli_real_escape_string($email);
+$password = mysqli_real_escape_string($password);
+
 //If both are filled in (=both error variables are empty) -> check if email is from doctor
 if(empty($username_err) && empty($password_err)){   
     $doctorsql = "select doctor_id from doctor where email = '$email'";
