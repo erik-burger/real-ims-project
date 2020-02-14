@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="top_menu_style.css">
         <link rel="stylesheet" href="../general/IMS_Style.css">
         <style>
-        ul{
+            ul{
                 list-style-type: none;
                 margin: 0;
                 padding: 0;

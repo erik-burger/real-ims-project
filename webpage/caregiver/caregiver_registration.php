@@ -1,19 +1,19 @@
 <?php
-// -------- ADD TO THIS FILE
+// -------- ADD TO THIS FILE -------
 	// RULES FOR THE PASSWORD
 	// SEND EMAIL WHEN REGESTERING
-	// JAVASCRIPT INJECTIONS	
+	//JAVASCRIPT INJECTIONS	
 	
 
 //Connect to database
-include dirname(__DIR__).'/general/openDB.php';
+include('../general/openDB.php');
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
 $errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
 'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '');
 
 if(isset($_POST["submit"])){
-			
+	
 	if (empty($_POST["f_name"])){
 		$errors['f_name'] = "First name is required";
 	}else{
@@ -39,22 +39,22 @@ if(isset($_POST["submit"])){
 			$errors['l_name']= "Last name can be letters and dashes only";
 		}
 	}
-		
+	
 	if (empty($_POST["phone"])){
 		$errors['phone'] = "Phone number is required";
 	}else{
-		$phone = $_POST["phone"];
+		$phone = $link->real_escape_string($_POST["phone"]);
 	}
-
+	
 	if (empty($_POST["street"])){
 		$errors['street'] = "Street is required";
 	}else{
 		$street = $link->real_escape_string($_POST["street"]);
-		if(!preg_match('/^[a-z A-Z]+$/', $street)){
-			$errors['street'] = "Street can be letters only";
+		if(!preg_match('/^[a-z A-Z \s]+$/', $street)){
+			$errors['street'] = "Street can be letters and spacing only";
 		}
 	}		
-
+	
 	if (empty($_POST["street_no"])){
 		$errors['street_no'] = "Street number is required";
 	}else{
@@ -63,7 +63,7 @@ if(isset($_POST["submit"])){
 			$errors['street_no'] = "Must be number and can contain a letter";
 		}
 	}
-
+	
 	if (empty($_POST["city"])){
 		$errors['city'] = "City is required";
 	}else{
@@ -72,7 +72,7 @@ if(isset($_POST["submit"])){
 			$errors['city'] = "Must contain letters only";
 		}
 	}
-
+	
 	if (empty($_POST["country"])){
 		$errors['country'] = "Country is required";
 	}else{
@@ -90,20 +90,17 @@ if(isset($_POST["submit"])){
 			$errors['zip'] = "Must be numbers only";
 		}
 	}
-
+	
 	if (empty($_POST["email"])){
 		$errors['email'] = "Email is required";
 	}else{
 		$email = $link->real_escape_string($_POST["email"]);
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
-		
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
-		
 		}else{			
-			$sql_email = "SELECT * FROM doctor WHERE email = '$email'";
+			$sql_email = "SELECT * FROM caregiver WHERE email = '$email'";
 			$result = mysqli_query($link, $sql_email);
-			
 			if(mysqli_num_rows($result)>0){
 				$errors['email'] = "Email adress already registered, please use another email";
 			}
@@ -121,26 +118,26 @@ if(isset($_POST["submit"])){
 	}
 	
 	$verification_hash = md5(rand(0,10000));
-	
 
+	
 	if(array_filter($errors)){
 	 // Go back to the form
-	} else {	
-				
+	} else {
+	
 	// Hashing password
 		$psw = password_hash($psw, PASSWORD_DEFAULT);
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO ims.doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
+		$sql = "INSERT INTO caregiver (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
-		if (mysqli_query($link, $sql)) {   			
-			echo "New record created successfully, please verify your account through the email ";
+		if (mysqli_query($link, $sql)) {
+   			echo "New record created successfully";
+   			// header('Location: doctorstart.php');
 		} else {  
 		 	echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
-			
 	}
 }
 ?> 
@@ -150,15 +147,11 @@ if(isset($_POST["submit"])){
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="top_menu_style.css">
+    <link rel="stylesheet" href="top_menu_style.css">
     <style>
     	*{
     	box-sizing: border-box;
-		}
-		.logo {
-                display: inline-block;
-                float: left; 
-            }
+    	}
     	
     	input[type = text], select , textarea{
     		width: 100%;
@@ -201,10 +194,9 @@ if(isset($_POST["submit"])){
  		 	border-radius: 12px;
   			background-color: #f2f2f2;
   			padding: 20px;
-  			width:80%;
+  			width:70%;
   			margin-right: auto;
-			margin-left:auto;
-			align: center;
+  			margin-left:auto;
 		}
   		
     	.error {
@@ -217,30 +209,30 @@ if(isset($_POST["submit"])){
 <body>
 
 <div class="navbar">
-<div class="navbar-header">
-                <img class="logo" src="../general/logo_small.png" width = 50>
-            </div>
-    <a href="login.html">Login</a>
-    <a href="info.html">About</a>  
+    <a href="../general/login.php">Login</a>
+    <a href="../general/info.html">About</a>  
     <div class="dropdown">
         <button class="dropbtn">Register
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
           <a href="../patient/patient_registration.php">Patient</a>
-          <a href="doctor_registration.php">Doctor</a>
+          <a href="../doctor/doctor_registration.php">Doctor</a>
           <a href="../researcher/researcher_registration.php">Researcher</a>
-          <a href="../caregiver/caregiver_registration.php">Caregiver</a>
+          <a href="caregiver_registration.php">Caregiver</a>
         </div>
       </div>       
 </div>
 
+<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
 
 <section class="container grey-text"> 
-	<h1 class="center">Register as a Doctor</h1>
-    <p id="a">Please fill in this form to create an account</p>
 
-	<form action = "doctor_registration.php" method = "POST">
+	<div class="container">
+	<h1 class="center">Register as a Caregiver</h1>
+    <p>Please fill in this form to create an account as a caregiver for a patient</p>
+
+	<form action = "caregiver_registration.php" method = "POST">
 		
 		<label for="f_name"><b>First name</b></label>
       	<input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -278,7 +270,7 @@ if(isset($_POST["submit"])){
       	<input type="text" name="zip" value = "<?php echo htmlspecialchars($zip); ?>">
         <div class="error"><?php echo $errors['zip']; ?></div><br>
 
-      	<label for="email"><b>Email</b></label>
+      	<label for="email"><b>Your Email</b></label>
       	<input type="text" name="email" value = "<?php echo htmlspecialchars($email); ?>">
         <div class="error"><?php echo $errors['email']; ?></div><br>
 
@@ -293,13 +285,10 @@ if(isset($_POST["submit"])){
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    
       	<p>Already have an account? <a href="#">Sign in</a>.</p>
    </form>
-</div>   	
-</section>
-
+   
 </body>
 </html>
 
 <?php 
-include dirname(__DIR__).'/general/closeDB.php';;
-	
+include dirname(__DIR__).'general/closeDB.php';;	
 ?>
