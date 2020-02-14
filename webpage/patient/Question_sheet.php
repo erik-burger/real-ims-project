@@ -62,7 +62,10 @@
             }
 
             .image_label {
-                font-size:30px
+                float: left;
+                width: 50%;
+                padding: 10px;
+                height: 300px; 
             }
 
             .test_image {
@@ -603,7 +606,7 @@
                         }
                         include dirname(__DIR__)."/general/closeDB.php";
                         ?>
-                        <div class='image_label'>
+                        <div class = 'radio_group'>
                             <label class="container">
                             <input type='radio' name='image_1' onkeydown="return event.key != 'Enter';" value='<?php echo $ans_1; ?>'><?php echo $ans_1; ?>
                             <span class="checkmark"></span>
@@ -679,7 +682,7 @@
                         include dirname(__DIR__)."/general/closeDB.php";
                         ?>
                         
-                        <div class='image_label'>
+                        <div class = 'radio_group'>
                             <label class="container">
                             <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $ans_2; ?>'><?php echo $ans_2; ?>
                             <span class="checkmark"></span>
