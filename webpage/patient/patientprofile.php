@@ -196,6 +196,7 @@ include dirname(__DIR__).'/general/closeDB.php';
         <button type = "submit" class = "doc_button">Connect to Doctor</button>
     </form></br>
 
+    <h1>Your connected caregivers</h1>
 
     <?php
         include dirname(__DIR__).'/general/openDB.php';
@@ -231,7 +232,28 @@ include dirname(__DIR__).'/general/closeDB.php';
         <input type="text" placeholder="Caregiver ID" name="caregiver_id" >
         <button type = "submit" class = "doc_button">Connect to Caregiver</button>
     </form></br>
-    </div>
+
+    <h1>Allow you data for research</h1>
+    <a href="data_share_info.php">More information</a>
+    <form action="data_share.php", method = "POST">
+        <?php
+        include dirname(__DIR__).'/general/openDB.php';
+        $result = mysqli_query($link,"select share_data from patient where patient_id = $_SESSION[id]")   
+        or 
+        die("Could not issue MySQL query"); 
+
+        while ($row = $result->fetch_assoc()) {
+            $share_data = $row["share_data"];
+        }
+        if ($share_data == 1) {
+            $allowed = "Stop allowing";
+        } else {
+            $allowed = "Allow"; 
+        }
+        ?> 
+        <button type = "submit" class = "doc_button"><?php echo $allowed; ?></button>
+    </form></br>
+
 </div> 
 
 </body> 
