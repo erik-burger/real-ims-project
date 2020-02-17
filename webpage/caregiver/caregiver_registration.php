@@ -6,7 +6,8 @@
 	
 
 //Connect to database
-include('../general/openDB.php');
+include dirname(__DIR__).'/general/openDB.php';
+//include('../general/openDB.php');
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
 $errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
