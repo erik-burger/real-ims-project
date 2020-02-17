@@ -277,7 +277,10 @@ if(isset($_POST["submit"])){
   			margin-right: auto;
   			margin-left:auto;
 		}
-  		
+		.logo {
+                display: inline-block;
+                float: left; 
+            }
     	.error {
     		color: #FF0000;
     		font-size: 14px;
@@ -288,8 +291,11 @@ if(isset($_POST["submit"])){
 <body>
 
 <div class="navbar">
+<div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>  
     <a href="../general/login.php">Login</a>
-    <a href="../general/info.html">About</a>  
+    <a href="../general/info.html">About</a>
     <div class="dropdown">
         <button class="dropbtn">Register
           <i class="fa fa-caret-down"></i>
@@ -302,9 +308,8 @@ if(isset($_POST["submit"])){
         </div>
       </div>       
 </div>
-
-<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
-
+</br>
+</br>
 <section class="container grey-text"> 
 
 	<div class="container">
