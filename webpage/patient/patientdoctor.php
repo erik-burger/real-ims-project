@@ -32,7 +32,6 @@
             }
             .column {
             float: left; 
-            background: white;
             padding-bottom: 50px; 
             }
             .page:after {

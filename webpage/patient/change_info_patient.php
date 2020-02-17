@@ -98,6 +98,8 @@
          
     ?> 
     <form action="update_patient.php" method="POST">
+    </br>
+    </br>
     <section class="container grey-text"> 
     <h1 class="center">Change your information</h1>  
       <p id="a">Please fill in this form to change your account information</p>
