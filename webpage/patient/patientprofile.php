@@ -196,13 +196,8 @@ include dirname(__DIR__).'/general/closeDB.php';
         <button type = "submit" class = "doc_button">Connect to Doctor</button>
     </form></br>
 
-<<<<<<< HEAD
-    
-<h1>Your Caregiver</h1>
-=======
     <h1>Your connected caregivers</h1>
 
->>>>>>> fcaf02f0da3907b4fec04f2231a454259addd4b9
     <?php
         include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link,"select c.first_name, c.last_name, c.caregiver_id, c.phone, c.street, c.street_no, c.zip, c.city, c.country 
