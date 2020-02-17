@@ -7,7 +7,8 @@
 
 
 //Connect to database
-include('../general/openDB.php');
+//include('../general/openDB.php');
+include dirname(__DIR__).'/general/openDB.php';
 
 // Introduce variables 
 $f_name = $m_name = $l_name = $ssn = $date_of_birth = $phone = $street = $street_no = $city = $bedroom_floor = '';

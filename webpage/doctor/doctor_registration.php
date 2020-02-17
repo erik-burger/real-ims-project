@@ -1,12 +1,16 @@
 <?php
 // -------- ADD TO THIS FILE
 	// RULES FOR THE PASSWORD
-	// SEND EMAIL WHEN REGESTERING
-	// JAVASCRIPT INJECTIONS	
+	// JAVASCRIPT INJECTIONS
+	// Fix the email so that the link is a link and not text	
 	
 
 //Connect to database
 include dirname(__DIR__).'/general/openDB.php';
+//include('../general/openDB.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
 $errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -136,7 +140,40 @@ if(isset($_POST["submit"])){
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
 		if (mysqli_query($link, $sql)) {   			
-			echo "New record created successfully, please verify your account through the email ";
+		//	echo "New record created successfully, please verify your account through the email ";
+		
+
+        	require_once("../../PHPMailer/PHPMailer.php");
+        	require_once("../../PHPMailer/SMTP.php");
+        	require_once("../../PHPMailer/Exception.php");
+
+			$subject = 'Verify your account';
+						
+        	$mail = new PHPMailer();
+			
+        	//SMTP Settings
+        	$mail->isSMTP();
+        	$mail->Host = "smtp.gmail.com";
+        	$mail->SMTPAuth = true;
+        	$mail->Username = "trackzheimers@gmail.com";
+        	$mail->Password = '123trackzheimers';
+        	$mail->Port = 465; //587
+        	$mail->SMTPSecure = "ssl"; //tls
+
+        	//Email Settings
+        	$mail->isHTML(true);
+        	$mail->setFrom("trackzheimers@gmail.com");
+        	$mail->addAddress($email);
+        	$mail->Subject = $subject;
+        	$mail->Body = "Thanks for registering an account at trackzheimers!";
+        	$mail -> Body .= "Plase activate your account by pressing on the link below:";
+        	$mail -> Body .= "http://localhost:8888/real-ims-project/webpage/general/verify_doctor.php?email=$email&&verification_hash=$verification_hash";
+
+        	if ($mail->send()) {
+            	echo "Email is sent!";
+        	} else {
+            	echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	}
 		} else {  
 		 	echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
@@ -300,6 +337,6 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'/general/closeDB.php';;
+include dirname(__DIR__).'../general/closeDB.php';;
 	
 ?>
