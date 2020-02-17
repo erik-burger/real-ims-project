@@ -7,6 +7,7 @@ die("Could not issue MySQL query");
 while ($row = $result->fetch_assoc()) {
     $code = $row["data_access_code"];
 }
+$code = mysqli_real_escape_string($link, $code);
 if ($_POST['verification_code'] == $code) {
     mysqli_query($link, "UPDATE researcher SET data_access = 1 WHERE researcher_id = $_SESSION[id]")
     or 
