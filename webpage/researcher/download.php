@@ -1,5 +1,5 @@
 <?php
-$filename = 'users.csv';
+$filename = 'trackzheimers_data.csv';
 $export_data = unserialize($_POST['export_data']);
 
 $file = fopen($filename,"w");

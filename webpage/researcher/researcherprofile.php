@@ -16,7 +16,7 @@
             hr {
                 border: 10px solid ghostwhite;
             }
-            .prof_button, .pass_button, .patient_button{
+            .prof_button, .pass_button, .patient_button, .request_button{
                 background-color: #669999; 
                 border: none;
                 color: white;
@@ -31,6 +31,24 @@
             } 
             .profile{
                 display: inline-block;  
+            }
+            * {
+            box-sizing: border-box;
+            }
+
+            .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px; 
+            }
+            textarea {
+                width: 100%;
+                height: 300px;
+                -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+                -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+                box-sizing: border-box;         /* Opera/IE 8+ */
+                font-size: 14px;   
             }
         </style> 
     </head>
@@ -49,7 +67,7 @@
             </ul>
         </div>
     </nav>
-
+    <div class='column'>
         <h1>Profile</h1>
    
     <?php
@@ -60,7 +78,7 @@
         */
 
         include dirname(__DIR__).'/general/openDB.php';
-        $result = mysqli_query($link, "select first_name, last_name, researcher_id, phone, street, street_no, zip, city, country 
+        $result = mysqli_query($link, "select first_name, last_name, researcher_id, phone, street, street_no, zip, city, country, email
         from researcher
         where researcher_id = $_SESSION[id]")   
         or 
@@ -76,6 +94,7 @@
             $city = $row["city"];
             $country = $row["country"];
             $phone = $row["phone"]; 
+            $email = $row["email"];
      
             echo '<b>'."Name: ".'</b>'.$first_name." ".$last_name.'<br />';
             echo '<b>'."ID: ".'</b>' .$researcher_id.'<br />';
@@ -93,6 +112,22 @@
     <form action="change_password_researcher.php" class = "profile">
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
+    </div>
+    <div class='column'>
+        <h1>Request data access</h1>
+        <form action="request_email.php" method='post'>
+        <textarea name="motivation" cols=auto rows=auto placeholder="enter your motivation here"></textarea>
+        <input type="hidden" name="email" value="<? echo $email; ?>">
+        <input type="submit" value='Submit motivation' class='request_button'>
+        </form>
+
+        <h1>Redeem data access code</h1>
+        <form action="verify_data_access.php" method='post'>
+        <input type="text" name='verification_code'><br>
+        <input type="submit" value='Submit' class='request_button'>
+        </form>
+
+    </div>
     </body>
 
 </html>
