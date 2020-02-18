@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <body>
-<h1 align = "center">Sudoku</h1>
-  <style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="top_menu_style.css">
+    <link rel="stylesheet" href="../general/IMS_Style.css">
+  
+<style>
         .sudoku {
           height:30px; 
           width:30px;}
@@ -17,15 +21,41 @@
         input[type=number] {
         -moz-appearance:textfield;}
 
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-        }
+        button[type = "Submit"]{
+    		background-color: #c2d6d6;
+  			color: black;
+  			padding: 12px 20px;
+ 		 	border: none;
+  			border-radius: 4px;
+  			cursor: pointer;
+  			float: right;
+  		}
+  		
+  		button[type = "Submit"] {
+  			background-color: #b3cccc;
+		}
         .center{margin: auto;
           text-align: center;}
-    </style>
+
+          .logo {
+                display: inline-block;
+                float: left; 
+            }
+
+          </style>
+    </head>
+<body>
+
+<div class="navbar">
+    <div class="navbar-header">
+        <img class="logo" src="../general/logo_small.png" width = 50>
+    </div>
+    <ul class="nav navbar-nav">
+            <li class="active"><a href="patientstart.php">Home</a></li>            
+            </ul>
+    </div> 
+<h1 align = "center">Sudoku</h1>
+
 <?php //Sudoku template
 $sudoku = array(
   array(0, 0, 7, 0, 0, 4, 0, 2, 0),
@@ -131,7 +161,7 @@ $sudoku = array(
     <input type="number" class="sudoku" name="98" required value = <?php if($sudoku[8][7] != 0){echo $sudoku[8][7]; echo " readonly";} ?>> 
     <input class="sudoku" type="number" name="99" required value = <?php if($sudoku[8][8] != 0){echo $sudoku[8][8]; echo " readonly";} ?>><br><br>
     
-    <button type="submit">Submit</button>
+    <button type="Submit">Submit</button>
 
 </form>
 </div>
