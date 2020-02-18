@@ -234,8 +234,6 @@ if(isset($_POST["submit"])){
       </div>       
 </div>
 
-<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
-
 <section class="container grey-text"> 
 
 	<div class="container">
