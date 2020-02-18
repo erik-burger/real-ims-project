@@ -54,6 +54,7 @@ $_SESSION["timestamp"] = time();
         <div class="container-fluid">
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
+                <li><a href="../general/chat_home.php">Messages</a></li>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
             </ul>

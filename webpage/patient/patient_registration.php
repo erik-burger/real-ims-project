@@ -190,17 +190,16 @@ if(isset($_POST["submit"])){
 		$diagnosis_desc = $link->real_escape_string($_POST['diagnosis_desc']);
 
 	// Hashing password
-		$psw = password_hash($psw, PASSWORD_DEFAULT);
+		$password_hash = password_hash($psw, PASSWORD_DEFAULT);
 	
 	// Inserting into database
 			
 		$sql = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
 		street, street_no, city, country, zip, date_of_birth, gender, education, diagnosis_date,
-		diagnosis_description, SSN, phone, state, verification_hash, bedroom_floor) 
+		diagnosis_description, SSN, phone, state, bedroom_floor) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$password_hash', '$street', 
 		'$street_no', '$city', '$country', '$zip', '$date_of_birth', 
-		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', 
-		'$verification_hash', '$bedroom_floor')";  
+		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', '$bedroom_floor')";  
 		
 		if (mysqli_query($link, $sql)) {
    			echo "New record created successfully";
