@@ -171,6 +171,7 @@ session_start();
             }
         ?>
         </table>
+        <br>
 
         <table  border='1' width: 100%; style='border-collapse:collapse;'>
             <tr>
