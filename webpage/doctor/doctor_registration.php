@@ -21,7 +21,8 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["f_name"])){
 		$errors['f_name'] = "First name is required";
 	}else{
-		$f_name = $link->real_escape_string($_POST["f_name"]);		
+		$f_name = $link->real_escape_string($_POST["f_name"]);	
+		$f_name = strip_tags($f_name); 	
 		if(!preg_match('/^[a-z A-Z -]+$/', $f_name)){
 			$errors['f_name'] = "Name can be letters and dashes only";
 		}
@@ -32,6 +33,7 @@ if(isset($_POST["submit"])){
 			$errors['m_name'] = "Middle can must be letters, spacing and dashes only";
 		}else{
 			$m_name = $link->real_escape_string($_POST["m_name"]);
+			$m_name = strip_tags($m_name); 
 		}
 	}
 
@@ -39,6 +41,7 @@ if(isset($_POST["submit"])){
 		$errors['l_name'] = "Last name is required";
 	}else{
 		$l_name = $link->real_escape_string($_POST["l_name"]);
+		$l_name = strip_tags($l_name); 
 		if(!preg_match('/^[a-z A-Z -]+$/', $l_name)){
 			$errors['l_name']= "Last name can be letters and dashes only";
 		}
@@ -54,6 +57,7 @@ if(isset($_POST["submit"])){
 		$errors['street'] = "Street is required";
 	}else{
 		$street = $link->real_escape_string($_POST["street"]);
+		$street = strip_tags($street); 
 		if(!preg_match('/^[a-z A-Z]+$/', $street)){
 			$errors['street'] = "Street can be letters only";
 		}
@@ -63,6 +67,7 @@ if(isset($_POST["submit"])){
 		$errors['street_no'] = "Street number is required";
 	}else{
 		$street_no = $link->real_escape_string($_POST["street_no"]);
+		$street_no = strip_tags($street_no); 
 		if(!preg_match('/^[0-9]+[a-z A-Z]?/', $street_no)){
 			$errors['street_no'] = "Must be number and can contain a letter";
 		}
@@ -72,6 +77,7 @@ if(isset($_POST["submit"])){
 		$errors['city'] = "City is required";
 	}else{
 		$city = $link->real_escape_string($_POST["city"]);
+		$city = strip_tags($city); 
 		if(!preg_match('/^[a-z A-Z]+$/', $city)){
 			$errors['city'] = "Must contain letters only";
 		}
@@ -81,6 +87,7 @@ if(isset($_POST["submit"])){
 		$errors['country'] = "Country is required";
 	}else{
 		$country = $link->real_escape_string($_POST["country"]);
+		$country = strip_tags($country); 
 		if(!preg_match('/^[a-z A-Z]+$/', $country)){
 			$errors['country'] = "Must contain letters only";
 		}		
@@ -90,6 +97,7 @@ if(isset($_POST["submit"])){
 		$errors['zip'] = "Zip is required";
 	}else{
 		$zip = $link->real_escape_string($_POST["zip"]);
+		$zip = strip_tags($zip); 
 		if(!preg_match('/^[0-9]+$/', $zip)){
 			$errors['zip'] = "Must be numbers only";
 		}
@@ -100,6 +108,7 @@ if(isset($_POST["submit"])){
 	}else{
 		$email = $link->real_escape_string($_POST["email"]);
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		$email = strip_tags($email); 
 		
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
