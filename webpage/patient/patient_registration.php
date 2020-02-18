@@ -26,6 +26,7 @@ if(isset($_POST["submit"])){
 		$errors['f_name'] = "First name is required";
 	}else{
 		$f_name = $link->real_escape_string($_POST["f_name"]);
+		$f_name = strip_tags($f_name);
 		if(!preg_match('/^[a-z A-Z -]+$/', $f_name)){
 			$errors['f_name'] = "Name can be letters and dashes only";
 		}
@@ -36,6 +37,7 @@ if(isset($_POST["submit"])){
 			$errors['m_name'] = "Middle can must be letters, spacing and dashes only";
 		}else{
 			$m_name = $link->real_escape_string($_POST["m_name"]);
+			$m_name = strip_tags($m_name);
 		}
 	}
 
@@ -43,6 +45,7 @@ if(isset($_POST["submit"])){
 		$errors['l_name'] = "Last name is required";
 	}else{
 		$l_name = $link->real_escape_string($_POST["l_name"]);
+		$l_name = strip_tags($l_name);
 		if(!preg_match('/^[a-z A-Z -]+$/', $l_name)){
 			$errors['l_name']= "Last name can be letters and dashes only";
 		}
@@ -58,6 +61,7 @@ if(isset($_POST["submit"])){
 		$errors['ssn'] = "Social security number is required";
 	}else{
 		$ssn = $link->real_escape_string($_POST["ssn"]);
+		$ssn = strip_tags($ssn);
 		if(!preg_match('/([0-9]{6}+[-][0-9]{4})/', $ssn)){
 			$errors['ssn'] = "Must be only numbers";
 		}
@@ -67,6 +71,7 @@ if(isset($_POST["submit"])){
 		$errors['street'] = "Street is required";
 	}else{
 		$street = $link->real_escape_string($_POST["street"]);
+		$street = strip_tags($street);
 		if(!preg_match('/^[a-z A-Z \s]+$/', $street)){
 			$errors['street'] = "Street can be letters and spacing only";
 		}
@@ -76,6 +81,7 @@ if(isset($_POST["submit"])){
 		$errors['street_no'] = "Street number is required";
 	}else{
 		$street_no = $link->real_escape_string($_POST["street_no"]);
+		$street_no = strip_tags($street_no);
 		if(!preg_match('/^[0-9]+[a-z A-Z]?/', $street_no)){
 			$errors['street_no'] = "Must be number and can contain a letter";
 		}
@@ -85,6 +91,7 @@ if(isset($_POST["submit"])){
 		$errors['city'] = "City is required";
 	}else{
 		$city = $link->real_escape_string($_POST["city"]);
+		$city = strip_tags($city);
 		if(!preg_match('/^[a-z A-Z]+$/', $city)){
 			$errors['city'] = "Must contain letters only";
 		}
@@ -94,6 +101,7 @@ if(isset($_POST["submit"])){
 		$errors['state_county'] = "State or county is required";
 	}else{
 		$state_county = $link->real_escape_string($_POST["state_county"]);
+		$state_county = strip_tags($state_county);
 		if (!preg_match('/^[a-z A-Z]+$/', $state_county)){
 			$errors["state_county"] = "Must contain only letters";
 		}
@@ -103,6 +111,7 @@ if(isset($_POST["submit"])){
 		$errors['country'] = "Country is required";
 	}else{
 		$country = $link->real_escape_string($_POST["country"]);
+		$country = strip_tags($country);
 		if(!preg_match('/^[a-z A-Z]+$/', $country)){
 			$errors['country'] = "Must contain letters only";
 		}		
@@ -112,6 +121,7 @@ if(isset($_POST["submit"])){
 		$errors['zip'] = "Zip is required";
 	}else{
 		$zip = $link->real_escape_string($_POST["zip"]);
+		$zip = strip_tags($zip);
 		if(!preg_match('/^[0-9]+$/', $zip)){
 			$errors['zip'] = "Must be numbers only";
 		}
@@ -121,6 +131,7 @@ if(isset($_POST["submit"])){
 		$errors["date_of_birth"] = "Date of birth is required";
 	}else{
 		$date_of_birth = $link->real_escape_string($_POST["date_of_birth"]);
+		$date_of_birth = strip_tags($date_of_birth);
 		if (!preg_match('/[12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/', $date_of_birth)){
 			$errors["date_of_birth"] = "Must be numbers and have the following format YYYY-MM-DD";
 		}
@@ -130,6 +141,7 @@ if(isset($_POST["submit"])){
 		$errors["diagnosis_date"] = "Diagnosis is required";
 	}else{
 		$diagnosis_date = $link->real_escape_string($_POST["diagnosis_date"]);
+		$diagnosis_date = strip_tags($diagnosis_date);
 		if (!preg_match('/[12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/', $diagnosis_date)){
 			$errors["diagnosis_date"] = "Must be numbers and have the following format YYYY-MM-DD";
 		}
@@ -139,6 +151,7 @@ if(isset($_POST["submit"])){
 		$errors['education'] = "Number of years of education is required";
 	}else{
 		$education = $link->real_escape_string($_POST['education']);
+		$education = strip_tags($education);
 		if(!preg_match('/^[0-9]+$/', $education)){
 			$errors['education'] = "Must be numbers";
 		}
@@ -158,6 +171,7 @@ if(isset($_POST["submit"])){
 	}else{
 		$email = $link->real_escape_string($_POST["email"]);
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		$email = strip_tags($email);
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
 		}else{			
@@ -177,6 +191,7 @@ if(isset($_POST["submit"])){
 		$errors['psw'] = "Passwords do not match, pleas try again!";
 	}else{
 		$psw = $link->real_escape_string($_POST['psw']);
+
 	}
 	
 	$verification_hash = md5(rand(0,10000));
@@ -187,11 +202,14 @@ if(isset($_POST["submit"])){
 	} else {
 	// Removing MySQL injections before adding the data to the database 
 		$gender = $link->real_escape_string($_POST['gender']);
+		$gender = strip_tags($gender); 
+
 		$diagnosis_desc = $link->real_escape_string($_POST['diagnosis_desc']);
+		$diagnosis_desc = strip_tags($diagnosis_desc);
 
 	// Hashing password
-		$psw = password_hash($psw, PASSWORD_DEFAULT);
-	
+		$password_hash = password_hash($psw, PASSWORD_DEFAULT);
+
 	// Inserting into database
 			
 		$sql = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
@@ -339,8 +357,8 @@ if(isset($_POST["submit"])){
       	<input type ="text" name="date_of_birth" value="<?php echo htmlspecialchars($date_of_birth); ?>">
       	<div class="error"><?php echo $errors['date_of_birth']; ?></div><br>
       	
-      <label for="gender"><b>Gender</b></label>
-      <select name = "gender">
+      <label for='gender'><b>Gender</b></label>
+      <select name = 'gender'>
 	      <option selected = "selected">Select gender</option>
           <option value = "male">Male</option>
           <option value = "female">Female</option>
