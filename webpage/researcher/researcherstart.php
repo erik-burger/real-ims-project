@@ -171,11 +171,57 @@ session_start();
             }
         ?>
         </table>
+
+        <table  border='1' width: 100%; style='border-collapse:collapse;'>
+            <tr>
+            <th>ID</th>
+            <th>Date of birth</th>
+            <th>Gender</th>
+            <th>Education</th>
+            <th>Stage</th>
+            </tr>
+            <?php 
+            
+            $sql = "SELECT patient_id, date_of_birth, gender, education, stage FROM patient WHERE share_data = 1";
+            $result = mysqli_query($link, $sql)   
+            or 
+            die("Could not issue MySQL query"); 
+            $user_arr[] = array('patient_id','date_of_birth','gender','education', 'stage');
+            $i = 0;
+            $length = mysqli_num_rows($result);
+            while($row = mysqli_fetch_array($result)){
+            $patient_id = MD5($row['patient_id']);
+            $date_of_birth = $row['date_of_birth'];
+            $gender = $row['gender'];
+            $education = $row['education'];
+            $stage = $row['stage'];
+            $i += 1;
+            $user_arr[] = array($patient_id, $date_of_birth, $gender, $education, $stage);
+            if ($i>$length-15){
+        ?>
+            <tr>
+            <td><?php echo $patient_id; ?></td>
+            <td><?php echo $date_of_birth; ?></td>
+            <td><?php echo $gender; ?></td>
+            <td><?php echo $education; ?></td>
+            <td><?php echo $stage; ?></td>
+            </tr>
+        <?php
+            }
+            }
+        ?>
+        </table>
+
+
+
+
         </div>
         <?php 
             $serialize_test_arr = serialize($test_arr);
+            $serialize_user_arr = serialize($user_arr);
         ?>
-        <textarea name='export_data' style='display: none;'><?php echo $serialize_test_arr; ?></textarea>
+        <textarea name='export_data1' style='display: none;'><?php echo $serialize_test_arr; ?></textarea>
+        <textarea name='export_data2' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
         </form>
         </div>
         <?php

@@ -120,7 +120,7 @@
             echo '<b>'."Date of Birth: ".'</b>' .$birth_date.'<br/>';
             echo '<b>'."Diagnosis Date: ".'</b>' .$diag_date.'<br/>';
 
-            echo '<h3>'."About".'</h3>';
+            echo '<b>'."About: ".'</b>';
             echo $desc.'<br/>';
         }
         include dirname(__DIR__).'/general/closeDB.php';

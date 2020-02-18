@@ -32,7 +32,6 @@
             }
             .column {
             float: left; 
-            background: white;
             padding-bottom: 50px; 
             }
             .page:after {
@@ -291,7 +290,9 @@
               color: 'black'
             }
           },
-        }
+        },
+        plot_bgcolor: "ghostwhite",
+        paper_bgcolor: "ghostwhite"    
       };
 
       Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});
