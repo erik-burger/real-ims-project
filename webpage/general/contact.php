@@ -39,11 +39,6 @@
             clear: both;
             }
 
-            .page{
-                height:100%;
-                width:100%; 
-            }  
-        
             textarea{
               height: 200px;     
                       
@@ -73,7 +68,6 @@
     		font-size: 14px;
             font-family:"Arial";     
     	}
-
         .container {
  		 	border-radius: 10px;
   			background-color: #f2f2f2;
@@ -98,7 +92,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse"> 
         <div class="container-fluid">
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>

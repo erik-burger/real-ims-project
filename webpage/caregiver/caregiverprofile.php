@@ -60,6 +60,17 @@
                 border-bottom: 1px solid #ddd;
                 border-top: 1px solid #ddd;
             }
+            .container {
+ 		 	border-radius: 10px;
+  			background-color: #f2f2f2;
+  			padding-left: 20px;
+  			width:95%;
+  			margin-right: auto;
+  			margin-left: auto;
+            margin-bottom: 20px; 
+            margin-top: 20px;
+            font-size:18;
+		} 
         </style>
     </head>
 
@@ -84,7 +95,7 @@
     
     <div class = "column">
     <h1>Profile</h1>
-   
+    <div class = "container">
     <?php
         session_start();
        /*if ( isset($_SESSION["id"]) === false) {
@@ -127,6 +138,7 @@
     <form action="change_password_caregiver.php" class = "profile">
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
+    </div>
     </div>
 
     <div class = "column">
