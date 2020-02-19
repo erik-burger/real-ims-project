@@ -1,6 +1,9 @@
 
 
 <html>
+
+
+
 <meta http-equiv="refresh" content="3600;url=logout.php" />
 
     <head>
@@ -10,6 +13,9 @@
         <link href="IMS_Style.css" rel="stylesheet">
 
         <style>
+            * {
+            box-sizing: border-box;
+            }
             ul{
                 list-style-type: none;
                 margin: 0;
@@ -19,10 +25,7 @@
                 display: inline-block;
                 float: left; 
             }
-            * {
-            box-sizing: border-box;
-            }
-
+            
             .column {
             float: left;
             width: 50%;
@@ -34,36 +37,61 @@
             content: "";
             display: table;
             clear: both;
+            }
+
+            .page{
+                height:100%;
+                width:100%; 
             }  
         
-           .email{
-              width: 70%;
-    		  padding: 12px;
-    		  border: 1px solid #ccc;
-    		  border-radius; 4px;
-    		  resize: vertical;
-            
-            }
             textarea{
-              width: 70%;
-              height: 200px; 
-    		  padding: 12px;
-    		  border: 1px solid #ccc;
-    		  border-radius; 4px;
-    		  resize: vertical;
-              font-family:"Arial";   
-              font-size: 12px; 
-              color: "black";  
-        
+              height: 200px;     
+                      
             }
-            input, label {
+            input, label{
                 display:block;
+            }  
 
+            .button {
+                background-color: #669999; 
+                border: none;
+                color: white;
+                padding: 14px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                font-size: 16px;  
+                margin-top: 10px;                            
             }
-            .form{
-                padding: 20px;  
+
+            input[type = text], textarea{
+    		width: 70%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    		font-size: 14px;
+            font-family:"Arial";     
+    	}
+
+            .container {
+ 		 	border-radius: 10px;
+  			background-color: #f2f2f2;
+  			padding-left: 20px;
+  			width:90%;
+  			margin-right: auto;
+  			margin-left:auto;
+		}        
+        .message_form{
+            margin-right: auto;
+  			margin-left:auto;
+        }    
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 400px;
             }
-            
         </style>
     </head>
 
@@ -85,29 +113,35 @@
         </div>
     </nav>
 
-    <img src="logo_grey.png" width="400">
-        <div class = "page"> 
-        <div class = "column left">
-        
-        
+    <img src="logo_grey.png" class="center">
+   
+    <div class = "page">        
+      <div class = "column left">
         <h1>Contact Information</h1> 
+
+        <div class = "container">
         
         <p><b>email:</b> trackzheimers@gmail.com</p>
         <p><b>telephone:</b> 123456789</p>
         <p><b>adress:</b> project room ITC</p>
         </div>
+        </div>
     
     <div class = "column right" id = "message_form">
         <h1>Write Us a Message</h1>
-        <form action="send_email.php" method = "post" id = "message_form">
+        <div class = "container">
+        <div class = "form">
+        <form action="send_email.php" method = "post" id = "message_form" name = "message_form">
             <label for="email"><b>Email address</b></label>
             <input name="email" class = "email" type="text" placeholder="Enter your email address" required><br>  
             <label for="subject"><b>Subject</b></label>
             <input name="subject" class = "email" type="text" placeholder="Enter subject" required><br>  
             <label for="message"><b>Message</b></label>
             <textarea name="message" id = "message" cols=auto rows=auto placeholder="Enter message here..."></textarea>
-            <button type = "submit" name = "submit">Send</button>
+            <button class = "button" type = "submit" name = "submit">Send</button>
         </form>  
+        </div>
+        </div>
      </div>     
     </div>
  </div> 
