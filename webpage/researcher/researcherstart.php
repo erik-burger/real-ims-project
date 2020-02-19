@@ -89,11 +89,11 @@ session_start();
             if ($data_access == 1) {
         ?>
         <div class="container">
-        
+        <p>Test data</p>
         <form method='post' action='download.php'>
         <input type='submit' value='Download' name='Export' class='my_buttons'>
-        <button type="button" onclick="disp_preview('data')" class='my_buttons'>Show/hide preview</button>       
-        <div id='data' style="display:none;">
+        <button type="button" onclick="disp_preview('data1')" class='my_buttons'>Show/hide preview</button>       
+        <div id='data1' style="display:none;">
         
         <table  border='1' width: 100%; style='border-collapse:collapse;'>
             <tr>
@@ -171,8 +171,21 @@ session_start();
             }
         ?>
         </table>
-        <br>
 
+        </div>
+        <?php 
+            $serialize_test_arr = serialize($test_arr);
+        ?>
+        <textarea name='export_data' style='display: none;'><?php echo $serialize_test_arr; ?></textarea>
+        </form>
+
+        <br>
+        
+        <p>Patient data</p>
+        <form method='post' action='download.php'>
+        <input type='submit' value='Download' name='Export' class='my_buttons'>
+        <button type="button" onclick="disp_preview('data2')" class='my_buttons'>Show/hide preview</button>       
+        <div id='data2' style="display:none;">
         <table  border='1' width: 100%; style='border-collapse:collapse;'>
             <tr>
             <th>ID</th>
@@ -218,11 +231,9 @@ session_start();
 
         </div>
         <?php 
-            $serialize_test_arr = serialize($test_arr);
             $serialize_user_arr = serialize($user_arr);
         ?>
-        <textarea name='export_data1' style='display: none;'><?php echo $serialize_test_arr; ?></textarea>
-        <textarea name='export_data2' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
+        <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
         </form>
         </div>
         <?php

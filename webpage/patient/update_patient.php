@@ -4,26 +4,118 @@ session_start();
 $id = $_SESSION["id"];
 include dirname(__DIR__).'/general/openDB.php';
 
-$f_name = $_POST["f_name"]; 
-$f_name = mysqli_real_escape_string($link, $f_name);
-$m_name = $_POST["m_name"];  
-$m_name = mysqli_real_escape_string($link, $m_name);
-$l_name = $_POST["l_name"];
-$l_name = mysqli_real_escape_string($link, $l_name);
-$phone_no = $_POST["phone_no"]; 
-$phone_no = mysqli_real_escape_string($link, $phone_no);
-$street = $_POST["street"];
-$street = mysqli_real_escape_string($link, $street);
-$street_no = $_POST["street_no"];
-$street_no= mysqli_real_escape_string($link, $street_no);
-$city = $_POST["city"];
-$city = mysqli_real_escape_string($link, $city);
-$country = $_POST["country"];
-$country = mysqli_real_escape_string($link, $country);
-$zip = $_POST["zip"];
-$zip = mysqli_real_escape_string($link, $zip);
-$email = $_POST["email"];
-$email = mysqli_real_escape_string($link, $email);
+$f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = '';
+$errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
+'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '');
+
+if(isset($_POST["submit"])){
+    include dirname(__DIR__).'/general/openDB.php';
+			
+	if (empty($_POST["f_name"])){
+		$errors['f_name'] = "First name is required";
+	}else{
+		$f_name = $link->real_escape_string($_POST["f_name"]);	
+		$f_name = strip_tags($f_name); 	
+		if(!preg_match('/^[a-z A-Z -]+$/', $f_name)){
+			$errors['f_name'] = "Name can be letters and dashes only";
+		}
+	}
+	
+	if(!empty($_POST["m_name"])){	
+		if(!preg_match('/[a-z A-Z - \s]+/', $_POST["m_name"])){
+			$errors['m_name'] = "Middle can must be letters, spacing and dashes only";
+		}else{
+			$m_name = $link->real_escape_string($_POST["m_name"]);
+			$m_name = strip_tags($m_name); 
+		}
+	}
+
+	if (empty($_POST["l_name"])){
+		$errors['l_name'] = "Last name is required";
+	}else{
+		$l_name = $link->real_escape_string($_POST["l_name"]);
+		$l_name = strip_tags($l_name); 
+		if(!preg_match('/^[a-z A-Z -]+$/', $l_name)){
+			$errors['l_name']= "Last name can be letters and dashes only";
+		}
+	}
+		
+	if (empty($_POST["phone"])){
+		$errors['phone'] = "Phone number is required";
+	}else{
+		$phone = $_POST["phone"];
+	}
+
+	if (empty($_POST["street"])){
+		$errors['street'] = "Street is required";
+	}else{
+		$street = $link->real_escape_string($_POST["street"]);
+		$street = strip_tags($street); 
+		if(!preg_match('/^[a-z A-Z]+$/', $street)){
+			$errors['street'] = "Street can be letters only";
+		}
+	}		
+
+	if (empty($_POST["street_no"])){
+		$errors['street_no'] = "Street number is required";
+	}else{
+		$street_no = $link->real_escape_string($_POST["street_no"]);
+		$street_no = strip_tags($street_no); 
+		if(!preg_match('/^[0-9]+[a-z A-Z]?/', $street_no)){
+			$errors['street_no'] = "Must be number and can contain a letter";
+		}
+	}
+
+	if (empty($_POST["city"])){
+		$errors['city'] = "City is required";
+	}else{
+		$city = $link->real_escape_string($_POST["city"]);
+		$city = strip_tags($city); 
+		if(!preg_match('/^[a-z A-Z]+$/', $city)){
+			$errors['city'] = "Must contain letters only";
+		}
+	}
+
+	if (empty($_POST["country"])){
+		$errors['country'] = "Country is required";
+	}else{
+		$country = $link->real_escape_string($_POST["country"]);
+		$country = strip_tags($country); 
+		if(!preg_match('/^[a-z A-Z]+$/', $country)){
+			$errors['country'] = "Must contain letters only";
+		}		
+	}
+
+	if (empty($_POST["zip"])){
+		$errors['zip'] = "Zip is required";
+	}else{
+		$zip = $link->real_escape_string($_POST["zip"]);
+		$zip = strip_tags($zip); 
+		if(!preg_match('/^[0-9]+$/', $zip)){
+			$errors['zip'] = "Must be numbers only";
+		}
+	}
+
+	if (empty($_POST["email"])){
+		$errors['email'] = "Email is required";
+	}else{
+		$email = $link->real_escape_string($_POST["email"]);
+		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		$email = strip_tags($email); 
+		
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			$errors['email'] = "Not a valid email";
+		
+		}else{			
+			$sql_email = "SELECT * FROM doctor WHERE email = '$email'";
+			$result = mysqli_query($link, $sql_email);
+			
+			if(mysqli_num_rows($result)>0){
+				$errors['email'] = "Email adress already registered, please use another email";
+			}
+		}
+	}
+
 $psw = $_POST["psw"];
 
 //get the hashed password
@@ -60,4 +152,5 @@ if(password_verify($psw, $password_hash)){
 }
 
 include dirname(__DIR__).'/general/closeDB.php';
+}
 ?> 
