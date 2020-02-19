@@ -117,14 +117,8 @@
         <h1>Request data access</h1>
         <form action="request_email.php" method='post'>
         <textarea name="motivation" cols=auto rows=auto placeholder="enter your motivation here"></textarea>
-        <input type="hidden" name="email" value="<? echo $email; ?>">
+        <input type="hidden" name="email" value="<?php echo $email; ?>">
         <input type="submit" value='Submit motivation' class='request_button'>
-        </form>
-
-        <h1>Redeem data access code</h1>
-        <form action="verify_data_access.php" method='post'>
-        <input type="text" name='verification_code'><br>
-        <input type="submit" value='Submit' class='request_button'>
         </form>
 
     </div>
