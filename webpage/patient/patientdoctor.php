@@ -69,7 +69,10 @@
         </div>
     </nav>
 
-    <div class = "column left"> 
+<img id ="b" src="../general/logo_grey.png" width = "300"><br>
+
+<div class = "column left"> 
+
 <h1>Patient Profile</h1>
 
 <?php

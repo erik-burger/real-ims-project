@@ -10,7 +10,7 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['verification
 	$verification_hash = $link->real_escape_string($_GET['verification_hash']);
 		
 	// Search for matches in the database
-	$sql_search = "SELECT * FROM doctor WHERE email='$email' AND verification_hash='$verification_hash' ";
+	$sql_search = "SELECT * FROM caregiver WHERE email='$email' AND verification_hash='$verification_hash' ";
 	$search = mysqli_query($link, $sql_search);
 
     if($search){
@@ -19,7 +19,7 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['verification
     		$status = $rows['verified'];
     		if($status == 0){
     			//Activate the account
-        		$sql_update = "UPDATE doctor SET verified = '1' WHERE email='$email' AND verification_hash='$verification_hash'";
+        		$sql_update = "UPDATE caregiver SET verified = '1' WHERE email='$email' AND verification_hash='$verification_hash'";
         		if(mysqli_query($link, $sql_update)){
         			$message = "Your account has been activated, you can now login with the email and password you have registered";
         		}else{
@@ -81,7 +81,7 @@ include dirname(__DIR__).'/general/closeDB.php';;
 </div>
 
 <div class="messagebox">
-	<h3>Doctor verification</h3><br>
+	<h3>Caregiver verification</h3><br>
 	<?php echo $message; ?><br>
 </div>
 
