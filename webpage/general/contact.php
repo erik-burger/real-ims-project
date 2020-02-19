@@ -50,7 +50,7 @@
             }
             input, label{
                 display:block;
-            }  
+            }
 
             .button {
                 background-color: #669999; 
@@ -74,13 +74,15 @@
             font-family:"Arial";     
     	}
 
-            .container {
+        .container {
  		 	border-radius: 10px;
   			background-color: #f2f2f2;
   			padding-left: 20px;
   			width:90%;
   			margin-right: auto;
   			margin-left:auto;
+            margin-bottom: 20px; 
+            margin-top: 20px;
 		}        
         .message_form{
             margin-right: auto;
@@ -91,7 +93,7 @@
             margin-left: auto;
             margin-right: auto;
             width: 400px;
-            }
+        }
         </style>
     </head>
 
