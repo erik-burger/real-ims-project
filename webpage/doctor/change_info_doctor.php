@@ -97,6 +97,7 @@
         }  
         include dirname(__DIR__).'/general/closeDB.php';  
     ?> 
+    
     <form action="update_doctor.php" method="POST">
     <section class="container grey-text"> 
     <h1 class="center">Change your information</h1>  
