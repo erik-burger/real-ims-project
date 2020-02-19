@@ -1,13 +1,11 @@
 <?php
-// -------- ADD TO THIS FILE
+// -------- ADD TO THIS FILE -----
 	// RULES FOR THE PASSWORD
-	// JAVASCRIPT INJECTIONS
-	// Fix the email so that the link is a link and not text	
-	
+	// JAVASCRIPT INJECTIONS	
 
 //Connect to database
 include dirname(__DIR__).'/general/openDB.php';
-//include('../general/openDB.php');
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -136,18 +134,14 @@ if(isset($_POST["submit"])){
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO ims.doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
+		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
-		if (mysqli_query($link, $sql)) {   			
-		//	echo "New record created successfully, please verify your account through the email ";
-		
+		if (mysqli_query($link, $sql)) {   					
 
         	require_once("../../PHPMailer/PHPMailer.php");
         	require_once("../../PHPMailer/SMTP.php");
         	require_once("../../PHPMailer/Exception.php");
-
-			$subject = 'Verify your account';
 						
         	$mail = new PHPMailer();
 			
@@ -164,18 +158,21 @@ if(isset($_POST["submit"])){
         	$mail->isHTML(true);
         	$mail->setFrom("trackzheimers@gmail.com");
         	$mail->addAddress($email);
-        	$mail->Subject = $subject;
+        	$mail->Subject = "Verify account";
         	$mail->Body = "Thanks for registering an account at trackzheimers!";
-        	$mail -> Body .= "Plase activate your account by pressing on the link below:";
-        	$mail -> Body .= "http://localhost:8888/real-ims-project/webpage/general/verify_doctor.php?email=$email&&verification_hash=$verification_hash";
-
-        	if ($mail->send()) {
-            	echo "Email is sent!";
-        	} else {
-            	echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	$mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
+        	$mail -> Body .= "<a href=\"http://localhost:8888/real-ims-project/webpage/patient/verify_patient.php?email=$email&&verification_hash=$verification_hash\">Activate account<p></a><br>";
+        	$mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
+		
+			if ($mail->send()) {
+				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
+            } else {
+            	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+            	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
         	}
 		} else {  
-		 	echo "Error: " . $sql . "<br>" . mysqli_error($link);
+			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+		 	//echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 			
 	}
@@ -274,6 +271,17 @@ if(isset($_POST["submit"])){
 
 
 <section class="container grey-text"> 
+
+	<div class="container">
+		
+	<?php
+		if(isset($sucess_message)){ 
+			echo '<font color="green"><b>'.$sucess_message.'</font></b>';
+		}elseif(isset($fail_message)){
+			echo '<font color="red"><b>'.$fail_message.'</font></b>';
+		}
+	?>
+	
 	<h1 class="center">Register as a Doctor</h1>
     <p id="a">Please fill in this form to create an account</p>
 
@@ -337,6 +345,6 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'../general/closeDB.php';;
+include dirname(__DIR__).'/general/closeDB.php';
 	
 ?>

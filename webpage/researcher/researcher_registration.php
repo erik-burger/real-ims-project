@@ -1,13 +1,15 @@
 <?php
 // -------- ADD TO THIS FILE -----------
 	// RULES FOR THE PASSWORD
-	// SEND EMAIL WHEN REGESTERING
 	//JAVASCRIPT INJECTIONS
 	
 
 //Connect to database
 include dirname(__DIR__).'/general/openDB.php';
 //include('../general/openDB.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
 $errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -102,7 +104,7 @@ if(isset($_POST["submit"])){
 			$errors['email'] = "Not a valid email";
 		
 		}else{			
-			$sql_email = "SELECT * FROM doctor WHERE email = '$email'";
+			$sql_email = "SELECT * FROM researcher WHERE email = '$email'";
 			$result = mysqli_query($link, $sql_email);
 			
 			if(mysqli_num_rows($result)>0){
@@ -134,11 +136,42 @@ if(isset($_POST["submit"])){
 		$sql = "INSERT INTO researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
-		if (mysqli_query($link, $sql)) {
-   			echo "New record created successfully";
-   			// header('Location: doctorstart.php');
+		if (mysqli_query($link, $sql)) {   					
+
+        	require_once("../../PHPMailer/PHPMailer.php");
+        	require_once("../../PHPMailer/SMTP.php");
+        	require_once("../../PHPMailer/Exception.php");
+						
+        	$mail = new PHPMailer();
+			
+        	//SMTP Settings
+        	$mail->isSMTP();
+        	$mail->Host = "smtp.gmail.com";
+        	$mail->SMTPAuth = true;
+        	$mail->Username = "trackzheimers@gmail.com";
+        	$mail->Password = '123trackzheimers';
+        	$mail->Port = 465; //587
+        	$mail->SMTPSecure = "ssl"; //tls
+
+        	//Email Settings
+        	$mail->isHTML(true);
+        	$mail->setFrom("trackzheimers@gmail.com");
+        	$mail->addAddress($email);
+        	$mail->Subject = "Verify account";
+        	$mail->Body = "Thanks for registering an account at trackzheimers!";
+        	$mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
+        	$mail -> Body .= "<a href=\"http://localhost:8888/real-ims-project/webpage/researcher/verify_researcher.php?email=$email&&verification_hash=$verification_hash\">Activate account<p></a><br>";
+        	$mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
+		
+			if ($mail->send()) {
+				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
+            } else {
+            	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+            	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	}
 		} else {  
-		 	echo "Error: " . $sql . "<br>" . mysqli_error($link);
+			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+		 	//echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 	}
 }
@@ -226,11 +259,20 @@ if(isset($_POST["submit"])){
       </div>       
 </div>
 
-<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">
+<img src="logo.jpg" width = "250" height = "133" alt = "Trackzheimers logo">	
 
 <section class="container grey-text"> 
 
 	<div class="container">
+	
+	<?php
+		if(isset($sucess_message)){ 
+			echo '<font color="green"><b>'.$sucess_message.'</font></b>';
+		}elseif(isset($fail_message)){
+			echo '<font color="red"><b>'.$fail_message.'</font></b>';
+		}
+	?>
+	
 	<h1 class="center">Register as a Researcher</h1>
     <p>Please fill in this form to create an account as a researcher</p>
 
@@ -286,6 +328,7 @@ if(isset($_POST["submit"])){
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    
       	<p>Already have an account? <a href="#">Sign in</a>.</p>
+      
    </form>
    
 </body>

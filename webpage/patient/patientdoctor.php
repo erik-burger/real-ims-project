@@ -70,12 +70,9 @@
         </div>
     </nav>
 
-<<<<<<< HEAD
 <img id ="b" src="../general/logo_grey.png" width = "300"><br>
 
-=======
-    <div class = "column left"> 
->>>>>>> 9884e74be2e504562bad817621a42ced936c0a99
+<div class = "column left"> 
 <h1>Patient Profile</h1>
 
 <?php
