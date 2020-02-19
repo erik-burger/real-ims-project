@@ -7,15 +7,15 @@
         <link href="IMS_Style.css" rel="stylesheet">
         <style>
             ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.logo {
-    display: inline-block;
-    float: left; 
-}
-.prof_button, .pass_button{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                }
+                .logo {
+                    display: inline-block;
+                    float: left; 
+                }
+                .prof_button, .pass_button{
                 background-color: #669999; 
                 border: none;
                 color: white;

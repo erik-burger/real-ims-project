@@ -29,8 +29,7 @@
             .column {
             float: left;
             width: 50%;
-            padding: 10px;
-            height: 00px; 
+            padding: 10px; 
             }
 
             .page:after {
@@ -72,12 +71,20 @@
  		 	border-radius: 10px;
   			background-color: #f2f2f2;
   			padding-left: 20px;
-  			width:90%;
+  			width:95%;
   			margin-right: auto;
   			margin-left:auto;
             margin-bottom: 20px; 
             margin-top: 20px;
-		}        
+        } 
+        .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
+                    
         .message_form{
             margin-right: auto;
   			margin-left:auto;
