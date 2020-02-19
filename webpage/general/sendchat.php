@@ -24,7 +24,7 @@ if($count1 == 1) { //if the query returns 1 result proceed to send to doctor
     $coun2 = mysqli_num_rows($caregiverresult);
 
     if($coun2 == 1) {
-        $to_user_id = mysqli_fetch_assoc($caregiverresult);
+        $to_user_id = mysqli_fetch_assoc($caregiverresult)["caregiver_id"];
         $to_user_type = "C";
     }
 }
