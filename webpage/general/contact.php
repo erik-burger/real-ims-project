@@ -106,13 +106,73 @@ session_start();
         <h1>Write Us a Message</h1>
         <form action="" method = "POST">
             <label for="email"><b>Email address</b></label>
-            <input class = "email" type="text" placeholder="Enter Your Email Address" name="email" required><br>  
-            
+            <input class = "email" type="text" placeholder="Enter your email address" name="email" required><br>  
+            <label for="subject"><b>Subject</b></label>
+            <input class = "email" type="text" placeholder="Enter subject" name="subject" required><br>  
             <label for="message"><b>Message</b></label>
-            <textarea rows="4" cols="50" name="comment" form="message_form">
-                Enter message here...</textarea>
+            <textarea name="message" cols=auto rows=auto placeholder="Enter message here..." form="message_form"></textarea>
+            <button type = "submit">Send</button>
         </form>
         
     </div>
  </div> 
 </html>
+
+<?php
+    if(isset($_POST["submit"])){ 
+        echo "hej"; 
+        if (empty($_POST['email'])) {
+            $emailError = 'Email is empty';
+        } else {
+            $email = $_POST['email'];
+            echo $email; 
+            // validating the email
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailError = 'Invalid email';
+            }
+        }
+
+        if (empty($_POST['message'])) {
+            $messageError = 'Message is empty';
+        } else {
+            $message = $_POST['message'];
+            $subject = $_POST['subject']; 
+        }
+    
+
+    if (empty($emailError) && empty($messageError)) {
+        $date = date('j, F Y h:i A');
+
+		$emailBody = "
+			<html>
+			<head>
+				<title>$email is contacting you</title>
+			</head>
+			<body style=\"background-color:#fafafa;\">
+				<div style=\"padding:20px;\">
+					Date: <span style=\"color:#888\">$date</span>
+					<br>
+					Email: <span style=\"color:#888\">$email</span>
+					<br>
+					Message: <div style=\"color:#888\">$message</div>
+				</div>
+			</body>
+			</html>
+		";
+
+		$headers = 	'From: Contact Form <contact@mydomain.com>' . "\r\n" .
+    				"Reply-To: $email" . "\r\n" .
+    				"MIME-Version: 1.0\r\n" . 
+					"Content-Type: text/html; charset=iso-8859-1\r\n";
+
+		$to = 'alva.annett@gmail.com';
+
+		if (mail($to, $subject, $emailBody, $headers)) {
+			$sent = true;	
+		}
+        
+    }
+}
+
+?>
+
