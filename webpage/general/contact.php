@@ -2,6 +2,7 @@
 <?php
 session_start();
 use PHPMailer\PHPMailer\PHPMailer; 
+
 /*if ( isset($_SESSION["id"]) === false) {
     header("location: ../html/php/login.php");
 }
@@ -9,7 +10,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 ?>
 
 <?php 
-
     if(isset($_POST['submit'])){ 
 
             require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
@@ -17,16 +17,25 @@ use PHPMailer\PHPMailer\PHPMailer;
         	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
 
             $subject = $_POST['subject']; 
-            $subject = real_escape_string($subject); 
             $subject = strip_tags($subject); 
 
             $message = $_POST["message"];
-            $message = real_escape_string($message); 
             $message = strip_tags($message);
 
             $email = $_POST['email']; 
-            $email = real_escape_string($email); 
             $email = strip_tags($email); 
+
+            $body ='<html>
+                <div class="background" style="background-color:#eee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;" >
+                    <div class="content" style="max-width:800px;background-color:ghostwhite;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;font-family:sans-serif;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;overflow:hidden;border-radius:5px;" >
+                        <h1 style="margin-top:20px;margin-bottom:20px;margin-right:20px;margin-left:20px;font-size:30px;text-align:center;color:rgb(43, 43, 43);" >'.$subject.'</h1>
+                        <div class="motivation">
+                            <p style="margin-top:20px;margin-bottom:20px;margin-right:20px;margin-left:20px;font-size:20px;text-align:center;color:rgb(43, 43, 43);line-height:1.5;" > '.$message.'</p>
+                            <p style="margin-top:20px;margin-bottom:20px;margin-right:20px;margin-left:20px;font-size:20px;text-align:center;color:rgb(43, 43, 43);line-height:1.5;" > From: '.$email.'</p>
+                        </div>
+                    </div>
+                </div>
+            </html>';
             
             $mail = new PHPMailer();   
 			
@@ -44,14 +53,14 @@ use PHPMailer\PHPMailer\PHPMailer;
         	$mail->setFrom("trackzheimers@gmail.com");
         	$mail->addAddress("trackzheimers@gmail.com");
         	$mail->Subject = $subject;
-        	$mail->Body = $message;
+        	$mail->Body = $body;
 
         	if ($mail->send()) {
             	echo '<script>alert("Message was sent!");</script>'; 
         	} else {
                 echo '<script>alert("Something is wrong!");</script>'; 
         	}
-		}     
+        }   
 ?>
 
 
