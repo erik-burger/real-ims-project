@@ -17,8 +17,16 @@ use PHPMailer\PHPMailer\PHPMailer;
         	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
 
             $subject = $_POST['subject']; 
+            $subject = real_escape_string($subject); 
+            $subject = strip_tags($subject); 
+
             $message = $_POST["message"];
+            $message = real_escape_string($message); 
+            $message = strip_tags($message);
+
             $email = $_POST['email']; 
+            $email = real_escape_string($email); 
+            $email = strip_tags($email); 
             
             $mail = new PHPMailer();   
 			
