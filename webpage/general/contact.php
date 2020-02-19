@@ -1,12 +1,54 @@
-<html>
-<meta http-equiv="refresh" content="3600;url=logout.php" />
+
 <?php
 session_start();
+use PHPMailer\PHPMailer\PHPMailer; 
 /*if ( isset($_SESSION["id"]) === false) {
     header("location: ../html/php/login.php");
 }
 */
 ?>
+
+<?php 
+
+    if(isset($_POST['submit'])){ 
+
+            require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
+        	require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
+        	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
+
+            $subject = $_POST['subject']; 
+            $message = $_POST["message"];
+            $email = $_POST['email']; 
+            
+            $mail = new PHPMailer();   
+			
+        	//SMTP Settings
+        	$mail->isSMTP();
+        	$mail->Host = "smtp.gmail.com";
+        	$mail->SMTPAuth = true;
+        	$mail->Username = "trackzheimers@gmail.com";
+        	$mail->Password = '123trackzheimers';
+        	$mail->Port = 465; //587
+        	$mail->SMTPSecure = "ssl"; //tls
+
+        	//Email Settings
+        	$mail->isHTML(true);
+        	$mail->setFrom("trackzheimers@gmail.com");
+        	$mail->addAddress("trackzheimers@gmail.com");
+        	$mail->Subject = $subject;
+        	$mail->Body = $message;
+
+        	if ($mail->send()) {
+            	echo '<script>alert("Message was sent!");</script>'; 
+        	} else {
+                echo '<script>alert("Something is wrong!");</script>'; 
+        	}
+		}     
+?>
+
+
+<html>
+<meta http-equiv="refresh" content="3600;url=logout.php" />
 
     <head>
         <meta charset="UTF-8">
@@ -104,75 +146,18 @@ session_start();
     
     <div class = "column right" id = "message_form">
         <h1>Write Us a Message</h1>
-        <form action="" method = "POST">
+        <form action="" method = "post" id = "message_form">
             <label for="email"><b>Email address</b></label>
-            <input class = "email" type="text" placeholder="Enter your email address" name="email" required><br>  
+            <input name="email" class = "email" type="text" placeholder="Enter your email address" required><br>  
             <label for="subject"><b>Subject</b></label>
-            <input class = "email" type="text" placeholder="Enter subject" name="subject" required><br>  
+            <input name="subject" class = "email" type="text" placeholder="Enter subject" required><br>  
             <label for="message"><b>Message</b></label>
-            <textarea name="message" cols=auto rows=auto placeholder="Enter message here..." form="message_form"></textarea>
-            <button type = "submit">Send</button>
-        </form>
-        
+            <textarea name="message" id = "message" cols=auto rows=auto placeholder="Enter message here..."></textarea>
+            <button type = "submit" name = "submit">Send</button>
+        </form>  
+     </div>     
     </div>
  </div> 
 </html>
 
-<?php
-    if(isset($_POST["submit"])){ 
-        echo "hej"; 
-        if (empty($_POST['email'])) {
-            $emailError = 'Email is empty';
-        } else {
-            $email = $_POST['email'];
-            echo $email; 
-            // validating the email
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $emailError = 'Invalid email';
-            }
-        }
-
-        if (empty($_POST['message'])) {
-            $messageError = 'Message is empty';
-        } else {
-            $message = $_POST['message'];
-            $subject = $_POST['subject']; 
-        }
-    
-
-    if (empty($emailError) && empty($messageError)) {
-        $date = date('j, F Y h:i A');
-
-		$emailBody = "
-			<html>
-			<head>
-				<title>$email is contacting you</title>
-			</head>
-			<body style=\"background-color:#fafafa;\">
-				<div style=\"padding:20px;\">
-					Date: <span style=\"color:#888\">$date</span>
-					<br>
-					Email: <span style=\"color:#888\">$email</span>
-					<br>
-					Message: <div style=\"color:#888\">$message</div>
-				</div>
-			</body>
-			</html>
-		";
-
-		$headers = 	'From: Contact Form <contact@mydomain.com>' . "\r\n" .
-    				"Reply-To: $email" . "\r\n" .
-    				"MIME-Version: 1.0\r\n" . 
-					"Content-Type: text/html; charset=iso-8859-1\r\n";
-
-		$to = 'alva.annett@gmail.com';
-
-		if (mail($to, $subject, $emailBody, $headers)) {
-			$sent = true;	
-		}
-        
-    }
-}
-
-?>
 

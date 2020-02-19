@@ -264,7 +264,7 @@ if(isset($_POST["submit"])){
 
 <div class="navbar">
 <div class="navbar-header">
-                <img class="logo" src="../general/logo_small.png" width = 50>
+                <img class="logo" src="/general/logo_small.png" width = 50>
             </div>
     <a href="login.html">Login</a>
     <a href="info.html">About</a>  
@@ -346,6 +346,6 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'../general/closeDB.php';;
+include dirname(__DIR__).'/general/closeDB.php';
 	
 ?>
