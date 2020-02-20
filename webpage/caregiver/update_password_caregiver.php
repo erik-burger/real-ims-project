@@ -5,8 +5,13 @@ $id = $_SESSION["id"];
 include dirname(__DIR__).'/general/openDB.php';
 
 $oldpsw = mysqli_real_escape_string($link,$_POST['oldpsw']); 
+$oldpsw = strip_tags($oldpsw); 
+
 $newpsw = mysqli_real_escape_string($link,$_POST['newpsw']); 
+$newpsw = strip_tags($newpsw);
+
 $repeatpsw = mysqli_real_escape_string($link,$_POST['repeatpsw']); 
+$repeatpsw = strip_tags($repeatpsw);
 
 if($newpsw != $repeatpsw) {
     echo "Passwords do not match";

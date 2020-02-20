@@ -1,12 +1,10 @@
+
+
 <html>
+
+
+
 <meta http-equiv="refresh" content="3600;url=logout.php" />
-<?php
-session_start();
-/*if ( isset($_SESSION["id"]) === false) {
-    header("location: ../html/php/login.php");
-}
-*/
-?>
 
     <head>
         <meta charset="UTF-8">
@@ -15,6 +13,9 @@ session_start();
         <link href="IMS_Style.css" rel="stylesheet">
 
         <style>
+            * {
+            box-sizing: border-box;
+            }
             ul{
                 list-style-type: none;
                 margin: 0;
@@ -24,56 +25,81 @@ session_start();
                 display: inline-block;
                 float: left; 
             }
-            * {
-            box-sizing: border-box;
-            }
-
+            
             .column {
             float: left;
             width: 50%;
-            padding: 10px;
-            height: 00px; 
+            padding: 10px; 
             }
 
             .page:after {
             content: "";
             display: table;
             clear: both;
-            }  
-        
-           .email{
-              width: 70%;
-    		  padding: 12px;
-    		  border: 1px solid #ccc;
-    		  border-radius; 4px;
-    		  resize: vertical;
-            
             }
-            textarea{
-              width: 70%;
-              height: 200px; 
-    		  padding: 12px;
-    		  border: 1px solid #ccc;
-    		  border-radius; 4px;
-    		  resize: vertical;
-              font-family:"Arial";   
-              font-size: 12px; 
-              color: "black";  
-        
-            }
-            input, label {
-                display:block;
 
+            textarea{
+              height: 200px;     
+                      
             }
-            .form{
-                padding: 20px;  
+            input, label{
+                display:block;
             }
-            
+
+            .button {
+                background-color: #669999; 
+                border: none;
+                color: white;
+                padding: 14px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                font-size: 16px;  
+                margin-top: 10px;                            
+            }
+
+            input[type = text], textarea{
+    		width: 70%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    		font-size: 14px;
+            font-family:"Arial";     
+    	}
+        .container {
+ 		 	border-radius: 10px;
+  			background-color: #f2f2f2;
+  			padding-left: 20px;
+  			width:95%;
+  			margin-right: auto;
+  			margin-left:auto;
+            margin-bottom: 20px; 
+            margin-top: 20px;
+        } 
+        .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
+                    
+        .message_form{
+            margin-right: auto;
+  			margin-left:auto;
+        }    
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 400px;
+        }
         </style>
     </head>
 
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse"> 
         <div class="container-fluid">
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
@@ -91,29 +117,38 @@ session_start();
         </div>
     </nav>
 
-    <img src="logo_grey.png" width="400">
-        <div class = "page"> 
-        <div class = "column left">
-        
-        
+    <img src="logo_grey.png" class="center">
+   
+    <div class = "page">        
+      <div class = "column left">
         <h1>Contact Information</h1> 
+
+        <div class = "container">
         
         <p><b>email:</b> trackzheimers@gmail.com</p>
         <p><b>telephone:</b> 123456789</p>
         <p><b>adress:</b> project room ITC</p>
         </div>
+        </div>
     
     <div class = "column right" id = "message_form">
         <h1>Write Us a Message</h1>
-        <form action="" method = "POST">
+        <div class = "container">
+        <div class = "form">
+        <form action="send_email.php" method = "post" id = "message_form" name = "message_form">
             <label for="email"><b>Email address</b></label>
-            <input class = "email" type="text" placeholder="Enter Your Email Address" name="email" required><br>  
-            
+            <input name="email" class = "email" type="text" placeholder="Enter your email address" required><br>  
+            <label for="subject"><b>Subject</b></label>
+            <input name="subject" class = "email" type="text" placeholder="Enter subject" required><br>  
             <label for="message"><b>Message</b></label>
-            <textarea rows="4" cols="50" name="comment" form="message_form">
-                Enter message here...</textarea>
-        </form>
-        
+            <textarea name="message" id = "message" cols=auto rows=auto placeholder="Enter message here..."></textarea>
+            <button class = "button" type = "submit" name = "submit">Send</button>
+        </form>  
+        </div>
+        </div>
+     </div>     
     </div>
  </div> 
 </html>
+
+

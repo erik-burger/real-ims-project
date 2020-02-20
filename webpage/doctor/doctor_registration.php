@@ -1,13 +1,11 @@
 <?php
-// -------- ADD TO THIS FILE
+// -------- ADD TO THIS FILE -----
 	// RULES FOR THE PASSWORD
-	// JAVASCRIPT INJECTIONS
-	// Fix the email so that the link is a link and not text	
-	
+	// JAVASCRIPT INJECTIONS	
 
 //Connect to database
 include dirname(__DIR__).'/general/openDB.php';
-//include('../general/openDB.php');
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -21,7 +19,8 @@ if(isset($_POST["submit"])){
 	if (empty($_POST["f_name"])){
 		$errors['f_name'] = "First name is required";
 	}else{
-		$f_name = $link->real_escape_string($_POST["f_name"]);		
+		$f_name = $link->real_escape_string($_POST["f_name"]);	
+		$f_name = strip_tags($f_name); 	
 		if(!preg_match('/^[a-z A-Z -]+$/', $f_name)){
 			$errors['f_name'] = "Name can be letters and dashes only";
 		}
@@ -32,6 +31,7 @@ if(isset($_POST["submit"])){
 			$errors['m_name'] = "Middle can must be letters, spacing and dashes only";
 		}else{
 			$m_name = $link->real_escape_string($_POST["m_name"]);
+			$m_name = strip_tags($m_name); 
 		}
 	}
 
@@ -39,6 +39,7 @@ if(isset($_POST["submit"])){
 		$errors['l_name'] = "Last name is required";
 	}else{
 		$l_name = $link->real_escape_string($_POST["l_name"]);
+		$l_name = strip_tags($l_name); 
 		if(!preg_match('/^[a-z A-Z -]+$/', $l_name)){
 			$errors['l_name']= "Last name can be letters and dashes only";
 		}
@@ -54,6 +55,7 @@ if(isset($_POST["submit"])){
 		$errors['street'] = "Street is required";
 	}else{
 		$street = $link->real_escape_string($_POST["street"]);
+		$street = strip_tags($street); 
 		if(!preg_match('/^[a-z A-Z]+$/', $street)){
 			$errors['street'] = "Street can be letters only";
 		}
@@ -63,6 +65,7 @@ if(isset($_POST["submit"])){
 		$errors['street_no'] = "Street number is required";
 	}else{
 		$street_no = $link->real_escape_string($_POST["street_no"]);
+		$street_no = strip_tags($street_no); 
 		if(!preg_match('/^[0-9]+[a-z A-Z]?/', $street_no)){
 			$errors['street_no'] = "Must be number and can contain a letter";
 		}
@@ -72,6 +75,7 @@ if(isset($_POST["submit"])){
 		$errors['city'] = "City is required";
 	}else{
 		$city = $link->real_escape_string($_POST["city"]);
+		$city = strip_tags($city); 
 		if(!preg_match('/^[a-z A-Z]+$/', $city)){
 			$errors['city'] = "Must contain letters only";
 		}
@@ -81,6 +85,7 @@ if(isset($_POST["submit"])){
 		$errors['country'] = "Country is required";
 	}else{
 		$country = $link->real_escape_string($_POST["country"]);
+		$country = strip_tags($country); 
 		if(!preg_match('/^[a-z A-Z]+$/', $country)){
 			$errors['country'] = "Must contain letters only";
 		}		
@@ -90,6 +95,7 @@ if(isset($_POST["submit"])){
 		$errors['zip'] = "Zip is required";
 	}else{
 		$zip = $link->real_escape_string($_POST["zip"]);
+		$zip = strip_tags($zip); 
 		if(!preg_match('/^[0-9]+$/', $zip)){
 			$errors['zip'] = "Must be numbers only";
 		}
@@ -100,6 +106,7 @@ if(isset($_POST["submit"])){
 	}else{
 		$email = $link->real_escape_string($_POST["email"]);
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		$email = strip_tags($email); 
 		
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
@@ -136,18 +143,14 @@ if(isset($_POST["submit"])){
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO ims.doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
+		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
-		if (mysqli_query($link, $sql)) {   			
-		//	echo "New record created successfully, please verify your account through the email ";
-		
+		if (mysqli_query($link, $sql)) {   					
 
         	require_once("../../PHPMailer/PHPMailer.php");
         	require_once("../../PHPMailer/SMTP.php");
         	require_once("../../PHPMailer/Exception.php");
-
-			$subject = 'Verify your account';
 						
         	$mail = new PHPMailer();
 			
@@ -164,18 +167,21 @@ if(isset($_POST["submit"])){
         	$mail->isHTML(true);
         	$mail->setFrom("trackzheimers@gmail.com");
         	$mail->addAddress($email);
-        	$mail->Subject = $subject;
+        	$mail->Subject = "Verify account";
         	$mail->Body = "Thanks for registering an account at trackzheimers!";
-        	$mail -> Body .= "Plase activate your account by pressing on the link below:";
-        	$mail -> Body .= "http://localhost:8888/real-ims-project/webpage/general/verify_doctor.php?email=$email&&verification_hash=$verification_hash";
-
-        	if ($mail->send()) {
-            	echo "Email is sent!";
-        	} else {
-            	echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	$mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
+        	$mail -> Body .= "<a href=\"http://localhost:8888/real-ims-project/webpage/patient/verify_patient.php?email=$email&&verification_hash=$verification_hash\">Activate account<p></a><br>";
+        	$mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
+		
+			if ($mail->send()) {
+				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
+            } else {
+            	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+            	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
         	}
 		} else {  
-		 	echo "Error: " . $sql . "<br>" . mysqli_error($link);
+			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+		 	//echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 			
 	}
@@ -255,7 +261,7 @@ if(isset($_POST["submit"])){
 
 <div class="navbar">
 <div class="navbar-header">
-                <img class="logo" src="../general/logo_small.png" width = 50>
+                <img class="logo" src="/general/logo_small.png" width = 50>
             </div>
     <a href="login.html">Login</a>
     <a href="info.html">About</a>  
@@ -274,6 +280,17 @@ if(isset($_POST["submit"])){
 
 
 <section class="container grey-text"> 
+
+	<div class="container">
+		
+	<?php
+		if(isset($sucess_message)){ 
+			echo '<font color="green"><b>'.$sucess_message.'</font></b>';
+		}elseif(isset($fail_message)){
+			echo '<font color="red"><b>'.$fail_message.'</font></b>';
+		}
+	?>
+	
 	<h1 class="center">Register as a Doctor</h1>
     <p id="a">Please fill in this form to create an account</p>
 
@@ -337,6 +354,6 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'../general/closeDB.php';;
+include dirname(__DIR__).'/general/closeDB.php';
 	
 ?>

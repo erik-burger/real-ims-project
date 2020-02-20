@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../general/IMS_Style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
-        table, th, td {
+          table, th, td {
           border: 1px solid black;
           border-collapse: collapse;
         }
@@ -23,17 +23,19 @@
             box-sizing: border-box;
             }
             .left {
-            width: 30%;
+            width: 40%;
             
             }
             .right {
-            width: 70%; 
+            width: 60%; 
            
             }
             .column {
-            float: left; 
-            padding-bottom: 50px; 
+              float: left;
+            padding: 10px;
+            height: 00px;
             }
+            
             .page:after {
             content: "";
             display: table;
@@ -47,7 +49,18 @@
                 border-top: 1px solid #ddd;
                 Text-align: center;
             } 
-                       
+              .container {
+                  border-radius: 10px;
+                  background-color: #f2f2f2;
+                  padding-left: 20px;
+                  width:95%;
+                  margin-right: auto;
+                  margin-left:auto;
+                  margin-bottom: 20px; 
+                  margin-top: 20px;
+                  font-size:16px;
+              }                        
+</style>    
 </style>
 </head>
 
@@ -70,9 +83,11 @@
         </div>
     </nav>
 
-    <div class = "column left"> 
-<h1>Patient Profile</h1>
 
+<div class = "column left"> 
+
+<h1>Patient Profile</h1>
+<div class = "container">
 <?php
         $p_id = $_GET['id'];           
         include dirname(__DIR__).'/general/openDB.php';
@@ -107,13 +122,15 @@
             echo '<b>'."Date of Birth: ".'</b>' .$birth_date.'<br/>';
             echo '<b>'."Diagnosis Date: ".'</b>' .$diag_date.'<br/>';
 
-            echo '<h3>'."About".'</h3>';
+            echo '<b>'."About: ".'</b>';
             echo $desc.'<br/>';
         }
         include dirname(__DIR__).'/general/closeDB.php';
  ?>
+ </div>
 </div> 
 
+<div class = "page">
 <div class = "column right">
 
 <?php
@@ -313,6 +330,6 @@
         </tr>
 
 </div>
-      
+</div>
 </body>
 </html>

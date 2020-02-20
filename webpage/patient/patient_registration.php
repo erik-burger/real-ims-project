@@ -1,14 +1,14 @@
 <?php
 // ------ ADD TO THIS FILE:
-	//  ADD THE ATRIBUTE BEDROOM_FLOOR
 	// RULES FOR THE PASSWORD
-	// SEND EMAIL WHEN REGESTERING
 	//JAVASCRIPT INJECTIONS
 
 
 //Connect to database
 //include('../general/openDB.php');
 include dirname(__DIR__).'/general/openDB.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
 
 // Introduce variables 
 $f_name = $m_name = $l_name = $ssn = $date_of_birth = $phone = $street = $street_no = $city = $bedroom_floor = '';
@@ -26,6 +26,7 @@ if(isset($_POST["submit"])){
 		$errors['f_name'] = "First name is required";
 	}else{
 		$f_name = $link->real_escape_string($_POST["f_name"]);
+		$f_name = strip_tags($f_name);
 		if(!preg_match('/^[a-z A-Z -]+$/', $f_name)){
 			$errors['f_name'] = "Name can be letters and dashes only";
 		}
@@ -36,6 +37,7 @@ if(isset($_POST["submit"])){
 			$errors['m_name'] = "Middle can must be letters, spacing and dashes only";
 		}else{
 			$m_name = $link->real_escape_string($_POST["m_name"]);
+			$m_name = strip_tags($m_name);
 		}
 	}
 
@@ -43,6 +45,7 @@ if(isset($_POST["submit"])){
 		$errors['l_name'] = "Last name is required";
 	}else{
 		$l_name = $link->real_escape_string($_POST["l_name"]);
+		$l_name = strip_tags($l_name);
 		if(!preg_match('/^[a-z A-Z -]+$/', $l_name)){
 			$errors['l_name']= "Last name can be letters and dashes only";
 		}
@@ -58,6 +61,7 @@ if(isset($_POST["submit"])){
 		$errors['ssn'] = "Social security number is required";
 	}else{
 		$ssn = $link->real_escape_string($_POST["ssn"]);
+		$ssn = strip_tags($ssn);
 		if(!preg_match('/([0-9]{6}+[-][0-9]{4})/', $ssn)){
 			$errors['ssn'] = "Must be only numbers";
 		}
@@ -67,6 +71,7 @@ if(isset($_POST["submit"])){
 		$errors['street'] = "Street is required";
 	}else{
 		$street = $link->real_escape_string($_POST["street"]);
+		$street = strip_tags($street);
 		if(!preg_match('/^[a-z A-Z \s]+$/', $street)){
 			$errors['street'] = "Street can be letters and spacing only";
 		}
@@ -76,6 +81,7 @@ if(isset($_POST["submit"])){
 		$errors['street_no'] = "Street number is required";
 	}else{
 		$street_no = $link->real_escape_string($_POST["street_no"]);
+		$street_no = strip_tags($street_no);
 		if(!preg_match('/^[0-9]+[a-z A-Z]?/', $street_no)){
 			$errors['street_no'] = "Must be number and can contain a letter";
 		}
@@ -85,6 +91,7 @@ if(isset($_POST["submit"])){
 		$errors['city'] = "City is required";
 	}else{
 		$city = $link->real_escape_string($_POST["city"]);
+		$city = strip_tags($city);
 		if(!preg_match('/^[a-z A-Z]+$/', $city)){
 			$errors['city'] = "Must contain letters only";
 		}
@@ -94,6 +101,7 @@ if(isset($_POST["submit"])){
 		$errors['state_county'] = "State or county is required";
 	}else{
 		$state_county = $link->real_escape_string($_POST["state_county"]);
+		$state_county = strip_tags($state_county);
 		if (!preg_match('/^[a-z A-Z]+$/', $state_county)){
 			$errors["state_county"] = "Must contain only letters";
 		}
@@ -103,6 +111,7 @@ if(isset($_POST["submit"])){
 		$errors['country'] = "Country is required";
 	}else{
 		$country = $link->real_escape_string($_POST["country"]);
+		$country = strip_tags($country);
 		if(!preg_match('/^[a-z A-Z]+$/', $country)){
 			$errors['country'] = "Must contain letters only";
 		}		
@@ -112,6 +121,7 @@ if(isset($_POST["submit"])){
 		$errors['zip'] = "Zip is required";
 	}else{
 		$zip = $link->real_escape_string($_POST["zip"]);
+		$zip = strip_tags($zip);
 		if(!preg_match('/^[0-9]+$/', $zip)){
 			$errors['zip'] = "Must be numbers only";
 		}
@@ -121,6 +131,7 @@ if(isset($_POST["submit"])){
 		$errors["date_of_birth"] = "Date of birth is required";
 	}else{
 		$date_of_birth = $link->real_escape_string($_POST["date_of_birth"]);
+		$date_of_birth = strip_tags($date_of_birth);
 		if (!preg_match('/[12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/', $date_of_birth)){
 			$errors["date_of_birth"] = "Must be numbers and have the following format YYYY-MM-DD";
 		}
@@ -130,6 +141,7 @@ if(isset($_POST["submit"])){
 		$errors["diagnosis_date"] = "Diagnosis is required";
 	}else{
 		$diagnosis_date = $link->real_escape_string($_POST["diagnosis_date"]);
+		$diagnosis_date = strip_tags($diagnosis_date);
 		if (!preg_match('/[12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/', $diagnosis_date)){
 			$errors["diagnosis_date"] = "Must be numbers and have the following format YYYY-MM-DD";
 		}
@@ -139,6 +151,7 @@ if(isset($_POST["submit"])){
 		$errors['education'] = "Number of years of education is required";
 	}else{
 		$education = $link->real_escape_string($_POST['education']);
+		$education = strip_tags($education);
 		if(!preg_match('/^[0-9]+$/', $education)){
 			$errors['education'] = "Must be numbers";
 		}
@@ -158,6 +171,7 @@ if(isset($_POST["submit"])){
 	}else{
 		$email = $link->real_escape_string($_POST["email"]);
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		$email = strip_tags($email);
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
 		}else{			
@@ -177,6 +191,7 @@ if(isset($_POST["submit"])){
 		$errors['psw'] = "Passwords do not match, pleas try again!";
 	}else{
 		$psw = $link->real_escape_string($_POST['psw']);
+
 	}
 	
 	$verification_hash = md5(rand(0,10000));
@@ -187,11 +202,18 @@ if(isset($_POST["submit"])){
 	} else {
 	// Removing MySQL injections before adding the data to the database 
 		$gender = $link->real_escape_string($_POST['gender']);
+		$gender = strip_tags($gender); 
+
 		$diagnosis_desc = $link->real_escape_string($_POST['diagnosis_desc']);
+		$diagnosis_desc = strip_tags($diagnosis_desc);
 
 	// Hashing password
 		$password_hash = password_hash($psw, PASSWORD_DEFAULT);
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 95b65113ba07f6ea0592ce974231234e25f36017
 	// Inserting into database
 			
 		$sql = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
@@ -201,11 +223,42 @@ if(isset($_POST["submit"])){
 		'$street_no', '$city', '$country', '$zip', '$date_of_birth', 
 		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', '$bedroom_floor')";  
 		
-		if (mysqli_query($link, $sql)) {
-   			echo "New record created successfully";
-   			// header('Location: doctorstart.php');
+		if (mysqli_query($link, $sql)) {   					
+
+        	require_once("../../PHPMailer/PHPMailer.php");
+        	require_once("../../PHPMailer/SMTP.php");
+        	require_once("../../PHPMailer/Exception.php");
+						
+        	$mail = new PHPMailer();
+			
+        	//SMTP Settings
+        	$mail->isSMTP();
+        	$mail->Host = "smtp.gmail.com";
+        	$mail->SMTPAuth = true;
+        	$mail->Username = "trackzheimers@gmail.com";
+        	$mail->Password = '123trackzheimers';
+        	$mail->Port = 465; //587
+        	$mail->SMTPSecure = "ssl"; //tls
+
+        	//Email Settings
+        	$mail->isHTML(true);
+        	$mail->setFrom("trackzheimers@gmail.com");
+        	$mail->addAddress($email);
+        	$mail->Subject = "Verify account";
+        	$mail->Body = "Thanks for registering an account at trackzheimers!";
+        	$mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
+        	$mail -> Body .= "<a href=\"http://localhost:8888/real-ims-project/webpage/patient/verify_patient.php?email=$email&&verification_hash=$verification_hash\">Activate account<p></a><br>";
+        	$mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
+		
+			if ($mail->send()) {
+				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
+            } else {
+            	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+            	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	}
 		} else {  
-		 	echo "Error: " . $sql . "<br>" . mysqli_error($link);
+			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+		 	//echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 	}
 }
@@ -313,6 +366,15 @@ if(isset($_POST["submit"])){
 <section class="container grey-text"> 
 
 	<div class="container">
+		
+	<?php
+		if(isset($sucess_message)){ 
+			echo '<font color="green"><b>'.$sucess_message.'</font></b>';
+		}elseif(isset($fail_message)){
+			echo '<font color="red"><b>'.$fail_message.'</font></b>';
+		}
+	?>
+	
 	<h1 class="center">Register as a Patient</h1>
     <p>Please fill in this form to create an account as a patient</p>
 
@@ -338,8 +400,8 @@ if(isset($_POST["submit"])){
       	<input type ="text" name="date_of_birth" value="<?php echo htmlspecialchars($date_of_birth); ?>">
       	<div class="error"><?php echo $errors['date_of_birth']; ?></div><br>
       	
-      <label for="gender"><b>Gender</b></label>
-      <select name = "gender">
+      <label for='gender'><b>Gender</b></label>
+      <select name = 'gender'>
 	      <option selected = "selected">Select gender</option>
           <option value = "male">Male</option>
           <option value = "female">Female</option>
@@ -413,5 +475,5 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'general/closeDB.php';;	
+include dirname(__DIR__).'../general/closeDB.php';;	
 ?>

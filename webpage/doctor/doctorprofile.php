@@ -7,15 +7,15 @@
         <link href="IMS_Style.css" rel="stylesheet">
         <style>
             ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.logo {
-    display: inline-block;
-    float: left; 
-}
-.prof_button, .pass_button{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                }
+                .logo {
+                    display: inline-block;
+                    float: left; 
+                }
+                .prof_button, .pass_button{
                 background-color: #669999; 
                 border: none;
                 color: white;
@@ -30,7 +30,24 @@
             }     
             .profile{
                 display: inline-block;  
-            } 
+            }
+            .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
+            .container {
+ 		 	border-radius: 10px;
+  			background-color: #f2f2f2;
+  			padding-left: 20px;
+  			width:95%;
+  			margin-right: auto;
+  			margin-left:auto;
+            margin-bottom: 20px; 
+            margin-top: 20px;
+		}  
 
         </style>
     </head>
@@ -53,10 +70,11 @@
             </ul>
         </div>
     </nav>
-
+    
+    <div class = "page">
         <h1>Your profile</h1>
    
-
+    <div class = "container">
     <?php
         session_start();
        /*if ( isset($_SESSION["id"]) === false) {
@@ -99,8 +117,8 @@
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
     </div>
-
-
+    </div>
+    </div>
     </body>
 
 </html>
