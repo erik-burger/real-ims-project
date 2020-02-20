@@ -84,22 +84,22 @@
     }
     
     //Question 6 
-    if ($_POST['country'] == $answerQ6) {
+    if (preg_match('/'.$answerQ6.'/i', $_POST['country'])) {
       $question6++;
     }
     
     //Question 7
-     if ($_POST['state'] == $answerQ7) {
+    if (preg_match('/'.$answerQ7.'/i', $_POST['state'])) {
       $question7++;
     }
 
     //Question 8
-    if ($_POST['town'] == $answerQ8) {
+    if (preg_match('/'.$answerQ8.'/i', $_POST['town'])) {
       $question8++;
     }
 
     //Question 9
-    if ($_POST['street'] == $answerQ9) {
+    if (preg_match('/'.$answerQ9.'/i', $_POST['street'])) {
       $question9++;
     }
 
@@ -109,13 +109,13 @@
     }
     
     //Question 11
-    if ($_POST['word_1'] == $_POST['word_1_ans'] or $_POST['word_1'] == $_POST['word_2_ans'] or $_POST['word_1'] == $_POST['word_3_ans']) {
+    if (preg_match('/'.$_POST['word_1_ans'].'/i', $_POST['word_1']) or preg_match('/'.$_POST['word_1_ans'].'/i', $_POST['word_2']) or preg_match('/'.$_POST['word_1_ans'].'/i', $_POST['word_3'])) {
       $question11++;
     }
-    if ($_POST['word_2'] == $_POST['word_1_ans'] or $_POST['word_2'] == $_POST['word_2_ans'] or $_POST['word_2'] == $_POST['word_3_ans']) {
+    if (preg_match('/'.$_POST['word_2_ans'].'/i', $_POST['word_1']) or preg_match('/'.$_POST['word_2_ans'].'/i', $_POST['word_2']) or preg_match('/'.$_POST['word_2_ans'].'/i', $_POST['word_3'])) {
       $question11++;
     }
-    if ($_POST['word_3'] == $_POST['word_1_ans'] or $_POST['word_3'] == $_POST['word_2_ans'] or $_POST['word_3'] == $_POST['word_3_ans']) {
+    if (preg_match('/'.$_POST['word_3_ans'].'/i', $_POST['word_1']) or preg_match('/'.$_POST['word_3_ans'].'/i', $_POST['word_2']) or preg_match('/'.$_POST['word_3_ans'].'/i', $_POST['word_3'])) {
       $question11++;
     }
 
@@ -137,13 +137,14 @@
     }
 
     //Question 13
-    if ($_POST['word_1_rem'] == $_POST['word_1_ans'] or $_POST['word_1_rem'] == $_POST['word_2_ans'] or $_POST['word_1_rem'] == $_POST['word_3_ans']) {
+
+    if (preg_match('/'.$_POST['word_1_ans'].'/i', $_POST['word_1_rem']) or preg_match('/'.$_POST['word_1_ans'].'/i', $_POST['word_2_rem']) or preg_match('/'.$_POST['word_1_ans'].'/i', $_POST['word_3_rem'])) {
       $question13++;
     }
-    if ($_POST['word_2_rem'] == $_POST['word_1_ans'] or $_POST['word_2_rem'] == $_POST['word_2_ans'] or $_POST['word_2_rem'] == $_POST['word_3_ans']) {
+    if (preg_match('/'.$_POST['word_2_ans'].'/i', $_POST['word_1_rem']) or preg_match('/'.$_POST['word_2_ans'].'/i', $_POST['word_2_rem']) or preg_match('/'.$_POST['word_2_ans'].'/i', $_POST['word_3_rem'])) {
       $question13++;
     }
-    if ($_POST['word_3_rem'] == $_POST['word_1_ans'] or $_POST['word_3_rem'] == $_POST['word_2_ans'] or $_POST['word_3_rem'] == $_POST['word_3_ans']) {
+    if (preg_match('/'.$_POST['word_3_ans'].'/i', $_POST['word_1_rem']) or preg_match('/'.$_POST['word_3_ans'].'/i', $_POST['word_2_rem']) or preg_match('/'.$_POST['word_3_ans'].'/i', $_POST['word_3_rem'])) {
       $question13++;
     }
 
