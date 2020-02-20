@@ -60,6 +60,23 @@
     		border: 1px solid #ccc;
     		border-radius; 4px;
       }
+      .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
+            .container {
+ 		 	border-radius: 10px;
+  			background-color: #f2f2f2;
+  			padding-left: 20px;
+  			width:95%;
+  			margin-right: auto;
+  			margin-left:auto;
+            margin-bottom: 20px; 
+            margin-top: 20px;
+		}  
 
         </style>
   </head>
@@ -82,7 +99,7 @@
     <div class="page">
     <div class = "column">
     <h1>Profile</h1>
-
+    <div class = "container">
    <?php
         session_start(); 
         /*if ( isset($_SESSION["id"]) === false) {
@@ -132,12 +149,9 @@
     <form action="change_password_patient.php" class = "profile">
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
-
-<h3>Medication</h3>
-
+    <b>Medication</b></br>
 <?php
 include dirname(__DIR__).'/general/openDB.php';
-
 $medication = mysqli_query($link, "select m.medication_name, pm.dose, pm.medication_interval
 from patient_medication pm
 join medication m on pm.medication_id = m.medication_id
@@ -156,11 +170,35 @@ include dirname(__DIR__).'/general/closeDB.php';
     <button type = "submit" class = "med_button">Change Medication</button>
 </form></br>
 </div>
+<h1>Allow you data for research</h1>
+    <div class = "container">
+    <a href="data_share_info.php">More information</a>
+    <form action="data_share.php", method = "POST">
+        <?php
+        include dirname(__DIR__).'/general/openDB.php';
+        $result = mysqli_query($link,"select share_data from patient where patient_id = $_SESSION[id]")   
+        or 
+        die("Could not issue MySQL query"); 
 
+        while ($row = $result->fetch_assoc()) {
+            $share_data = $row["share_data"];
+        }
+        if ($share_data == 1) {
+            $allowed = "Stop allowing";
+        } else {
+            $allowed = "Allow"; 
+        }
+        ?> 
+        <button type = "submit" class = "doc_button"><?php echo $allowed; ?></button>
+    </form></br>
+
+</div> 
+
+</div>
 
 <div class = "column">
-<h1>Your Doctor</h1>
-
+<h1>Your Doctors</h1>
+<div class = "container">
 <?php
         include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link,"select d.first_name, d.last_name, d.doctor_id, d.phone, d.street, d.street_no, d.zip, d.city, d.country 
@@ -195,9 +233,10 @@ include dirname(__DIR__).'/general/closeDB.php';
         <input type="text" placeholder="Doctor ID" name="doctor_id" >
         <button type = "submit" class = "doc_button">Connect to Doctor</button>
     </form></br>
+    </div> 
 
     <h1>Your connected caregivers</h1>
-
+    <div class = "container">
     <?php
         include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link,"select c.first_name, c.last_name, c.caregiver_id, c.phone, c.street, c.street_no, c.zip, c.city, c.country 
@@ -232,29 +271,10 @@ include dirname(__DIR__).'/general/closeDB.php';
         <input type="text" placeholder="Caregiver ID" name="caregiver_id" >
         <button type = "submit" class = "doc_button">Connect to Caregiver</button>
     </form></br>
+        </div> 
 
-    <h1>Allow you data for research</h1>
-    <a href="data_share_info.php">More information</a>
-    <form action="data_share.php", method = "POST">
-        <?php
-        include dirname(__DIR__).'/general/openDB.php';
-        $result = mysqli_query($link,"select share_data from patient where patient_id = $_SESSION[id]")   
-        or 
-        die("Could not issue MySQL query"); 
-
-        while ($row = $result->fetch_assoc()) {
-            $share_data = $row["share_data"];
-        }
-        if ($share_data == 1) {
-            $allowed = "Stop allowing";
-        } else {
-            $allowed = "Allow"; 
-        }
-        ?> 
-        <button type = "submit" class = "doc_button"><?php echo $allowed; ?></button>
-    </form></br>
-
-</div> 
-
+    
+   
+</div>
 </body> 
 </html>
