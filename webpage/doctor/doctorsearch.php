@@ -156,7 +156,8 @@ $id = $_SESSION["id"];
     if(isset($_POST['search_text'])){
       include dirname(__DIR__).'/general/openDB.php';
       $search = $_POST['search_text']; 
-      
+      $search = $link->real_escape_string($_POST["search_text"]);
+      $search = strip_tags($search);
       $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                     from patient as p, patient_doctor as p_d
                                     where p.patient_id = p_d.patient_id   

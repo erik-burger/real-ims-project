@@ -273,8 +273,34 @@ include dirname(__DIR__).'/general/closeDB.php';
     </form></br>
         </div> 
 
+<<<<<<< HEAD
+    <h1>Allow your data for research</h1>
+    <a href="data_share_info.php">More information</a>
+    <form action="data_share.php", method = "POST">
+        <?php
+        include dirname(__DIR__).'/general/openDB.php';
+        $result = mysqli_query($link,"select share_data from patient where patient_id = $_SESSION[id]")   
+        or 
+        die("Could not issue MySQL query"); 
+
+        while ($row = $result->fetch_assoc()) {
+            $share_data = $row["share_data"];
+        }
+        if ($share_data == 1) {
+            $allowed = "Stop allowing";
+        } else {
+            $allowed = "Allow"; 
+        }
+        ?> 
+        <button type = "submit" class = "doc_button"><?php echo $allowed; ?></button>
+    </form></br>
+
+</div> 
+
+=======
     
    
 </div>
+>>>>>>> 0b1aecbee3994cffc28f5fe337f48e46d819e25f
 </body> 
 </html>

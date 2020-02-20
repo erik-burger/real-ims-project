@@ -44,6 +44,9 @@ if ($psw != $psw_repeat) {
 //Create a hashed password to store in the database
 $password_hash = password_hash($psw, PASSWORD_DEFAULT);
 
+//Check if image is real, size and type of image
+
+
 // When form is error free register user
 if (count($errors) == 0) {
 	$sql = "insert into doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone) 

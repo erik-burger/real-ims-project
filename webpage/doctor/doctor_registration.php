@@ -130,11 +130,10 @@ if(isset($_POST["submit"])){
 	}else{
 		$psw = $link->real_escape_string($_POST['psw']);
 	}
-	
+		
 	$verification_hash = md5(rand(0,10000));
 	
-
-	if(array_filter($errors)){
+		if(array_filter($errors)){
 	 // Go back to the form
 	} else {	
 				
@@ -244,7 +243,7 @@ if(isset($_POST["submit"])){
  		 	border-radius: 12px;
   			background-color: #f2f2f2;
   			padding: 20px;
-  			width:80%;
+  			width:70%;
   			margin-right: auto;
 			margin-left:auto;
 			align: center;
@@ -260,24 +259,25 @@ if(isset($_POST["submit"])){
 <body>
 
 <div class="navbar">
-<div class="navbar-header">
-                <img class="logo" src="/general/logo_small.png" width = 50>
-            </div>
-    <a href="login.html">Login</a>
-    <a href="info.html">About</a>  
-    <div class="dropdown">
+	<div class="navbar-header">
+    	<img class="logo" src="../general/logo_small.png" width = 50>
+	</div>  
+	<a href="../general/login.php">Login</a>
+    <a href="../general/info.html">About</a>
+	<div class="dropdown">
         <button class="dropbtn">Register
-          <i class="fa fa-caret-down"></i>
+        <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="../patient/patient_registration.php">Patient</a>
-          <a href="doctor_registration.php">Doctor</a>
+          <a href="patient_registration.php">Patient</a>
+          <a href="../doctor/doctor_registration.php">Doctor</a>
           <a href="../researcher/researcher_registration.php">Researcher</a>
           <a href="../caregiver/caregiver_registration.php">Caregiver</a>
         </div>
-      </div>       
+    </div>       
 </div>
-
+</br>
+</br>
 
 <section class="container grey-text"> 
 
@@ -342,6 +342,9 @@ if(isset($_POST["submit"])){
       	<label for="psw_repeat"><b>Repeat Password</b></label>
       	<input type="password" name="psw_repeat" >
       	<div class="error"><?php echo $errors['psw']; ?></div><br>
+
+		<div class="picture"><label>Select your profile picture: </label>
+		<input type="file" name="picture" accept="image/*" required /></div>
 
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    
