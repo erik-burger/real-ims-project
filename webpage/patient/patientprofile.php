@@ -233,7 +233,7 @@ include dirname(__DIR__).'/general/closeDB.php';
         <button type = "submit" class = "doc_button">Connect to Caregiver</button>
     </form></br>
 
-    <h1>Allow you data for research</h1>
+    <h1>Allow your data for research</h1>
     <a href="data_share_info.php">More information</a>
     <form action="data_share.php", method = "POST">
         <?php

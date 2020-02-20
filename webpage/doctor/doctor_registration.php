@@ -132,11 +132,10 @@ if(isset($_POST["submit"])){
 	}else{
 		$psw = $link->real_escape_string($_POST['psw']);
 	}
-	
+		
 	$verification_hash = md5(rand(0,10000));
 	
-
-	if(array_filter($errors)){
+		if(array_filter($errors)){
 	 // Go back to the form
 	} else {	
 				
@@ -334,6 +333,9 @@ if(isset($_POST["submit"])){
       	<label for="psw_repeat"><b>Repeat Password</b></label>
       	<input type="password" name="psw_repeat" >
       	<div class="error"><?php echo $errors['psw']; ?></div><br>
+
+		<div class="picture"><label>Select your profile picture: </label>
+		<input type="file" name="picture" accept="image/*" required /></div>
 
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    

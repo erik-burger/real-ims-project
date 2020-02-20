@@ -86,7 +86,7 @@
             echo '<b>'."Telephone: ".'</b>'.$phone.'<br />';
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
         }
-        
+       
         include dirname(__DIR__).'/general/closeDB.php';
 
     ?>
