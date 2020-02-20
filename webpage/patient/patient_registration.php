@@ -16,7 +16,7 @@ $state_county = $country = $zip = $diagnosis_date = $diagnosis_desc = $education
 
 // Introduce variables for error handling
 $errors = array('f_name' => '', 'm_name' => '', 'l_name' => '', 'ssn' => '', 'date_of_birth' => '', 'phone' => '',
-'street' => '', 'street_no' => '', 'city' => '', 'state_county' => '', 'country' => '', 'zip' => '',
+'street' => '', 'gender' => '', 'street_no' => '', 'city' => '', 'state_county' => '', 'country' => '', 'zip' => '',
 'diagnosis_date' => '', 'education' => '', 'email' => '', 'psw' => '', 'bedroom_floor' => '');
 
 // Validation of the form 
@@ -395,14 +395,14 @@ if(isset($_POST["submit"])){
       	<input type ="text" name="date_of_birth" value="<?php echo htmlspecialchars($date_of_birth); ?>">
       	<div class="error"><?php echo $errors['date_of_birth']; ?></div><br>
       	
-      <label for='gender'><b>Gender</b></label>
-      <select name = 'gender'>
+      <label for="gender"><b>Gender</b></label>
+      <select name = "gender">
 	      <option selected = "selected">Select gender</option>
           <option value = "male">Male</option>
           <option value = "female">Female</option>
           <option value = "custom">Custom</option>
       </select>
-      <div class="error"><?php echo $errors['gender']; ?></div><br>
+      <div class="error"><?php echo $errors["gender"]; ?></div><br>
 
       	<label for="phone"><b>Phone number</b></label>
       	<input type="number" name="phone" value = "<?php echo htmlspecialchars($phone); ?>">
