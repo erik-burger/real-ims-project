@@ -59,6 +59,7 @@ session_start();
             <li><a href="../general/contact.php">Contact</a></li>
             <li><a href="doctorprofile.php">Profile</a></li>
             <li><a href="doctorsearch.php">Patients</a></li>
+            <li><a href="chat_home_doctor.php">Messages</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>

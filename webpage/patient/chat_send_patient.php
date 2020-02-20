@@ -6,7 +6,7 @@ $from_user_id = $_SESSION["id"];
 $from_user_type = $_SESSION["user"];
 $email = $_POST["send_to"];
 $chat_message = $_POST["sendie"];
-$date_time = time();
+$date_time = gmdate('Y-m-d h:i:s \G\M\T');
 $message_status = 0;
 
 $doctorsql = "select doctor_id from doctor where email = '$email'";
@@ -35,6 +35,6 @@ or die("Could not issue MySQL query");
 
 include dirname(__DIR__).'/general/closeDB.php';
 
-header("location: chat_home.php")
+header("location: chat_home_patient.php")
 
 ?>
