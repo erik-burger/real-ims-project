@@ -273,7 +273,6 @@ include dirname(__DIR__).'/general/closeDB.php';
     </form></br>
         </div> 
 
-<<<<<<< HEAD
     <h1>Allow your data for research</h1>
     <a href="data_share_info.php">More information</a>
     <form action="data_share.php", method = "POST">
@@ -297,10 +296,8 @@ include dirname(__DIR__).'/general/closeDB.php';
 
 </div> 
 
-=======
     
    
 </div>
->>>>>>> 0b1aecbee3994cffc28f5fe337f48e46d819e25f
 </body> 
 </html>
