@@ -193,10 +193,15 @@ if(isset($_POST["submit"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="top_menu_style.css">
-    <style>
+	    <style>
     	*{
     	box-sizing: border-box;
 		}
+
+		body{
+			background-color: ghostwhite;
+		}
+
 		.logo {
                 display: inline-block;
                 float: left; 
@@ -210,7 +215,7 @@ if(isset($_POST["submit"])){
     		resize: vertical;
     		font-size: 14px;
     	}
-    	
+				
     	input[type = number], select , textarea{
     		width: 100%;
     		padding: 12px;
@@ -292,7 +297,7 @@ if(isset($_POST["submit"])){
 	?>
 	
 	<h1 class="center">Register as a Doctor</h1>
-    <p id="a">Please fill in this form to create an account</p>
+    <p id="a">Please fill in this form to create an account as a doctor</p>
 
 	<form action = "doctor_registration.php" method = "POST">
 		

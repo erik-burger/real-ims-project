@@ -59,8 +59,8 @@
     		padding: 15px;
     		border: 1px solid #ccc;
     		border-radius; 4px;
-      }
-      .page{
+            }
+            .page{
                 margin-left: auto; 
                 margin-right: auto; 
                 padding: 10px;
@@ -82,25 +82,24 @@
   </head>
   <body>
 
-  <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <img class="logo" src="../general/logo_small.png" width = 50>
-            </div>
-            <ul class="nav navbar-nav">
-            <li class="active"><a href="patientstart.php">Home</a></li>            
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="../general/logout.php">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
+  <div class="navbar">
+	<div class="navbar-header">
+    	<img class="logo" src="../general/logo_small.png" width = 50>
+	</div>  
+	<ul class="nav navbar-nav">
+    <li class="active"><a href="patientstart.php">Home</a></li>            
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="../general/logout.php">Logout</a></li>
+  </ul>
+</div>
+</br>
 
-    <div class="page">
-    <div class = "column">
-    <h1>Profile</h1>
-    <div class = "container">
-   <?php
+<div class="page">
+<div class = "column">
+<h1>Profile</h1>
+<div class = "container">
+<?php
         session_start(); 
         /*if ( isset($_SESSION["id"]) === false) {
         header("location: ../html/php/login.php");
@@ -273,7 +272,6 @@ include dirname(__DIR__).'/general/closeDB.php';
     </form></br>
         </div> 
 
-<<<<<<< HEAD
     <h1>Allow your data for research</h1>
     <a href="data_share_info.php">More information</a>
     <form action="data_share.php", method = "POST">
@@ -297,10 +295,8 @@ include dirname(__DIR__).'/general/closeDB.php';
 
 </div> 
 
-=======
     
    
 </div>
->>>>>>> 0b1aecbee3994cffc28f5fe337f48e46d819e25f
 </body> 
 </html>

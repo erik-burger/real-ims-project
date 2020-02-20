@@ -43,11 +43,16 @@ $_SESSION["timestamp"] = time();
                 text-decoration: none;
                 display: block;
             }
-            .bigbutton, .btn-group{
-              display: inline-block;
+            
+            .smallbutton{
+              height: 100px;
+              width: 200px;
+              display:inline-block; 
               padding: 40px 46px;
               font-size: 20px;
+              margin-bottom:5px;
             }
+
         </style>
   </head>
 
@@ -73,31 +78,27 @@ $_SESSION["timestamp"] = time();
     </button>
     </div>
     
-    <div class="btn-group">
-      <button onclick="location.href='patient_sudoku.php'"
+    <div class="btn-group" align="center">
+      <button class= "smallbutton" onclick="location.href='patient_sudoku.php'"
         type="button" 
-        style="display:block;padding: 40px 46px;font-size: 20px;" 
         value="Test"> 
         GAMES
       </button>
       
-      <button onclick="location.href='patientprofile.php'" 
+      <button class= "smallbutton" onclick="location.href='patientprofile.php'" 
         type="button" 
-        style="display:block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         PROFILE
       </button>
 
-      <button onclick="location.href='patient_statistics.php'" 
+      <button class= "smallbutton" onclick="location.href='patient_statistics.php'" 
         type="button" 
-        style="display:block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         STATISTICS
       </button>
 
-      <button onclick="location.href='chat_home_patient.php'" 
+      <button class= "smallbutton" onclick="location.href='chat_home_patient.php'" 
         type="button" 
-        style="display:block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         MESSAGES
       </button>

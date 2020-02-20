@@ -192,11 +192,15 @@ if(isset($_POST["submit"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="top_menu_style.css">
+	<link href="IMS_Style.css" rel="stylesheet">
     <style>
     	*{
     	box-sizing: border-box;
     	}
-    	
+    	body{
+			background-color: ghostwhite;
+		}
+
     	input[type = text], select , textarea{
     		width: 100%;
     		padding: 12px;
@@ -254,7 +258,8 @@ if(isset($_POST["submit"])){
 		.logo {
                 display: inline-block;
                 float: left; 
-            }
+			}
+			
     	.error {
     		color: #FF0000;
     		font-size: 14px;
