@@ -39,11 +39,14 @@ $_SESSION["timestamp"] = time();
                 background-color: #669999;
                 border: none;
                 color: black;
-                padding: 15px 32px;
                 text-align: center;
                 text-decoration: none;
-                display: inline-block;
-                font-size: 30px;
+                display: block;
+            }
+            .bigbutton, .btn-group{
+              display: inline-block;
+              padding: 40px 46px;
+              font-size: 20px;
             }
         </style>
   </head>
@@ -61,35 +64,43 @@ $_SESSION["timestamp"] = time();
     </nav>
     <hr>
     
+    <div class="bigbutton" align="center">
     <button onclick="location.href='Question_sheet.php'"
       type="button" 
-      style="margin-left:auto;margin-right:auto;margin-bottom:5px;display:block;padding: 100px 150px;font-size: 100px;" 
+      style="margin-left:auto;margin-right:auto;margin-bottom:5px;padding: 100px 150px;font-size: 100px;" 
       value="Test">
       TEST
     </button>
-
-    <div class="btn-group" align="center">
+    </div>
+    
+    <div class="btn-group">
       <button onclick="location.href='patient_sudoku.php'"
         type="button" 
-        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
+        style="display:block;padding: 40px 46px;font-size: 20px;" 
         value="Test"> 
         GAMES
       </button>
       
       <button onclick="location.href='patientprofile.php'" 
         type="button" 
-        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
+        style="display:block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         PROFILE
       </button>
 
       <button onclick="location.href='patient_statistics.php'" 
         type="button" 
-        style="display:inline-block;padding: 40px 46px;font-size: 20px;" 
+        style="display:block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
         STATISTICS
       </button>
 
+      <button onclick="location.href='chat_home_patient.php'" 
+        type="button" 
+        style="display:block;padding: 40px 46px;font-size: 20px;" 
+        value="Test">
+        MESSAGES
+      </button>
     </div>
   </body>
 </html>

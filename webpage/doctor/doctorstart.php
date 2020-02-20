@@ -42,6 +42,23 @@ session_start();
                 border-top: 1px solid #ddd;
                 Text-align: center;
             }
+            .container {
+ 		 	border-radius: 10px;
+  			background-color: #f2f2f2;
+  			padding-left: 20px;
+  			width:95%;
+  			margin-right: auto;
+  			margin-left:auto;
+            margin-bottom: 20px; 
+            margin-top: 20px;
+        } 
+        .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
             
         </style>
     </head>
@@ -59,6 +76,7 @@ session_start();
             <li><a href="../general/contact.php">Contact</a></li>
             <li><a href="doctorprofile.php">Profile</a></li>
             <li><a href="doctorsearch.php">Patients</a></li>
+            <li><a href="chat_home_doctor.php">Messages</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
@@ -67,11 +85,14 @@ session_start();
     </nav>
 
         <img id="b" src="../general/logo_grey.png" width="400">
-
+    <div class = "page">
         <h1>Information</h1>
-        <p>
+        <div class = "container">
+        <p1>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna justo, sagittis in bibendum vitae, auctor in ex. Nullam posuere, ex nec condimentum accumsan, sapien erat interdum erat, mattis accumsan tellus erat in tortor. Suspendisse a varius risus. Maecenas consectetur ligula elit, laoreet pharetra eros suscipit eget. Nunc molestie finibus mattis. Mauris quam lorem, placerat nec consequat a, laoreet vitae lorem. Donec a est at neque posuere varius quis consectetur orci. Phasellus justo justo, ornare ac elementum vel, dignissim ac lacus. Nam interdum nisl in neque molestie rutrum.
-        </p>
+        </p1>
+        </div>
+
         <h1>Latest Updates</h1>
             
     <table style="width:70%" align="center">
@@ -108,5 +129,6 @@ session_start();
     
     include dirname(__DIR__).'/general/closeDB.php'; 
     ?>
+    </div>
     </body>
 </html>

@@ -1,14 +1,14 @@
 <?php
 // ------ ADD TO THIS FILE:
-	//  ADD THE ATRIBUTE BEDROOM_FLOOR
 	// RULES FOR THE PASSWORD
-	// SEND EMAIL WHEN REGESTERING
 	//JAVASCRIPT INJECTIONS
 
 
 //Connect to database
 //include('../general/openDB.php');
 include dirname(__DIR__).'/general/openDB.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
 
 // Introduce variables 
 $f_name = $m_name = $l_name = $ssn = $date_of_birth = $phone = $street = $street_no = $city = $bedroom_floor = '';
@@ -209,22 +209,51 @@ if(isset($_POST["submit"])){
 
 	// Hashing password
 		$password_hash = password_hash($psw, PASSWORD_DEFAULT);
-
 	// Inserting into database
 			
 		$sql = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
 		street, street_no, city, country, zip, date_of_birth, gender, education, diagnosis_date,
-		diagnosis_description, SSN, phone, state, verification_hash, bedroom_floor) 
+		diagnosis_description, SSN, phone, state, bedroom_floor) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$password_hash', '$street', 
 		'$street_no', '$city', '$country', '$zip', '$date_of_birth', 
-		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', 
-		'$verification_hash', '$bedroom_floor')";  
+		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', '$bedroom_floor')";  
 		
-		if (mysqli_query($link, $sql)) {
-   			echo "New record created successfully";
-   			// header('Location: doctorstart.php');
+		if (mysqli_query($link, $sql)) {   					
+
+        	require_once("../../PHPMailer/PHPMailer.php");
+        	require_once("../../PHPMailer/SMTP.php");
+        	require_once("../../PHPMailer/Exception.php");
+						
+        	$mail = new PHPMailer();
+			
+        	//SMTP Settings
+        	$mail->isSMTP();
+        	$mail->Host = "smtp.gmail.com";
+        	$mail->SMTPAuth = true;
+        	$mail->Username = "trackzheimers@gmail.com";
+        	$mail->Password = '123trackzheimers';
+        	$mail->Port = 465; //587
+        	$mail->SMTPSecure = "ssl"; //tls
+
+        	//Email Settings
+        	$mail->isHTML(true);
+        	$mail->setFrom("trackzheimers@gmail.com");
+        	$mail->addAddress($email);
+        	$mail->Subject = "Verify account";
+        	$mail->Body = "Thanks for registering an account at trackzheimers!";
+        	$mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
+        	$mail -> Body .= "<a href=\"http://localhost:8888/real-ims-project/webpage/patient/verify_patient.php?email=$email&&verification_hash=$verification_hash\">Activate account<p></a><br>";
+        	$mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
+		
+			if ($mail->send()) {
+				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
+            } else {
+            	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+            	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	}
 		} else {  
-		 	echo "Error: " . $sql . "<br>" . mysqli_error($link);
+			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+		 	//echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 	}
 }
@@ -332,6 +361,15 @@ if(isset($_POST["submit"])){
 <section class="container grey-text"> 
 
 	<div class="container">
+		
+	<?php
+		if(isset($sucess_message)){ 
+			echo '<font color="green"><b>'.$sucess_message.'</font></b>';
+		}elseif(isset($fail_message)){
+			echo '<font color="red"><b>'.$fail_message.'</font></b>';
+		}
+	?>
+	
 	<h1 class="center">Register as a Patient</h1>
     <p>Please fill in this form to create an account as a patient</p>
 
@@ -422,7 +460,7 @@ if(isset($_POST["submit"])){
       
       <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 	  <input type="submit" name="submit" value="submit" style = "font-size: 14px">    
-      <p>Already have an account? <a href="#">Sign in</a>.</p>
+      <p>Already have an account? <a href="../general/login.php">Sign in</a>.</p>
 
 	</form> 
 </div>   	

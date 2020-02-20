@@ -23,11 +23,37 @@
             body{
                 background-color: ghostwhite;
             }
+            .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
+            .container {
+            border-radius: 10px;
+              background-color: #f2f2f2;
+              padding-left: 20px;
+              width:95%;
+              margin-right: auto;
+              margin-left:auto;
+                  margin-bottom: 20px; 
+              
+            margin-top: 20px;
+          }  
+          table, th, td {
+                padding: 15px; 
+                border: 1px white;
+                border-collapse: collapse;
+                border-bottom: 1px solid #ddd;
+                border-top: 1px solid #ddd;
+                Text-align: center;
+            } 
         </style>
   </head>
 
   <body>
-
+ 
   <?php
     session_start();
     $patient_id = $_SESSION["id"];
@@ -80,10 +106,9 @@
             </ul>
         </div>
     </nav>
+    <div class = "page">
     <h1 align="center">Statistics</h1>
-    <b>Number of tests taken:</b> <?php echo count($dates_data);?><br>
-    <b>Latest test:</b> <?php echo end($dates_data);?><br>
-    <b>Latest score:</b> <?php echo end($score_data);?><br>
+    
     <div id='myDiv'></div>
 
   <!--end of content-->
@@ -180,10 +205,10 @@
       var layout = {
         updatemenus: updatemenus,
         title: {
-          text: '<b>Score over time</b>',
+          text: '<b> MMSE score over time</b>',
           font: {
             family: 'Arial',
-            size: 30,
+            size: 18,
             color: 'black',
           }
         },
@@ -217,6 +242,18 @@
       Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});
 
     </script>
+    <table style='width:70%' align = center>
+        <tr>
+        <th>Number of tests taken</th>
+        <th>Latest test</th>
+        <th>Latest score</th>
+        </tr>
+        <tr>
+            <td><?php echo count($dates_data);?></td>
+            <td><?php echo end($dates_data);?></td>
+            <td><?php echo end($score_data);?></td>
+        </tr>
+  </div>
 
   </body>
 

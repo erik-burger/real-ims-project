@@ -96,7 +96,13 @@ table, th, td {
       font-size: 16px;
       
     }
-
+    .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
 </style>
 </head>
 
@@ -121,6 +127,7 @@ $id = $_SESSION["id"];
             <li><a href="../general/contact.php">Contact</a></li>
             <li><a href="doctorprofile.php">Profile</a></li>
             <li class="active"><a href="doctorsearch.php">Patients</a></li>
+            <li><a href="chat_home_doctor.php">Messages</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
@@ -128,6 +135,7 @@ $id = $_SESSION["id"];
         </div>
     </nav>
 
+<div class = "page">
 <div class="c">
 <h1>Your Patients</h1>
 
@@ -211,7 +219,7 @@ $id = $_SESSION["id"];
 ?> 
 
 </div>
-
+</div>
 </div>
 </body>
 </html>
