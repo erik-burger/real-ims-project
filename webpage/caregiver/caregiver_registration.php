@@ -214,6 +214,15 @@ if(isset($_POST["submit"])){
     		font-size: 14px;
     	}
     	
+    	input[type = date], select, textarea{
+    		width: 100%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    		font-size: 14px;
+    	}
+    	
     	label {
     		padding: 12px 12px 12px 0;
     		display: inline-block;
@@ -241,31 +250,39 @@ if(isset($_POST["submit"])){
   			margin-right: auto;
   			margin-left:auto;
 		}
-  		
+		.logo {
+                display: inline-block;
+                float: left; 
+            }
     	.error {
     		color: #FF0000;
     		font-size: 14px;
     	}
-    </style>
+	</style>
   </head>
 
 <body>
 
 <div class="navbar">
-    <a href="../general/login.php">Login</a>
-    <a href="../general/info.html">About</a>  
-    <div class="dropdown">
+	<div class="navbar-header">
+    	<img class="logo" src="../general/logo_small.png" width = 50>
+	</div>  
+	<a href="../general/login.php">Login</a>
+    <a href="../general/info.html">About</a>
+	<div class="dropdown">
         <button class="dropbtn">Register
-          <i class="fa fa-caret-down"></i>
+        <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="../patient/patient_registration.php">Patient</a>
+          <a href="patient_registration.php">Patient</a>
           <a href="../doctor/doctor_registration.php">Doctor</a>
           <a href="../researcher/researcher_registration.php">Researcher</a>
-          <a href="caregiver_registration.php">Caregiver</a>
+          <a href="../caregiver/caregiver_registration.php">Caregiver</a>
         </div>
-      </div>       
+    </div>       
 </div>
+</br>
+</br>
 
 <section class="container grey-text"> 
 
