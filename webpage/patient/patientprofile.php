@@ -60,6 +60,11 @@
     		border: 1px solid #ccc;
     		border-radius; 4px;
       }
+      input[type = number], select , textarea{
+    		padding: 15px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+      }
       .page{
                 margin-left: auto; 
                 margin-right: auto; 
@@ -76,7 +81,20 @@
   			margin-left:auto;
             margin-bottom: 20px; 
             margin-top: 20px;
-		}  
+        }  
+        
+        /*remove the number arrows*/
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance:textfield;
+            }
 
         </style>
   </head>
@@ -230,7 +248,7 @@ include dirname(__DIR__).'/general/closeDB.php';
     ?>
 
     <form action="connect_to_doctor.php", method = "POST">
-        <input type="text" placeholder="Doctor ID" name="doctor_id" >
+        <input type="number" placeholder="Doctor ID" name="doctor_id" >
         <button type = "submit" class = "doc_button">Connect to Doctor</button>
     </form></br>
     </div> 
@@ -268,39 +286,13 @@ include dirname(__DIR__).'/general/closeDB.php';
     ?>
 
     <form action="patient_connect_to_caregiver.php", method = "POST">
-        <input type="text" placeholder="Caregiver ID" name="caregiver_id" >
+        <input type="number" placeholder="Caregiver ID" name="caregiver_id" >
         <button type = "submit" class = "doc_button">Connect to Caregiver</button>
     </form></br>
         </div> 
 
-<<<<<<< HEAD
-    <h1>Allow your data for research</h1>
-    <a href="data_share_info.php">More information</a>
-    <form action="data_share.php", method = "POST">
-        <?php
-        include dirname(__DIR__).'/general/openDB.php';
-        $result = mysqli_query($link,"select share_data from patient where patient_id = $_SESSION[id]")   
-        or 
-        die("Could not issue MySQL query"); 
-
-        while ($row = $result->fetch_assoc()) {
-            $share_data = $row["share_data"];
-        }
-        if ($share_data == 1) {
-            $allowed = "Stop allowing";
-        } else {
-            $allowed = "Allow"; 
-        }
-        ?> 
-        <button type = "submit" class = "doc_button"><?php echo $allowed; ?></button>
-    </form></br>
-
-</div> 
-
-=======
     
    
 </div>
->>>>>>> 0b1aecbee3994cffc28f5fe337f48e46d819e25f
 </body> 
 </html>

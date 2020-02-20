@@ -47,6 +47,18 @@ form.example::after {
   clear: both;
   display: table;
 }
+/*remove the number arrows*/
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance:textfield;
+            }
 </style>
 
 <!Center text>
@@ -81,6 +93,11 @@ table, th, td {
         }
     
     	input[type = text], select , textarea{
+    		padding: 15px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+      }
+      input[type = number], select , textarea{
     		padding: 15px;
     		border: 1px solid #ccc;
     		border-radius; 4px;
@@ -146,7 +163,7 @@ $id = $_SESSION["id"];
 </form>
 
 <form id = "form_connect" class = sideBySide action="connect_to_patient.php" method = "post" style="margin:auto;">
-  <input type="text" placeholder="Patient ID" name="patient_id" >
+  <input type="number" placeholder="Patient ID" name="patient_id" >
   <button type="submit" class = "button" name = "connect">Connect</button>
 </form>
 </div>
