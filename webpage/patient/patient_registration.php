@@ -220,9 +220,9 @@ if(isset($_POST["submit"])){
 		
 		if (mysqli_query($link, $sql)) {   					
 
-        	require_once("../../PHPMailer/PHPMailer.php");
-        	require_once("../../PHPMailer/SMTP.php");
-        	require_once("../../PHPMailer/Exception.php");
+        	require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
+        	require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
+        	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
 						
         	$mail = new PHPMailer();
 			
