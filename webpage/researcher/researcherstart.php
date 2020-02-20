@@ -36,7 +36,7 @@ session_start();
                 margin-left: 1px;              
             }     
             table {
-                width: 100%;
+                width: 100%; 
             }
             table th {
                 padding-top: 12px;
@@ -49,6 +49,25 @@ session_start();
                 text-align: center;
             }
             table tr:nth-child(even){background-color: rgb(190,216,215);}
+
+            .container {
+ 		 	border-radius: 10px;
+  			background-color: #f2f2f2;
+  			padding-left: 20px;
+  			width:95%;
+  			margin-right: auto;
+  			margin-left:auto;
+            margin-bottom: 20px; 
+            margin-top: 20px;
+        } 
+        .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
+
         </style>
     </head>
 
@@ -68,15 +87,16 @@ session_start();
         </div>
     </nav>
         
-    
+        <div class = "page">
 
         <img id="b" src="../general/logo_grey.png" width="400">
 
-        <h2>Information...</h2>
+        <h2>Information</h2>
+        <div class = "container">
         <p1>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna justo, sagittis in bibendum vitae, auctor in ex. Nullam posuere, ex nec condimentum accumsan, sapien erat interdum erat, mattis accumsan tellus erat in tortor. Suspendisse a varius risus. Maecenas consectetur ligula elit, laoreet pharetra eros suscipit eget. Nunc molestie finibus mattis. Mauris quam lorem, placerat nec consequat a, laoreet vitae lorem. Donec a est at neque posuere varius quis consectetur orci. Phasellus justo justo, ornare ac elementum vel, dignissim ac lacus. Nam interdum nisl in neque molestie rutrum.
         </p1>
-       
+        </div>
         <h1>Download</h1>
         <?php
             include dirname(__DIR__).'/general/openDB.php';
@@ -255,5 +275,6 @@ session_start();
                 }
             }
         </script>
+    </div>
     </body>
 </html>

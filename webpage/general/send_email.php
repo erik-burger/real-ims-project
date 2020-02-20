@@ -15,13 +15,13 @@ use PHPMailer\PHPMailer\PHPMailer;
         	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
 
             $subject = $_POST['subject']; 
-            $subject = strip_tags($subject); 
+            $subject = htmlspecialchars($subject); 
 
             $message = $_POST["message"];
-            $message = strip_tags($message);
+            $message = htmlspecialchars($message);
 
             $email = $_POST['email']; 
-            $email = strip_tags($email); 
+            $email = htmlspecialchars($email); 
 
             $body ='<html>
                 <div class="background" style="background-color:#eee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;" >

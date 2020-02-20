@@ -6,10 +6,10 @@ include dirname(__DIR__).'/general/openDB.php';
 
 //$medication_name = mysqli_real_escape_string($link, $_POST["medication_name"]);
 $dose = mysqli_real_escape_string($link, $_POST["dose"]);
-$dose = strip_tags($dose); 
+$dose = htmlspecialchars($dose); 
 
 $medication_interval = mysqli_real_escape_string($link, $_POST["interval"]);
-$medication_interval = strip_tags($medication_interval);
+$medication_interval = htmlspecialchars($medication_interval);
 
 $medication_id = $_POST["medication_id"];
 

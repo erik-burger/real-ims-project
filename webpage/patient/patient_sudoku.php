@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="../general/IMS_Style.css">
   
 <style>
+        ul{
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+        }
         .sudoku {
           height:30px; 
           width:30px;}
@@ -60,6 +65,16 @@
 </br>
 
 
+    <div class="navbar-header">
+        <img class="logo" src="../general/logo_small.png" width = 50>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="patientstart.php">Home</a></li>            
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="../general/logout.php">Logout</a></li>
+    </ul>
+    </div> 
 <h1 align = "center">Sudoku</h1>
 
 <?php //Sudoku template

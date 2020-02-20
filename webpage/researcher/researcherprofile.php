@@ -48,8 +48,37 @@
                 -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
                 -moz-box-sizing: border-box;    /* Firefox, other Gecko */
                 box-sizing: border-box;         /* Opera/IE 8+ */
-                font-size: 14px;   
+                font-size: 18px;   
             }
+            .container {
+ 		 	border-radius: 10px;
+  			background-color: #f2f2f2;
+  			padding-left: 20px;
+  			width:95%;
+  			margin-right: auto;
+  			margin-left:auto;
+            margin-bottom: 20px; 
+            margin-top: 20px;
+        } 
+        .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            }
+            textarea{
+    		width: 95%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    		font-size: 14px;
+            font-family:"Arial";     
+        }
+        textarea, button{
+            display: block; 
+        }
         </style> 
     </head>
 
@@ -67,9 +96,10 @@
             </ul>
         </div>
     </nav>
+    <div class = "page">
     <div class='column'>
         <h1>Profile</h1>
-   
+    <div class = "container">
     <?php
         session_start();
        /*if ( isset($_SESSION["id"]) === false) {
@@ -113,14 +143,20 @@
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
     </div>
+    </div>
+
     <div class='column'>
         <h1>Request data access</h1>
+
+        <div class = "container">
         <form action="request_email.php" method='post'>
-        <textarea name="motivation" cols=auto rows=auto placeholder="enter your motivation here"></textarea>
+        <textarea name="motivation" cols=auto rows=auto placeholder="Enter your motivation here..."></textarea>
         <input type="hidden" name="email" value="<?php echo $email; ?>">
         <input type="submit" value='Submit motivation' class='request_button'>
         </form>
 
+        </div>
+    </div>
     </div>
     </body>
 

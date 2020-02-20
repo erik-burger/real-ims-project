@@ -63,8 +63,8 @@ if(empty($username_err) && empty($password_err)){
             $_SESSION["timestamp"] = time(); //needed for logout after inactivity
             header("location: ../doctor/doctorstart.php"); //redirect to doctor start page
         } else {
-            echo "Password is invalid";}
-
+            echo "<script>alert('Password or email is invalid'); window.location.href = 'login.php';</script>";
+        }
     }else{ //if it doctor table gives no result try the patient table
         $patientsql = "select patient_id from patient where email = '$email'";
         $patientresult = mysqli_query($link, $patientsql)
@@ -90,7 +90,8 @@ if(empty($username_err) && empty($password_err)){
                 header("location: ../patient/patientstart.php"); //redirect to patient start page
 
             }else{
-                echo "Passsword is invalid";}
+                echo "<script>alert('Password or email is invalid'); window.location.href = 'login.php';</script>";
+            }
 
         } else{ 
             $researchersql = "select researcher_id from researcher where email = '$email'";
@@ -117,7 +118,7 @@ if(empty($username_err) && empty($password_err)){
                     header("location: ../researcher/researcherstart.php"); //redirect to patient start page
 
                 }else{
-                    echo "Password is invalid.";}
+                    echo "<script>alert('Password or email is invalid'); window.location.href = 'login.php';</script>";}
 
             }else{ //if it does not return anything here either, email or password are wrong
                 $caregiversql = "select caregiver_id from caregiver where email = '$email'";
@@ -143,12 +144,12 @@ if(empty($username_err) && empty($password_err)){
                         header("location: ../caregiver/caregiverstart.php"); //redirect to patient start page
     
                     }else{
-                        echo "Password is invalid.";}
+                        echo "<script>alert('Password or email is invalid'); window.location.href = 'login.php';</script>";}
                 }
         }
         }}
 }else{//if there is something in the error variables username or password are empty
-    echo "Please fill in both username and password";}
+    echo "<script>alert('Password or email is invalid'); window.location.href = 'login.php';</script>";;}
 
 
 include dirname(__DIR__).'/general/closeDB.php';
