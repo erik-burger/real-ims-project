@@ -39,11 +39,9 @@ $_SESSION["timestamp"] = time();
                 background-color: #669999;
                 border: none;
                 color: black;
-                padding: 15px 32px;
                 text-align: center;
                 text-decoration: none;
                 display: block;
-                font-size: 30px;
             }
             .bigbutton, .btn-group{
               display: inline-block;
@@ -101,7 +99,7 @@ $_SESSION["timestamp"] = time();
         type="button" 
         style="display:block;padding: 40px 46px;font-size: 20px;" 
         value="Test">
-        Messages
+        MESSAGES
       </button>
     </div>
   </body>

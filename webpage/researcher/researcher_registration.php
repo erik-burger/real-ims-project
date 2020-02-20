@@ -335,7 +335,7 @@ if(isset($_POST["submit"])){
 
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    
-      	<p>Already have an account? <a href="#">Sign in</a>.</p>
+      	<p>Already have an account? <a href="../general/login.php">Sign in</a>.</p>
       
    </form>
    

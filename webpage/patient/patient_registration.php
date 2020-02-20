@@ -209,11 +209,6 @@ if(isset($_POST["submit"])){
 
 	// Hashing password
 		$password_hash = password_hash($psw, PASSWORD_DEFAULT);
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> 95b65113ba07f6ea0592ce974231234e25f36017
 	// Inserting into database
 			
 		$sql = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
@@ -465,7 +460,7 @@ if(isset($_POST["submit"])){
       
       <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 	  <input type="submit" name="submit" value="submit" style = "font-size: 14px">    
-      <p>Already have an account? <a href="#">Sign in</a>.</p>
+      <p>Already have an account? <a href="../general/login.php">Sign in</a>.</p>
 
 	</form> 
 </div>   	
