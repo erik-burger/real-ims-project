@@ -67,6 +67,17 @@
     		font-size: 14px;
             font-family:"Arial";     
     	}
+    
+        .message_form{
+            margin-right: auto;
+  			margin-left:auto;
+        }    
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 400px;
+        }
         .container {
  		 	border-radius: 10px;
   			background-color: #f2f2f2;
@@ -84,17 +95,6 @@
                 width: 95%; 
                 margin-bottom: 50px;   
             }
-                    
-        .message_form{
-            margin-right: auto;
-  			margin-left:auto;
-        }    
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 400px;
-        }
         </style>
     </head>
 
