@@ -1,10 +1,9 @@
 <?php
     session_start();
     $c_id = $_SESSION["id"];
-    $p_id = $_POST["patient_id"];
 
     include dirname(__DIR__).'/general/openDB.php';
-    $p_id = mysqli_real_escape_string($link, $p_id);
+    $p_id = mysqli_real_escape_string($link, $_POST["patient_id"]);
     
 
     //Query to check if the cargiver patient connection exists 
