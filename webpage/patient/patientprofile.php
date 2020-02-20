@@ -59,8 +59,13 @@
     		padding: 15px;
     		border: 1px solid #ccc;
     		border-radius; 4px;
-            }
-            .page{
+      }
+      input[type = number], select , textarea{
+    		padding: 15px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+      }
+      .page{
                 margin-left: auto; 
                 margin-right: auto; 
                 padding: 10px;
@@ -76,7 +81,20 @@
   			margin-left:auto;
             margin-bottom: 20px; 
             margin-top: 20px;
-		}  
+        }  
+        
+        /*remove the number arrows*/
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance:textfield;
+            }
 
         </style>
   </head>
@@ -229,7 +247,7 @@ include dirname(__DIR__).'/general/closeDB.php';
     ?>
 
     <form action="connect_to_doctor.php", method = "POST">
-        <input type="text" placeholder="Doctor ID" name="doctor_id" >
+        <input type="number" placeholder="Doctor ID" name="doctor_id" >
         <button type = "submit" class = "doc_button">Connect to Doctor</button>
     </form></br>
     </div> 
@@ -267,11 +285,12 @@ include dirname(__DIR__).'/general/closeDB.php';
     ?>
 
     <form action="patient_connect_to_caregiver.php", method = "POST">
-        <input type="text" placeholder="Caregiver ID" name="caregiver_id" >
+        <input type="number" placeholder="Caregiver ID" name="caregiver_id" >
         <button type = "submit" class = "doc_button">Connect to Caregiver</button>
     </form></br>
         </div> 
 
+<<<<<<< HEAD
     <h1>Allow your data for research</h1>
     <a href="data_share_info.php">More information</a>
     <form action="data_share.php", method = "POST">
@@ -295,6 +314,8 @@ include dirname(__DIR__).'/general/closeDB.php';
 
 </div> 
 
+=======
+>>>>>>> injection_conection
     
    
 </div>

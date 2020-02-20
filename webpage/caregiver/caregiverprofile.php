@@ -53,6 +53,12 @@
     		border: 1px solid #ccc;
     		border-radius; 4px;
             }
+
+            input[type = number] {
+    		padding: 15px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+            }
             table, th, td {
                 padding: 15px; 
                 border: 1px white;
@@ -70,7 +76,19 @@
             margin-bottom: 20px; 
             margin-top: 20px;
             font-size:18;
-		} 
+        } 
+        /*remove the number arrows*/
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance:textfield;
+            }
         </style>
     </head>
 
@@ -174,7 +192,7 @@
         ?>
 
     <form action="caregiver_connect_to_patient.php", method = "POST">   
-        <input type="text" placeholder="Patient ID" name="patient_id" >
+        <input type="number" placeholder="Patient ID" name="patient_id" >
         <button type = "submit" class = "patient_button">Connect to Patient</button>
     </form></br>
     </div>
