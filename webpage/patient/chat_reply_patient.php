@@ -5,7 +5,9 @@ include dirname(__DIR__).'/general/openDB.php';
 $from_user_id = $_SESSION["id"];
 $from_user_type = $_SESSION["user"];
 $previous_chat_id = $_POST["send_to"];
+$previous_chat_id = mysqli_real_escape_string($link, $previous_chat_id);
 $chat_message = $_POST["message"];
+$chat_message = mysqli_real_escape_string($link, $chat_message);
 $date_time = gmdate('Y-m-d h:i:s \G\M\T');
 $message_status = 0;
 
