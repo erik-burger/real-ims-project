@@ -32,14 +32,14 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 background-color: #669999; 
                 border: none;
                 color: white;
-                padding: 14px 10px;
+                padding: 14px 20px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 16px;   
-                margin-top: 10px;
-                margin-bottom: 10px; 
-                margin-left: 1px;              
+                font-size: 16px; 
+                position:absolute;
+                right:13%;
+                top: 90%;        
             }      
             * {
             box-sizing: border-box;
@@ -81,8 +81,8 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
 <h1>Send a message</h1>
 
 <form id="send-message" action="chat_send_patient.php" method="post">
-<label for="send_to"><b>To:</b></label><br>
-      <select name = "send_to" form = "send-message" required>
+<label for="send_to" style = "position:absolute;left:13%"><b>To:</b></label><br>
+      <select name = "send_to" style = "position:absolute;left:13%" form = "send-message" required>
         <?php
         
         include dirname(__DIR__).'/general/openDB.php';
@@ -103,9 +103,9 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             $email = $row["email"];
             print "<option value='$email'>$first_name $last_name</option>";}
         include dirname(__DIR__).'/general/closeDB.php';
-        ?> </select><br><br<>
-    <label for="sendie"><b>Your message:</b></label><br>
-    <textarea name="sendie" maxlength = '100'></textarea><br>
+        ?> </select><br><br<><br><br><br>
+    <label for="sendie" style = "position:absolute;left:13%"><b>Your message:</b></label><br>
+    <textarea name="sendie" style = "height:300px;width:1000px;position:absolute;left:13%"></textarea><br>
     <button type="submit" class = newbutton>Send</button>
         </div>
 </form>
