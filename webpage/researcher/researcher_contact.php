@@ -1,18 +1,14 @@
-
-<html>
-<meta http-equiv="refresh" content="3600;url=logout.php" />
 <?php
 session_start();
-
-/*if ( isset($_SESSION["user"]) == "R") { // if the user is a patient -> logout
-    $_SESSION = array();
-    session_destroy();
-    header("location: ../general/login.php");
-} elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
-    header("location: ../html/php/login.php");
-}
-*/
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "R" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
 ?>
+<html>
+<meta http-equiv="refresh" content="3600;url=logout.php" />
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -1,4 +1,14 @@
 <html>
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+}  
+?> 
+
 <meta http-equiv="refresh" content="3600;url=../general/logout.php" />
     <head>
         <meta charset="UTF-8">
@@ -76,12 +86,6 @@
    
     <div class = "container">
     <?php
-        session_start();
-       /*if ( isset($_SESSION["id"]) === false) {
-        header("location: ../general/login.php");
-        }
-        */
-
         include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country, picture 
         from doctor

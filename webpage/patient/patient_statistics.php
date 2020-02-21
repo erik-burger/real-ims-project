@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
 <html>
   <head>
     <meta charset="UTF-utf-8">
@@ -55,7 +66,7 @@
   <body>
  
   <?php
-    session_start();
+    
     $patient_id = $_SESSION["id"];
   ?>
     

@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$id = $_SESSION["id"]; 
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+}  
+?> 
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -124,15 +135,6 @@ table, th, td {
 </head>
 
 <body>
-
-<?php 
-session_start();
-$id = $_SESSION["id"];
- /*if ( isset($_SESSION["id"]) === false) {
-        header("location: ../general/login.php");
-    }
-    */
-?> 
 
 <nav class="navbar navbar-inverse">
         <div class="container-fluid">
