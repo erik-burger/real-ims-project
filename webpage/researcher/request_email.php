@@ -25,7 +25,7 @@
     require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
     
     $researcher_email = $_POST['email'];
-    $motivation = $_POST['motivation'];
+    $motivation = htmlspecialchars($_POST['motivation']);
     $subject = 'A data request has been made by '.$researcher_email;
     $email = "trackzheimers@gmail.com";
     
