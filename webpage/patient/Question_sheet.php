@@ -806,7 +806,6 @@ if(isset($_POST["submit"])){
                             </label><br>
                        </div>
                 </div>
-                <hr>
                 <button type="button" onclick="change_question('question13','question14_1')">Back</button>
                 <button type="button" onclick="change_question('question14_2','question14_1')">Next</button>
             </div>
@@ -880,9 +879,7 @@ if(isset($_POST["submit"])){
                             <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option3_2; ?>'><?php echo $option3_2; ?>
                             <span class="checkmark"></span>
                             </label><br>
-                        </div>
-                        
-                <br>
+                        </div>     
                 <button type="button" onclick="change_question('question14_1','question14_2')">Back</button>
                 <button type="submit" name="submit" value="Submit">Submit</button>
         </form>
