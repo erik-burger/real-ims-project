@@ -11,8 +11,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
-$errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
-'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '');
+$errors = $picture = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
+'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '', 'picture'=>'');
 
 if(isset($_POST["submit"])){
 			
@@ -130,9 +130,12 @@ if(isset($_POST["submit"])){
 	}else{
 		$psw = $link->real_escape_string($_POST['psw']);
 	}
-		
+
 	$verification_hash = md5(rand(0,10000));
-	
+
+	$picture = $link->real_escape_string($_POST["picture"]);
+	$picture = htmlspecialchars($picture); 
+
 		if(array_filter($errors)){
 	 // Go back to the form
 	} else {	
@@ -142,14 +145,14 @@ if(isset($_POST["submit"])){
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
-		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
+		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash, picture) 
+		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash', '$picture')";  
 		
 		if (mysqli_query($link, $sql)) {   					
 
-        	require_once("../../PHPMailer/PHPMailer.php");
-        	require_once("../../PHPMailer/SMTP.php");
-        	require_once("../../PHPMailer/Exception.php");
+			require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
+        	require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
+        	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
 						
         	$mail = new PHPMailer();
 			
@@ -299,7 +302,7 @@ if(isset($_POST["submit"])){
 	<h1 class="center">Register as a Doctor</h1>
     <p id="a">Please fill in this form to create an account as a doctor</p>
 
-	<form action = "doctor_registration.php" method = "POST">
+	<form action = "doctor_registration.php" method = "POST" enctype="multipart/form-data">
 		
 		<label for="f_name"><b>First name</b></label>
       	<input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -349,7 +352,7 @@ if(isset($_POST["submit"])){
       	<div class="error"><?php echo $errors['psw']; ?></div><br>
 
 		<div class="picture"><label>Select your profile picture: </label>
-		<input type="file" name="picture" accept="image/*" required /></div>
+		<input type="file" name="picture" id="picture" accept="image/*" required /></div>
 
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    

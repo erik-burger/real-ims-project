@@ -141,7 +141,7 @@ $id = $_SESSION["id"];
             </div>
             <ul class="nav navbar-nav">
             <li><a href="doctorstart.php">Home</a></li>
-            <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="doctor_contact.php">Contact</a></li>
             <li><a href="doctorprofile.php">Profile</a></li>
             <li class="active"><a href="doctorsearch.php">Patients</a></li>
             <li><a href="chat_home_doctor.php">Messages</a></li>
@@ -174,7 +174,7 @@ $id = $_SESSION["id"];
       include dirname(__DIR__).'/general/openDB.php';
       $search = $_POST['search_text']; 
       $search = $link->real_escape_string($_POST["search_text"]);
-      $search = strip_tags($search);
+      $search = htmlspecialchars($search);
       $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
                                     from patient as p, patient_doctor as p_d
                                     where p.patient_id = p_d.patient_id   
