@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="top_menu_style.css">
         <link rel="stylesheet" href="../general/IMS_Style.css">
         <style>
-         ul{
+            ul{
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
@@ -103,10 +103,6 @@
     <div class = "container">
     <?php
         session_start();
-       /*if ( isset($_SESSION["id"]) === false) {
-        header("location: ../general/login.php");
-        }
-        */
 
         include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link, "select first_name, last_name, researcher_id, phone, street, street_no, zip, city, country, email
