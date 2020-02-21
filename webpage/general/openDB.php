@@ -1,6 +1,6 @@
 <?php
 	
-    $hostname = "localhost:3306"; //"back.db1.course.it.uu.se:3306"; 
+    $hostname = "localhost:33066"; //"back.db1.course.it.uu.se:330"; 
     $username = "root"; //"spring20_ims_2"; 
     $password = ""; //"WwtPqL1R"; 
     $dbname   = "ims_out"; //"spring20_ims_2"; 
