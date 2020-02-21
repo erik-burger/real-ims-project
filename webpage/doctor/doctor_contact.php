@@ -113,7 +113,7 @@ session_start();
             </div>
             <ul class="nav navbar-nav">
             <li><a href="../doctor/doctorstart.php">Home</a></li>
-            <li class="active"><a href="../general/contact.php">Contact</a></li>
+            <li class="active"><a href="../doctor/doctor_contact.php">Contact</a></li>
             <li><a href="../doctor/doctorprofile.php">Profile</a></li>
             <li><a href="../doctor/doctorsearch.php">Patients</a></li>
             <li><a href="chat_home_doctor.php">Messages</a></li>
