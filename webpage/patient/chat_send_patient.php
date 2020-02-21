@@ -4,9 +4,9 @@ include dirname(__DIR__).'/general/openDB.php';
 
 $from_user_id = $_SESSION["id"];
 $from_user_type = $_SESSION["user"];
-$email = $_POST["send_to"];
+$email = htmlspechalchars($_POST["send_to"]);
 $email = mysqli_real_escape_string($link, $email);
-$chat_message = $_POST["sendie"];
+$chat_message = htmlspecialchars($_POST["sendie"]);
 $chat_message = mysqli_real_escape_string($link, $chat_message);
 $date_time = gmdate('Y-m-d h:i:s \G\M\T');
 $message_status = 0;
