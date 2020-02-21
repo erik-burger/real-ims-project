@@ -711,15 +711,6 @@ if(isset($_POST["submit"])){
                 document.getElementById('output_value').value = number;
                 }
                 </script>     
-                <?php
-                /*
-                    $numbers = array(40, 50, 60, 70, 80, 90);
-                    $number = $numbers[array_rand($numbers)];
-                    $title_str = "Subtract 7 from ".$number.", 5 times";
-                    //echo '<h1>'Subtract 7 from$number 5 times'</h1>';
-                    echo "<h1 align='center'>".$title_str."</h1>";
-                    */
-                ?>
                 <h1 align='center'>Subtract 7 from <p id='output' style="display:inline"></p>, 5 times <h1>
                 <div>
                 <input type='hidden' name='0st-number' id='output_value' value="">
