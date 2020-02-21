@@ -237,7 +237,7 @@ if(isset($_POST["submit"])){
                 margin: 8px 0;
                 box-sizing: border-box;
                 height:100px; 
-                width:800px;
+                width: 800px;
                 font-size:70px;
                 border: 2px solid #669999;
             }
