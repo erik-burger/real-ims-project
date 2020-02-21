@@ -476,5 +476,5 @@ if(isset($_POST["submit"])){
 </html>
 
 <?php 
-include dirname(__DIR__).'../general/closeDB.php';;	
+include dirname(__DIR__).'/general/closeDB.php';;	
 ?>
