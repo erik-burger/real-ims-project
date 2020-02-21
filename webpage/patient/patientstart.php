@@ -41,12 +41,17 @@ $_SESSION["timestamp"] = time();
                 color: black;
                 text-align: center;
                 text-decoration: none;
-                display: block;
             }
-            .bigbutton, .btn-group{
+            .bigbutton{
+              padding: 10px 10px;
+            }
+            .btn-group{
+              display: block;
+              padding: 10px 10px;
+            }
+            .all_buttons{
               display: inline-block;
-              padding: 40px 46px;
-              font-size: 20px;
+              padding: 10px 10px;
             }
         </style>
   </head>
@@ -64,43 +69,45 @@ $_SESSION["timestamp"] = time();
     </nav>
     <hr>
     
-    <div class="bigbutton" align="center">
+    <div class = "all_buttons">
+    <div class="bigbutton">
     <button onclick="location.href='Question_sheet.php'"
       type="button" 
-      style="margin-left:auto;margin-right:auto;margin-bottom:5px;padding: 100px 150px;font-size: 100px;" 
+      style="font-size: 100px;height: 430px;width: 500px" 
       value="Test">
       TEST
     </button>
     </div>
-    
-    <div class="btn-group">
+   
+    <div class="btn-group" style = "height:10x;width:10px;">
       <button onclick="location.href='patient_sudoku.php'"
         type="button" 
-        style="display:block;padding: 40px 46px;font-size: 20px;" 
+        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;" 
         value="Test"> 
         GAMES
       </button>
-      
+    <div class ="btn-group"></div>  
       <button onclick="location.href='patientprofile.php'" 
         type="button" 
-        style="display:block;padding: 40px 46px;font-size: 20px;" 
+        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;" 
         value="Test">
         PROFILE
       </button>
-
+      <div class ="btn-group"></div>
       <button onclick="location.href='patient_statistics.php'" 
         type="button" 
-        style="display:block;padding: 40px 46px;font-size: 20px;" 
+        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;" 
         value="Test">
         STATISTICS
       </button>
-
+      <div class ="btn-group"></div>
       <button onclick="location.href='chat_home_patient.php'" 
         type="button" 
-        style="display:block;padding: 40px 46px;font-size: 20px;" 
+        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;" 
         value="Test">
         MESSAGES
       </button>
+    </div>
     </div>
   </body>
 </html>
