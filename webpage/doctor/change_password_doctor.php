@@ -1,3 +1,21 @@
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
+<?php
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
 
 <html>
 <head>

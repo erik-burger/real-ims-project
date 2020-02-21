@@ -1,4 +1,15 @@
 <html>
+
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
 <meta http-equiv="refresh" content="3600;url=../general/logout.php" /> 
 <style>
     table, th, td {
@@ -7,18 +18,7 @@
 }
 </style>
 
-<?php
-session_start();
-/*if ( isset($_SESSION["user"]) == "P") { // if the user is a patient -> logout
-    $_SESSION = array();
-    session_destroy();
-    header("location: ../general/login.php");
-} elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
-    header("location: ../html/php/login.php");
-}
-*/
 
-?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

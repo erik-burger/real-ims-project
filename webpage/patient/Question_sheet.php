@@ -1,7 +1,18 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
 <?php
 if(isset($_POST["submit"])){
-  session_start();
+ 
   $patient_id = $_SESSION["id"];
   include dirname(__DIR__)."/general/openDB.php";
   $result = mysqli_query($link,"select country, state, city, street, bedroom_floor from patient where patient_id = $patient_id");
