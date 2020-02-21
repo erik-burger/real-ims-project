@@ -3,15 +3,11 @@
 <meta http-equiv="refresh" content="3600;url=logout.php" />
 <?php
 session_start();
+echo $_SESSION["user"]; 
+if (isset($_SESSION["user"]) != "D" or isset($_SESSION["loggedin"]) === false) { // if the user is a patient -> logout
+    echo "window.location.href = '../general/login.php';</script>";
+} 
 
-/*if ( isset($_SESSION["user"]) == "D") { // if the user is a patient -> logout
-    $_SESSION = array();
-    session_destroy();
-    header("location: ../general/login.php");
-} elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
-    header("location: ../html/php/login.php");
-}
-*/
 ?>
     <head>
         <meta charset="UTF-8">
@@ -113,7 +109,7 @@ session_start();
             </div>
             <ul class="nav navbar-nav">
             <li><a href="../doctor/doctorstart.php">Home</a></li>
-            <li class="active"><a href="../general/contact.php">Contact</a></li>
+            <li class="active"><a href="../doctor/doctor_contact.php">Contact</a></li>
             <li><a href="../doctor/doctorprofile.php">Profile</a></li>
             <li><a href="../doctor/doctorsearch.php">Patients</a></li>
             <li><a href="chat_home_doctor.php">Messages</a></li>
