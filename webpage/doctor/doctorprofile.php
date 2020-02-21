@@ -83,7 +83,7 @@
         */
 
         include dirname(__DIR__).'/general/openDB.php';
-        $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country 
+        $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country, picture 
         from doctor
         where doctor_id = $_SESSION[id]")   
         or 
@@ -98,12 +98,14 @@
             $zip = $row["zip"]; 
             $city = $row["city"];
             $country = $row["country"];
-            $phone = $row["phone"]; 
+            $phone = $row["phone"];
+            $picture = $row["picture"]; 
      
             echo '<b>'."Name: ".'</b>'.$first_name." ".$last_name.'<br />';
             echo '<b>'."ID: ".'</b>' .$doctor_id.'<br />';
             echo '<b>'."Telephone: ".'</b>'.$phone.'<br />';
             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
+            echo '<b>'."Profile Picture:".'</b>'.$picture. '<br />';
         }
        
         include dirname(__DIR__).'/general/closeDB.php';
