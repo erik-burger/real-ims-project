@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "C" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
 <html>
 <head>
         <meta charset="UTF-8">
@@ -104,7 +115,7 @@ table, th, td {
     </tr>
 
 <?php
-session_start();
+
 include dirname(__DIR__).'/general/openDB.php';
 
 $sql = "select c.chat_message_id, p.first_name, p.last_name, c.from_user_id, c.from_user_type, c.date_time, c.message_status from chat c 

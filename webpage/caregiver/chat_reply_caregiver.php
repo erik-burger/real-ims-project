@@ -1,5 +1,14 @@
 <?php
 session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "C" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
+<?php
 include dirname(__DIR__).'/general/openDB.php';
 
 $from_user_id = $_SESSION["id"];
