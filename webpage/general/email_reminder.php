@@ -41,11 +41,9 @@ $mail->Subject = $subject;
 $mail->Body = $body;
 
 if ($mail->send()) {
-    echo '<script>alert("Message was sent!"); window.location.href = "contact.php";</script>'; 
-    $_POST = array_filter($_POST);
+    echo 'Sent'; 
 } else {
-    echo '<script>alert("Something is wrong!");</script>'; 
-    $_POST = array_filter($_POST);
+    echo 'Nononono'; $_POST = array_filter($_POST);
 }
 
 ?>
