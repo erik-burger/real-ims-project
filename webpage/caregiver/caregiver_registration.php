@@ -194,7 +194,11 @@ if(isset($_POST["submit"])){
     <style>
     	*{
     	box-sizing: border-box;
-    	}
+		}
+		
+		body{
+			background-color: ghostwhite;
+		}
     	
     	input[type = text], select , textarea{
     		width: 100%;
@@ -250,10 +254,12 @@ if(isset($_POST["submit"])){
   			margin-right: auto;
   			margin-left:auto;
 		}
+
 		.logo {
                 display: inline-block;
                 float: left; 
-            }
+			}
+			
     	.error {
     		color: #FF0000;
     		font-size: 14px;

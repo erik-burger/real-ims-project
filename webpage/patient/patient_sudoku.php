@@ -30,7 +30,7 @@
     		background-color: #c2d6d6;
   			color: black;
   			padding: 12px 20px;
- 		 	border: none;
+ 		  	border: none;
   			border-radius: 4px;
   			cursor: pointer;
   			float: right;
@@ -50,8 +50,21 @@
           </style>
     </head>
 <body>
-
 <div class="navbar">
+	<div class="navbar-header">
+    	<img class="logo" src="../general/logo_small.png" width = 50>
+	</div>  
+	<ul class="nav navbar-nav">
+    <li class="active"><a href="patientstart.php">Home</a></li>            
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="../general/logout.php">Logout</a></li>
+  </ul>
+</div>
+</br>
+</br>
+
+
     <div class="navbar-header">
         <img class="logo" src="../general/logo_small.png" width = 50>
     </div>

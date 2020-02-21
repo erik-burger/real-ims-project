@@ -17,19 +17,7 @@
                 display: inline-block;
                 float: left; 
 
-            .newbutton{
-                background-color: #669999; 
-                border: none;
-                color: white;
-                padding: 14px 10px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;   
-                margin-top: 10px;
-                margin-bottom: 10px; 
-                margin-left: 1px;              
-            }      
+                 
             * {
             box-sizing: border-box;
             }
@@ -53,50 +41,66 @@
     		border-radius; 4px;
       }
 
-        </style>
+    </style>
     <style>
-table, th, td {
-                padding: 15px; 
-                border: 1px white;
-                border-collapse: collapse;
-                border-bottom: 1px solid #ddd;
-                border-top: 1px solid #ddd;
-            }
-          ul{
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-          }
-          .logo {
-              display: inline-block;
-              float: left; 
-          }
 
-          .sideBySide{
-        display: inline-block;
-        padding: 20px
+        .newbutton {
+            background-color: #669999; 
+            border: none;
+            color: white;
+            padding: 14px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;   
+            margin-top: 10px;
+            margin-bottom: 10px; 
+            margin-left: 1px;              
+        }
+
+        table, th, td {
+            padding: 15px; 
+            border: 1px white;
+            border-collapse: collapse;
+            border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+        }
+        
+        ul{
+           list-style-type: none;
+           margin: 0;
+           padding: 0;
+        }
+        
+        .logo {
+            display: inline-block;
+            float: left; 
+        }
+
+        .sideBySide{
+            display: inline-block;
+            padding: 20px
         }
     
     	input[type = text], select , textarea{
     		padding: 15px;
     		border: 1px solid #ccc;
-    		border-radius; 4px;
-      }
-      .button {
-      background-color: #669999; 
-      border: none;
-      color: white;
-      padding: 14px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      
-    }
-
+            border-radius: 4px;
+        }
+            
+        .button {
+            background-color: #669999; 
+            border: none;
+            color: white;
+            padding: 14px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
 </style>
-  </head>
-  <body>
+</head>
+<body>
 
   <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -113,7 +117,7 @@ table, th, td {
     </nav>
 <h1>My Messages</h1>
 <body>
-<button onclick="window.location.href = 'chat_patient.php';" class = newbutton >New Message</button>
+<button class= "newbutton" onclick="window.location.href = 'chat_patient.php'" >New Message</button>
 <table style="width:50%" align="center">
     <tr>
     <th>Time</th>
