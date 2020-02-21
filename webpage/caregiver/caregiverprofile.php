@@ -2,7 +2,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
-        <link rel="stylesheet" href="../general/IMS_Style.css">
+        <link rel="stylesheet" href="IMS_Style.css">
         <style>
             ul{
                 list-style-type: none;
@@ -83,7 +83,9 @@
                 <img class="logo" src="../general/logo_small.png" width = 50>
                 <ul class="nav navbar-nav">
                 <li><a href="caregiverstart.php">Home</a></li> 
-                <li class="active"><a href="caregiverprofile.php">Profile</a></li>            
+                <li><a href="caregiver_contact.php">Contact</a></li>
+                <li class="active"><a href="caregiverprofile.php">Profile</a></li>   
+                <li><a href="chat_home_caregiver.php">Messages</a></li>           
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>

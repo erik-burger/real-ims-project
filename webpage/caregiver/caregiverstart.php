@@ -64,6 +64,7 @@ session_start();
                 <img class="logo" src="../general/logo_small.png" width = 50>
                 <ul class="nav navbar-nav">
                 <li class="active"><a href="caregiverstart.php">Home</a></li> 
+                <li><a href="caregiver_contact.php">Contact</a></li>
                 <li><a href="caregiverprofile.php">Profile</a></li>
                 <li><a href="chat_home_caregiver.php">Messages</a></li>            
                 </ul>
