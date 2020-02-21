@@ -1,3 +1,4 @@
+<html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -150,11 +151,25 @@
         <textarea name="motivation" cols=auto rows=auto placeholder="Enter your motivation here..."></textarea>
         <input type="hidden" name="email" value="<?php echo $email; ?>">
         <input type="submit" value='Submit motivation' class='request_button'>
+        <p id='message' style="display:inline;color:green">
+        <p id='error' style="display:inline;color:red">
         </form>
 
         </div>
     </div>
     </div>
     </body>
+    <script>
+        window.onload = function() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const message = urlParams.get('message')
+        document.getElementById('message').innerHTML = message;
+        const error = urlParams.get('error')
+        document.getElementById('error').innerHTML = error;
+        }
+        
+    </script>
+
 
 </html>
