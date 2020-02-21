@@ -12,6 +12,7 @@ function random_psw($chars){
 	return substr(str_shuffle($data),0,$chars);
 }
 
+$email = ""; 
 $error = array('email'=>'', 'general' => '');
 $send_mail = 0; //Send mail if variable is 1 and not if 0
 $category = ''; //What type of user?
@@ -48,9 +49,9 @@ if(isset($_POST["submit"])){
 				$sql_patient = "SELECT email, verified FROM patient WHERE email = '$email'";
 				$patient_result = mysqli_query($link, $sql_patient) or die("Could not issue patient MySQL query");
 				
-				if(mysqli_num_rows($patinet_result) ==1){ //Continue to patinet 
+				if(mysqli_num_rows($patient_result) == 1){ //Continue to patinet 
 					//Check if verified 
-					$verified2 = mysqli_fetch_array($patinet_result);
+					$verified2 = mysqli_fetch_array($patient_result);
 					if($verified2['verified']==1){
 						//Send email
 						$send_mail = 1;

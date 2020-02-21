@@ -18,8 +18,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 //Connect to database
 include dirname(__DIR__).'/general/openDB.php';
 
-$email = trim($_POST["email"]);
-$password = trim($_POST["psw"]);
+$email = "";
+$password = "";
 $error = array('username_err'=>'', 'psw_err'=>'', 'verified_err'=>'');
 
 //If user has pressed login check for errors
@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
 	$email = mysqli_real_escape_string($link, $email);
 
 	//If both are filled in (=both error variables are empty) -> check if email is from doctor
-	if(!array_filter($errors)){ 		  
+	if(!array_filter($error)){ 		  
     	$doctorsql = "select doctor_id from doctor where email = '$email'";
     	$doctorresult = mysqli_query($link, $doctorsql)
     	or die("Could not issue doctor MySQL query");
@@ -283,10 +283,7 @@ if(isset($_POST['submit'])){
             <div class="container">
               <span class="psw">Forgot <a href="forgotPassword.php">password?</a></span>
             </div>
-          </form> 
-      
-      
-
+          </form>    
     </body>
 </html>
 
