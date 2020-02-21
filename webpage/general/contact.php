@@ -70,7 +70,7 @@
     
         .message_form{
             margin-right: auto;
-  			margin-left:auto;
+  			margin-left: auto;
         }    
         .center {
             display: block;
