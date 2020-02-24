@@ -15,7 +15,7 @@ if (isset($logedin) or isset($user)) {
                                     <img class="logo" src="../general/logo_small.png" width = 50>
                                 </div>
                                 <ul class="nav navbar-nav">
-                                <li><a href="../doctor/doctorstart.php">Home</a></li>
+                                <li><a href="../general/start_page.php">Home</a></li>
                                 <li><a href="../doctor/doctor_contact.php">Contact</a></li>
                                 <li><a href="../doctor/doctorprofile.php">Profile</a></li>
                                 <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
@@ -38,7 +38,7 @@ if (isset($logedin) or isset($user)) {
                             <div class="navbar-header">
                                 <img class="logo" src="../general/logo_small.png" width = 50>
                                 <ul class="nav navbar-nav">
-                                <li><a href="caregiverstart.php">Home</a></li> 
+                                <li><a href="../general/start_page.php">Home</a></li> 
                                 <li><a href="../general/contact.php">Contact</a></li>
                                 <li class="active"><a href="caregiverprofile.php">Profile</a></li>            
                                 </ul>

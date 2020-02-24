@@ -177,14 +177,14 @@ if(isset($_POST["submit"])){
   if (mysqli_query($link, $sql)) {
     //echo "New record created successfully";
 
-    echo '<script>; window.location.replace("../patient/patientstart.php"); </script>';
+    echo '<script>; window.location.replace("../general/start_page.php"); </script>';
 
 
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
   }
   include dirname(__DIR__)."/general/closeDB.php";
-  header("location: patientstart.php");
+  header("location: ../general/start_page.php");
 }
   ?>
 <html>
@@ -346,7 +346,7 @@ if(isset($_POST["submit"])){
                 <img class="logo" src="../general/logo_small.png" width = 50>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a onclick= go_back("patientstart.php")>Home</a></li>            
+                <li class="active"><a onclick= go_back("../general/start_page.php")>Home</a></li>            
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a onclick= go_back("../general/logout.php")>Logout</a></li>
