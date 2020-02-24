@@ -58,7 +58,7 @@ function createCaptcha() {
   ctx.moveTo(0, 0);
   //Draw background lines 
   for (let step = 0; step < 5; step++){
-    ctx.lineTo(Math.random()*100,     Math.random()*50);
+    ctx.lineTo(Math.random()*100, Math.random()*50);
     ctx.moveTo(Math.random()*100, Math.random()*50);
   }
   ctx.stroke();
@@ -76,5 +76,4 @@ function validateCaptcha() {
     createCaptcha();
   }
 }
-
 </script>
