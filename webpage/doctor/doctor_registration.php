@@ -121,12 +121,20 @@ if(isset($_POST["submit"])){
 		}
 	}
 
+	//Check if password matches requirements
+	$uppercase = preg_match('@[A-Z]@', $psw);
+	$lowercase = preg_match('@[a-z]@', $psw);
+	$number    = preg_match('@[0-9]@', $psw);
+	
+
 	if (empty($_POST['psw'])){
 		$errors['psw']= 'Please enter a password';
 	}elseif(empty($_POST['psw_repeat'])){
 		$errors['psw'] = 'Please repeat your password';
 	}elseif($_POST['psw']!= $_POST['psw_repeat']){
 		$errors['psw'] = "Passwords do not match, pleas try again!";
+	}elseif(!$uppercase || !$lowercase || !$number || strlen($password) < 8){
+		$errors['psw'] = "Password should be at least 8 characters in length and should include at least one upper and lower case letter as well as one number.";
 	}else{
 		$psw = $link->real_escape_string($_POST['psw']);
 	}
@@ -353,7 +361,7 @@ if(isset($_POST["submit"])){
       	<div class="error"><?php echo $errors['psw']; ?></div><br>
 
 		<div class="picture"><label>Select your profile picture: </label>
-		<input type="file" name="picture" id="picture" accept="image/*" required /></div>
+		<input type="file" name="picture" id="picture" accept="image/*" /></div>
 
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    
