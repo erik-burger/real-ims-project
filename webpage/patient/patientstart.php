@@ -41,8 +41,9 @@ $_SESSION["timestamp"] = time();
                 color: black;
                 text-align: center;
                 text-decoration: none;
-            }
-            .bigbutton{
+            
+            }   
+           .bigbutton{
               padding: 10px 10px;
             }
             .btn-group{
@@ -51,10 +52,8 @@ $_SESSION["timestamp"] = time();
             }
             .all_buttons{
               display: inline-block;
-              padding: 10px 10px;
-            }
-
-        </style>
+              padding: 10px 10px;}
+          </style>
   </head>
 
   <body> <!--style="background-color: blue;"> --> <!-- add for blue bg-->
@@ -70,45 +69,41 @@ $_SESSION["timestamp"] = time();
     </nav>
     <hr>
     
-    <div class = "all_buttons">
+    <div class = "all_buttons" style="align:center;">
     <div class="bigbutton">
     <button onclick="location.href='Question_sheet.php'"
       type="button" 
-      style="font-size: 100px;height: 430px;width: 500px" 
+      style="font-size: 100px;height: 480px;width: 500px; position:absolute; top: 15%;left:41%;" 
       value="Test">
       TEST
     </button>
     </div>
-   
     <div class="btn-group" style = "height:10x;width:10px;">
       <button onclick="location.href='patient_sudoku.php'"
         type="button" 
-        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;" 
+        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px; position:absolute;top: 15%; left: 22%;" 
         value="Test"> 
         GAMES
       </button>
     <div class ="btn-group"></div>  
       <button onclick="location.href='patientprofile.php'" 
         type="button" 
-        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;" 
+        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px; position:absolute;top: 35%; left: 22%;" 
         value="Test">
         PROFILE
       </button>
       <div class ="btn-group"></div>
       <button onclick="location.href='patient_statistics.php'" 
         type="button" 
-        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;" 
+        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;position:absolute;top: 55%; left: 22%;" 
         value="Test">
         STATISTICS
       </button>
       <div class ="btn-group"></div>
       <button onclick="location.href='chat_home_patient.php'" 
         type="button" 
-        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;" 
+        style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;position:absolute;top: 75%; left: 22%;" 
         value="Test">
-        MESSAGES
-      </button>
-    </div>
-    </div>
+      MESSAGES</button>
   </body>
 </html>
