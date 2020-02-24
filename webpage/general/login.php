@@ -5,15 +5,9 @@ session_start();
 //Check if the user is already logged in
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  if ($_SESSION["user"] == "D") {
-      header("location:../doctor/doctorstart.php");
-  }elseif($_SESSION["user"] == "P"){
-      header("location: ../patient/patientstart.php");
-  }elseif($_SESSION["user"] == "R"){
-      header("location: ../researcher/researcherstart.php");
-  }elseif($_SESSION["user"] == "C"){
-      header("location: ../caregiver/caregiverstart.php");}
-  }
+	  header("location:../general/start_page.php");
+}
+
 
 //Connect to database
 include dirname(__DIR__).'/general/openDB.php';
@@ -69,7 +63,7 @@ if(!array_filter($error)){
 					$_SESSION["user"] = $row["usertype"]; //for automatic logout if wrong user type acceses a page
 				}
 				$_SESSION["timestamp"] = time(); //needed for logout after inactivity
-				header("location: ../doctor/doctorstart.php"); //redirect to doctor start page
+				header("location: ../general/start_page.php"); //redirect to doctor start page
 			} else {
 				$error['psw_err'] = "Password is invalid";
 			}
