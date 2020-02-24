@@ -107,7 +107,7 @@
         <h1>Write Us a Message</h1>
         <div class = "container">
         <div class = "form">
-        <form action="send_email.php" method = "post" id = "message_form" name = "message_form">
+        <form action="../general/send_email.php" method = "post" id = "message_form" name = "message_form">
             <label for="email"><b>Email address</b></label>
             <input name="email" class = "email" type="text" placeholder="Enter your email address" required><br>  
             <label for="subject"><b>Subject</b></label>
