@@ -163,7 +163,7 @@ session_start();
                                         '</button>'+
                                         '<div class="dropdown-content">'+
                                         '<a href="../patient/patient_registration.php">Patient</a>'+
-                                        '<a href="doctor_registration.php">Doctor</a>'+
+                                        '<a href="../doctor/doctor_registration.php">Doctor</a>'+
                                         '<a href="../researcher/researcher_registration.php">Researcher</a>'+
                                         '<a href="../caregiver/caregiver_registration.php">Caregiver</a>'+
                                         '</div>');
