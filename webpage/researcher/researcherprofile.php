@@ -1,17 +1,14 @@
-<<<<<<< HEAD
 <html>
-=======
    
 <?php
 session_start();
 /*Restrict access for other users or not logged*/ 
 if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
-    if ($_SESSION["user"] !== "R" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-    echo "<script>window.location.href = '../general/login.php';</script>";
+    if ($_SESSION["user"] !== "R" or $_SESSION["loggedin"] = false){ 
+        echo "<script>window.location.href = '../general/login.php';</script>";
     }
 } 
 ?>
->>>>>>> restrict
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,7 +100,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 <img class="logo" src="../general/logo_small.png" width = 50>
                 <ul class="nav navbar-nav">
                 <li><a href="researcherstart.php">Home</a></li> 
-                <li><a href="researcher_contact.php">Contact</a></li> 
+                <li><a href="../general/contact.php">Contact</a></li> 
                 <li class="active"><a href="researcherprofile.php">Profile</a></li>            
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

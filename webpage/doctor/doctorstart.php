@@ -3,9 +3,9 @@
 <?php
 session_start();
 /*Restrict access for other users or not logged*/ 
-if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+if (isset($_SESSION["user"]) and isset($_SESSION["loggedin"])) {
     if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-    echo "<script>window.location.href = '../general/login.php';</script>";
+        echo "<script>window.location.href = '../general/login.php';</script>";
     }
 } 
 ?>
@@ -73,7 +73,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             </div>
             <ul class="nav navbar-nav">
             <li class="active"><a href="doctorstart.php">Home</a></li>
-            <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="../doctor/doctor_contact.php">Contact</a></li>
             <li><a href="doctorprofile.php">Profile</a></li>
             <li><a href="doctorsearch.php">Patients</a></li>
             <li><a href="chat_home_doctor.php">Messages</a></li>
