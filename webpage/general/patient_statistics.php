@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-
-<?php
-session_start();
-/*Restrict access for other users or not logged*/ 
-if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
-    if ($_SESSION["user"] !== "C" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-    echo "<script>window.location.href = '../general/login.php';</script>";
-    }
-} 
-?>
-
-<html>
-<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
-<head>
+<html> 
     <link rel="stylesheet" href="top_menu_style.css">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="../general/IMS_Style.css">
-    <style>
-        table, th, td {
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+          table, th, td {
           border: 1px solid black;
           border-collapse: collapse;
         }
@@ -71,34 +57,18 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                   margin-top: 20px;
                   font-size:16px;
               }                        
-</style>
-</head>
-
-<body>
-<nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <img class="logo" src="../general/logo_small.png" width = 50>
-                <ul class="nav navbar-nav">
-                <li><a href="caregiverstart.php">Home</a></li> 
-                <li><a href="../general/contact.php">Contact</a></li>
-                <li class="active"><a href="caregiverprofile.php">Profile</a></li>            
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                <li><a href="../general/logout.php">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
-
+</style>    
+<div class = "page">
 <div class = "column left"> 
+
 <h1>Patient Profile</h1>
 <div class = "container">
 <?php
         $p_id = $_GET['id'];           
         include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link,"select * 
-        from patient
-        where patient_id = $p_id")   
+                                    from patient
+                                    where patient_id = $p_id")   
         or 
         die("Could not issue MySQL query"); 
         
@@ -132,9 +102,10 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
         }
         include dirname(__DIR__).'/general/closeDB.php';
  ?>
+ </div>
 </div> 
-</div>
 
+<div class = "page">
 <div class = "column right">
 
 <?php
@@ -314,7 +285,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
           },
         },
         plot_bgcolor: "ghostwhite",
-        paper_bgcolor: "ghostwhite" 
+        paper_bgcolor: "ghostwhite"    
       };
 
       Plotly.newPlot('myDiv', array_of_array.map(makeTrace), layout, {displayModeBar: false});
@@ -334,6 +305,6 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
         </tr>
 
 </div>
-      
-</body>
-</html>
+</div>
+</div>
+</html> 

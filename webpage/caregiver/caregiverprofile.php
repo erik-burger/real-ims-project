@@ -127,7 +127,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
     <h1>Profile</h1>
     <div class = "container">
     <?php
-        session_start();
+        
        /*if ( isset($_SESSION["id"]) === false) {
         header("location: ../general/login.php");
         }
