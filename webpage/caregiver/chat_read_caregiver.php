@@ -16,7 +16,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
         <link rel="stylesheet" href="top_menu_style.css">
         <link rel="stylesheet" href="../general/IMS_Style.css">
         <style>
-        ul{
+            ul{
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
@@ -24,9 +24,6 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             .logo {
                 display: inline-block;
                 float: left; 
-            }
-            hr {
-                border: 10px solid ghostwhite;
             }
             .newbutton{
                 background-color: #669999; 
@@ -36,11 +33,34 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 16px;   
-                margin-top: 10px;
-                margin-bottom: 10px; 
-                margin-left: 1px;              
+                font-size: 16px;            
+                position:absolute;
+                right:13%;
+                top: 90%;     
             }      
+            * {
+            box-sizing: border-box;
+            }
+
+            .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px; 
+            }
+
+            .page:after {
+            content: "";
+            display: table;
+            clear: both;
+            }  
+
+            input[type = text], select , textarea{
+    		padding: 15px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+      }
+p{font-size:1em}
         </style>
         <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -56,7 +76,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             </ul>
         </div>
     </nav>
-<body>
+<body><br><br>
 <?php
 $chat_message_id = $_GET["chat_id"];
 include dirname(__DIR__).'/general/openDB.php';
@@ -75,21 +95,20 @@ while($row = $result->fetch_assoc()) {
     $from_user_id = $row["from_user_id"];
     $first_name = $row["first_name"];
     $last_name = $row["last_name"];
-    echo "From: " . $row["first_name"] . " " . $row["last_name"] . "<br>
-    Date and Time: ". $row["date_time"] . "<br>
-    Message: <br>". $row["chat_message"];
+    echo "<label style = 'position:absolute;left:13%'><b>From:</b></label><br><p style = 'position:absolute;left:13%'>" . $first_name . " " . $last_name . "</p><br><br>
+    <label style = 'position:absolute;left:13%'><b>Date and Time:</b></label><br><p style = 'position:absolute;left:13%'> ". $row["date_time"] . "</p><br><br>
+    <label style = 'position:absolute;left:13%'><b>Message: </b></label><br><p style = 'position:absolute;left:13%'>". $row["chat_message"] . "</p><br>";
 }
 ?>
 <br>
 <div class="center">
     <form action="chat_reply_caregiver.php" method="post">
-    <label for="send_to"><b>Reply to:</b></label><br>
-    <select name = "send_to" required>
+    <label for="send_to" style = "position:absolute;left:13%"><b>Reply to:</b></label><br>
+    <select name = "send_to" style = "position:absolute;left:13%" required>
         <?php print "<option value='$from_user_id'>" . $first_name . " " . $last_name . "</option>";?>
-    </select><br><br<>
-        <label for="message" class="center">Answer</label><br />
-        <textarea cols="40" rows="5" name="message" id="message"></textarea><br />
-        <input type="submit" value="Send"/>
+        </select><br><br<><br><br><br>
+        <textarea name="message" id="message" style = "height:200px;width:1000px;position:absolute;left:13%"></textarea><br />
+        <button class = newbutton type="submit" value="Send">Reply</button>
     </form>
 </div>
 </div>

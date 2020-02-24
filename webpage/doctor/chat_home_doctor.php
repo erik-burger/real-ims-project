@@ -41,48 +41,14 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 display: inline-block;
                 float: left; 
             }
-            table, th, td {
-                padding: 15px; 
-                border: 1px white;
-                border-collapse: collapse;
-                border-bottom: 1px solid #ddd;
-                border-top: 1px solid #ddd;
-                Text-align: center;
-            }
-            
-        </style>
-    </head>
-
-    <body>
-
-
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <img class="logo" src="../general/logo_small.png" width = 50>
-            </div>
-            <ul class="nav navbar-nav">
-            <li class="active"><a href="doctorstart.php">Home</a></li>
-            <li><a href="doctor_contact.php">Contact</a></li>
-            <li><a href="doctorprofile.php">Profile</a></li>
-            <li><a href="doctorsearch.php">Patients</a></li>
-            <li class="active"><a href="chat_home_doctor.php">Messages</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="../general/logout.php">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
-
-
-
-<style>
+           
 table, th, td {
                 padding: 15px; 
                 border: 1px white;
                 border-collapse: collapse;
                 border-bottom: 1px solid #ddd;
                 border-top: 1px solid #ddd;
+                Text-align: center;
             }
           ul{
             list-style-type: none;
@@ -117,16 +83,39 @@ table, th, td {
     }
 
 </style>
+    </head>
+
+    <body>
+
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="doctorstart.php">Home</a></li>
+            <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="doctorprofile.php">Profile</a></li>
+            <li><a href="doctorsearch.php">Patients</a></li>
+            <li class="active"><a href="chat_home_doctor.php">Messages</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
 <h1>My Messages</h1>
 <body>
 <button onclick="window.location.href = 'chat_doctor.php';" class = newbutton>New Message</button>
 <div text-align="center">
 <table style="width:50%" align="center" >
     <tr>
-    <th>Time</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Status</th>
+    <th align = 'center'>Time</th>
+    <th align = 'center'>First Name</th>
+    <th align = 'center'>Last Name</th>
+    <th align = 'center'>Status</th>
     </tr>
 </div>
 <?php
@@ -144,10 +133,10 @@ if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
     $chat_id = $row["chat_message_id"];
     if ($row["message_status"] == 0){$status = "New";}else{$status = "";}
-    echo "<tr><td><a href ='chat_read_doctor.php?chat_id=$chat_id'>".$row["date_time"]."</td>
-    <td>" . $row["first_name"]. "</td>
-    <td>" . $row["last_name"] . "</td>
-    <td>" . $status . "</a></td></tr>";
+    echo "<tr><td align = 'center'><a href ='chat_read_doctor.php?chat_id=$chat_id'>".$row["date_time"]."</td>
+    <td align = 'center'>" . $row["first_name"]. "</td>
+    <td align = 'center'>" . $row["last_name"] . "</td>
+    <td align = 'center'>" . $status . "</a></td></tr>";
 }
 echo "</table>";
 }  

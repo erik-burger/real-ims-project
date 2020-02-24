@@ -26,14 +26,41 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 display: inline-block;
                 float: left; 
             }
-            table, th, td {
-                padding: 15px; 
-                border: 1px white;
-                border-collapse: collapse;
-                border-bottom: 1px solid #ddd;
-                border-top: 1px solid #ddd;
-                Text-align: center;
+            .newbutton{
+                background-color: #669999; 
+                border: none;
+                color: white;
+                padding: 14px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px; 
+                position:absolute;
+                right:13%;
+                top: 90%;        
+            }      
+            * {
+            box-sizing: border-box;
             }
+
+            .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px; 
+            }
+
+            .page:after {
+            content: "";
+            display: table;
+            clear: both;
+            }  
+
+            input[type = text], select , textarea{
+    		padding: 15px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+      }
             
         </style>
     </head>
@@ -61,8 +88,8 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
 <h1>Send a message</h1>
 
 <form id="send-message" action="chat_send_doctor.php" method="post" align = "center">
-<label for="send_to"><b>To:</b></label><br>
-      <select name = "send_to" form = "send-message" required>
+<label for="send_to" style = "position:absolute;left:13%"><b>To:</b></label><br>
+      <select name = "send_to" style = "position:absolute;left:13%" form = "send-message" required>
         <?php
       
         include dirname(__DIR__).'/general/openDB.php';
@@ -79,10 +106,10 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             $last_name = $row["last_name"];
             print "<option value='$patient_id'>$first_name $last_name</option>";}
         include dirname(__DIR__).'/general/closeDB.php';
-        ?> </select><br><br<>
-    <label for="sendie"><b>Your message:</b></label><br>
-    <textarea name="sendie" maxlength = '100'></textarea>
-    <button type="submit">Send</button>
+        ?> </select><br><br<><br><br><br>
+    <label for="sendie" style = "position:absolute;left:13%"><b>Your message:</b></label><br>
+    <textarea name="sendie" maxlength = '100' style="height:300px;width:1000px;position:absolute;left:13%"></textarea>
+    <button type="submit" class = newbutton>Send</button>
         </div>
 </form>
     
