@@ -31,6 +31,11 @@ create table caregiver (
 create table patient_caregiver (
     patient_id int not null,
     caregiver_id int not null,
+    patient_accept bool, 
+    caregiver_accept bool, 
+    both_accept bool, 
     primary key (patient_id, caregiver_id), 
     foreign key (patient_id) references patient(patient_id),
     foreign key (caregiver_id) references caregiver(caregiver_id));
+
+drop table patient_caregiver; 
