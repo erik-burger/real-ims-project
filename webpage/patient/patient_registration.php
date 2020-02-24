@@ -349,7 +349,8 @@ if(isset($_POST["submit"])){
     	<img class="logo" src="../general/logo_small.png" width = 50>
 	</div>  
 	<a href="../general/login.php">Login</a>
-    <a href="../general/info.html">About</a>
+	<a href="../general/info.html">About</a>
+	<a href="../general/contact.php">Contact</a>
 	<div class="dropdown">
         <button class="dropbtn">Register
         <i class="fa fa-caret-down"></i>
