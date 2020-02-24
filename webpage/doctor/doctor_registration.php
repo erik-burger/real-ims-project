@@ -227,7 +227,16 @@ if(isset($_POST["submit"])){
     		resize: vertical;
     		font-size: 14px;
     	}
-    	
+
+		input[type = password], select , textarea{
+    		width: 100%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    		font-size: 14px;
+    	}
+		
     	label {
     		padding: 12px 12px 12px 0;
     		display: inline-block;
@@ -348,7 +357,7 @@ if(isset($_POST["submit"])){
       	<input type="password" name="psw" >
   
       	<label for="psw_repeat"><b>Repeat Password</b></label>
-      	<input type="password" name="psw_repeat" >
+      	<input type="password" name="psw_repeat">
       	<div class="error"><?php echo $errors['psw']; ?></div><br>
 
 		<div class="picture"><label>Select your profile picture: </label>
