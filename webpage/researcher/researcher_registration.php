@@ -192,7 +192,6 @@ if(isset($_POST["submit"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="top_menu_style.css">
-	<link href="IMS_Style.css" rel="stylesheet">
     <style>
     	*{
     	box-sizing: border-box;
@@ -274,15 +273,16 @@ if(isset($_POST["submit"])){
     	<img class="logo" src="../general/logo_small.png" width = 50>
 	</div>  
 	<a href="../general/login.php">Login</a>
-    <a href="../general/info.html">About</a>
+	<a href="../general/info.html">About</a>
+	<a href="../general/contact.php">Contact</a>
 	<div class="dropdown">
         <button class="dropbtn">Register
         <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="patient_registration.php">Patient</a>
+          <a href="./patient/patient_registration.php">Patient</a>
           <a href="../doctor/doctor_registration.php">Doctor</a>
-          <a href="../researcher/researcher_registration.php">Researcher</a>
+          <a href="researcher_registration.php">Researcher</a>
           <a href="../caregiver/caregiver_registration.php">Caregiver</a>
         </div>
     </div>       

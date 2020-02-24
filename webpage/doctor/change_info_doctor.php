@@ -80,7 +80,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
 <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
             </div>
-            <a href="info.html">About</a>
+            <a href="../general/info.html">About</a>
             </div>
     <?php
        
