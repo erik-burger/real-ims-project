@@ -1,5 +1,5 @@
 <html>
-<meta http-equiv="refresh" content="3600;url=../general/logout.php" />
+<meta http-equiv="refresh" content="3600;url=../general/logout.php">
 <?php
 session_start();
 /*Restrict access for other users or not logged*/ 
