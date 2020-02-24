@@ -66,7 +66,8 @@ include dirname(__DIR__).'/general/closeDB.php';;
 
 <div class="navbar">
     <a href="../general/login.php">Login</a>
-    <a href="../general/info.html">About</a>  
+	<a href="../general/info.html">About</a>  
+	<a href="contact.php">Contact</a>  
     <div class="dropdown">
         <button class="dropbtn">Register
           <i class="fa fa-caret-down"></i>

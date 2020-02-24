@@ -1,5 +1,7 @@
 <html>
-
+<?php
+session_start();
+?>
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,36 +93,122 @@
             }
     </style>
     </head>
- <div class = "page">        
-      <div class = "column left">
-        <h1>Contact Information</h1> 
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <img class="logo" src="../general/logo_small.png" width = 50>
+                    <script>
+                        var loged_in = <?php echo json_encode($_SESSION["loggedin"]);?>;
+                        var user = <?php echo json_encode($_SESSION["user"]);?>;
+                        if (loged_in !== 'undefined' && user !== 'undefined') {
+                            if (loged_in == 1 ) {
+                                switch(user){
+                                    case "D":
+                                        document.write(
+                                        '<ul class="nav navbar-nav">'+
+                                            '<li class="active"><a href="../doctor/doctorstart.php">Home</a></li>'+
+                                            '<li><a href="../general/contact.php">Contact</a></li>'+
+                                            '<li><a href="../doctor/doctorprofile.php">Profile</a></li>'+
+                                            '<li><a href="../doctor/doctorsearch.php">Patients</a></li>'+
+                                            '<li><a href="../doctor/chat_home_doctor.php">Messages</a></li>'+
+                                        '</ul>'+
+                                        '<ul class="nav navbar-nav navbar-right">'+
+                                            '<li><a href="../general/logout.php">Logout</a></li>'+
+                                        '</ul>');
+                                    break;
+                                    case "P":
+                                        document.write(
+                                        '<ul class="nav navbar-nav">'+
+                                            '<li class="active"><a onclick= go_back("../patient/patientstart.php")>Home</a></li>'+        
+                                        '</ul>'+
+                                        '<ul class="nav navbar-nav navbar-right">'+
+                                            '<li><a onclick= go_back("../general/logout.php")>Logout</a></li>'+
+                                        '</ul>');
+                                    break;
+                                    case "R":
+                                        document.write(
+                                        '<ul class="nav navbar-nav">'+
+                                            '<li class="active"><a href="../researcher/researcherstart.php">Home</a></li> '+
+                                            '<li><a href="../general/contact.php">Contact</a></li>'+
+                                            '<li><a href="../researcher/researcherprofile.php">Profile</a></li>'+
+                                        '</ul>'+
+                                        '<ul class="nav navbar-nav navbar-right">'+
+                                            '<li><a href="../general/logout.php">Logout</a></li>'+
+                                        '</ul>');
+                                    break;
+                                    case "C":
+                                        document.write(
+                                        '<ul class="nav navbar-nav">'+
+                                            '<li class="active"><a href="../caregiver/caregiverstart.php">Home</a></li>'+ 
+                                            '<li><a href="../caregiver/caregiver_contact.php">Contact</a></li>'+
+                                            '<li><a href="../caregiver/caregiverprofile.php">Profile</a></li>'+
+                                            '<li><a href="../caregiver/chat_home_caregiver.php">Messages</a></li>'+            
+                                        '</ul>'+
+                                        '<ul class="nav navbar-nav navbar-right">'+
+                                            '<li><a href="../general/logout.php">Logout</a></li>'+
+                                        '</ul>');
+                                    break;
+                                }
+                        } else{
+                            //not logged in user
+                            document.write(
+                                '</div>'+  
+                                    '<a href="../general/login.php">Login</a>'+
+                                    '<a href="../general/info.html">About</a>'+
+                                    '<a href="../general/contact.php">Contact</a>'+
+                                    '<div class="dropdown">'+
+                                        '<button class="dropbtn">Register'+
+                                        '<i class="fa fa-caret-down"></i>'+
+                                        '</button>'+
+                                        '<div class="dropdown-content">'+
+                                        '<a href="../patient/patient_registration.php">Patient</a>'+
+                                        '<a href="doctor_registration.php">Doctor</a>'+
+                                        '<a href="../researcher/researcher_registration.php">Researcher</a>'+
+                                        '<a href="../caregiver/caregiver_registration.php">Caregiver</a>'+
+                                        '</div>');
+                        }
+                    }
+                    </script>
+                </div>
+                
+            </div>
+        </nav>
 
-        <div class = "container">
-        
-        <p><b>email:</b> trackzheimers@gmail.com</p>
-        <p><b>telephone:</b> 123456789</p>
-        <p><b>adress:</b> project room ITC</p>
-        </div>
-        </div>
-    
-    <div class = "column right" id = "message_form">
-        <h1>Write Us a Message</h1>
-        <div class = "container">
-        <div class = "form">
-        <form action="send_email.php" method = "post" id = "message_form" name = "message_form">
-            <label for="email"><b>Email address</b></label>
-            <input name="email" class = "email" type="text" placeholder="Enter your email address" required><br>  
-            <label for="subject"><b>Subject</b></label>
-            <input name="subject" class = "email" type="text" placeholder="Enter subject" required><br>  
-            <label for="message"><b>Message</b></label>
-            <textarea name="message" id = "message" cols=auto rows=auto placeholder="Enter message here..."></textarea>
-            <button class = "button" type = "submit" name = "submit">Send</button>
-        </form>  
-        </div>
-        </div>
-     </div>     
-    </div>
- </div> 
+        <div class = "page">        
+            <div class = "column left">
+                <h1>Contact Information</h1> 
+
+                <div class = "container">
+                
+                <p><b>email:</b> trackzheimers@gmail.com</p>
+                <p><b>telephone:</b> 123456789</p>
+                <p><b>adress:</b> project room ITC</p>
+                </div>
+                </div>
+            
+            <div class = "column right" id = "message_form">
+                <h1>Write Us a Message</h1>
+                <div class = "container">
+                <div class = "form">
+                <form action="send_email.php" method = "post" id = "message_form" name = "message_form">
+                    <label for="email"><b>Email address</b></label>
+                    <input name="email" class = "email" type="text" placeholder="Enter your email address" required><br>  
+                    <label for="subject"><b>Subject</b></label>
+                    <input name="subject" class = "email" type="text" placeholder="Enter subject" required><br>  
+                    <label for="message"><b>Message</b></label>
+                    <textarea name="message" id = "message" cols=auto rows=auto placeholder="Enter message here..."></textarea>
+                    <button class = "button" type = "submit" name = "submit">Send</button>
+                </form>  
+                </div>
+                </div>
+            </div>     
+            </div>
+        </div> 
+
+         
+    </body>
+
 </html>
 
 
