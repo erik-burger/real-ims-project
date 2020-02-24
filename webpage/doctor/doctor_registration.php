@@ -133,8 +133,6 @@ if(isset($_POST["submit"])){
 
 	$verification_hash = md5(rand(0,10000));
 
-	$picture = $link->real_escape_string($_POST["picture"]);
-	$picture = htmlspecialchars($picture); 
 
 		if(array_filter($errors)){
 	 // Go back to the form
