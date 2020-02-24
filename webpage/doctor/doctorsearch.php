@@ -142,7 +142,7 @@ table, th, td {
                 <img class="logo" src="../general/logo_small.png" width = 50>
             </div>
             <ul class="nav navbar-nav">
-            <li><a href="doctorstart.php">Home</a></li>
+            <li><a href="../general/start_page.php">Home</a></li>
             <li><a href="../general/contact.php">Contact</a></li>
             <li><a href="doctorprofile.php">Profile</a></li>
             <li class="active"><a href="doctorsearch.php">Patients</a></li>
@@ -200,7 +200,7 @@ table, th, td {
             $p_id = $row["patient_id"];
             echo "<tr><td>" . $row["first_name"]. "</td>
             <td>" . $row["last_name"] . "</td>
-            <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+            <td><a href ='../general/profile_statistics.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
     } 
@@ -229,7 +229,7 @@ table, th, td {
             $p_id = $row["patient_id"];
             echo "<tr><td>" . $row["first_name"]. "</td>
             <td>" . $row["last_name"] . "</td>
-            <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+            <td><a href ='../general/profile_statistics.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
     }     
