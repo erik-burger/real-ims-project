@@ -41,46 +41,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 display: inline-block;
                 float: left; 
             }
-<<<<<<< HEAD
-            table, th, td {
-                padding: 15px; 
-                border: 1px white;
-                border-collapse: collapse;
-                border-bottom: 1px solid #ddd;
-                border-top: 1px solid #ddd;
-                Text-align: center;
-            }
-            
-        </style>
-    </head>
-
-    <body>
-
-
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <img class="logo" src="../general/logo_small.png" width = 50>
-            </div>
-            <ul class="nav navbar-nav">
-            <li class="active"><a href="doctorstart.php">Home</a></li>
-            <li><a href="doctor_contact.php">Contact</a></li>
-            <li><a href="doctorprofile.php">Profile</a></li>
-            <li><a href="doctorsearch.php">Patients</a></li>
-            <li class="active"><a href="chat_home_doctor.php">Messages</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="../general/logout.php">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
-
-
-
-<style>
-=======
            
->>>>>>> reminder
 table, th, td {
                 padding: 15px; 
                 border: 1px white;
