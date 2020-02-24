@@ -200,7 +200,7 @@ table, th, td {
             $p_id = $row["patient_id"];
             echo "<tr><td>" . $row["first_name"]. "</td>
             <td>" . $row["last_name"] . "</td>
-            <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+            <td><a href ='../general/profile_statistics.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
     } 
@@ -229,7 +229,7 @@ table, th, td {
             $p_id = $row["patient_id"];
             echo "<tr><td>" . $row["first_name"]. "</td>
             <td>" . $row["last_name"] . "</td>
-            <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+            <td><a href ='../general/profile_statistics.php?id=$p_id'>". $p_id. "</a></td></tr>";
     }
     echo "</table>";
     }     
