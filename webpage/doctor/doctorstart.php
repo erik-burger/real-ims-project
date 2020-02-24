@@ -73,7 +73,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             </div>
             <ul class="nav navbar-nav">
             <li class="active"><a href="doctorstart.php">Home</a></li>
-            <li><a href="doctor_contact.php">Contact</a></li>
+            <li><a href="../general/contact.php">Contact</a></li>
             <li><a href="doctorprofile.php">Profile</a></li>
             <li><a href="doctorsearch.php">Patients</a></li>
             <li><a href="chat_home_doctor.php">Messages</a></li>
