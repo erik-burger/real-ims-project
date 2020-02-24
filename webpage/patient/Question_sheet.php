@@ -1,7 +1,18 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
 <?php
 if(isset($_POST["submit"])){
-  session_start();
+ 
   $patient_id = $_SESSION["id"];
   include dirname(__DIR__)."/general/openDB.php";
   $result = mysqli_query($link,"select country, state, city, street, bedroom_floor from patient where patient_id = $patient_id");
@@ -226,7 +237,7 @@ if(isset($_POST["submit"])){
                 margin: 8px 0;
                 box-sizing: border-box;
                 height:100px; 
-                width:800px;
+                width: 800px;
                 font-size:70px;
                 border: 2px solid #669999;
             }
@@ -806,7 +817,6 @@ if(isset($_POST["submit"])){
                             </label><br>
                        </div>
                 </div>
-                <hr>
                 <button type="button" onclick="change_question('question13','question14_1')">Back</button>
                 <button type="button" onclick="change_question('question14_2','question14_1')">Next</button>
             </div>
@@ -880,9 +890,7 @@ if(isset($_POST["submit"])){
                             <input type='radio' name='image_2' onkeydown="return event.key != 'Enter';" value='<?php echo $option3_2; ?>'><?php echo $option3_2; ?>
                             <span class="checkmark"></span>
                             </label><br>
-                        </div>
-                        
-                <br>
+                        </div>     
                 <button type="button" onclick="change_question('question14_1','question14_2')">Back</button>
                 <button type="submit" name="submit" value="Submit">Submit</button>
         </form>

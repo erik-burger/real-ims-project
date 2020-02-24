@@ -1,7 +1,17 @@
+
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "C" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
 <html>
 <meta http-equiv="refresh" content="3600;url=../general/logout.php" />
 <?php
-session_start();
 
 /*if ( isset($_SESSION["user"]) == "C") { // if the user is a patient -> logout
     $_SESSION = array();

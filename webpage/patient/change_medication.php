@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
 <html>
 
         <meta charset="UTF-utf-8">
@@ -103,7 +112,6 @@
     <label for="remove_medication"><b>Current Medication</b></label><br>
       <select name = "remove_medication" form = "remove_meds" required>
         <?php
-        session_start();
         include dirname(__DIR__).'/general/openDB.php';
         $removesql = "select m.medication_name, pm.medication_id, pm.dose, pm.medication_interval
           from patient_medication pm

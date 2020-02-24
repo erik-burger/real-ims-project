@@ -63,8 +63,11 @@
     $mail->Body = $body;
     $mail->IsHTML(true);   
     if ($mail->send()) {
-        echo "Email is sent!";
+        $message = "Request is sent";
+        header("location: researcherprofile.php?message=$message");
+        //echo "Email is sent!";
     } else {
-        echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        header("location: researcherprofile.php?error=$mail->ErrorInfo");
+        //echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
     }
 ?>

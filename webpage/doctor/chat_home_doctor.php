@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
 <html>
 <head>
         <meta charset="UTF-8">
@@ -30,6 +41,7 @@
                 display: inline-block;
                 float: left; 
             }
+<<<<<<< HEAD
             table, th, td {
                 padding: 15px; 
                 border: 1px white;
@@ -66,12 +78,16 @@
 
 
 <style>
+=======
+           
+>>>>>>> reminder
 table, th, td {
                 padding: 15px; 
                 border: 1px white;
                 border-collapse: collapse;
                 border-bottom: 1px solid #ddd;
                 border-top: 1px solid #ddd;
+                Text-align: center;
             }
           ul{
             list-style-type: none;
@@ -106,20 +122,42 @@ table, th, td {
     }
 
 </style>
+    </head>
+
+    <body>
+
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="doctorstart.php">Home</a></li>
+            <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="doctorprofile.php">Profile</a></li>
+            <li><a href="doctorsearch.php">Patients</a></li>
+            <li class="active"><a href="chat_home_doctor.php">Messages</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
 <h1>My Messages</h1>
 <body>
 <button onclick="window.location.href = 'chat_doctor.php';" class = newbutton>New Message</button>
 <div text-align="center">
 <table style="width:50%" align="center" >
     <tr>
-    <th>Time</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Status</th>
+    <th align = 'center'>Time</th>
+    <th align = 'center'>First Name</th>
+    <th align = 'center'>Last Name</th>
+    <th align = 'center'>Status</th>
     </tr>
 </div>
 <?php
-session_start();
 include dirname(__DIR__).'/general/openDB.php';
 
 $sql = "select c.chat_message_id, p.first_name, p.last_name, c.from_user_id, c.from_user_type, c.date_time, c.message_status from chat c 
@@ -134,10 +172,10 @@ if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
     $chat_id = $row["chat_message_id"];
     if ($row["message_status"] == 0){$status = "New";}else{$status = "";}
-    echo "<tr><td><a href ='chat_read_doctor.php?chat_id=$chat_id'>".$row["date_time"]."</td>
-    <td>" . $row["first_name"]. "</td>
-    <td>" . $row["last_name"] . "</td>
-    <td>" . $status . "</a></td></tr>";
+    echo "<tr><td align = 'center'><a href ='chat_read_doctor.php?chat_id=$chat_id'>".$row["date_time"]."</td>
+    <td align = 'center'>" . $row["first_name"]. "</td>
+    <td align = 'center'>" . $row["last_name"] . "</td>
+    <td align = 'center'>" . $status . "</a></td></tr>";
 }
 echo "</table>";
 }  

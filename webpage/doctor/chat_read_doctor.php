@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
 <html>
 <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,15 +25,42 @@
                 display: inline-block;
                 float: left; 
             }
-            table, th, td {
-                padding: 15px; 
-                border: 1px white;
-                border-collapse: collapse;
-                border-bottom: 1px solid #ddd;
-                border-top: 1px solid #ddd;
-                Text-align: center;
+            .newbutton{
+                background-color: #669999; 
+                border: none;
+                color: white;
+                padding: 14px 10px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;            
+                position:absolute;
+                right:13%;
+                top: 90%;     
+            }      
+            * {
+            box-sizing: border-box;
             }
-            
+
+            .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px; 
+            }
+
+            .page:after {
+            content: "";
+            display: table;
+            clear: both;
+            }  
+
+            input[type = text], select , textarea{
+    		padding: 15px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+      }
+p{font-size:1em}
         </style>
     </head>
 
@@ -46,7 +84,7 @@
             </ul>
         </div>
     </nav>
-
+    <br><br>
 <?php
 $chat_message_id = $_GET["chat_id"];
 include dirname(__DIR__).'/general/openDB.php';
@@ -65,21 +103,20 @@ while($row = $result->fetch_assoc()) {
     $from_user_id = $row["from_user_id"];
     $first_name = $row["first_name"];
     $last_name = $row["last_name"];
-    echo "From: " . $row["first_name"] . " " . $row["last_name"] . "<br>
-    Date and Time: ". $row["date_time"] . "<br>
-    Message: <br>". $row["chat_message"];
+    echo "<label style = 'position:absolute;left:13%'><b>From:</b></label><br><p style = 'position:absolute;left:13%'>" . $first_name . " " . $last_name . "</p><br><br>
+    <label style = 'position:absolute;left:13%'><b>Date and Time:</b></label><br><p style = 'position:absolute;left:13%'> ". $row["date_time"] . "</p><br><br>
+    <label style = 'position:absolute;left:13%'><b>Message: </b></label><br><p style = 'position:absolute;left:13%'>". $row["chat_message"] . "</p><br>";
 }
 ?>
 <br>
 <div class="center">
     <form action="chat_reply_doctor.php" method="post">
-    <label for="send_to"><b>Reply to:</b></label><br>
-    <select name = "send_to" required>
+    <label for="send_to" style = "position:absolute;left:13%"><b>Reply to:</b></label><br>
+    <select name = "send_to" style = "position:absolute;left:13%" required>
         <?php print "<option value='$from_user_id'>" . $first_name . " " . $last_name . "</option>";?>
-    </select><br><br<>
-        <label for="message" class="center">Answer</label><br />
-        <textarea cols="40" rows="5" name="message" id="message"></textarea><br />
-        <input type="submit" value="Send" />
+        </select><br><br<><br><br><br>
+        <textarea name="message" id="message" style = "height:200px;width:1000px;position:absolute;left:13%"></textarea><br />
+        <button class = newbutton type="submit" value="Send">Reply</button>
     </form>
 </div>
 </div>

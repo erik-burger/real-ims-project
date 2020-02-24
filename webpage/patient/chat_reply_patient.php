@@ -1,12 +1,21 @@
 <?php
 session_start();
+/*Restrict access for other users or not logged*/ 
+if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
+    if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+} 
+?>
+
+<?php
 include dirname(__DIR__).'/general/openDB.php';
 
 $from_user_id = $_SESSION["id"];
 $from_user_type = $_SESSION["user"];
-$previous_chat_id = $_POST["send_to"];
+$previous_chat_id = htmlspecialchars($_POST["send_to"]);
 $previous_chat_id = mysqli_real_escape_string($link, $previous_chat_id);
-$chat_message = $_POST["message"];
+$chat_message = htmlspecialchars($_POST["message"]);
 $chat_message = mysqli_real_escape_string($link, $chat_message);
 $date_time = gmdate('Y-m-d h:i:s \G\M\T');
 $message_status = 0;
