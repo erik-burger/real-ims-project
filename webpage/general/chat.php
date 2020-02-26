@@ -159,7 +159,7 @@ if (isset($logedin) or isset($user)) {
                             $email = mysqli_real_escape_string($link, $email);
                             $chat_message = htmlspecialchars($_POST["sendie"]);
                             $chat_message = mysqli_real_escape_string($link, $chat_message);
-                            $date_time = gmdate('Y-m-d h:i:s \G\M\T');
+                            $date_time = gmdate('Y-m-d h:i:s, \G\M\T + 01:00');
                             $message_status = 0;
 
                             $doctorsql = "select doctor_id from doctor where email = '$email'";
