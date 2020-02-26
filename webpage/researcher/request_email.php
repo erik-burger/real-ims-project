@@ -14,7 +14,8 @@
     include dirname(__DIR__).'/general/openDB.php';
     $id = $_SESSION["id"];
     $code = generateRandomString();
-    $sql = "UPDATE researcher SET data_access_code = '$code' WHERE researcher_id = $id;";
+    $hashed_code = md5($code);
+    $sql = "UPDATE researcher SET data_access_code = '$hashed_code' WHERE researcher_id = $id;";
     mysqli_query($link, $sql)
     or 
     die("Could not issue MySQL query"); 
