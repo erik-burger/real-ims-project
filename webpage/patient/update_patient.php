@@ -107,7 +107,7 @@ if(isset($_POST["submit"])){
 			$errors['email'] = "Not a valid email";
 		
 		}else{			
-			$sql_email = "SELECT * FROM doctor WHERE email = '$email'";
+			$sql_email = "SELECT * FROM users WHERE email = '$email'";
 			$result = mysqli_query($link, $sql_email);
 			
 			if(mysqli_num_rows($result)>0){

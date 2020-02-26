@@ -50,16 +50,25 @@ if  ($code == "denied") {
 
 }
 
+$find_id = mysqli_query($link, "SELECT user_id FROM users WHERE email = '$email'")
+or 
+die("Could not issue MySQL query"); 
 
-$result = mysqli_query($link, "SELECT data_access_code FROM researcher WHERE email = '$email'")
+while ($row = $find_id->fetch_assoc()) {
+    $user_id = $row["user_id"];
+}
+
+
+$result = mysqli_query($link, "SELECT data_access_code FROM researcher WHERE researcher_id = '$user_id'")
 or 
 die("Could not issue MySQL query"); 
 
 while ($row = $result->fetch_assoc()) {
     $db_code = $row["data_access_code"];
 }
+$code = MD5($code);
 if ($db_code == $code) {
-    mysqli_query($link, "UPDATE researcher SET data_access = 1 WHERE email = '$email'")
+    mysqli_query($link, "UPDATE researcher SET data_access = 1 WHERE researcher_id = '$user_id'")
     or 
     die("Could not issue MySQL query");     
     $subject = 'Accepted data access';

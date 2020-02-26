@@ -69,7 +69,7 @@
 <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
             </div>
-            <a href="../general/info.html">About</a>
+            <a href="../general/profile_page.php">Back</a>
             </div>
     <?php
      session_start();
@@ -82,9 +82,9 @@
          if ($logedin == 1){
                 switch ($user) {
                  case 'D':
-                        $result = mysqli_query($link,"select *
-                        from doctor 
-                        where doctor_id = '$id'") 
+                        $result = mysqli_query($link,"SELECT d.* u.email
+                        from doctor as d, users as u
+                        where d.doctor_id = '$id' and u.user_id = '$id'") 
                         or 
                         die("Could not issue MySQL query");  
               
