@@ -11,8 +11,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
-$errors = $picture = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
-'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '', 'picture'=>'');
+$errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
+'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '');
 
 if(isset($_POST["submit"])){
 			
@@ -151,8 +151,8 @@ if(isset($_POST["submit"])){
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash, picture) 
-		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash', '$picture')";  
+		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
+		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
 		if (mysqli_query($link, $sql)) {   					
 

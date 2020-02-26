@@ -1,9 +1,6 @@
+<!DOCTYPE html>
 <html>
-
-<?php
-session_start();
-?>
-<head>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="top_menu_style.css">
@@ -74,119 +71,115 @@ session_start();
             </div>
             <a href="../general/info.html">About</a>
             </div>
-       <nav class="navbar navbar-inverse">
-           <div class="container-fluid">
-               <div class="navbar-header">
-                    <img class="logo" src="../general/logo_small.png" width = 50>
-                    <script>
-                        var logged_in = <?php echo json_encode($_SESSION["loggedin"]);?>;
-                        var user = <?php echo json_encode($_SESSION["user"]);?>;
-                        if (logged_in !== 'undefined' && user !== 'undefined') {
-                            if (logged_in == 1 ) {
-                                switch(user){
-                                    case "D":
-                                        document.write(
-                                        '<ul class="nav navbar-nav">'+
-                                            '<li class="active"><a href="../doctor/doctorstart.php">Home</a></li>'+
-                                            '<li><a href="../general/contact.php">Contact</a></li>'+
-                                            '<li><a href="../doctor/doctorprofile.php">Profile</a></li>'+
-                                            '<li><a href="../doctor/doctorsearch.php">Patients</a></li>'+
-                                            '<li><a href="../doctor/chat_home_doctor.php">Messages</a></li>'+
-                                        '</ul>'+
-                                        '<ul class="nav navbar-nav navbar-right">'+
-                                            '<li><a href="../general/logout.php">Logout</a></li>'+
-                                        '</ul>');
-                                    break;
-                                    case "P":
-                                        document.write(
-                                        '<ul class="nav navbar-nav">'+
-                                            '<li class="active"><a onclick= go_back("../patient/patientstart.php")>Home</a></li>'+        
-                                        '</ul>'+
-                                        '<ul class="nav navbar-nav navbar-right">'+
-                                            '<li><a onclick= go_back("../general/logout.php")>Logout</a></li>'+
-                                        '</ul>');
-                                    break;
-                                    case "R":
-                                        document.write(
-                                        '<ul class="nav navbar-nav">'+
-                                            '<li class="active"><a href="../researcher/researcherstart.php">Home</a></li> '+
-                                            '<li><a href="../general/contact.php">Contact</a></li>'+
-                                            '<li><a href="../researcher/researcherprofile.php">Profile</a></li>'+
-                                        '</ul>'+
-                                        '<ul class="nav navbar-nav navbar-right">'+
-                                            '<li><a href="../general/logout.php">Logout</a></li>'+
-                                        '</ul>');
-                                    break;
-                                    case "C":
-                                        document.write(
-                                        '<ul class="nav navbar-nav">'+
-                                            '<li class="active"><a href="../caregiver/caregiverstart.php">Home</a></li>'+ 
-                                            '<li><a href="../general/contact.php">Contact</a></li>'+
-                                            '<li><a href="../caregiver/caregiverprofile.php">Profile</a></li>'+
-                                            '<li><a href="../caregiver/chat_home_caregiver.php">Messages</a></li>'+            
-                                        '</ul>'+
-                                        '<ul class="nav navbar-nav navbar-right">'+
-                                            '<li><a href="../general/logout.php">Logout</a></li>'+
-                                        '</ul>');
-                                    break;
-                                }
-                        } else{
-                            //not logged in user
-                            document.write(
-                                '</div>'+  
-                                    '<a href="../general/login.php">Login</a>'+
-                                    '<a href="../general/info.html">About</a>'+
-                                    '<a href="../general/contact.php">Contact</a>'+
-                                    '<div class="dropdown">'+
-                                        '<button class="dropbtn">Register'+
-                                        '<i class="fa fa-caret-down"></i>'+
-                                        '</button>'+
-                                        '<div class="dropdown-content">'+
-                                        '<a href="../patient/patient_registration.php">Patient</a>'+
-                                        '<a href="../doctor/doctor_registration.php">Doctor</a>'+
-                                        '<a href="../researcher/researcher_registration.php">Researcher</a>'+
-                                        '<a href="../caregiver/caregiver_registration.php">Caregiver</a>'+
-                                        '</div>');
-                        }
-                    }
-                    </script>
-                </div>
-                
-            </div>
-        </nav>
-
-    <body>
-    <h1>Change your information</h1>    
     <?php
-        
-        $id = $_SESSION["id"];
-        include dirname(__DIR__).'/general/openDB.php';
+     session_start();
+     $logedin = $_SESSION["loggedin"];
+     $user = $_SESSION["user"];
+     if (isset($logedin) or isset($user)) {
+         if ($logedin == 1) 
+            include dirname(__DIR__).'/general/openDB.php';{
+                switch ($user) {
+                 case 'D':
+                        $result = mysqli_query($link,"select *
+                        from doctor 
+                        where doctor_id = '$id'")   
+              
+                        while ($row = $result->fetch_assoc()) {
+                             $first_name = $row["first_name"];
+                             $middle_name = $row["middle_name"]; 
+                             $last_name = $row["last_name"];
+                             $doctor_id = $row["doctor_id"];
+                             $street = $row["street"];
+                             $street_no = $row["street_no"];
+                             $zip = $row["zip"]; 
+                             $email = $row["email"]; 
+                             $city = $row["city"];
+                             $country = $row["country"];
+                             $phone = $row["phone"];  
+                            }
+                            ?>  
+                        <form action="update_doctor.php" method="POST">
+                        <?php 
+                        break;
+                 case 'P':
+                        $result = mysqli_query($link,"select *
+                        from patient 
+                        where patient_id = '$id'")   
+                     
+                        while ($row = $result->fetch_assoc()) {
+                            $first_name = $row["first_name"];
+                            $middle_name = $row["middle_name"]; 
+                            $last_name = $row["last_name"];
+                            $patient_id = $row["patient_id"];
+                            $street = $row["street"];
+                            $street_no = $row["street_no"];
+                            $zip = $row["zip"]; 
+                            $email = $row["email"]; 
+                            $city = $row["city"];
+                            $country = $row["country"];
+                            $phone = $row["phone"];
+                            }
+                            ?>
+                        <form action="update_patient.php" method="POST">  
+                        <?php
+                        break;
+                 case 'C':
+                        $result = mysqli_query($link,"select *
+                        from caregiver 
+                        where caregiver_id = '$id'")
+                     
+                        while ($row = $result->fetch_assoc()) {
+                            $first_name = $row["first_name"];
+                            $middle_name = $row["middle_name"]; 
+                            $last_name = $row["last_name"];
+                            $caregiver_id = $row["caregiver_id"];
+                            $street = $row["street"];
+                            $street_no = $row["street_no"];
+                            $zip = $row["zip"]; 
+                            $email = $row["email"]; 
+                            $city = $row["city"];
+                            $country = $row["country"];
+                            $phone = $row["phone"];  
+                            }
+                        ?>
+                        <form action="update_caregiver.php" method="POST">  
+                        <?php
+                        break;
+                 case 'R':
+                        $result = mysqli_query($link,"select *
+                        from researcher 
+                        where researcher_id = '$id'")
 
-        $result = mysqli_query($link,"select *
-        from caregiver 
-        where caregiver_id = '$id'")   
-        or 
-        die("Could not issue MySQL query"); 
-        
-        while ($row = $result->fetch_assoc()) {
-            $first_name = $row["first_name"];
-            $middle_name = $row["middle_name"]; 
-            $last_name = $row["last_name"];
-            $caregiver_id = $row["caregiver_id"];
-            $street = $row["street"];
-            $street_no = $row["street_no"];
-            $zip = $row["zip"]; 
-            $email = $row["email"]; 
-            $city = $row["city"];
-            $country = $row["country"];
-            $phone = $row["phone"];  
-        }  
-        include dirname(__DIR__).'/general/closeDB.php';
+                        while ($row = $result->fetch_assoc()) {
+                            $first_name = $row["first_name"];
+                            $middle_name = $row["middle_name"]; 
+                            $last_name = $row["last_name"];
+                            $researcher_id = $row["researcher_id"];
+                            $street = $row["street"];
+                            $street_no = $row["street_no"];
+                            $zip = $row["zip"]; 
+                            $email = $row["email"]; 
+                            $city = $row["city"];
+                            $country = $row["country"];
+                            $phone = $row["phone"];
+                            }  
+                        ?>
+                            <form action="update_researcher.php" method="POST">
+                            <?php
+                            break;
+             }
+         } else {
+         echo "<script>window.location.href = '../general/login.php';</script>";
+         }
          
+     }  
+        
+    include dirname(__DIR__).'/general/closeDB.php';  
     ?> 
-    <form action="update_caregiver.php" method="POST">
-      <h3>Register</h3>
-      <p>Please fill in this form to change your profile information.</p>
+    
+    <section class="container grey-text"> 
+    <h1 class="center">Change your information</h1>  
+      <p id="a">Please fill in this form to change your account information</p>
       
       <label for="f_name"><b>First name</b></label>
       <input type="text" value= "<?php echo $first_name;?>" name="f_name" >
@@ -219,15 +212,12 @@ session_start();
       <input type="text" value= "<?php echo $email;?>" name="email"><br>
   
       <label for="psw"><b>Password</b></label>
-      <input type="password" value= "" name="psw">
+      <input type="password" value= "" name="psw"><br>
         
-      <button type="Submit Changes">Change Information</button>
+      <button type="Submit Changes">Submit changes</button>
     
     </form>
     
 </body>
 
 </html>
-
-
-
