@@ -30,5 +30,6 @@ if (isset($logedin) or isset($user)) {
     } else {
     echo "<script>window.location.href = '../general/login.php';</script>";
     }
-
+}else {
+echo "<script>window.location.href = '../general/login.php';</script>";
 }
