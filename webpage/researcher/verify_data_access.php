@@ -66,6 +66,7 @@ die("Could not issue MySQL query");
 while ($row = $result->fetch_assoc()) {
     $db_code = $row["data_access_code"];
 }
+$code = MD5($code);
 if ($db_code == $code) {
     mysqli_query($link, "UPDATE researcher SET data_access = 1 WHERE researcher_id = '$user_id'")
     or 
