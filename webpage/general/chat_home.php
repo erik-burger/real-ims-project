@@ -192,7 +192,11 @@ if (isset($logedin) or isset($user)) {
                     include dirname(__DIR__).'/general/openDB.php';
                     $sql = "select c.chat_message_id, d.first_name, d.last_name, c.from_user_id, c.from_user_type, c.date_time, c.message_status from chat c 
                     join doctor d on c.from_user_id = d.doctor_id
-                    where to_user_id = $_SESSION[id] and to_user_type = '$_SESSION[user]' order by c.date_time DESC";
+                    where to_user_id = 4 and to_user_type = 'P' 
+                    union
+                    select c.chat_message_id, ca.first_name, ca.last_name, c.from_user_id, c.from_user_type, c.date_time, c.message_status from chat c 
+                    join caregiver ca on c.from_user_id = ca.caregiver_id
+                    where to_user_id = 4 and to_user_type = 'P' order by date_time DESC";
                     $result = mysqli_query($link, $sql) 
                     or die("Could not issue MySQL query");
 

@@ -171,7 +171,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
         include dirname(__DIR__).'/general/closeDB.php';
  ?>
 
-    <form action="change_info_patient.php" class = "profile">
+    <form action="../general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
     <form action="change_password_patient.php" class = "profile">

@@ -214,7 +214,7 @@ if (isset($logedin) or isset($user)) {
 
                         include dirname(__DIR__).'/general/closeDB.php';
 
-                        header("location: chat_home_patient.php");}
+                        header("location: chat_home.php");}
 
                         ?>
                         <?php
