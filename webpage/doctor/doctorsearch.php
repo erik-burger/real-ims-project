@@ -177,7 +177,7 @@ table, th, td {
       $search = $_POST['search_text']; 
       $search = $link->real_escape_string($_POST["search_text"]);
       $search = htmlspecialchars($search);
-      $result = mysqli_query($link,"select p.first_name, p.last_name, p.patient_id 
+      $result = mysqli_query($link,"SELECT p.first_name, p.last_name, p.patient_id 
                                     from patient as p, patient_doctor as p_d
                                     where p.patient_id = p_d.patient_id   
                                     and p_d.doctor_id = '$id'

@@ -115,7 +115,7 @@ table, th, td {
                 <img class="logo" src="../general/logo_small.png" width = 50>
             </div>
             <ul class="nav navbar-nav">
-            <li class="active"><a href="patientstart.php">Home</a></li>            
+            <li class="active"><a href="../general/start_page.php">Home</a></li>            
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
@@ -137,7 +137,7 @@ table, th, td {
 include dirname(__DIR__).'/general/openDB.php';
 $sql = "select c.chat_message_id, d.first_name, d.last_name, c.from_user_id, c.from_user_type, c.date_time, c.message_status from chat c 
 join doctor d on c.from_user_id = d.doctor_id
-where to_user_id = $_SESSION[id] and to_user_type = '$_SESSION[user]';
+where to_user_id = $_SESSION[id] and to_user_type = '$_SESSION[user]'";
 $result = mysqli_query($link, $sql) 
 or die("Could not issue MySQL query");
 
