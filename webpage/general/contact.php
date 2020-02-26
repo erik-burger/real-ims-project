@@ -1,7 +1,4 @@
 <html>
-<?php
-session_start();
-?>
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,8 +88,8 @@ session_start();
                 width: 95%; 
                 margin-bottom: 50px;   
             }
-    </style>
-    </head>
+    </style>  
+</head>
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -107,7 +104,7 @@ session_start();
                                     case "D":
                                         document.write(
                                         '<ul class="nav navbar-nav">'+
-                                            '<li class="active"><a href="../doctor/doctorstart.php">Home</a></li>'+
+                                            '<li class="active"><a href="../general/start_page.php">Home</a></li>'+
                                             '<li><a href="../general/contact.php">Contact</a></li>'+
                                             '<li><a href="../doctor/doctorprofile.php">Profile</a></li>'+
                                             '<li><a href="../doctor/doctorsearch.php">Patients</a></li>'+
@@ -120,7 +117,7 @@ session_start();
                                     case "P":
                                         document.write(
                                         '<ul class="nav navbar-nav">'+
-                                            '<li class="active"><a onclick= go_back("../patient/patientstart.php")>Home</a></li>'+        
+                                            '<li class="active"><a onclick= go_back("../general/start_page.php")>Home</a></li>'+        
                                         '</ul>'+
                                         '<ul class="nav navbar-nav navbar-right">'+
                                             '<li><a onclick= go_back("../general/logout.php")>Logout</a></li>'+
@@ -129,7 +126,7 @@ session_start();
                                     case "R":
                                         document.write(
                                         '<ul class="nav navbar-nav">'+
-                                            '<li class="active"><a href="../researcher/researcherstart.php">Home</a></li> '+
+                                            '<li class="active"><a href="../general/start_page.php">Home</a></li> '+
                                             '<li><a href="../general/contact.php">Contact</a></li>'+
                                             '<li><a href="../researcher/researcherprofile.php">Profile</a></li>'+
                                         '</ul>'+
@@ -142,6 +139,8 @@ session_start();
                                         '<ul class="nav navbar-nav">'+
                                             '<li class="active"><a href="../caregiver/caregiverstart.php">Home</a></li>'+ 
                                             '<li><a href="../general/contact.php">Contact</a></li>'+
+                                            '<li class="active"><a href="../general/start_page.php">Home</a></li>'+ 
+                                            '<li><a href="../caregiver/caregiver_contact.php">Contact</a></li>'+
                                             '<li><a href="../caregiver/caregiverprofile.php">Profile</a></li>'+
                                             '<li><a href="../caregiver/chat_home_caregiver.php">Messages</a></li>'+            
                                         '</ul>'+

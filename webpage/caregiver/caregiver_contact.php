@@ -14,14 +14,6 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
 <?php
 
 
-/*if ( isset($_SESSION["user"]) == "C") { // if the user is a patient -> logout
-    $_SESSION = array();
-    session_destroy();
-    header("location: ../general/login.php");
-} elseif( isset($_SESSION["user"]) === false) { // if no user is logged in -> login page
-    header("location: ../html/php/login.php");
-}
-*/
 ?>
     <head>
         <meta charset="UTF-8">
@@ -121,7 +113,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
                 <ul class="nav navbar-nav">
-                <li class="active"><a href="caregiverstart.php">Home</a></li> 
+                <li class="active"><a href="../general/start_page.php">Home</a></li> 
                 <li><a href="../general/contact.php">Contact</a></li>
                 <li><a href="caregiverprofile.php">Profile</a></li>
                 <li><a href="chat_home_caregiver.php">Messages</a></li>            

@@ -118,7 +118,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
                 <ul class="nav navbar-nav">
-                <li><a href="caregiverstart.php">Home</a></li> 
+                <li><a href="../general/start_page.php">Home</a></li> 
                 <li><a href="../general/contact.php">Contact</a></li>  
                 <li><a href="caregiverprofile.php">Profile</a></li>
                 <li class="active"><a href="chat_home_caregiver.php">Messages</a></li>            

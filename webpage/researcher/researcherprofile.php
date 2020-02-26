@@ -4,7 +4,7 @@
 session_start();
 /*Restrict access for other users or not logged*/ 
 if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
-    if ($_SESSION["user"] !== "R" or $_SESSION["loggedin"] = false){ 
+    if ($_SESSION["user"] !== "R" or $_SESSION["loggedin"] == false){ 
         echo "<script>window.location.href = '../general/login.php';</script>";
     }
 } 
@@ -94,12 +94,13 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
     </head>
 
     <body>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
                 <ul class="nav navbar-nav">
-                <li><a href="researcherstart.php">Home</a></li> 
+                <li><a href="../general/start_page.php">Home</a></li> 
                 <li><a href="../general/contact.php">Contact</a></li> 
                 <li class="active"><a href="researcherprofile.php">Profile</a></li>            
                 </ul>
@@ -112,8 +113,9 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
     <div class='column'>
         <h1>Profile</h1>
     <div class = "container">
+
     <?php
-       
+
 
         include dirname(__DIR__).'/general/openDB.php';
         $result = mysqli_query($link, "select first_name, last_name, researcher_id, phone, street, street_no, zip, city, country, email
@@ -180,6 +182,5 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
         }
         
     </script>
-
 
 </html>
