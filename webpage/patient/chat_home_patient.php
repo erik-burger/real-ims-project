@@ -115,7 +115,7 @@ table, th, td {
                 <img class="logo" src="../general/logo_small.png" width = 50>
             </div>
             <ul class="nav navbar-nav">
-            <li class="active"><a href="patientstart.php">Home</a></li>            
+            <li class="active"><a href="../general/start_page.php">Home</a></li>            
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
