@@ -9,37 +9,25 @@
          if ($logedin == 1){
                 switch ($user) {
                  case 'D':
-                    if ($_SESSION["user"] !== "D" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-                        echo "<script>window.location.href = '../general/login.php';</script>";
-                        }
                         ?>  
                         <form action="update_password_doctor.php" method="POST">
                         <?php 
                         break;
                  case 'P':
-                    if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-                        echo "<script>window.location.href = '../general/login.php';</script>";
-                        }
                         ?>
                         <form action="update_password_patient.php" method="POST"> 
                         <?php
                         break;
                  case 'C':
-                    if ($_SESSION["user"] !== "C" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-                        echo "<script>window.location.href = '../general/login.php';</script>";
-                        }
                         ?>
                         <form action="update_password_caregiver.php" method="POST">  
                         <?php
                         break;
                  case 'R':
-                    if ($_SESSION["user"] !== "R" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-                        echo "<script>window.location.href = '../general/login.php';</script>";
-                        }
                         ?>
-                            <form action="update_password_researcher.php" method="POST">
-                            <?php
-                            break;
+                        <form action="update_password_researcher.php" method="POST">
+                        <?php
+                        break;
              }
          } else {
          echo "<script>window.location.href = '../general/login.php';</script>";

@@ -69,7 +69,7 @@
 <div class="navbar-header">
                 <img class="logo" src="../general/logo_small.png" width = 50>
             </div>
-            <a href="../general/info.html">About</a>
+            <a href="../general/profile_page.php">Back</a>
             </div>
     <?php
      session_start();
