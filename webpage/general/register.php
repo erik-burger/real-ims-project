@@ -318,10 +318,10 @@ switch ($usertype) {
                             <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-content">
-                            <a href="../patient/patient_registration.php">Patient</a>
-                            <a href="doctor_registration.php">Doctor</a>
-                            <a href="../researcher/researcher_registration.php">Researcher</a>
-                            <a href="../caregiver/caregiver_registration.php">Caregiver</a>
+                            <a href="../general/register.php?user=P">Patient</a>
+				            <a href="../general/register.php?user=D">Doctor</a>
+                            <a href="../general/register.php?user=R">Researcher</a>
+                            <a href="../general/register.php?user=C">Caregiver</a>
                             </div>
                         </div>       
                     </div>
@@ -688,10 +688,10 @@ switch ($usertype) {
                             <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-content">
-                            <a href="patient_registration.php">Patient</a>
-                            <a href="../doctor/doctor_registration.php">Doctor</a>
-                            <a href="../researcher/researcher_registration.php">Researcher</a>
-                            <a href="../caregiver/caregiver_registration.php">Caregiver</a>
+                            <a href="../general/register.php?user=P">Patient</a>
+				            <a href="../general/register.php?user=D">Doctor</a>
+                            <a href="../general/register.php?user=R">Researcher</a>
+                            <a href="../general/register.php?user=C">Caregiver</a>
                             </div>
                         </div>       
                     </div>
@@ -1024,10 +1024,10 @@ switch ($usertype) {
                             <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-content">
-                            <a href="./patient/patient_registration.php">Patient</a>
-                            <a href="../doctor/doctor_registration.php">Doctor</a>
-                            <a href="researcher_registration.php">Researcher</a>
-                            <a href="../caregiver/caregiver_registration.php">Caregiver</a>
+                            <a href="../general/register.php?user=P">Patient</a>
+				            <a href="../general/register.php?user=D">Doctor</a>
+                            <a href="../general/register.php?user=R">Researcher</a>
+                            <a href="../general/register.php?user=C">Caregiver</a>
                             </div>
                         </div>       
                     </div>
@@ -1322,10 +1322,12 @@ switch ($usertype) {
                             <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-content">
-                            <a href="../patient/patient_registration.php">Patient</a>
-                            <a href="../doctor/doctor_registration.php">Doctor</a>
-                            <a href="../researcher/researcher_registration.php">Researcher</a>
-                            <a href="caregiver_registration.php">Caregiver</a>
+                            <a href="../general/register.php?user=P">Patient</a>
+				            <a href="../general/register.php?user=D">Doctor</a>
+                            <a href="../general/register.php?user=R">Researcher</a>
+                            <a href="../general/register.php?user=C">Caregiver</a>
+
+
                             </div>
                         </div>       
                     </div>
