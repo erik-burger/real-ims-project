@@ -1,49 +1,23 @@
-<?php
-     session_start();
-     $logedin = $_SESSION["loggedin"];
-     $user = $_SESSION["user"];
-     $id = $_SESSION["id"];
-     include dirname(__DIR__).'/general/openDB.php';
-
-     if (isset($logedin) or isset($user)) {
-         if ($logedin == 1){
-                switch ($user) {
-                 case 'D':
-                        ?>  
-                        <form action="update_password_doctor.php" method="POST">
-                        <?php 
-                        break;
-                 case 'P':
-                        ?>
-                        <form action="update_password_patient.php" method="POST"> 
-                        <?php
-                        break;
-                 case 'C':
-                        ?>
-                        <form action="update_password_caregiver.php" method="POST">  
-                        <?php
-                        break;
-                 case 'R':
-                        ?>
-                        <form action="update_password_researcher.php" method="POST">
-                        <?php
-                        break;
-             }
-         } else {
-         echo "<script>window.location.href = '../general/login.php';</script>";
-         }
-         
-     } 
-     include dirname(__DIR__).'/general/closeDB.php';  
-?> 
-    
 <html>
 <head>
-<link rel="stylesheet" href="../general/IMS_Style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="top_menu_style.css">
+    <link rel="stylesheet" href="../general/IMS_Style.css">
 </head>
 
 <body>
+
 <style>
+    ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .logo {
+                display: inline-block;
+                float: left; 
+            }
         *{
     	box-sizing: border-box;
 		}
@@ -100,6 +74,58 @@
     		font-size: 14px;
     	}
 </style>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img class="logo" src="../general/logo_small.png" width = 50>
+        </div>
+        <ul class="nav navbar-nav">
+        <li><a href="../general/profile_page.php">Back</a></li>
+        </ul>
+    </div>
+</nav>
+<?php
+     session_start();
+     $logedin = $_SESSION["loggedin"];
+     $user = $_SESSION["user"];
+     $id = $_SESSION["id"];
+     include dirname(__DIR__).'/general/openDB.php';
+
+     if (isset($logedin) or isset($user)) {
+         if ($logedin == 1){
+                switch ($user) {
+                 case 'D':
+                        ?>  
+                        <form action="update_password_doctor.php" method="POST">
+                        <?php 
+                        break;
+                 case 'P':
+                        ?>
+                        <form action="update_password_patient.php" method="POST"> 
+                        <?php
+                        break;
+                 case 'C':
+                        ?>
+                        <form action="update_password_caregiver.php" method="POST">  
+                        <?php
+                        break;
+                 case 'R':
+                        ?>
+                        <form action="update_password_researcher.php" method="POST">
+                        <?php
+                        break;
+             }
+         } else {
+         echo "<script>window.location.href = '../general/login.php';</script>";
+         }
+         
+     } 
+     include dirname(__DIR__).'/general/closeDB.php';  
+?> 
+    
+
+
 
 
     <section class="container grey-text"> 
