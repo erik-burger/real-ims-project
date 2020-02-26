@@ -152,7 +152,7 @@ if (isset($logedin) or isset($user)) {
 
     ?>
 
-    <form action="/general/change_info.php" class = "profile">
+    <form action="../general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
     <form action="change_password_doctor.php" class = "profile">
@@ -240,7 +240,7 @@ if (isset($logedin) or isset($user)) {
         include dirname(__DIR__).'/general/closeDB.php';
  ?>
 
-    <form action="/general/change_info.php" class = "profile">
+    <form action="../general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
     <form action="change_password_patient.php" class = "profile">
@@ -455,7 +455,7 @@ include dirname(__DIR__).'/general/closeDB.php';
     ?>
     
 
-    <form action="/general/change_info.php" class = "profile">
+    <form action="../general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
     <form action="change_password_caregiver.php" class = "profile">
@@ -562,9 +562,9 @@ include dirname(__DIR__).'/general/closeDB.php';
     <?php
 
         include dirname(__DIR__).'/general/openDB.php';
-        $result = mysqli_query($link, "select first_name, last_name, researcher_id, phone, street, street_no, zip, city, country, email
-        from researcher
-        where researcher_id = $_SESSION[id]")   
+        $result = mysqli_query($link, "SELECT r.first_name, r.last_name, r.researcher_id, r.phone, r.street, r.street_no, r.zip, r.city, r.country, u.email
+        from researcher as r, users as u
+        where r.researcher_id = $_SESSION[id] and u.user_id = $_SESSION[id]")   
         or 
         die("Could not issue MySQL query"); 
         
@@ -590,7 +590,7 @@ include dirname(__DIR__).'/general/closeDB.php';
 
     ?>
 
-    <form action="/general/change_info.php" class = "profile">
+    <form action="../general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
     <form action="change_password_researcher.php" class = "profile">
@@ -603,7 +603,7 @@ include dirname(__DIR__).'/general/closeDB.php';
         <h1>Request data access</h1>
 
         <div class = "container">
-        <form action="request_email.php" method='post'>
+        <form action="../researcher/request_email.php" method='post'>
         <textarea name="motivation" cols=auto rows=auto placeholder="Enter your motivation here..."></textarea>
         <input type="hidden" name="email" value="<?php echo $email; ?>">
         <input type="submit" value='Submit motivation' class='request_button'>

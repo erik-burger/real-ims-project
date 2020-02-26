@@ -113,7 +113,7 @@ if(isset($_POST["submit"])){
 			$errors['email'] = "Not a valid email";
 		
 		}else{			
-			$sql_email = "SELECT * FROM researcher WHERE email = '$email'";
+			$sql_email = "SELECT * FROM users WHERE email = '$email'";
 			$result = mysqli_query($link, $sql_email);
 			
 			if(mysqli_num_rows($result)>0){
@@ -175,7 +175,7 @@ if(isset($_POST["submit"])){
 			if ($mail->send()) {
 				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
             } else {
-            	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+            	$fail_message = "Something went wrong with! Please contact us on trackzheimers@gemail.com";
             	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
         	}
 		} else {  
