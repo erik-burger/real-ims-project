@@ -122,10 +122,10 @@ if(isset($_POST["submit"])){
 	}
 
 	//Check if password matches requirements
-	$uppercase = preg_match('%[A-Z]%', $psw);
-	$lowercase = preg_match('%[a-z]%', $psw);
-	$number    = preg_match('%[0-9]%', $psw);
-	echo $uppercase; 
+
+	$uppercase = preg_match('/[A-Z]+/', $_POST['psw']);
+	$lowercase = preg_match('/[a-z]+/', $_POST['psw']);
+	$number    = preg_match('/[0-9]+/', $_POST['psw']);
 
 	if (empty($_POST['psw'])){
 		$errors['psw']= 'Please enter a password';
@@ -133,7 +133,7 @@ if(isset($_POST["submit"])){
 		$errors['psw'] = 'Please repeat your password';
 	}elseif($_POST['psw']!= $_POST['psw_repeat']){
 		$errors['psw'] = "Passwords do not match, pleas try again!";
-	}elseif($uppercase === 0 || $lowercase === 0 || $number === 0 || strlen($password) < 8){
+	}elseif(!$uppercase || !$lowercase || !$number || strlen($password) < 8){
 		$errors['psw'] = "Password should be at least 8 characters in length and should include at least one upper and lower case letter as well as one number.";
 	}else{
 		$psw = $link->real_escape_string($_POST['psw']);
