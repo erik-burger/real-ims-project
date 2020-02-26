@@ -75,14 +75,18 @@
      session_start();
      $logedin = $_SESSION["loggedin"];
      $user = $_SESSION["user"];
+     $id = $_SESSION["id"];
+     include dirname(__DIR__).'/general/openDB.php';
+
      if (isset($logedin) or isset($user)) {
-         if ($logedin == 1) 
-            include dirname(__DIR__).'/general/openDB.php';{
+         if ($logedin == 1){
                 switch ($user) {
                  case 'D':
                         $result = mysqli_query($link,"select *
                         from doctor 
-                        where doctor_id = '$id'")   
+                        where doctor_id = '$id'") 
+                        or 
+                        die("Could not issue MySQL query");  
               
                         while ($row = $result->fetch_assoc()) {
                              $first_name = $row["first_name"];
@@ -99,12 +103,15 @@
                             }
                             ?>  
                         <form action="update_doctor.php" method="POST">
+                        
                         <?php 
                         break;
                  case 'P':
                         $result = mysqli_query($link,"select *
                         from patient 
-                        where patient_id = '$id'")   
+                        where patient_id = '$id'")
+                        or 
+        die("Could not issue MySQL query");   
                      
                         while ($row = $result->fetch_assoc()) {
                             $first_name = $row["first_name"];
@@ -127,6 +134,8 @@
                         $result = mysqli_query($link,"select *
                         from caregiver 
                         where caregiver_id = '$id'")
+                        or 
+        die("Could not issue MySQL query");
                      
                         while ($row = $result->fetch_assoc()) {
                             $first_name = $row["first_name"];
@@ -149,6 +158,8 @@
                         $result = mysqli_query($link,"select *
                         from researcher 
                         where researcher_id = '$id'")
+                        or 
+        die("Could not issue MySQL query");
 
                         while ($row = $result->fetch_assoc()) {
                             $first_name = $row["first_name"];
@@ -172,9 +183,8 @@
          echo "<script>window.location.href = '../general/login.php';</script>";
          }
          
-     }  
-        
-    include dirname(__DIR__).'/general/closeDB.php';  
+     } 
+     include dirname(__DIR__).'/general/closeDB.php';  
     ?> 
     
     <section class="container grey-text"> 

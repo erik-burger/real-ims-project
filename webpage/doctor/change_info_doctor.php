@@ -106,7 +106,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             $country = $row["country"];
             $phone = $row["phone"];  
         }  
-        include dirname(__DIR__).'/general/closeDB.php';  
+        include dirname(__DIR__).'/general/closeDB.php';     include dirname(__DIR__).'/general/closeDB.php';  
     ?> 
     
     <form action="update_doctor.php" method="POST">
