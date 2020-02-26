@@ -30,8 +30,8 @@ $mail->Host = "smtp.gmail.com";
 $mail->SMTPAuth = true;
 $mail->Username = "trackzheimers@gmail.com";
 $mail->Password = '123trackzheimers';
-$mail->Port = 587; //465
-$mail->SMTPSecure = "tls"; //
+$mail->Port = ;465 //587
+$mail->SMTPSecure = "ssl"; //tls
 
 //Email Settings
 $mail->isHTML(true);

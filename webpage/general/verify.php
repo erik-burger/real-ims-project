@@ -4,13 +4,14 @@ include dirname(__DIR__).'/general/openDB.php';
 
 $message = '';
 
-if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['verification_hash']) && !empty($_GET['verification_hash'])){	
+if(isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['verification_hash']) && !empty($_GET['verification_hash']) && isset($_GET['usertype']) && !empty($_GET['usertpe'])){	
 	// Verify data
 	$email = $link->real_escape_string($_GET['email']);
 	$verification_hash = $link->real_escape_string($_GET['verification_hash']);
+	$usertype = $link -> real_escape_string($_GET['usertype']);
 		
 	// Search for matches in the database
-	$sql_search = "SELECT * FROM doctor WHERE email='$email' AND verification_hash='$verification_hash' ";
+	$sql_search = "SELECT * FROM users WHERE email='$email' AND verification_hash='$verification_hash' AND usertpe='$usertype'";
 	$search = mysqli_query($link, $sql_search);
 
     if($search){
@@ -18,9 +19,9 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['verification
     		$rows = mysqli_fetch_array($search);
     		$status = $rows['verified'];
     		if($status == 0){
-    			//Activate the account
-        		$sql_update = "UPDATE doctor SET verified = '1' WHERE email='$email' AND verification_hash='$verification_hash'";
-        		if(mysqli_query($link, $sql_update)){
+    			//Activate their account
+	        	$sql_update_D = "UPDATE users SET verified = '1' WHERE email='$email' AND verification_hash='$verification_hash' AND usertype='$usertype'";
+        		if(mysqli_query($link, $sql_update_D)){
         			$message = "Your account has been activated, you can now login with the email and password you have registered";
         		}else{
         			$message = "Something went wrong, account not activated. Please contact us on trackzheimers@gmail.com ";
@@ -82,7 +83,7 @@ include dirname(__DIR__).'/general/closeDB.php';;
 </div>
 
 <div class="messagebox">
-	<h3>Doctor verification</h3><br>
+	<h3>Registration verification</h3><br>
 	<?php echo $message; ?><br>
 </div>
 
