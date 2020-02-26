@@ -150,13 +150,32 @@ if(isset($_POST["submit"])){
 		$psw = password_hash($psw, PASSWORD_DEFAULT);
 	
 	// Inserting into database
-			
-		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
-		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
-		if (mysqli_query($link, $sql)) {   					
+		$sql1 = "INSERT INTO users (usertype, password_hash, email, verification_hash)
+			VALUES ('D', '$psw', '$email', '$verification_hash')"; 
 
-			require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
+		$sql2 = "SELECT user_id 
+				FROM users 
+				WHERE email = '$email'"; 
+		
+		if (mysqli_query($link, $sql1)) {   
+			
+			$result = mysqli_query($link, $sql2);
+			
+			while ($row = $result->fetch_assoc()) {
+				$user_id = $row["user_id"];		
+				echo $user_id; 
+		
+			}
+
+			
+			$sql3 = "INSERT INTO doctor (doctor_id, first_name, middle_name, last_name, email, 
+			password_hash, street, street_no, city, country, zip, phone, verification_hash) 
+			VALUES ('$user_id', '$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', 
+			'$city', '$country', '$zip', '$phone', '$verification_hash')";  
+			
+			if (mysqli_query($link, $sql3)){
+				require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
         	require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
         	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
 						
@@ -184,11 +203,12 @@ if(isset($_POST["submit"])){
 			if ($mail->send()) {
 				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
             } else {
-            	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+            	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com 1";
             	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
         	}
+			}
 		} else {  
-			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
+			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com 2";
 		 	//echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 			
