@@ -1,32 +1,16 @@
-<?php
-session_start();
-/*Restrict access for other users or not logged*/ 
-if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
-    if ($_SESSION["user"] !== "C" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-    echo "<script>window.location.href = '../general/login.php';</script>";
-    }
-} 
-?>    
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="top_menu_style.css">
-        <link rel="stylesheet" href="IMS_Style.css">
-        <style>
+<html>
+
+<style>
             ul{
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
-            }
-            .logo {
-                display: inline-block;
-                float: left; 
-            }
-            hr {
-                border: 10px solid ghostwhite;
-            }
-            .prof_button, .pass_button, .patient_button{
+                }
+                .logo {
+                    display: inline-block;
+                    float: left; 
+                }
+                .prof_button, .pass_button, .patient_button{
                 background-color: #669999; 
                 border: none;
                 color: white;
@@ -38,7 +22,30 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 margin-top: 10px;
                 margin-bottom: 10px; 
                 margin-left: 1px;              
-            }      
+            }   
+            .profile{
+                display: inline-block;  
+            }
+            .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 10px;
+                width: 95%; 
+                margin-bottom: 50px;   
+            } 
+         /*remove the number arrows*/
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance:textfield;
+            }
+     
             * {
             box-sizing: border-box;
             }
@@ -69,13 +76,6 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
     		border: 1px solid #ccc;
     		border-radius; 4px;
             }
-            table, th, td {
-                padding: 15px; 
-                border: 1px white;
-                border-collapse: collapse;
-                border-bottom: 1px solid #ddd;
-                border-top: 1px solid #ddd;
-            }
             .container {
  		 	border-radius: 10px;
   			background-color: #f2f2f2;
@@ -87,19 +87,120 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             margin-top: 20px;
             font-size:18;
         } 
-        /*remove the number arrows*/
-        /* Chrome, Safari, Edge, Opera */
-        input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-            }
-
-            /* Firefox */
-            input[type=number] {
-            -moz-appearance:textfield;
+        
+        hr {
+                border: 10px solid ghostwhite;
             }
         </style>
+
+<?php
+session_start();
+$logedin = $_SESSION["loggedin"];
+$user = $_SESSION["user"];
+if (isset($logedin) or isset($user)) {
+    if ($logedin == 1) {
+        switch ($user) {
+            case 'D':
+                ?>
+            <html>
+    <meta http-equiv="refresh" content="3600;url=../general/logout.php" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="top_menu_style.css">
+        <link href="IMS_Style.css" rel="stylesheet">
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo" src="../general/logo_small.png" width = 50>
+            </div>
+            <ul class="nav navbar-nav">
+            <li><a href="../general/start_page.php">Home</a></li>
+            <li><a href="../general/contact.php">Contact</a></li>
+            <li><a href="doctorprofile.php">Profile</a></li>
+            <li class="active"><a href="doctorsearch.php">Patients</a></li>
+            <li><a href="../general/chat_home.php">Messages</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../general/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class = "page">
+        <h1>Your profile</h1>
+   
+    <div class = "container">
+    <?php
+        include dirname(__DIR__).'/general/openDB.php';
+        $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country, picture 
+        from doctor
+        where doctor_id = $_SESSION[id]")   
+        or 
+        die("Could not issue MySQL query"); 
+        
+        while ($row = $result->fetch_assoc()) {
+            $first_name = $row["first_name"];
+            $last_name = $row["last_name"];
+            $doctor_id = $row["doctor_id"];
+            $street = $row["street"];
+            $street_no = $row["street_no"];
+            $zip = $row["zip"]; 
+            $city = $row["city"];
+            $country = $row["country"];
+            $phone = $row["phone"];
+            $picture = $row["picture"]; 
+     
+            echo '<b>'."Name: ".'</b>'.$first_name." ".$last_name.'<br />';
+            echo '<b>'."ID: ".'</b>' .$doctor_id.'<br />';
+            echo '<b>'."Telephone: ".'</b>'.$phone.'<br />';
+            echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
+            echo '<b>'."Profile Picture:".'</b>'.$picture. '<br />';
+        }
+       
+        include dirname(__DIR__).'/general/closeDB.php';
+
+    ?>
+
+    <form action="change_info_doctor.php" class = "profile">
+        <button type = "submit" class = "prof_button">Change Information</button>
+    </form>
+    <form action="change_password_doctor.php" class = "profile">
+        <button type = "submit" class = "pass_button">Change Password</button>
+    </form></br>
+    </div>
+    </div>
+    </div>
+    </body>
+
+</html>
+                <?php
+                break;
+            case 'P':
+                ?>
+                <!--Code-->
+                <?php
+                break;
+            case 'C':
+                ?>
+                 <html>
+                     <style>
+                         table, th, td {
+                        padding: 15px; 
+                        border: 1px white;
+                        border-collapse: collapse;
+                        border-bottom: 1px solid #ddd;
+                        border-top: 1px solid #ddd;
+                    }
+                     </style>
+                     
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="top_menu_style.css">
+        <link rel="stylesheet" href="IMS_Style.css">
     </head>
 
     <body>
@@ -211,3 +312,16 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
     </div> 
     </body>
 </html>
+                <?php
+                break;
+            case 'R':
+                ?>
+                <!--Code-->
+                <?php
+                break;
+        }
+    } else {
+    echo "<script>window.location.href = '../general/login.php';</script>";
+    }
+    
+}

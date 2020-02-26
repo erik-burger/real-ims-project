@@ -11,8 +11,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
-$errors = $picture = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
-'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '', 'picture'=>'');
+$errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
+'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '');
 
 if(isset($_POST["submit"])){
 			
@@ -141,8 +141,6 @@ if(isset($_POST["submit"])){
 
 	$verification_hash = md5(rand(0,10000));
 
-	$picture = $link->real_escape_string($_POST["picture"]);
-	$picture = htmlspecialchars($picture); 
 
 		if(array_filter($errors)){
 	 // Go back to the form
@@ -153,8 +151,8 @@ if(isset($_POST["submit"])){
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash, picture) 
-		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash', '$picture')";  
+		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
+		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
 		if (mysqli_query($link, $sql)) {   					
 
@@ -235,7 +233,16 @@ if(isset($_POST["submit"])){
     		resize: vertical;
     		font-size: 14px;
     	}
-    	
+
+		input[type = password], select , textarea{
+    		width: 100%;
+    		padding: 12px;
+    		border: 1px solid #ccc;
+    		border-radius; 4px;
+    		resize: vertical;
+    		font-size: 14px;
+    	}
+		
     	label {
     		padding: 12px 12px 12px 0;
     		display: inline-block;
@@ -357,7 +364,7 @@ if(isset($_POST["submit"])){
       	<input type="password" name="psw" >
   
       	<label for="psw_repeat"><b>Repeat Password</b></label>
-      	<input type="password" name="psw_repeat" >
+      	<input type="password" name="psw_repeat">
       	<div class="error"><?php echo $errors['psw']; ?></div><br>
 
 		<div class="picture"><label>Select your profile picture: </label>

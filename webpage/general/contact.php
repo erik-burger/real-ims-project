@@ -140,6 +140,8 @@
                                     case "C":
                                         document.write(
                                         '<ul class="nav navbar-nav">'+
+                                            '<li class="active"><a href="../caregiver/caregiverstart.php">Home</a></li>'+ 
+                                            '<li><a href="../general/contact.php">Contact</a></li>'+
                                             '<li class="active"><a href="../general/start_page.php">Home</a></li>'+ 
                                             '<li><a href="../caregiver/caregiver_contact.php">Contact</a></li>'+
                                             '<li><a href="../caregiver/caregiverprofile.php">Profile</a></li>'+
