@@ -69,7 +69,7 @@ if (isset($logedin) or isset($user)) {
                                 </div>
                                 <ul class="nav navbar-nav">
                                 <li class="active"><a href="../general/start_page.php">Home</a></li>
-                                <li><a href="../doctor/doctor_contact.php">Contact</a></li>
+                                <li><a href="../general/contact.php">Contact</a></li>
                                 <li><a href="../doctor/doctorprofile.php">Profile</a></li>
                                 <li><a href="../doctor/doctorsearch.php">Patients</a></li>
                                 <li><a href="../doctor/chat_home_doctor.php">Messages</a></li>
@@ -104,7 +104,7 @@ if (isset($logedin) or isset($user)) {
                         $id = $_SESSION['id']; 
                         include dirname(__DIR__).'/general/openDB.php';
                         
-                        $result = mysqli_query($link,"select t.patient_id, p.first_name, p.last_name, t.total_score, max(t.test_date) as test_date
+                        $result = mysqli_query($link,"SELECT t.patient_id, p.first_name, p.last_name, t.total_score, max(t.test_date) as test_date
                         from test as t, patient as p, patient_doctor as p_d
                         where p.patient_id = t.patient_id and p.patient_id = p_d.patient_id and p_d.doctor_id = '$id' and p_d.both_accept = true
                         group by t.patient_id")   
@@ -118,15 +118,15 @@ if (isset($logedin) or isset($user)) {
                                 <td>" . $row["last_name"] . "</td>
                                 <td>" . $row["total_score"] . "</td>
                                 <td>" . $row["test_date"] . "</td>
-                                <td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";
+                                <td><a href ='../general/profile_statistics.php?id=$p_id'>". $p_id. "</a></td></tr>";
                         }
                         echo "</table>";
                         }   
                         
                         include dirname(__DIR__).'/general/closeDB.php'; 
-                        ?>
-                        </div>
-                        </body>
+                    ?>
+                    </div>
+                    </body>
                 </html>
                 <?php
                 break;
@@ -195,7 +195,7 @@ if (isset($logedin) or isset($user)) {
                         
                         <div class = "all_buttons" style="align:center;">
                         <div class="bigbutton">
-                        <button onclick="location.href='Question_sheet.php'"
+                        <button onclick="location.href='../patient/Question_sheet.php'"
                         type="button" 
                         style="font-size: 100px;height: 480px;width: 500px; position:absolute; top: 15%;left:41%;" 
                         value="Test">
@@ -203,28 +203,28 @@ if (isset($logedin) or isset($user)) {
                         </button>
                         </div>
                         <div class="btn-group" style = "height:10x;width:10px;">
-                        <button onclick="location.href='patient_sudoku.php'"
+                        <button onclick="location.href='../patient/patient_sudoku.php'"
                             type="button" 
                             style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px; position:absolute;top: 15%; left: 22%;" 
                             value="Test"> 
                             GAMES
                         </button>
                         <div class ="btn-group"></div>  
-                        <button onclick="location.href='patientprofile.php'" 
+                        <button onclick="location.href='../patient/patientprofile.php'" 
                             type="button" 
                             style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px; position:absolute;top: 35%; left: 22%;" 
                             value="Test">
                             PROFILE
                         </button>
                         <div class ="btn-group"></div>
-                        <button onclick="location.href='patient_statistics.php'" 
+                        <button onclick="location.href='../patient/patient_statistics.php'" 
                             type="button" 
                             style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;position:absolute;top: 55%; left: 22%;" 
                             value="Test">
                             STATISTICS
                         </button>
                         <div class ="btn-group"></div>
-                        <button onclick="location.href='chat_home_patient.php'" 
+                        <button onclick="location.href='../patient/chat_home_patient.php'" 
                             type="button" 
                             style="padding: 40px 46px;font-size: 20px;width: 200px;height: 100px;position:absolute;top: 75%; left: 22%;" 
                             value="Test">
@@ -460,7 +460,7 @@ if (isset($logedin) or isset($user)) {
                         ?>
                         <div class="container">
                         <p>Test data</p>
-                        <form method='post' action='download.php'>
+                        <form method='post' action='../researcher/download.php'>
                         <input type='submit' value='Download' name='Export' class='my_buttons'>
                         <button type="button" onclick="disp_preview('data1')" class='my_buttons'>Show/hide preview</button>       
                         <div id='data1' style="display:none;">
@@ -552,7 +552,7 @@ if (isset($logedin) or isset($user)) {
                         <br>
                         
                         <p>Patient data</p>
-                        <form method='post' action='download.php'>
+                        <form method='post' action='../researcher/download.php'>
                         <input type='submit' value='Download' name='Export' class='my_buttons'>
                         <button type="button" onclick="disp_preview('data2')" class='my_buttons'>Show/hide preview</button>       
                         <div id='data2' style="display:none;">
