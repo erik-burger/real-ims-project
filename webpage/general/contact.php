@@ -59,36 +59,36 @@
     		resize: vertical;
     		font-size: 14px;
             font-family:"Arial";     
-    	}
-    
-        .message_form{
-            margin-right: auto;
-  			margin-left: auto;
-        }    
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 400px;
-        }
-        .container {
- 		 	border-radius: 10px;
-  			background-color: #f2f2f2;
-  			padding-left: 20px;
-  			width:95%;
-  			margin-right: auto;
-  			margin-left:auto;
-            margin-bottom: 20px; 
-            margin-top: 20px;
-        } 
-        .page{
-                margin-left: auto; 
-                margin-right: auto; 
-                padding: 10px;
-                width: 95%; 
-                margin-bottom: 50px;   
             }
-    </style>  
+        
+            .message_form{
+                margin-right: auto;
+                margin-left: auto;
+            }    
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+            }
+            .container {
+                border-radius: 10px;
+                background-color: #f2f2f2;
+                padding-left: 20px;
+                width:95%;
+                margin-right: auto;
+                margin-left:auto;
+                margin-bottom: 20px; 
+                margin-top: 20px;
+            } 
+            .page{
+                    margin-left: auto; 
+                    margin-right: auto; 
+                    padding: 10px;
+                    width: 95%; 
+                    margin-bottom: 50px;   
+                }
+        </style>  
 </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -162,10 +162,10 @@
                                         '<i class="fa fa-caret-down"></i>'+
                                         '</button>'+
                                         '<div class="dropdown-content">'+
-                                        '<a href="../patient/patient_registration.php">Patient</a>'+
-                                        '<a href="../doctor/doctor_registration.php">Doctor</a>'+
-                                        '<a href="../researcher/researcher_registration.php">Researcher</a>'+
-                                        '<a href="../caregiver/caregiver_registration.php">Caregiver</a>'+
+                                        '<a href="../general/register.php?user=P">Patient</a>'+
+				                        '<a href="../general/register.php?user=D">Doctor</a>'+
+                                        '<a href="../general/register.php?user=R">Researcher</a>'+
+                                        '<a href="../general/register.php?user=C">Caregiver</a>'+
                                         '</div>');
                         }
                     }else{
