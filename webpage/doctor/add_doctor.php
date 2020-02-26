@@ -66,7 +66,7 @@ if(isset($_POST["submit"])){
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			// Error message?		
 		}else{			
-			$sql_email = "SELECT * FROM doctor WHERE email = '$email'";
+			$sql_email = "SELECT * FROM users WHERE email = '$email'";
 			$result = mysqli_query($link, $sql_email);
 			
 			if(mysqli_num_rows($result)>0){
@@ -77,7 +77,7 @@ if(isset($_POST["submit"])){
 
 	if (!empty($_POST['psw'])){
 		if(!empty($_POST['psw_repeat'])){
-			$psw = $link->real_escape_string($_POST['psw'])
+			$psw = $link->real_escape_string($_POST['psw']);
 		}
 	}
 		

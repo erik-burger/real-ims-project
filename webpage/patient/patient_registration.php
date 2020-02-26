@@ -179,7 +179,7 @@ if(isset($_POST["submit"])){
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
 		}else{			
-			$sql_email = "SELECT * FROM patient WHERE email = '$email'";
+			$sql_email = "SELECT * FROM users WHERE email = '$email'";
 			$result = mysqli_query($link, $sql_email);
 			if(mysqli_num_rows($result)>0){
 				$errors['email'] = "Email adress already registered, please use another email";

@@ -87,9 +87,9 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
         $id = $_SESSION["id"];
         include dirname(__DIR__).'/general/openDB.php';
 
-        $result = mysqli_query($link,"select *
-        from doctor 
-        where doctor_id = '$id'")   
+        $result = mysqli_query($link,"SELECT d.* u.email
+        from doctor as d, users as u
+        where d.doctor_id = '$id' and u.user_id = '$id'")   
         or 
         die("Could not issue MySQL query"); 
         

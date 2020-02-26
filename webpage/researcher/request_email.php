@@ -64,10 +64,10 @@
     $mail->IsHTML(true);   
     if ($mail->send()) {
         $message = "Request is sent";
-        header("location: researcherprofile.php?message=$message");
+        header("location: ../general/profile_page.php?message=$message");
         //echo "Email is sent!";
     } else {
-        header("location: researcherprofile.php?error=$mail->ErrorInfo");
+        header("location: ../general/profile_page.php?error=$mail->ErrorInfo");
         //echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
     }
 ?>
