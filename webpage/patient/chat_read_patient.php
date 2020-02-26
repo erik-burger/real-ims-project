@@ -76,6 +76,36 @@ p{font-size:1em}
     </nav>
 <body><br><br>
 <?php
+if(isset($_POST["submit"])){
+include dirname(__DIR__).'/general/openDB.php';
+
+$from_user_id = $_SESSION["id"];
+$from_user_type = $_SESSION["user"];
+$previous_chat_id = htmlspecialchars($_POST["send_to"]);
+$previous_chat_id = mysqli_real_escape_string($link, $previous_chat_id);
+$chat_message = htmlspecialchars($_POST["message"]);
+$chat_message = mysqli_real_escape_string($link, $chat_message);
+$date_time = gmdate('Y-m-d h:i:s \G\M\T');
+$message_status = 0;
+
+$sql = "select from_user_id, from_user_type from chat where chat_message_id = $previous_chat_id";
+$result = mysqli_query($link, $sql)
+or die("Could not issue MySQL query");
+while($row = $result->fetch_assoc()) {
+    $to_user_id = $row["from_user_id"];
+    $to_user_type = $row["from_user_type"];
+}
+$sendchat = mysqli_query($link, "insert into chat 
+(from_user_id, from_user_type, to_user_id, to_user_type, chat_message, date_time, message_status) values 
+($from_user_id, '$from_user_type', $to_user_id, '$to_user_type', '$chat_message', '$date_time', '$message_status')")
+or die("Could not issue MySQL query");
+
+include dirname(__DIR__).'/general/closeDB.php';
+
+header("location: chat_home_patient.php");}
+
+?>
+<?php
 $chat_message_id = $_GET["chat_id"];
 include dirname(__DIR__).'/general/openDB.php';
 
@@ -108,13 +138,13 @@ while($row = $result->fetch_assoc()) {
 ?>
 <br>
 <div class="center">
-    <form action="chat_reply_patient.php" method="post">
+    <form action="" method="post">
     <label for="send_to" style = "position:absolute;left:13%"><b>Reply to:</b></label><br>
     <select name = "send_to" style = "position:absolute;left:13%" required>
         <?php print "<option value='$chat_message_id'>" . $first_name . " " . $last_name . "</option>";?>
     </select><br><br<><br><br><br>
         <textarea name="message" id="message" style = "height:200px;width:1000px;position:absolute;left:13%"></textarea><br />
-        <button class = newbutton type="submit" value="Send">Reply</button>
+        <button class = newbutton type="submit" value="submit" name = "submit">Reply</button>
     </form>
 </div>
 </div>

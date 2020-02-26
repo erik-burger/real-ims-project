@@ -111,7 +111,7 @@
                                             '<li><a href="../general/contact.php">Contact</a></li>'+
                                             '<li><a href="../doctor/doctorprofile.php">Profile</a></li>'+
                                             '<li><a href="../doctor/doctorsearch.php">Patients</a></li>'+
-                                            '<li><a href="../doctor/chat_home_doctor.php">Messages</a></li>'+
+                                            '<li><a href="../general/chat_home.php">Messages</a></li>'+
                                         '</ul>'+
                                         '<ul class="nav navbar-nav navbar-right">'+
                                             '<li><a href="../general/logout.php">Logout</a></li>'+
@@ -143,7 +143,7 @@
                                             '<li class="active"><a href="../general/start_page.php">Home</a></li>'+ 
                                             '<li><a href="../caregiver/caregiver_contact.php">Contact</a></li>'+
                                             '<li><a href="../caregiver/caregiverprofile.php">Profile</a></li>'+
-                                            '<li><a href="../caregiver/chat_home_caregiver.php">Messages</a></li>'+            
+                                            '<li><a href="../general/chat_home.php">Messages</a></li>'+            
                                         '</ul>'+
                                         '<ul class="nav navbar-nav navbar-right">'+
                                             '<li><a href="../general/logout.php">Logout</a></li>'+
