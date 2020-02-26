@@ -15,5 +15,5 @@ if ($share_data == 1) {
     mysqli_query($link,"UPDATE patient SET share_data = 1
     WHERE patient_id = $_SESSION[id]");
 }
-header("location: patientprofile.php");
+header("location: ../general/profile_page.php");
 ?>

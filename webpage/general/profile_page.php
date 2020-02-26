@@ -262,14 +262,14 @@ if (isset($logedin) or isset($user)) {
                 include dirname(__DIR__).'/general/closeDB.php';
                 ?>
 
-                <form action="change_medication.php" class = "medication">
+                <form action="../patient/change_medication.php" class = "medication">
                     <button type = "submit" class = "med_button">Change Medication</button>
                 </form></br>
                 </div>
                 <h1>Allow you data for research</h1>
                     <div class = "container">
                     <a href="../patient/data_share_info.php">More information</a>
-                    <form action="data_share.php", method = "POST">
+                    <form action="../patient/data_share.php", method = "POST">
                         <?php
                         include dirname(__DIR__).'/general/openDB.php';
                         $result = mysqli_query($link,"select share_data from patient where patient_id = $_SESSION[id]")   
