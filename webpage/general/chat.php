@@ -159,7 +159,7 @@ if (isset($logedin) or isset($user)) {
                             $email = mysqli_real_escape_string($link, $email);
                             $chat_message = htmlspecialchars($_POST["sendie"]);
                             $chat_message = mysqli_real_escape_string($link, $chat_message);
-                            $date_time = gmdate('Y-m-d h:i:s');
+                            $date_time = gmdate('Y-m-d h:i:s \G\M\T');
                             $message_status = 0;
 
                             $doctorsql = "select doctor_id from doctor where email = '$email'";
@@ -227,11 +227,11 @@ if (isset($logedin) or isset($user)) {
                             include dirname(__DIR__).'/general/openDB.php';
                             $sql = "select pd.doctor_id as id, d.first_name, d.last_name, d.email from patient_doctor pd
                             join doctor d on d.doctor_id = pd.doctor_id
-                            where pd.patient_id = $_SESSION[id]
+                            where pd.patient_id = $_SESSION[id] and pd.both_accept = 1
                             union
                             select pc.caregiver_id as id, c.first_name, c.last_name, c.email from patient_caregiver pc
                             join caregiver c on c.caregiver_id = pc.caregiver_id
-                            where pc.patient_id = $_SESSION[id]";///two queries for doctor and caregiver I guess
+                            where pc.patient_id = $_SESSION[id] and pc.both_accept = 1";
                             $result = mysqli_query($link, $sql) 
                             or die("Could not issue MySQL query");
 
