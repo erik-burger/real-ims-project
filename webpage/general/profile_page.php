@@ -152,7 +152,7 @@ if (isset($logedin) or isset($user)) {
 
                     ?>
 
-                    <form action="/general/change_info.php" class = "profile">
+                    <form action="../general/change_info.php" class = "profile">
                         <button type = "submit" class = "prof_button">Change Information</button>
                     </form>
                     <form action="../general/change_password.php" class = "profile">
@@ -268,7 +268,7 @@ if (isset($logedin) or isset($user)) {
                 </div>
                 <h1>Allow you data for research</h1>
                     <div class = "container">
-                    <a href="data_share_info.php">More information</a>
+                    <a href="../patient/data_share_info.php">More information</a>
                     <form action="data_share.php", method = "POST">
                         <?php
                         include dirname(__DIR__).'/general/openDB.php';
@@ -367,10 +367,7 @@ if (isset($logedin) or isset($user)) {
                         <input type="number" placeholder="Caregiver ID" name="caregiver_id" >
                         <button type = "submit" class = "doc_button">Connect to Caregiver</button>
                     </form></br>
-                        </div> 
-
-                    
-                
+                        </div>                 
                 </div>
                 </body> 
             </html>
@@ -404,7 +401,7 @@ if (isset($logedin) or isset($user)) {
                                 <ul class="nav navbar-nav">
                                 <li><a href="../general/start_page.php">Home</a></li> 
                                 <li><a href="../general/contact.php">Contact</a></li>
-                                <li class="active"><a href="/general/change_info.php">Profile</a></li>   
+                                <li class="active"><a href="../general/profile_page.php">Profile</a></li>   
                                 <li><a href="../general/chat_home.php">Messages</a></li>           
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
@@ -546,7 +543,7 @@ if (isset($logedin) or isset($user)) {
                             <ul class="nav navbar-nav">
                             <li><a href="../general/start_page.php">Home</a></li> 
                             <li><a href="../general/contact.php">Contact</a></li> 
-                            <li class="active"><a href="/general/change_info.php">Profile</a></li>            
+                            <li class="active"><a href="../general/profile_page.php">Profile</a></li>            
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                             <li><a href="../general/logout.php">Logout</a></li>
