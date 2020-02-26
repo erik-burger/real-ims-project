@@ -405,8 +405,6 @@ switch ($usertype) {
                 break;
             case 'P':
                 ?>
-                
-
                     <?php
                     $verified = 0;
 
