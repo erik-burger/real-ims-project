@@ -69,7 +69,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 <img class="logo" src="../general/logo_small.png" width = 50>
             </div>
             <ul class="nav navbar-nav">
-            <li><a href="doctorstart.php">Home</a></li>
+            <li><a href="../general/start_page.php">Home</a></li>
             <li><a href="../general/contact.php">Contact</a></li>
             <li><a href="doctorprofile.php">Profile</a></li>
             <li class="active"><a href="doctorsearch.php">Patients</a></li>
