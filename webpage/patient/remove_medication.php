@@ -10,7 +10,7 @@ $sql = "delete from patient_medication where patient_id = $_SESSION[id] and medi
 
 if (mysqli_query($link, $sql)) {
     echo "Medication removed successfully";
-    header("location: patientprofile.php");
+    header("location: ../general/profile_page.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);}
 
