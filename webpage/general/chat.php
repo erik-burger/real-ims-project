@@ -127,7 +127,7 @@ if (isset($logedin) or isset($user)) {
 
                             $sql = "select p.patient_id, p.first_name, p.last_name from patient_doctor pd
                             join patient p on p.patient_id = pd.patient_id
-                            where pd.doctor_id = $_SESSION[id]";
+                            where pd.doctor_id = $_SESSION[id] and pd.both_accept = 1";
                             $result = mysqli_query($link, $sql) 
                             or die("Could not issue MySQL query");
 
@@ -320,7 +320,7 @@ if (isset($logedin) or isset($user)) {
 
                             $sql = "select p.patient_id, p.first_name, p.last_name from patient_caregiver pd
                             join patient p on p.patient_id = pd.patient_id
-                            where pd.caregiver_id = $_SESSION[id]";
+                            where pd.caregiver_id = $_SESSION[id] and and pd.both_accept = 1";
                             $result = mysqli_query($link, $sql) 
                             or die("Could not issue MySQL query");
 
