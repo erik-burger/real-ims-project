@@ -1,7 +1,4 @@
-<?php
-// -------- ADD TO THIS FILE -----
-	// RULES FOR THE PASSWORD
-	// JAVASCRIPT INJECTIONS	
+<?php	
 
 //Connect to database
 include dirname(__DIR__).'/general/openDB.php';
@@ -9,10 +6,12 @@ include dirname(__DIR__).'/general/openDB.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 
+$usertype = "D";
+$verified = 0;
 
-$f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
+$f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = $picture ='';
 $errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
-'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '');
+'city' => '', 'country' => '', 'zip' => '', 'email' => '', 'psw' => '', 'picture'=>'');
 
 if(isset($_POST["submit"])){
 			
@@ -133,6 +132,8 @@ if(isset($_POST["submit"])){
 		$errors['psw'] = 'Please repeat your password';
 	}elseif($_POST['psw']!= $_POST['psw_repeat']){
 		$errors['psw'] = "Passwords do not match, pleas try again!";
+	#}elseif($uppercase === 0 || $lowercase === 0 || $number === 0 || strlen($password) < 8){
+	#	$errors['psw'] = "Password should be at least 8 characters in length and should include at least one upper and lower case letter as well as one number.";
 	}elseif(!$uppercase || !$lowercase || !$number || strlen($password) < 8){
 		$errors['psw'] = "Password should be at least 8 characters in length and should include at least one upper and lower case letter as well as one number.";
 	}else{
@@ -142,7 +143,7 @@ if(isset($_POST["submit"])){
 	$verification_hash = md5(rand(0,10000));
 
 
-		if(array_filter($errors)){
+	if(array_filter($errors)){
 	 // Go back to the form
 	} else {	
 				
@@ -150,11 +151,19 @@ if(isset($_POST["submit"])){
 		$psw = password_hash($psw, PASSWORD_DEFAULT);
 	
 	// Inserting into database
-			
-		$sql = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
-		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
 		
-		if (mysqli_query($link, $sql)) {   					
+		$sql_doctor = "INSERT INTO doctor (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash, picture, verified) 
+		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash', '$picture', '$verified')";  
+				
+		if (mysqli_query($link, $sql_doctor)) { 
+			
+			$sql_user_id = "SELECT doctor_id FROM doctor WHERE email = $email";
+			$user_id = mysqli_query($link, $sql_user_id);
+			
+			$sql_users = "INSERT INTO users (usertype, user_id, email, password_hash, verified, verification_hash) 
+			VALUES ('$usertype', '$user_id', '$email', '$password_hash', '$verified', '$verification_hash')" ;
+			
+			if(mysqli_query($link, $sql_users)){ 					
 
 			require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
         	require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
@@ -178,14 +187,17 @@ if(isset($_POST["submit"])){
         	$mail->Subject = "Verify account";
         	$mail->Body = "Thanks for registering an account at trackzheimers!";
         	$mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
-        	$mail -> Body .= "<a href=\"http://localhost:8888/real-ims-project/webpage/patient/verify_patient.php?email=$email&&verification_hash=$verification_hash\">Activate account<p></a><br>";
+        	$mail -> Body .= "<a href=\"http://localhost/real-ims-project/webpage/general/verify.php?email=$email&&verification_hash=$verification_hash&&usertype=$usertype\">Activate account<p></a><br>";
         	$mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
 		
+			
+			
 			if ($mail->send()) {
 				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
             } else {
             	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
             	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	}
         	}
 		} else {  
 			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
@@ -366,9 +378,6 @@ if(isset($_POST["submit"])){
       	<label for="psw_repeat"><b>Repeat Password</b></label>
       	<input type="password" name="psw_repeat">
       	<div class="error"><?php echo $errors['psw']; ?></div><br>
-
-		<div class="picture"><label>Select your profile picture: </label>
-		<input type="file" name="picture" id="picture" accept="image/*" /></div>
 
       	<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 		<input type="submit" name="submit" value="submit" style = "font-size: 14px">    

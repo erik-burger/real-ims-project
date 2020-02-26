@@ -100,7 +100,7 @@ if (isset($logedin) or isset($user)) {
                                 <ul class="nav navbar-nav">
                                 <li class="active"><a href="start_page.php">Home</a></li>
                                 <li><a href="../general/contact.php">Contact</a></li>
-                                <li><a href="../doctor/doctorprofile.php">Profile</a></li>
+                                <li><a href="../general/profile_page.php">Profile</a></li>
                                 <li><a href="../doctor/doctorsearch.php">Patients</a></li>
                                 <li class="active"><a href="chat_home.php">Messages</a></li>
                                 </ul>
@@ -228,7 +228,7 @@ if (isset($logedin) or isset($user)) {
                                                     <ul class="nav navbar-nav">
                                                     <li><a href="start_page.php">Home</a></li> 
                                                     <li><a href="../general/contact.php">Contact</a></li>  
-                                                    <li><a href="../caregiver/caregiverprofile.php">Profile</a></li>
+                                                    <li><a href="../general/profile_page.php">Profile</a></li>
                                                     <li class="active"><a href="chat_home.php">Messages</a></li>            
                                                     </ul>
                                                     <ul class="nav navbar-nav navbar-right">
@@ -274,11 +274,6 @@ if (isset($logedin) or isset($user)) {
                                     }  
                                     ?>
                                     </html>
-                                    <?php
-                                    break;
-                                case 'R':
-                                    ?>
-                                    <!--Code-->
                                     <?php
                                     break;
                             }
