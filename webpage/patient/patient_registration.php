@@ -11,6 +11,10 @@ include dirname(__DIR__).'/general/openDB.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 // Introduce variables 
+
+$usertype = "P";
+$verified = 0;
+
 $f_name = $m_name = $l_name = $ssn = $date_of_birth = $phone = $street = $street_no = $city = $bedroom_floor = '';
 $state_county = $country = $zip = $diagnosis_date = $diagnosis_desc = $education = $email = $psw = $verification_hash ='';
 
@@ -211,14 +215,22 @@ if(isset($_POST["submit"])){
 		$password_hash = password_hash($psw, PASSWORD_DEFAULT);
 	// Inserting into database
 			
-		$sql = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
+		$sql_patient = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
 		street, street_no, city, country, zip, date_of_birth, gender, education, diagnosis_date,
-		diagnosis_description, SSN, phone, state, bedroom_floor) 
+		diagnosis_description, SSN, phone, state, bedroom_floor, verification_hash, verified) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$password_hash', '$street', 
 		'$street_no', '$city', '$country', '$zip', '$date_of_birth', 
-		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', '$bedroom_floor')";  
+		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', '$bedroom_floor', '$verification_hash', '$verified')";  
 		
-		if (mysqli_query($link, $sql)) {   					
+		if (mysqli_query($link, $sql_patient)) {   
+			
+			$sql_user_id = "SELECT patient_id FROM patient WHERE email = $email";
+			$user_id = mysqli_query($link, $sql_user_id);
+			
+			$sql_users = "INSERT INTO users (usertype, user_id, email, password_hash, verified, verification_hash) 
+			VALUES ('$usertype', '$user_id', '$email', '$password_hash', '$verified', '$verification_hash')" ;
+			
+			if(mysqli_query($link, $sql_users)){ 					
 
         	require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
         	require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
@@ -242,7 +254,7 @@ if(isset($_POST["submit"])){
         	$mail->Subject = "Verify account";
         	$mail->Body = "Thanks for registering an account at trackzheimers!";
         	$mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
-        	$mail -> Body .= "<a href=\"http://localhost:8888/real-ims-project/webpage/patient/verify_patient.php?email=$email&&verification_hash=$verification_hash\">Activate account<p></a><br>";
+        	$mail -> Body .= "<a href=\"http://localhost/real-ims-project/webpage/general/verify.php?email=$email&&verification_hash=$verification_hash&&usertype=$usertype\">Activate account<p></a><br>";
         	$mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
 		
 			if ($mail->send()) {
@@ -250,6 +262,7 @@ if(isset($_POST["submit"])){
             } else {
             	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
             	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	}
         	}
 		} else {  
 			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
