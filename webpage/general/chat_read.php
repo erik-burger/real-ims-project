@@ -76,11 +76,10 @@ if (isset($logedin) or isset($user)) {
                     if(isset($_POST["submit"])){
                         include dirname(__DIR__).'/general/openDB.php';
 
-                        $from_user_id = $_SESSION["id"];
-                        $from_user_type = $_SESSION["user"];
-                        $to_user_id = htmlspecialchars($_POST["send_to"]);
-                        $to_user_id = mysqli_real_escape_string($link, $to_user_id);
-                        $to_user_type = "P";
+                        $from_user_id_reply = $_SESSION["id"];
+                        $from_user_type_reply = $_SESSION["user"];
+                        $to_user_id_reply = $from_user_id;
+                        $to_user_type_reply = "P";
                         $chat_message = htmlspecialchars($_POST["message"]);
                         $chat_message = mysqli_real_escape_string($link, $chat_message);
                         $date_time = gmdate('Y-m-d h:i:s \G\M\T');
@@ -88,7 +87,7 @@ if (isset($logedin) or isset($user)) {
 
                         $sendchat = mysqli_query($link, "insert into chat 
                         (from_user_id, from_user_type, to_user_id, to_user_type, chat_message, date_time, message_status) values 
-                        ($from_user_id, '$from_user_type', $to_user_id, '$to_user_type', '$chat_message', '$date_time', '$message_status')")
+                        ($from_user_id_reply, '$from_user_type_reply', $to_user_id_reply, '$to_user_type_reply', '$chat_message', '$date_time', '$message_status')")
                         or die("Could not issue MySQL query");
 
                         include dirname(__DIR__).'/general/closeDB.php';
@@ -188,36 +187,6 @@ if (isset($logedin) or isset($user)) {
                             </nav>
                         <body><br><br>
                         <?php
-                        if(isset($_POST["submit"])){
-                        include dirname(__DIR__).'/general/openDB.php';
-
-                        $from_user_id = $_SESSION["id"];
-                        $from_user_type = $_SESSION["user"];
-                        $previous_chat_id = htmlspecialchars($_POST["send_to"]);
-                        $previous_chat_id = mysqli_real_escape_string($link, $previous_chat_id);
-                        $chat_message = htmlspecialchars($_POST["message"]);
-                        $chat_message = mysqli_real_escape_string($link, $chat_message);
-                        $date_time = gmdate('Y-m-d h:i:s \G\M\T');
-                        $message_status = 0;
-
-                        $sql = "select from_user_id, from_user_type from chat where chat_message_id = $previous_chat_id";
-                        $result = mysqli_query($link, $sql)
-                        or die("Could not issue MySQL query");
-                        while($row = $result->fetch_assoc()) {
-                            $to_user_id = $row["from_user_id"];
-                            $to_user_type = $row["from_user_type"];
-                        }
-                        $sendchat = mysqli_query($link, "insert into chat 
-                        (from_user_id, from_user_type, to_user_id, to_user_type, chat_message, date_time, message_status) values 
-                        ($from_user_id, '$from_user_type', $to_user_id, '$to_user_type', '$chat_message', '$date_time', '$message_status')")
-                        or die("Could not issue MySQL query");
-
-                        include dirname(__DIR__).'/general/closeDB.php';
-
-                        header("location: chat_home.php");}
-
-                        ?>
-                        <?php
                         $chat_message_id = $_GET["chat_id"];
                         include dirname(__DIR__).'/general/openDB.php';
 
@@ -241,13 +210,37 @@ if (isset($logedin) or isset($user)) {
                         include dirname(__DIR__).'/general/closeDB.php';
 
                         while($row = $result->fetch_assoc()) {
+                            $from_user_id = $row["from_user_id"];
                             $first_name = $row["first_name"];
                             $last_name = $row["last_name"];
                             echo "<label style = 'position:absolute;left:13%'><b>From:</b></label><br><p style = 'position:absolute;left:13%'>" . $first_name . " " . $last_name . "</p><br><br>
                             <label style = 'position:absolute;left:13%'><b>Date and Time:</b></label><br><p style = 'position:absolute;left:13%'> ". $row["date_time"] . "</p><br><br>
                             <label style = 'position:absolute;left:13%'><b>Message: </b></label><br><p style = 'position:absolute;left:13%'>". $row["chat_message"] . "</p><br>";
                         }
+                        
+                        if(isset($_POST["submit"])){
+                        include dirname(__DIR__).'/general/openDB.php';
+
+                        $from_user_id_reply = $_SESSION["id"];
+                        $from_user_type_reply = $_SESSION["user"];
+                        $to_user_id_reply = $from_user_id;
+                        $to_user_type_reply = $from_user_type;
+                        $chat_message = htmlspecialchars($_POST["message"]);
+                        $chat_message = mysqli_real_escape_string($link, $chat_message);
+                        $date_time = gmdate('Y-m-d h:i:s \G\M\T');
+                        $message_status = 0;
+
+                        $sendchat = mysqli_query($link, "insert into chat 
+                        (from_user_id, from_user_type, to_user_id, to_user_type, chat_message, date_time, message_status) values 
+                        ($from_user_id_reply, '$from_user_type_reply', $to_user_id_reply, '$to_user_type_reply', '$chat_message', '$date_time', '$message_status')")
+                        or die("Could not issue MySQL query");
+
+                        include dirname(__DIR__).'/general/closeDB.php';
+
+                        header("location: chat_home.php");}
+
                         ?>
+                       
                         <br>
                         <div class="center">
                             <form action="" method="post">

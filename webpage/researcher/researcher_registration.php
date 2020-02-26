@@ -10,6 +10,7 @@ include dirname(__DIR__).'/general/openDB.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 
+$usertype = "R";
 
 $f_name = $m_name = $l_name = $phone = $street = $street_no = $city = $country = $zip = $email = $psw = $verification_hash = '';
 $errors = array('f_name' =>'', 'm_name' => '', 'l_name'=>'', 'phone'=>'', 'street' => '', 'street_no' => '', 
@@ -142,14 +143,22 @@ if(isset($_POST["submit"])){
 	
 	// Inserting into database
 			
-		$sql = "INSERT INTO researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
+		$sql_researcher = "INSERT INTO researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
-		
-		if (mysqli_query($link, $sql)) {   					
+				
+		if (mysqli_query($link, $sql_researcher)) { 
+			
+			$sql_user_id = "SELECT researcher_id FROM researcher WHERE email = $email";
+			$user_id = mysqli_query($link, $sql_user_id);
+			
+			$sql_users = "INSERT INTO users (usertype, user_id, email, password_hash, verified, verification_hash) 
+			VALUES ('$usertype', '$user_id', '$email', '$password_hash', '$verified', '$verification_hash')" ;
+			
+			if(mysqli_query($link, $sql_users)){ 					
 
-        	require_once("../PHPMailer/PHPMailer.php");
-        	require_once("../PHPMailer/SMTP.php");
-        	require_once("../PHPMailer/Exception.php");
+			require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
+        	require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
+        	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
 						
         	$mail = new PHPMailer();
 			
@@ -169,14 +178,17 @@ if(isset($_POST["submit"])){
         	$mail->Subject = "Verify account";
         	$mail->Body = "Thanks for registering an account at trackzheimers!";
         	$mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
-        	$mail -> Body .= "<a href=\"http://localhost:8888/real-ims-project/webpage/researcher/verify_researcher.php?email=$email&&verification_hash=$verification_hash\">Activate account<p></a><br>";
+        	$mail -> Body .= "<a href=\"http://localhost/real-ims-project/webpage/general/verify.php?email=$email&&verification_hash=$verification_hash&&usertype=$usertype\">Activate account<p></a><br>";
         	$mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
 		
+			
+			
 			if ($mail->send()) {
 				$sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
             } else {
             	$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
             	//echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        	}
         	}
 		} else {  
 			$fail_message = "Something went wrong! Please contact us on trackzheimers@gemail.com";
