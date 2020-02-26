@@ -113,7 +113,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
                 <li><a href="../general/start_page.php">Home</a></li> 
                 <li><a href="../general/contact.php">Contact</a></li>
                 <li class="active"><a href="caregiverprofile.php">Profile</a></li>   
-                <li><a href="chat_home_caregiver.php">Messages</a></li>           
+                <li><a href="../general/chat_home.php">Messages</a></li>           
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>

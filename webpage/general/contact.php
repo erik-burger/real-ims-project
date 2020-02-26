@@ -111,7 +111,7 @@
                                             '<li><a href="../general/contact.php">Contact</a></li>'+
                                             '<li><a href="../doctor/doctorprofile.php">Profile</a></li>'+
                                             '<li><a href="../doctor/doctorsearch.php">Patients</a></li>'+
-                                            '<li><a href="../doctor/chat_home_doctor.php">Messages</a></li>'+
+                                            '<li><a href="../general/chat_home.php">Messages</a></li>'+
                                         '</ul>'+
                                         '<ul class="nav navbar-nav navbar-right">'+
                                             '<li><a href="../general/logout.php">Logout</a></li>'+
@@ -145,7 +145,7 @@
                                             '<li class="active"><a href="../general/start_page.php">Home</a></li>'+ 
                                             '<li><a href="../caregiver/caregiver_contact.php">Contact</a></li>'+
                                             '<li><a href="../caregiver/caregiverprofile.php">Profile</a></li>'+
-                                            '<li><a href="../caregiver/chat_home_caregiver.php">Messages</a></li>'+            
+                                            '<li><a href="../general/chat_home.php">Messages</a></li>'+            
                                         '</ul>'+
                                         '<ul class="nav navbar-nav navbar-right">'+
                                             '<li><a href="../general/logout.php">Logout</a></li>'+
@@ -216,7 +216,7 @@
                     <label for="subject"><b>Subject</b></label>
                     <input name="subject" class = "email" type="text" placeholder="Enter subject" required><br>  
                     <label for="message"><b>Message</b></label>
-                    <textarea name="message" id = "message" cols=auto rows=auto placeholder="Enter message here..."></textarea>
+                    <textarea name="message" id = "message" cols=auto rows=auto placeholder="Enter message here..." required></textarea>
                     <button class = "button" type = "submit" name = "submit">Send</button>
                 </form>  
                 </div>
