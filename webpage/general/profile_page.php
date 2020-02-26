@@ -155,7 +155,7 @@ if (isset($logedin) or isset($user)) {
                     <form action="/general/change_info.php" class = "profile">
                         <button type = "submit" class = "prof_button">Change Information</button>
                     </form>
-                    <form action="/general/change_password.php" class = "profile">
+                    <form action="../general/change_password.php" class = "profile">
                         <button type = "submit" class = "pass_button">Change Password</button>
                     </form></br>
                     </div>
@@ -242,7 +242,7 @@ if (isset($logedin) or isset($user)) {
                     <form action="../general/change_info.php" class = "profile">
                         <button type = "submit" class = "prof_button">Change Information</button>
                     </form>
-                    <form action="/general/change_password.php" class = "profile">
+                    <form action="../general/change_password.php" class = "profile">
                         <button type = "submit" class = "pass_button">Change Password</button>
                     </form></br>
                     <b>Medication</b></br>
@@ -457,7 +457,7 @@ if (isset($logedin) or isset($user)) {
                     <form action="../general/change_info.php" class = "profile">
                         <button type = "submit" class = "prof_button">Change Information</button>
                     </form>
-                    <form action="/general/change_password.php" class = "profile">
+                    <form action="../general/change_password.php" class = "profile">
                         <button type = "submit" class = "pass_button">Change Password</button>
                     </form></br>
                     </div>
@@ -592,7 +592,7 @@ if (isset($logedin) or isset($user)) {
                 <form action="../general/change_info.php" class = "profile">
                     <button type = "submit" class = "prof_button">Change Information</button>
                 </form>
-                <form action="/general/change_password.php" class = "profile">
+                <form action="../general/change_password.php" class = "profile">
                     <button type = "submit" class = "pass_button">Change Password</button>
                 </form></br>
                 </div>
