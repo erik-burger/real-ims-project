@@ -111,7 +111,7 @@
                         from patient 
                         where patient_id = '$id'")
                         or 
-        die("Could not issue MySQL query");   
+                        die("Could not issue MySQL query");   
                      
                         while ($row = $result->fetch_assoc()) {
                             $first_name = $row["first_name"];
@@ -135,7 +135,7 @@
                         from caregiver 
                         where caregiver_id = '$id'")
                         or 
-        die("Could not issue MySQL query");
+                        die("Could not issue MySQL query");
                      
                         while ($row = $result->fetch_assoc()) {
                             $first_name = $row["first_name"];
@@ -159,7 +159,7 @@
                         from researcher 
                         where researcher_id = '$id'")
                         or 
-        die("Could not issue MySQL query");
+                        die("Could not issue MySQL query");
 
                         while ($row = $result->fetch_assoc()) {
                             $first_name = $row["first_name"];
