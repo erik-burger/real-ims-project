@@ -107,8 +107,8 @@ if (isset($logedin) or isset($user)) {
             <ul class="nav navbar-nav">
             <li><a href="../general/start_page.php">Home</a></li>
             <li><a href="../general/contact.php">Contact</a></li>
-            <li><a href="doctorprofile.php">Profile</a></li>
-            <li class="active"><a href="doctorsearch.php">Patients</a></li>
+            <li><a href="../general/profile_page.php">Profile</a></li>
+            <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
             <li><a href="../general/chat_home.php">Messages</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -155,7 +155,7 @@ if (isset($logedin) or isset($user)) {
     <form action="/general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
-    <form action="change_password_doctor.php" class = "profile">
+    <form action="/general/change_password.php" class = "profile">
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
     </div>
@@ -243,7 +243,7 @@ if (isset($logedin) or isset($user)) {
     <form action="/general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
-    <form action="change_password_patient.php" class = "profile">
+    <form action="/general/change_password.php" class = "profile">
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
     <b>Medication</b></br>
@@ -405,7 +405,7 @@ include dirname(__DIR__).'/general/closeDB.php';
                 <ul class="nav navbar-nav">
                 <li><a href="../general/start_page.php">Home</a></li> 
                 <li><a href="../general/contact.php">Contact</a></li>
-                <li class="active"><a href="caregiverprofile.php">Profile</a></li>   
+                <li class="active"><a href="/general/change_info.php">Profile</a></li>   
                 <li><a href="../general/chat_home.php">Messages</a></li>           
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -458,7 +458,7 @@ include dirname(__DIR__).'/general/closeDB.php';
     <form action="/general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
-    <form action="change_password_caregiver.php" class = "profile">
+    <form action="/general/change_password.php" class = "profile">
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
     </div>
@@ -547,7 +547,7 @@ include dirname(__DIR__).'/general/closeDB.php';
                 <ul class="nav navbar-nav">
                 <li><a href="../general/start_page.php">Home</a></li> 
                 <li><a href="../general/contact.php">Contact</a></li> 
-                <li class="active"><a href="researcherprofile.php">Profile</a></li>            
+                <li class="active"><a href="/general/change_info.php">Profile</a></li>            
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <li><a href="../general/logout.php">Logout</a></li>
@@ -593,7 +593,7 @@ include dirname(__DIR__).'/general/closeDB.php';
     <form action="/general/change_info.php" class = "profile">
         <button type = "submit" class = "prof_button">Change Information</button>
     </form>
-    <form action="change_password_researcher.php" class = "profile">
+    <form action="/general/change_password.php" class = "profile">
         <button type = "submit" class = "pass_button">Change Password</button>
     </form></br>
     </div>

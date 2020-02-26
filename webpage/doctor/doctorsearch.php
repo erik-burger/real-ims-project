@@ -144,7 +144,7 @@ table, th, td {
             <ul class="nav navbar-nav">
             <li><a href="../general/start_page.php">Home</a></li>
             <li><a href="../general/contact.php">Contact</a></li>
-            <li><a href="doctorprofile.php">Profile</a></li>
+            <li><a href="../general/profile_page.php">Profile</a></li>
             <li class="active"><a href="doctorsearch.php">Patients</a></li>
             <li><a href="../general/chat_home.php">Messages</a></li>
             </ul>
