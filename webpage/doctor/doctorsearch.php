@@ -164,7 +164,7 @@ table, th, td {
   <button type="submit" class = "button" name = "submit"><i class="fa fa-search"></i></button>
 </form>
 
-<form id = "form_connect" class = sideBySide action="connect_to_patient.php" method = "post" style="margin:auto;">
+<form id = "form_connect" class = sideBySide action="../general/connect.php" method = "post" style="margin:auto;">
   <input type="number" placeholder="Patient ID" name="patient_id" >
   <button type="submit" class = "button" name = "connect">Connect</button>
 </form>
