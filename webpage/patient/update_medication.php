@@ -18,7 +18,7 @@ values ($_SESSION[id], $medication_id, '$dose', '$medication_interval')";
 
 if (mysqli_query($link, $sql)) {
     echo "New medication added successfully";
-    header("location: patientprofile.php");
+    header("location: ../general/profile_page.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);}
 
