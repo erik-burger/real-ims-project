@@ -1,5 +1,5 @@
 <html>
-<style>
+<style> 
                             *{
                             box-sizing: border-box;
                             }
@@ -242,11 +242,8 @@ switch ($usertype) {
                                 
                                 while ($row = $result->fetch_assoc()) {
                                     $user_id = $row["user_id"];		
-
-                            
                                 }
 
-                                
                                 $sql3 = "INSERT INTO doctor (doctor_id, first_name, middle_name, last_name, email, 
                                 password_hash, street, street_no, city, country, zip, phone, verification_hash) 
                                 VALUES ('$user_id', '$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', 
@@ -953,9 +950,13 @@ switch ($usertype) {
                             if (mysqli_query($link, $sql_researcher)) { 
                                 
                                 $sql_user_id = "SELECT researcher_id FROM researcher WHERE email = $email";
-                                $user_id = mysqli_query($link, $sql_user_id);
+                                $result = mysqli_query($link, $sql_user_id);
                                 
-                                $sql_users = "INSERT INTO users (usertype, user_id, email, password_hash, verified, verification_hash) 
+                                while ($row = $result->fetch_assoc()) {
+                                    $user_id = $row["user_id"];		
+                                }
+
+                                $sql_users = "INSERT INTO users (usertype, $user_id, email, password_hash, verified, verification_hash) 
                                 VALUES ('$usertype', '$user_id', '$email', '$password_hash', '$verified', '$verification_hash')" ;
                                 
                                 if(mysqli_query($link, $sql_users)){ 					

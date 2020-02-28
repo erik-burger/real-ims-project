@@ -79,7 +79,7 @@
             input[type=number] {
             -moz-appearance:textfield;
             }
-        </style>
+</style>
 
 <?php
 session_start();
@@ -90,7 +90,7 @@ if (isset($logedin) or isset($user)) {
         switch ($user) {
             case 'D':
                 ?>
-            <html>
+                <html>
                     <meta http-equiv="refresh" content="3600;url=../general/logout.php" />
                     <head>
                         <meta charset="UTF-8">
@@ -162,7 +162,7 @@ if (isset($logedin) or isset($user)) {
                     </div>
                     </div>
                     </body>
-            </html>
+                </html>
                 <?php
                 break;
             case 'P':
@@ -325,7 +325,7 @@ if (isset($logedin) or isset($user)) {
 
                     ?>
 
-                    <form action="connect_to_doctor.php", method = "POST">
+                    <form action="../general/connect.php?con=D", method = "POST">
                         <input type="number" placeholder="Doctor ID" name="doctor_id" >
                         <button type = "submit" class = "doc_button">Connect to Doctor</button>
                     </form></br>
@@ -363,7 +363,7 @@ if (isset($logedin) or isset($user)) {
 
                     ?>
 
-                    <form action="patient_connect_to_caregiver.php", method = "POST">
+                    <form action="../general/connect.php?con=C", method = "POST">
                         <input type="number" placeholder="Caregiver ID" name="caregiver_id" >
                         <button type = "submit" class = "doc_button">Connect to Caregiver</button>
                     </form></br>
@@ -492,7 +492,7 @@ if (isset($logedin) or isset($user)) {
                         
                         ?>
 
-                    <form action="caregiver_connect_to_patient.php", method = "POST">   
+                    <form action="../general/connect.php", method = "POST">   
                         <input type="number" placeholder="Patient ID" name="patient_id" >
                         <button type = "submit" class = "patient_button">Connect to Patient</button>
                     </form></br>
