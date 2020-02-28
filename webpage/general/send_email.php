@@ -8,8 +8,15 @@ use PHPMailer\PHPMailer\PHPMailer;
 }
 */
 
-    if(isset($_POST['submit'])){ 
-
+	if(isset($_POST['submit'])){ 
+        $email = $_POST['email']; 
+        $email = htmlspecialchars($email); 
+		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			echo '<script>alert("Email is not valid! Please enter a valid email adress"); window.location.href = "contact.php";</script>'; 
+            $_POST = array_filter($_POST);
+		}else{
             require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
         	require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
         	require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
@@ -19,9 +26,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 
             $message = $_POST["message"];
             $message = htmlspecialchars($message);
-
-            $email = $_POST['email']; 
-            $email = htmlspecialchars($email); 
 
             $body ='<html>
                 <div class="background" style="background-color:#eee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;" >
@@ -60,5 +64,7 @@ use PHPMailer\PHPMailer\PHPMailer;
                 echo '<script>alert("Something is wrong!");</script>'; 
                 $_POST = array_filter($_POST);
         	}
-        }   
+        }
+    }
+      
 ?>
