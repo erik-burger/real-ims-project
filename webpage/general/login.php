@@ -168,7 +168,7 @@ if(!array_filter($error)){
             <div class="container">
               <span class="psw">Forgot <a href="forgotPassword.php">password?</a></span>
             </div>
-          </form>    
+		  </form> 
     </body>
 </html>
 

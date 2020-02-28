@@ -325,7 +325,7 @@ if (isset($logedin) or isset($user)) {
 
                     ?>
 
-                    <form action="../patient/connect_to_doctor.php", method = "POST">
+                    <form action="connect_to_doctor.php", method = "POST">
                         <input type="number" placeholder="Doctor ID" name="doctor_id" >
                         <button type = "submit" class = "doc_button">Connect to Doctor</button>
                     </form></br>
