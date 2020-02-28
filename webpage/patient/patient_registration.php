@@ -213,14 +213,17 @@ if(isset($_POST["submit"])){
 
 	// Hashing password
 		$password_hash = password_hash($psw, PASSWORD_DEFAULT);
+	
+	// Create last reminder value
+		$last_reminder = date('Y-m-d');
 	// Inserting into database
 			
 		$sql_patient = "INSERT INTO patient (first_name, middle_name, last_name, email, password_hash, 
 		street, street_no, city, country, zip, date_of_birth, gender, education, diagnosis_date,
-		diagnosis_description, SSN, phone, state, bedroom_floor, verification_hash, verified) 
+		diagnosis_description, SSN, phone, state, bedroom_floor, verification_hash, verified, last_reminder) 
 		VALUES ('$f_name', '$m_name', '$l_name', '$email', '$password_hash', '$street', 
 		'$street_no', '$city', '$country', '$zip', '$date_of_birth', 
-		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', '$bedroom_floor', '$verification_hash', '$verified')";  
+		'$gender', '$education', '$diagnosis_date', '$diagnosis_desc', '$ssn', '$phone', '$state_county', '$bedroom_floor', '$verification_hash', '$verified', '$last_reminder')";  
 		
 		if (mysqli_query($link, $sql_patient)) {   
 			
