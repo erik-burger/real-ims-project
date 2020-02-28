@@ -72,35 +72,10 @@ if (isset($logedin) or isset($user)) {
                         }
                     } 
                     ?>
-                    <?php
-                    if(isset($_POST["submit"])){
-                        include dirname(__DIR__).'/general/openDB.php';
-
-                        $from_user_id_reply = $_SESSION["id"];
-                        $from_user_type_reply = $_SESSION["user"];
-                        $to_user_id_reply = $from_user_id;
-                        $to_user_type_reply = "P";
-                        $chat_message = htmlspecialchars($_POST["message"]);
-                        $chat_message = mysqli_real_escape_string($link, $chat_message);
-                        $date_time = gmdate('Y-m-d h:i:s \G\M\T');
-                        $message_status = 0;
-
-                        $sendchat = mysqli_query($link, "insert into chat 
-                        (from_user_id, from_user_type, to_user_id, to_user_type, chat_message, date_time, message_status) values 
-                        ($from_user_id_reply, '$from_user_type_reply', $to_user_id_reply, '$to_user_type_reply', '$chat_message', '$date_time', '$message_status')")
-                        or die("Could not issue MySQL query");
-
-                        include dirname(__DIR__).'/general/closeDB.php';
-
-                        header("location: chat_home.php");
-                    }
-                    ?>
-
                     <html>
-                    <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1">
-                            <link rel="stylesheet" href="top_menu_style.css">
-                            <link href="IMS_Style.css" rel="stylesheet">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <link rel="stylesheet" href="top_menu_style.css">
+                    <link href="IMS_Style.css" rel="stylesheet">
                         <body>
                         <nav class="navbar navbar-inverse">
                             <div class="container-fluid">
@@ -120,7 +95,7 @@ if (isset($logedin) or isset($user)) {
                             </div>
                         </nav>
                         <br><br>
-                    <?php
+                        <?php
                     $chat_message_id = $_GET["chat_id"];
                     include dirname(__DIR__).'/general/openDB.php';
 
@@ -157,6 +132,28 @@ if (isset($logedin) or isset($user)) {
                     </div>
                     </body>
                     </html>
+                    <?php
+                    if(isset($_POST["submit"])){
+                        include dirname(__DIR__).'/general/openDB.php';
+
+                        $from_user_id_reply = $_SESSION["id"];
+                        $from_user_type_reply = $_SESSION["user"];
+                        $to_user_id_reply = $from_user_id;
+                        $to_user_type_reply = "P";
+                        $chat_message = htmlspecialchars($_POST["message"]);
+                        $chat_message = mysqli_real_escape_string($link, $chat_message);
+                        $date_time = gmdate('Y-m-d h:i:s \G\M\T');
+                        $message_status = 0;
+
+                        $sendchat = mysqli_query($link, "insert into chat 
+                        (from_user_id, from_user_type, to_user_id, to_user_type, chat_message, date_time, message_status) values 
+                        ($from_user_id_reply, '$from_user_type_reply', $to_user_id_reply, '$to_user_type_reply', '$chat_message', '$date_time', '$message_status')")
+                        or die("Could not issue MySQL query");
+
+                        include dirname(__DIR__).'/general/closeDB.php';
+
+                        header("location: chat_home.php");
+                    }?>
                 <?php
                 break;
             case 'P':

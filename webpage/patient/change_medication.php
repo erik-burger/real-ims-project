@@ -116,7 +116,7 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
         $removesql = "select m.medication_name, pm.medication_id, pm.dose, pm.medication_interval
           from patient_medication pm
           join medication m on pm.medication_id = m.medication_id
-          where pm.patient_id = 4";
+          where pm.patient_id = $_SESSION[id]";
         $removeresult = mysqli_query($link, $removesql) 
         or die("Could not issue MySQL query");
         while ($row = mysqli_fetch_assoc($removeresult)) {

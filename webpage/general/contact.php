@@ -102,7 +102,7 @@
                         var loged_in = <?php echo json_encode($_SESSION["loggedin"]);?>;
                         var user = <?php echo json_encode($_SESSION["user"]);?>;
                         if (loged_in !== "undefined" && user !== "undefined") {
-                            if (loged_in == 1 ) {
+                            if (loged_in == true ) {
                                 switch(user){
                                     case "D":
                                         document.write(

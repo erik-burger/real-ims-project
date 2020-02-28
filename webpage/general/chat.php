@@ -263,31 +263,7 @@ if (isset($logedin) or isset($user)) {
                         }
                     } 
                     ?>
-                    <?php
-                    if(isset($_POST["submit"])){
-                    include dirname(__DIR__).'/general/openDB.php';
-
-                    $from_user_id = $_SESSION["id"];
-                    $from_user_type = $_SESSION["user"];
-                    $to_user_id = htmlspecialchars($_POST["send_to"]);
-                    $to_user_id = mysqli_real_escape_string($link, $to_user_id);
-                    $to_user_type = "P";
-                    $chat_message = htmlspecialchars($_POST["sendie"]);
-                    $chat_message = mysqli_real_escape_string($link, $chat_message);
-                    $date_time = gmdate('Y-m-d h:i:s \G\M\T');
-                    $message_status = 0;
-
-                    $sendchat = mysqli_query($link, "insert into chat 
-                    (from_user_id, from_user_type, to_user_id, to_user_type, chat_message, date_time, message_status) values 
-                    ($from_user_id, '$from_user_type', $to_user_id, '$to_user_type', '$chat_message', '$date_time', '$message_status')")
-                    or die("Could not issue MySQL query");
-
-                    include dirname(__DIR__).'/general/closeDB.php';
-
-                    header("location: chat_home.php");
-                    }
-                    ?>
-
+                    
                     <html>
                     <meta charset="UTF-utf-8">
                         <meta name="description" content="Statistics page for patients">
@@ -320,7 +296,7 @@ if (isset($logedin) or isset($user)) {
 
                             $sql = "select p.patient_id, p.first_name, p.last_name from patient_caregiver pd
                             join patient p on p.patient_id = pd.patient_id
-                            where pd.caregiver_id = $_SESSION[id] and and pd.both_accept = 1";
+                            where pd.caregiver_id = $_SESSION[id] and pd.both_accept = 1";
                             $result = mysqli_query($link, $sql) 
                             or die("Could not issue MySQL query");
 
@@ -337,6 +313,30 @@ if (isset($logedin) or isset($user)) {
                             </div>
                     </form>        
                     </html>
+                    <?php
+                    if(isset($_POST["submit"])){
+                    include dirname(__DIR__).'/general/openDB.php';
+
+                    $from_user_id = $_SESSION["id"];
+                    $from_user_type = $_SESSION["user"];
+                    $to_user_id = htmlspecialchars($_POST["send_to"]);
+                    $to_user_id = mysqli_real_escape_string($link, $to_user_id);
+                    $to_user_type = "P";
+                    $chat_message = htmlspecialchars($_POST["sendie"]);
+                    $chat_message = mysqli_real_escape_string($link, $chat_message);
+                    $date_time = gmdate('Y-m-d h:i:s \G\M\T');
+                    $message_status = 0;
+
+                    $sendchat = mysqli_query($link, "insert into chat 
+                    (from_user_id, from_user_type, to_user_id, to_user_type, chat_message, date_time, message_status) values 
+                    ($from_user_id, '$from_user_type', $to_user_id, '$to_user_type', '$chat_message', '$date_time', '$message_status')")
+                    or die("Could not issue MySQL query");
+
+                    include dirname(__DIR__).'/general/closeDB.php';
+
+                    header("location: chat_home.php");
+                    }
+                    ?>
                 <?php
                 break;
                 case 'R':
