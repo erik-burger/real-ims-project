@@ -168,7 +168,7 @@
                                         '<a href="../general/register.php?user=C">Caregiver</a>'+
                                         '</div>');
                         }
-                    }else{
+                    } else{
                             //not logged in user
                             document.write(
                                 '</div>'+  

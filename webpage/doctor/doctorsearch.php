@@ -168,6 +168,11 @@ table, th, td {
   <input type="number" placeholder="Patient ID" name="patient_id" >
   <button type="submit" class = "button" name = "connect">Connect</button>
 </form>
+
+<form id = "form_connect" class = sideBySide action="../general/disconnect.php" method = "post" onsubmit="return confirm('Are you sure you want to disconnect from this patient');" style="margin:auto;">
+  <input type="number" placeholder="Patient ID" name="patient_id" >
+  <button type="submit" class = "button" name = "connect">Disconnect</button>
+</form>
 </div>
 
 <?php 
@@ -241,4 +246,12 @@ table, th, td {
 </div>
 </div>
 </body>
+  <script>
+    function delete_confirmation(link){
+        var r = confirm("Are you sure you want to delete this patient");
+        if (r == true){
+            window.location.replace(link);
+        }
+    }
+  </script>
 </html>
