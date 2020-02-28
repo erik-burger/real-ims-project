@@ -2,11 +2,12 @@
 <?php
 session_start();
 /*Restrict access for other users or not logged*/ 
-if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
-    if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
-    echo "<script>window.location.href = '../general/login.php';</script>";
-    }
+if (!isset($_SESSION["user"], $_SESSION["loggedin"])) {
+  echo "<script>window.location.href = '../general/login.php';</script>";
 } 
+if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user is a patient -> logout
+  echo "<script>window.location.href = '../general/login.php';</script>";
+}
 ?>
 <html>
 
@@ -68,12 +69,27 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
 			margin-left:auto;
 			align: center;
 		}
-  		
-    	.error {
-    		color: #FF0000;
-    	}
+    
+    .error {
+      color: #FF0000;
+    }
+    ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
     </style>
 <body>
+  <div class="navbar">
+    <div class="navbar-header">
+      <img class="logo" src="../general/logo_small.png" width = 50> 
+      <ul class="nav navbar-nav">
+      <a href="../general/profile_page.php">Home</a>        
+      </ul>
+    </div>  
+  </div>
+
+
     <h1>Change Medication Information</h1>    
       
     <form action="update_medication.php" method="POST" id = "meds">

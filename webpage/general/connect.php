@@ -329,7 +329,6 @@ function sendEmail($from_f_name, $from_l_name, $from_id, $to_email){
     $mail->addAddress($to_email);
     $mail->Subject = $subject;
     $mail->Body = $body;
-    echo "hej!"; 
     if ($mail->send()) {
         $_POST = array_filter($_POST);
     } else { 

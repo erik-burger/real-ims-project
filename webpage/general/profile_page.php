@@ -79,6 +79,9 @@
             input[type=number] {
             -moz-appearance:textfield;
             }
+            table tr {
+                text-align: center;
+            }
 </style>
 
 <?php
@@ -460,7 +463,7 @@ if (isset($logedin) or isset($user)) {
                     </div>
                     </div>
 
-                    <div class = "column">
+                    <div class = "column" style="text-align: center;" >
                         <h1>Your Connected To</h1>
                         <?php
                         include dirname(__DIR__).'/general/openDB.php';
@@ -472,7 +475,7 @@ if (isset($logedin) or isset($user)) {
                         or 
                         die("Could not issue MySQL query"); 
                     
-                        echo "<table style='width:70%'>
+                        echo "<table align='center' style='width:80%;'>
                         <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -491,11 +494,14 @@ if (isset($logedin) or isset($user)) {
                         include dirname(__DIR__).'/general/closeDB.php';   
                         
                         ?>
-
                     <form action="../general/connect.php", method = "POST">   
                         <input type="number" placeholder="Patient ID" name="patient_id" >
                         <button type = "submit" class = "patient_button">Connect to Patient</button>
-                    </form></br>
+                    </form>
+                    <form action="../general/disconnect.php", method = "POST", onsubmit="return confirm('Are you sure you want to disconnect from this patient');">   
+                        <input type="number" placeholder="Patient ID" name="patient_id" >
+                        <button type = "submit" class = "patient_button">Disconnect Patient</button>
+                    </form>
                     </div>
                     </div> 
                     </body>
