@@ -60,10 +60,13 @@ if(!array_filter($error)){
 				or die("Could not issue doctor session MySQL query"); //get the doctor id from unique email
 				while ($row = $result->fetch_assoc()) {
 					$_SESSION["id"] = $row["user_id"];
-					$_SESSION["user"] = $row["usertype"]; //for automatic logout if wrong user type acceses a page
+					$_SESSION["user"] = $row["usertype"]; //for automatic logout if wrong user type acceses a page	
 				}
+				include dirname(__DIR__).'/general/email_reminder.php'; //Include email reminder file 
+				
 				$_SESSION["timestamp"] = time(); //needed for logout after inactivity
 				header("location: ../general/start_page.php"); //redirect to doctor start page
+				
 			} else {
 				$error['psw_err'] = "Password is invalid";
 			}

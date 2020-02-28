@@ -1,5 +1,11 @@
 <?php
+//Initialize the session
 session_start();
+
+//Check if the user is already logged in
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+	  header("location:../general/start_page.php");
+}
 
 //Connect to database
 include dirname(__DIR__).'/general/openDB.php';
@@ -30,76 +36,31 @@ if(isset($_POST["submit"])){
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$errors['email'] = "Not a valid email";
 		}else{ //Email is valid --> Check if doctor, patient, caregiver or researcher
-			//Check if doctor
-			$sql_doc = "SELECT email, verified FROM doctor WHERE email = '$email'";
-			$doc_result = mysqli_query($link, $sql_doc) or die("Could not issue doctor MySQL query");
-				
-			if(mysqli_num_rows($doc_result) ==1){ //Continue to doctor 
+			$sql_user = "SELECT * FROM users WHERE email = '$email'";
+			$userresult = mysqli_query($link, $sql_user)
+			or die("Could not issue MySQL query");
+			
+			if(mysqli_num_rows($userresult)==1){
 				//Check if verified 
-				$verified1 = mysqli_fetch_array($doc_result);
-				if($verified1['verified']==1){
-					//Send email
+				$rows = mysqli_fetch_array($userresult);
+				$verified =	$rows['verified'];
+				
+				if($verified == 1){
+					//Check usertype
+					$category = $rows['usertype'];
 					$send_mail = 1;
-					$category = 'D';
 				}else{
 					$error['general'] = 'This email adress has not been activated. Please activate your account before resetting the password.';
-				}
-			
-			}else{ //Check if patient
-				$sql_patient = "SELECT email, verified FROM patient WHERE email = '$email'";
-				$patient_result = mysqli_query($link, $sql_patient) or die("Could not issue patient MySQL query");
-				
-				if(mysqli_num_rows($patient_result) == 1){ //Continue to patinet 
-					//Check if verified 
-					$verified2 = mysqli_fetch_array($patient_result);
-					if($verified2['verified']==1){
-						//Send email
-						$send_mail = 1;
-						$category = 'P';
-					}else{
-						$error['general'] = 'This email adress has not been activated. Please activate your account before resetting the password.';
-					}				
-				
-				}else{ //Check if researcher
-					$sql_researcher = "SELECT email, verified FROM researcher WHERE email = '$email'";
-					$researcher_result = mysqli_query($link, $sql_researcher) or die("Could not issue researcher MySQL query");
-				
-					if(mysqli_num_rows($researcher_result) ==1){ //Continue to researcher 
-						//Check if verified 
-						$verified3 = mysqli_fetch_array($researcher_result);
-						if($verified3['verified']==1){
-							//Send email
-							$send_mail = 1;
-							$category = 'R';
-						}else{
-							$error['general'] = 'This email adress has not been activated. Please activate your account before resetting the password.';
-						}				
-					}else{ //Check if caregiver
-						$sql_caregiver = "SELECT email, verified FROM caregiver WHERE email = '$email'";
-						$caregiver_result = mysqli_query($link, $sql_caregiver) or die("Could not issue caregiver MySQL query");
-				
-						if(mysqli_num_rows($caregiver_result) ==1){ //Continue to caregiver 
-							//Check if verified 
-							$verified4 = mysqli_fetch_array($caregiver_result);
-							if($verified4['verified']==1){
-								//Send email
-								$send_mail = 1;
-								$category = 'C';
-							}else{
-								$error['general'] = 'This email adress has not been activated. Please activate your account before resetting the password.';
-							}
-						}else{
-							$error['general'] = "This email has not been registered. Please register an account before trying to reset the password. ";
-						}
-					}
-				}
-			}	
+				}	
+			}else{
+				$error['general'] = "This email has not been registered. Please register an account before trying to reset the password. ";
+			}
 		}
 	}
 		
 	if(!array_filter($error)){
 		//Generate new password
-		$new_psw = random_psw(5);
+		$new_psw = random_psw(8);
 		$new_hash = password_hash($new_psw, PASSWORD_DEFAULT);
 		
 		//Write the email 
@@ -130,16 +91,20 @@ if(isset($_POST["submit"])){
 		// Inserting new password into database
 		if($category =='D'){
 			$sql = "UPDATE doctor SET password_hash = '$new_hash' WHERE email = '$email'";
+			$sql_users = "UPDATE users SET password_hash = '$new_hash' WHERE email = '$email'";
 		}elseif($category == 'P'){
 			$sql = "UPDATE patient SET password_hash = '$new_hash' WHERE email = '$email'";
+			$sql_users = "UPDATE users SET password_hash = '$new_hash' WHERE email = '$email'";
 		}elseif($category == 'R'){
 			$sql = "UPDATE researcher SET password_hash = '$new_hash' WHERE email = '$email'";
+			$sql_users = "UPDATE users SET password_hash = '$new_hash' WHERE email = '$email'";
 		}else{
 			$sql = "UPDATE caregiver SET password_hash = '$new_hash' WHERE email = '$email'";
+			$sql_users = "UPDATE users SET password_hash = '$new_hash' WHERE email = '$email'";
 		}
 		
 		// If MySQL query is sucessfull send mail		
-		if (mysqli_query($link, $sql)) {   					
+		if (mysqli_query($link, $sql) && mysqli_query($link, $sql_users)) {   					
 			if ($mail->send()) {
 				$sucess_message = "An email has been sent to you with a new password";
             } else {
