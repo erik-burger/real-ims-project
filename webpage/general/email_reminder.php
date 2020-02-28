@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include dirname(__DIR__).'/general/openDB.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -13,17 +13,18 @@ if (isset($logedin) or isset($user)) {
                     	
 		$weekAgo = date('Y-m-d', strtotime("-7 days")); //Get the date that was a week ago
 						
-		$sql_emails = "SELECT email FROM patient WHERE patient_id = (SELECT patient_id FROM patient_doctor WHERE doctor_id='$doctor_id' AND both_accepe = '1')";
-		$emails = mysqli_query($link, $sql_emails) or die("Could not issue sql_email query");
-		$no_rows = mysqli_num_rows($emails);
+		//$sql_emails = "SELECT email FROM patient WHERE patient_id = (SELECT patient_id FROM patient_doctor WHERE doctor_id='$doctor_id' AND both_accept = '1')";
+		$patient_ids = "SELECT patient_id FROM patient_doctor WHERE doctor_id='$doctor_id' AND both_accept = '1'";
+		$result_patient_ids = mysqli_query($link, $patient_ids) or die("Could not issue sql_email query select patinet for email reminder");
+		$no_rows = mysqli_num_rows($result_patient_ids);
 					
 		//Check if they have taken the test the last 7 days
 		if ($no_rows > 0){
-			$patinet_emails = mysqli_fetch_row($emails); //Create an array with all emails
+			$all_patients = mysqli_fetch_assoc($result_patient_ids); //Create an array with all emails
 			
-			foreach($patinet_emails as $email){ //Go through each email and check if a reminder needs to be sent 						
-				$sql_test_date = "SELECT test_date FROM test WHERE patient_id = (SELECT patient_id FROM patient WHERE email = '$email')"; // Check last testdate;				
-				$test_date = mysqli_query($link, $sql_test_date) or die("Could not issue test_date query");
+			foreach($all_patients as $patient_id){ //Go through each email and check if a reminder needs to be sent
+				$sql_test_date = "SELECT test_date FROM test WHERE patient_id = '$patient_id'"; // Check last testdate;				
+				$test_date = mysqli_query($link, $sql_test_date) or die("Could not issue test_date query for email reminder test_date");
 				
 				if(mysqli_num_rows($test_date)>0){
 					//Convert result to an array with dates	
@@ -35,10 +36,11 @@ if (isset($logedin) or isset($user)) {
 					$last_testdate = max($dates); //Get the last test date
 					$last_testdate = date('Y-m-d',strtotime($last_testdate[test_date])); //Converts the string to date format
 					
+					echo $last_testdate;
 					if($weekAgo >= $last_testdate){// If the last test date was 7 days ago from today check last date reminder was sent						
 						//Get email reminder date
-						$sql_reminder_date = "SELECT last_reminder FROM patient WHERE patient_id = (SELECT patient_id FROM patient WHERE email = '$email')";
-						$result = mysqli_query($link, $sql_reminder_date) or die("Could not issue last_reminder query");
+						$sql_reminder_date = "SELECT last_reminder FROM patient WHERE patient_id = '$patient_id'";
+						$result = mysqli_query($link, $sql_reminder_date) or die("Could not issue last_reminder query in emailreminder");
 						$result_row = mysqli_fetch_array($result);
 						$last_reminder = $result_row['last_reminder'];
 												
@@ -47,6 +49,9 @@ if (isset($logedin) or isset($user)) {
 							require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
 							require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
 							require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
+							
+							$sql_email = "SELECT email FROM patient WHERE patient_id='$patient_id";
+							$email = mysqli_query($link, $sql_email) or die("Could not issue email query");
 					
 							$subject = "Reminder: Have you taken a trackzheimers test lately?"; 
 
