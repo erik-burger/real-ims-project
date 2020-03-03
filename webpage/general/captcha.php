@@ -1,3 +1,4 @@
+<html> 
 <style>
     input[type=text] {
     padding: 12px 20px;
@@ -5,7 +6,7 @@
     border: 1px solid #ccc; 
     box-sizing: border-box;
 }
-button{
+.captcha{
   background-color: #669999;
     border: none;
     color: white;
@@ -21,15 +22,14 @@ canvas{
 </style>
 
 <body onload="createCaptcha()">
-    <form onsubmit="validateCaptcha()">
+    <form action = "" onSubmit="return validateCaptcha();" method = "post">
       <div id="captcha">
       </div>
-      <input type="text" placeholder="Captcha" id="cpatchaTextBox"/>
-      <button type="submit">Submit</button>
-      <button type="button" onclick = "createCaptcha()">New Captcha</button>
+      <input type="text" placeholder="Captcha" id="cpatchaTextBox", name = "cpatchaTextBox"/>
+      <button type="submit" name = "submit" class = "captcha">Submit</button>
+      <button type="button" class = "captcha" onclick = "createCaptcha()">New Captcha</button>
     </form>
-  </body>
-
+</body>
 
 <script>
     var code;
@@ -66,14 +66,20 @@ function createCaptcha() {
   code = captcha.join("");
   document.getElementById("captcha").appendChild(canv); // adds the canvas to the body element
 }
+
 function validateCaptcha() {
-  event.preventDefault();
-  debugger
-  if (document.getElementById("cpatchaTextBox").value == code) {
-    alert("Valid Captcha")
-  }else{
-    alert("Invalid Captcha. try Again");
-    createCaptcha();
+  if (document.getElementById("cpatchaTextBox").value == code) {   
+    return true; 
+  }else{    
+    return false; 
   }
 }
 </script>
+</html>
+
+<?php
+if(isset($_POST["submit"])){
+    echo "hej!"; 
+    echo $_POST["cpatchaTextBox"]; 
+}
+?>
