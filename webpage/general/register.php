@@ -1,79 +1,95 @@
 <html>
 <style> 
-                            *{
-                            box-sizing: border-box;
-                            }
+    canvas{
+    /*prevent interaction with the canvas*/
+    pointer-events:none;
+    }
+    *{
+    box-sizing: border-box;
+    }
 
-                            body{
-                                background-color: ghostwhite;
-                            }
+    body{
+        background-color: ghostwhite;
+    }
 
-                            .logo {
-                                    display: inline-block;
-                                    float: left; 
-                                }
-                            
-                            input[type = text], select , textarea{
-                                width: 100%;
-                                padding: 12px;
-                                border: 1px solid #ccc;
-                                border-radius; 4px;
-                                resize: vertical;
-                                font-size: 14px;
-                            }
-                                    
-                            input[type = number], select , textarea{
-                                width: 100%;
-                                padding: 12px;
-                                border: 1px solid #ccc;
-                                border-radius; 4px;
-                                resize: vertical;
-                                font-size: 14px;
-                            }
+    .logo {
+            display: inline-block;
+            float: left; 
+        }
+    
+    input[type = text], select , textarea{
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius; 4px;
+        resize: vertical;
+        font-size: 14px;
+    }
+            
+    input[type = number], select , textarea{
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius; 4px;
+        resize: vertical;
+        font-size: 14px;
+    }
 
-                            input[type = password], select , textarea{
-                                width: 100%;
-                                padding: 12px;
-                                border: 1px solid #ccc;
-                                border-radius; 4px;
-                                resize: vertical;
-                                font-size: 14px;
-                            }
-                            
-                            label {
-                                padding: 12px 12px 12px 0;
-                                display: inline-block;
-                            }
-                            
-                            input[type = submit]{
-                                background-color: #c2d6d6;
-                                color: black;
-                                padding: 12px 20px;
-                                border: none;
-                                border-radius: 4px;
-                                cursor: pointer;
-                                float: right;
-                            }
-                            
-                            input[type=submit]:hover {
-                                background-color: #b3cccc;
-                            }
-                            
-                            .container {
-                                border-radius: 12px;
-                                background-color: #f2f2f2;
-                                padding: 20px;
-                                width:70%;
-                                margin-right: auto;
-                                margin-left:auto;
-                                align: center;
-                            }
-                            
-                            .error {
-                                color: #FF0000;
-                                font-size: 14px;
-                            }
-                        </style>
+    input[type = password], select , textarea{
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius; 4px;
+        resize: vertical;
+        font-size: 14px;
+    }
+    
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+    
+    input[type = submit]{
+        background-color: #c2d6d6;
+        color: black;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #b3cccc;
+    }
+    
+    .container {
+        border-radius: 12px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width:70%;
+        margin-right: auto;
+        margin-left:auto;
+        align: center;
+    }
+    
+    .error {
+        color: #FF0000;
+        font-size: 14px;
+    }
+    .captcha{
+        background-color: #669999;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .captcha_inline captcha{
+        display: inline-block; 
+    }
+</style>
 
 <?php
 include dirname(__DIR__).'/general/openDB.php';
@@ -196,7 +212,7 @@ switch ($usertype) {
                                 }
                             }
                         }
-
+                        
                         //Check if password matches requirements
 
                         $uppercase = preg_match('/[A-Z]+/', $_POST['psw']);
@@ -251,8 +267,8 @@ switch ($usertype) {
                                 
                                 if (mysqli_query($link, $sql3)){
                                     require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
-                                require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
-                                require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
+                                    require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
+                                    require_once(dirname(__DIR__).'/PHPMailer/Exception.php');
                                             
                                 $mail = new PHPMailer();
                                 
@@ -274,8 +290,6 @@ switch ($usertype) {
                                 $mail -> Body .= "Plase activate your account by pressing on the link below: <br>";
                                 $mail -> Body .= "<a href=\"http://localhost/real-ims-project/webpage/general/verify.php?email=$email&&verification_hash=$verification_hash&&usertype=$usertype\">Activate account<p></a><br>";
                                 $mail -> Body .= "Are you not able to activate your account? Please contact uss at trackzheimers@gmail.com";
-                            
-                                
                                 
                                 if ($mail->send()) {
                                     $sucess_message = "Thanks for regestering!"."<br><br>"."Email has been sent! Please activate your account by clicking on the link that has been sent to you.";
@@ -293,15 +307,13 @@ switch ($usertype) {
                     }
                     ?> 
 
-                    <!DOCTYPE html>
-                    <html>
                     <head>
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1">
                         <link rel="stylesheet" type="text/css" href="top_menu_style.css">
                     </head>
 
-                    <body>
+                    <body onload="createCaptcha();">
 
                     <div class="navbar">
                         <div class="navbar-header">
@@ -340,7 +352,7 @@ switch ($usertype) {
                         <h1 class="center">Register as a Doctor</h1>
                         <p id="a">Please fill in this form to create an account as a doctor</p>
 
-                        <form action = "" method = "POST" enctype="multipart/form-data">
+                        <form action = "" onSubmit="return validateCaptcha();" method = "post">
                             
                             <label for="f_name"><b>First name</b></label>
                             <input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -388,9 +400,14 @@ switch ($usertype) {
                             <label for="psw_repeat"><b>Repeat Password</b></label>
                             <input type="password" name="psw_repeat">
                             <div class="error"><?php echo $errors['psw']; ?></div><br>
+                            
+                            <div id="captcha">
+                            </div>
+                            <input type="text" name = "captcha_input" placeholder="Captcha" id="cpatchaTextBox"/>
+                            <button type="button" class = "captcha" onclick = "createCaptcha()">New Captcha</button>
 
                             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                            <input type="submit" name="submit" value="submit" style = "font-size: 14px">    
+                            <input type="submit" name="submit" value="submit"  style = "font-size: 14px">    
                             <p>Already have an account? <a href="../general/login.php">Sign in</a>.</p>
                     </form>
                     </div>   	
@@ -671,7 +688,7 @@ switch ($usertype) {
                         <link rel="stylesheet" href="top_menu_style.css">
                         </head>
 
-                    <body>
+                    <body onload="createCaptcha();">
 
                     <div class="navbar">
                         <div class="navbar-header">
@@ -709,7 +726,7 @@ switch ($usertype) {
                         <h1 class="center">Register as a Patient</h1>
                         <p>Please fill in this form to create an account as a patient</p>
 
-                        <form action = "" method = "POST">
+                        <form action = "" onSubmit="return validateCaptcha();" method = "POST">
                         
                             <label for="f_name"><b>First name</b></label>
                             <input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -793,6 +810,11 @@ switch ($usertype) {
                             <label for="psw_repeat"><b>Repeat Password</b></label>
                             <input type="password" name="psw_repeat" >
                             <div class="error"><?php echo $errors['psw']; ?></div><br>
+
+                            <div id="captcha">
+                            </div>
+                            <input type="text" name = "captcha_input" placeholder="Captcha" id="cpatchaTextBox"/>
+                            <button type="button" class = "captcha" onclick = "createCaptcha()">New Captcha</button>
                         
                         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
                         <input type="submit" name="submit" value="submit" style = "font-size: 14px">    
@@ -1011,7 +1033,7 @@ switch ($usertype) {
                         <link rel="stylesheet" href="top_menu_style.css"> 
                     </head>
 
-                    <body>
+                    <body onload="createCaptcha();">
 
                     <div class="navbar">
                         <div class="navbar-header">
@@ -1051,7 +1073,7 @@ switch ($usertype) {
                         <h1 class="center">Register as a Researcher</h1>
                         <p>Please fill in this form to create an account as a researcher</p>
 
-                        <form action = "" method = "POST">
+                        <form action = "" method = "POST" onSubmit="return validateCaptcha();">
                             
                             <label for="f_name"><b>First name</b></label>
                             <input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -1099,6 +1121,11 @@ switch ($usertype) {
                             <label for="psw_repeat"><b>Repeat Password</b></label>
                             <input type="password" name="psw_repeat" >
                             <div class="error"><?php echo $errors['psw']; ?></div><br>
+
+                            <div id="captcha">
+                            </div>
+                            <input type="text" name = "captcha_input" placeholder="Captcha" id="cpatchaTextBox"/>
+                            <button type="button" class = "captcha" onclick = "createCaptcha()">New Captcha</button>
 
                             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
                             <input type="submit" name="submit" value="submit" style = "font-size: 14px">    
@@ -1309,7 +1336,7 @@ switch ($usertype) {
                         <link rel="stylesheet" href="top_menu_style.css">
                     </head>
 
-                    <body>
+                    <body onload="createCaptcha();">
 
                     <div class="navbar">
                         <div class="navbar-header">
@@ -1350,7 +1377,7 @@ switch ($usertype) {
                         <h1 class="center">Register as a Caregiver</h1>
                         <p>Please fill in this form to create an account as a caregiver for a patient</p>
 
-                        <form action = "" method = "POST">
+                        <form action = "" method = "POST" onSubmit="return validateCaptcha();">
                             
                             <label for="f_name"><b>First name</b></label>
                             <input type="text" name="f_name" value = "<?php echo htmlspecialchars($f_name); ?>">
@@ -1399,6 +1426,11 @@ switch ($usertype) {
                             <input type="password" name="psw_repeat" >
                             <div class="error"><?php echo $errors['psw']; ?></div><br>
 
+                            <div id="captcha">
+                            </div>
+                            <input type="text" name = "captcha_input" placeholder="Captcha" id="cpatchaTextBox"/>
+                            <button type="button" class = "captcha" onclick = "createCaptcha()">New Captcha</button>
+
                             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
                             <input type="submit" name="submit" value="submit" style = "font-size: 14px">    
                             <p>Already have an account? <a href="../general/login.php">Sign in</a>.</p>
@@ -1412,3 +1444,50 @@ switch ($usertype) {
     
     include dirname(__DIR__).'/general/closeDB.php';
     ?> 
+
+
+<script>
+    var code;
+function createCaptcha() {
+        //clear the contents of captcha div first 
+        document.getElementById('captcha').innerHTML = "";
+        var charsArray =
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
+        var lengthOtp = 6;
+        var captcha = [];
+        for (var i = 0; i < lengthOtp; i++) {
+            //below code will not allow Repetition of Characters
+            var index = Math.floor(Math.random() * charsArray.length + 1); //get the next character from the array
+            if (captcha.indexOf(charsArray[index]) == -1)
+            captcha.push(charsArray[index]);
+            else i--;
+            }
+            var canv = document.createElement("canvas");
+            canv.id = "captcha";
+            canv.width = 100;
+            canv.height = 50;
+            var ctx = canv.getContext("2d");
+            ctx.font = "25px Georgia";
+            ctx.strokeText(captcha.join(""), 0, 30);
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            //Draw background lines 
+            for (let step = 0; step < 5; step++){
+                ctx.lineTo(Math.random()*100, Math.random()*50);
+                ctx.moveTo(Math.random()*100, Math.random()*50);
+            }
+            ctx.stroke();
+            //storing captcha so that can validate you can save it somewhere else according to your specific requirements
+            code = captcha.join("");
+            document.getElementById("captcha").appendChild(canv); // adds the canvas to the body element
+            }
+
+function validateCaptcha() {
+  if (document.getElementById("cpatchaTextBox").value == code) {   
+    return true; 
+  }else{    
+    return false; 
+  }
+}
+
+</script>
