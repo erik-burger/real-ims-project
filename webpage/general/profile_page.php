@@ -13,7 +13,7 @@
             hr {
                 border: 10px solid ghostwhite;
             }
-           .prof_button, .pass_button, .patient_button, .doc_button, .request_button{
+           .prof_button, .pass_button, .patient_button, .doc_button, .request_button, .med_button{
                 background-color: #669999; 
                 border: none;
                 color: white;
