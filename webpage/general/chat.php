@@ -81,7 +81,7 @@ if (isset($logedin) or isset($user)) {
                         $to_user_type = "P";
                         $chat_message = htmlspecialchars($_POST["sendie"]);
                         $chat_message = mysqli_real_escape_string($link, $chat_message);
-                        $date_time = gmdate('Y-m-d h:i:s \G\M\T');
+                        $date_time = gmdate('Y-m-d h:i:s \G\M\T'); 
                         $message_status = 0;
 
                         $sendchat = mysqli_query($link, "insert into chat 
