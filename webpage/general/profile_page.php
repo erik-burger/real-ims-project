@@ -128,7 +128,7 @@ if (isset($logedin) or isset($user)) {
                         include dirname(__DIR__).'/general/openDB.php';
                         $result = mysqli_query($link, "SELECT * from doctor where doctor_id = $_SESSION[id]")   
                         or 
-                        die("Could not issue MySQL query"); 
+                        die("Could not issue huh MySQL query"); 
                         
                         while ($row = $result->fetch_assoc()) {
                             $first_name = $row["first_name"];
