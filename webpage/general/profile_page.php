@@ -126,9 +126,7 @@ if (isset($logedin) or isset($user)) {
                     <div class = "container">
                     <?php
                         include dirname(__DIR__).'/general/openDB.php';
-                        $result = mysqli_query($link, "select first_name, last_name, doctor_id, phone, street, street_no, zip, city, country, picture 
-                        from doctor
-                        where doctor_id = $_SESSION[id]")   
+                        $result = mysqli_query($link, "SELECT * from doctor where doctor_id = $_SESSION[id]")   
                         or 
                         die("Could not issue MySQL query"); 
                         
@@ -148,7 +146,7 @@ if (isset($logedin) or isset($user)) {
                             echo '<b>'."ID: ".'</b>' .$doctor_id.'<br />';
                             echo '<b>'."Telephone: ".'</b>'.$phone.'<br />';
                             echo '<b>'."Adress: ".'</b>'.$street. " ".$street_no." ".$zip." ".$city." ".$country.'<br />';
-                            echo '<b>'."Profile Picture:".'</b>'.$picture. '<br />';
+                            // echo '<b>'."Profile Picture:".'</b>'.$picture. '<br />';
                         }
                     
                         include dirname(__DIR__).'/general/closeDB.php';
