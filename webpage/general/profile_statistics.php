@@ -19,7 +19,7 @@ if (isset($logedin) or isset($user)) {
                                 <li><a href="../doctor/doctor_contact.php">Contact</a></li>
                                 <li><a href="../general/profile_page.php">Profile</a></li>
                                 <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
-                                <li><a href="chat_home_doctor.php">Messages</a></li>
+                                <li><a href="chat_home.php">Messages</a></li>
                             </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a href="../general/logout.php">Logout</a></li>

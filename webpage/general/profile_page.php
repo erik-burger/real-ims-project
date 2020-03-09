@@ -140,7 +140,7 @@ if (isset($logedin) or isset($user)) {
                             $city = $row["city"];
                             $country = $row["country"];
                             $phone = $row["phone"];
-                            $picture = $row["picture"]; 
+                            //$picture = $row["picture"]; 
                     
                             echo '<b>'."Name: ".'</b>'.$first_name." ".$last_name.'<br />';
                             echo '<b>'."ID: ".'</b>' .$doctor_id.'<br />';
