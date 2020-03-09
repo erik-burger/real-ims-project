@@ -24,8 +24,8 @@
         text-decoration: none;
         display: inline-block;
         font-size: 16px;            
-        position:absolute;
-        right:13%;
+        position:relative;
+        right:0.00001%;
         top: 90%;     
     }      
     * {
@@ -85,7 +85,7 @@ if (isset($logedin) or isset($user)) {
                                 <ul class="nav navbar-nav">
                                 <li class="active"><a href="doctorstart.php">Home</a></li>
                                 <li><a href="../general/contact.php">Contact</a></li>
-                                <li><a href="doctorprofile.php">Profile</a></li>
+                                <li><a href="profile_page.php">Profile</a></li>
                                 <li><a href="doctorsearch.php">Patients</a></li>
                                 <li class="active"><a href="chat_home.php">Messages</a></li>
                                 </ul>
@@ -113,21 +113,24 @@ if (isset($logedin) or isset($user)) {
                         $from_user_id = $row["from_user_id"];
                         $first_name = $row["first_name"];
                         $last_name = $row["last_name"];
-                        echo "<label style = 'position:absolute;left:13%'><b>From:</b></label><br><p style = 'position:absolute;left:13%'>" . $first_name . " " . $last_name . "</p><br><br>
-                        <label style = 'position:absolute;left:13%'><b>Date and Time:</b></label><br><p style = 'position:absolute;left:13%'> ". $row["date_time"] . "</p><br><br>
-                        <label style = 'position:absolute;left:13%'><b>Message: </b></label><br><p style = 'position:absolute;left:13%'>". $row["chat_message"] . "</p><br>";
+                        echo "<div class='why' style = 'position:absolute;top:15%;left:13%;>
+                        <label style = 'position:relative'><b>From:</b></label><br><p>" . $first_name . " " . $last_name . "</p><br>
+                        <label style = 'position:relative'><b>Date and Time:</b></label><br><p style = 'position:relative;'> ". $row["date_time"] . "</p><br>
+                        <label style = 'position:relative'><b>Message: </b></label>
+                        <p style = 'position:relative;right:8.2%;width:1000px;'>". $row["chat_message"] . "</p>";
                     }
                     ?>
                     <br>
-                    <div class="center">
+                    <div class="center" style = "position:relative; top:5%;">
                         <form action="" method="post">
-                        <label for="send_to" style = "position:absolute;left:13%"><b>Reply to:</b></label><br>
-                        <select name = "send_to" style = "position:absolute;left:13%" required>
+                        <label for="send_to" style = "position:relative;"><b>Reply to:</b></label><br>
+                        <select name = "send_to" style = "position:relative;" required>
                             <?php print "<option value='$from_user_id'>" . $first_name . " " . $last_name . "</option>";?>
-                            </select><br><br<><br><br><br>
-                            <textarea name="message" id="message" style = "height:200px;width:1000px;position:absolute;left:13%"></textarea><br />
+                            </select><br><br<><br>
+                            <textarea name="message" id="message" style = "height:200px;width:1000px;"></textarea><br /><br>
                             <button class = newbutton type="submit"  name="submit" value="submit">Reply</button>
                         </form>
+                    </div>
                     </div>
                     </div>
                     </body>
@@ -212,7 +215,7 @@ if (isset($logedin) or isset($user)) {
                             $last_name = $row["last_name"];
                             echo "<label style = 'position:absolute;left:13%'><b>From:</b></label><br><p style = 'position:absolute;left:13%'>" . $first_name . " " . $last_name . "</p><br><br>
                             <label style = 'position:absolute;left:13%'><b>Date and Time:</b></label><br><p style = 'position:absolute;left:13%'> ". $row["date_time"] . "</p><br><br>
-                            <label style = 'position:absolute;left:13%'><b>Message: </b></label><br><p style = 'position:absolute;left:13%'>". $row["chat_message"] . "</p><br>";
+                            <label style = 'position:absolute;left:13%'><b>Message: </b></label><br><p style = 'position:absolute;left:13%;width:72%;'>". $row["chat_message"] . "</p><br>";
                         }
                         
                         if(isset($_POST["submit"])){
@@ -312,7 +315,7 @@ if (isset($logedin) or isset($user)) {
                                     <ul class="nav navbar-nav">
                                     <li><a href="caregiverstart.php">Home</a></li> 
                                     <li><a href="../general/contact.php">Contact</a></li>
-                                    <li><a href="caregiverprofile.php">Profile</a></li>
+                                    <li><a href="profile_page.php">Profile</a></li>
                                     <li class="active"><a href="chat_home.php">Messages</a></li>            
                                     </ul>
                                     <ul class="nav navbar-nav navbar-right">
@@ -341,7 +344,7 @@ if (isset($logedin) or isset($user)) {
                         $last_name = $row["last_name"];
                         echo "<label style = 'position:absolute;left:13%'><b>From:</b></label><br><p style = 'position:absolute;left:13%'>" . $first_name . " " . $last_name . "</p><br><br>
                         <label style = 'position:absolute;left:13%'><b>Date and Time:</b></label><br><p style = 'position:absolute;left:13%'> ". $row["date_time"] . "</p><br><br>
-                        <label style = 'position:absolute;left:13%'><b>Message: </b></label><br><p style = 'position:absolute;left:13%'>". $row["chat_message"] . "</p><br>";
+                        <label style = 'position:absolute;left:13%'><b>Message: </b></label><br><p style = 'position:absolute;left:13%;width:72%;'>". $row["chat_message"] . "</p><br>";
                     }
                     ?>
                     <br>

@@ -9,11 +9,11 @@
         padding: 14px 10px;
         text-align: center;
         text-decoration: none;
-        display: inline-block;
+        display: block;
         font-size: 16px;   
         margin-top: 10px;
         margin-bottom: 10px; 
-        margin-left: 1px;              
+        margin: auto;           
     }      
     ul{
         list-style-type: none;
@@ -113,7 +113,7 @@ if (isset($logedin) or isset($user)) {
                     <h1>My Messages</h1>
                     <body>
                     <button onclick="window.location.href = 'chat.php';" class = newbutton>New Message</button>
-                    <div text-align="center">
+                    <br><div text-align="center">
                     <table style="width:50%" align="center" >
                         <tr>
                         <th align = 'center'>Time</th>
@@ -180,7 +180,7 @@ if (isset($logedin) or isset($user)) {
                     <h1>My Messages</h1>
                     <body>
                     <button onclick="window.location.href = 'chat.php'" class = newbutton >New Message</button>
-                    <table style="width:50%" align="center">
+                    <br><table style="width:50%" align="center">
                         <tr>
                         <th align = "center">Time</th>
                         <th align = "center">First Name</th>
@@ -192,11 +192,11 @@ if (isset($logedin) or isset($user)) {
                     include dirname(__DIR__).'/general/openDB.php';
                     $sql = "select c.chat_message_id, d.first_name, d.last_name, c.from_user_id, c.from_user_type, c.date_time, c.message_status from chat c 
                     join doctor d on c.from_user_id = d.doctor_id
-                    where to_user_id = 4 and to_user_type = 'P' 
+                    where to_user_id = $_SESSION[id] and to_user_type = 'P' 
                     union
                     select c.chat_message_id, ca.first_name, ca.last_name, c.from_user_id, c.from_user_type, c.date_time, c.message_status from chat c 
                     join caregiver ca on c.from_user_id = ca.caregiver_id
-                    where to_user_id = 4 and to_user_type = 'P' order by date_time DESC";
+                    where to_user_id = $_SESSION[id] and to_user_type = 'P' order by date_time DESC";
                     $result = mysqli_query($link, $sql) 
                     or die("Could not issue MySQL query");
 
@@ -239,7 +239,7 @@ if (isset($logedin) or isset($user)) {
 
                                     <h1>My Messages</h1>
                                     <body>
-                                    <button onclick="window.location.href = '../general/chat.php'" class = "newbutton">New Message</button>
+                                    <br><button onclick="window.location.href = '../general/chat.php'" class = "newbutton">New Message</button>
 
                                     <table style="width:50%" align="center">
                                         <tr>
