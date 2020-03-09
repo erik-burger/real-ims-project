@@ -102,7 +102,7 @@
                              $phone = $row["phone"];  
                             }
                             ?>  
-                        <form action="update_doctor.php" method="POST">
+                        <form action="../doctor/update_doctor.php" method="POST">
                         
                         <?php 
                         break;
@@ -127,7 +127,7 @@
                             $phone = $row["phone"];
                             }
                             ?>
-                        <form action="update_patient.php" method="POST">  
+                        <form action="../patient/update_patient.php" method="POST">  
                         <?php
                         break;
                  case 'C':
@@ -151,7 +151,7 @@
                             $phone = $row["phone"];  
                             }
                         ?>
-                        <form action="update_caregiver.php" method="POST">  
+                        <form action="../caregiver/update_caregiver.php" method="POST">  
                         <?php
                         break;
                  case 'R':

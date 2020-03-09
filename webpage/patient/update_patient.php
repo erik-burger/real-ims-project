@@ -148,7 +148,7 @@ if(password_verify($psw, $password_hash)){
 }else{
     echo "Password incorrect.";
     include dirname(__DIR__).'/general/closeDB.php';
-    header("location: change_info_patient.php");
+    header("location: change_info.php");
 }
 
 include dirname(__DIR__).'/general/closeDB.php';
