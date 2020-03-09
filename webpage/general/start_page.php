@@ -335,7 +335,7 @@ if (isset($logedin) or isset($user)) {
                                 <td>" . $row["last_name"] . "</td>
                                 <td>" . $row["total_score"] . "</td>
                                 <td>" . $row["test_date"] . "</td>
-                                <td><a href ='../caregiver/patient_caregiver.php?id=$p_id'>". $p_id. "</a></td></tr>";
+                                <td><a href ='../general/profile_statistics.php?id=$p_id'>". $p_id. "</a></td></tr>";
                         }
                         echo "</table>";
                         }   
