@@ -10,14 +10,14 @@
 
 <style>
     ul{
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            .logo {
-                display: inline-block;
-                float: left; 
-            }
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    .logo {
+        display: inline-block;
+        float: left; 
+    }
         *{
     	box-sizing: border-box;
 		}
@@ -73,6 +73,17 @@
     		color: #FF0000;
     		font-size: 14px;
     	}
+        .button{
+			background-color: #669999; 
+			border: none;
+			color: white;
+			padding: 14px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline;
+			font-size: 16px;  
+			margin-top: 10px;    
+		}
 </style>
 
 <nav class="navbar navbar-inverse">
@@ -145,7 +156,7 @@
       <label for="repeatpsw"><b>Repeat New Password</b></label>
       <input type="password" value= "" name="repeatpsw"><br><br>
         
-      <input type="submit" name="Change password" value="Change password" style = "font-size: 14px"> 
+      <input class = "button" type="submit" name="Change password" value="Change password" style = "font-size: 14px"> 
     
     </form>
     
