@@ -350,7 +350,7 @@ if (isset($logedin) or isset($user)) {
                     <br>
                     <div class="center">
                         <form action="" method="post">
-                        <label for="send_to" style = "position:absolute;left:13%"><b>Reply to:</b></label><br>
+                        <label for="send_to" style = "position:absolute;left:13%"><b>Reply to:</b></label><br>s
                         <select name = "send_to" style = "position:absolute;left:13%" required>
                             <?php print "<option value='$from_user_id'>" . $first_name . " " . $last_name . "</option>";?>
                             </select><br><br<><br><br><br>
