@@ -248,7 +248,7 @@ if (isset($logedin) or isset($user)) {
                             <select name = "send_to" style = "position:absolute;left:13%" required>
                                 <?php print "<option value='$chat_message_id'>" . $first_name . " " . $last_name . "</option>";?>
                             </select><br><br<><br><br><br>
-                                <textarea name="message" id="message" style = "height:200px;width:1000px;position:absolute;left:13%"></textarea><br />
+                                <textarea name="message" id="message" style = "height:200px;width:1000px;position:absolute;left:13%"></textarea><br/>
                                 <button class = newbutton type="submit" value="submit" name = "submit">Reply</button>
                             </form>
                         </div>
