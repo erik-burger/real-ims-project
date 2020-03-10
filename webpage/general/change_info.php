@@ -175,7 +175,7 @@
                             $phone = $row["phone"];
                             }  
                         ?>
-                            <form action="update_researcher.php" method="POST">
+                            <form action="../researcher/update_researcher.php" method="POST">
                             <?php
                             break;
              }

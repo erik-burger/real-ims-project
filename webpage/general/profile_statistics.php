@@ -1,4 +1,16 @@
 <html>
+<style>
+        ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+        .logo {
+                display: inline-block;
+                float: left; 
+        }
+</style>
+<link rel="stylesheet" href="top_menu_style.css">
 <?php
 session_start();
 $logedin = $_SESSION["loggedin"];

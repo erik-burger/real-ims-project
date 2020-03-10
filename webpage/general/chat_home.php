@@ -240,7 +240,7 @@ if (isset($logedin) or isset($user)) {
                                     <h1>My Messages</h1>
                                     <body>
                                     <br><button onclick="window.location.href = '../general/chat.php'" class = "newbutton">New Message</button>
-
+                                    <br>
                                     <table style="width:50%" align="center">
                                         <tr>
                                         <th align = 'center'>Time</th>
