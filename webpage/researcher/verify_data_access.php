@@ -32,7 +32,7 @@ if  ($code == "denied") {
     $mail->SMTPAuth = true;
     $mail->Username = "trackzheimers@gmail.com";
     $mail->Password = '123trackzheimers';
-    $mail->Port = 465; //587
+    $mail->Port = 587; //587
     $mail->SMTPSecure = "ssl"; //tls
 
     //Email Settings

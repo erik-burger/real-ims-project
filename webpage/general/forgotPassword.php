@@ -159,6 +159,17 @@ if(isset($_POST["submit"])){
     		  color: #FF0000;
     		  font-size: 14px;
     	  }
+		  .button{
+			background-color: #669999; 
+			border: none;
+			color: white;
+			padding: 14px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline;
+			font-size: 16px;  
+			margin-top: 10px;    
+		}
         </style>
     </head>
 
@@ -203,7 +214,7 @@ if(isset($_POST["submit"])){
             	<input type="text" name="email" value="<?php echo htmlspecialchars($email); ?>">
             	<div class="error"><?php echo $error['email']; ?></div>
             	
-            	<input type="submit" name="submit" value="Reset password">
+            	<input class = "button" type="submit" name="submit" value="Reset password">
         
          </form> 
       

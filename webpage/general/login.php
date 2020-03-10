@@ -130,7 +130,7 @@ if(!array_filter($error)){
 			padding: 14px 32px;
 			text-align: center;
 			text-decoration: none;
-			display: block;
+			display: inline;
 			font-size: 16px;  
 			margin-top: 10px;    
 		}
