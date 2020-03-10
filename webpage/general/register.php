@@ -966,23 +966,28 @@ switch ($usertype) {
                         
                         // Inserting into database
                                 
-                            $sql_researcher = "INSERT INTO researcher (first_name, middle_name, last_name, email, password_hash, street, street_no, city, country, zip, phone, verification_hash) 
-                            VALUES ('$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', '$city', '$country', '$zip', '$phone', '$verification_hash')";  
-                                    
-                            if (mysqli_query($link, $sql_researcher)) { 
-                                
-                                $sql_user_id = "SELECT researcher_id FROM researcher WHERE email = $email";
-                                $result = mysqli_query($link, $sql_user_id);
-                                
-                                while ($row = $result->fetch_assoc()) {
-                                    $user_id = $row["user_id"];		
-                                }
+                        $sql1 = "INSERT INTO users (usertype, password_hash, email, verification_hash)
+                        VALUES ('R', '$psw', '$email', '$verification_hash')"; 
 
-                                $sql_users = "INSERT INTO users (usertype, $user_id, email, password_hash, verified, verification_hash) 
-                                VALUES ('$usertype', '$user_id', '$email', '$password_hash', '$verified', '$verification_hash')" ;
-                                
-                                if(mysqli_query($link, $sql_users)){ 					
-
+                    $sql2 = "SELECT user_id 
+                            FROM users 
+                            WHERE email = '$email'"; 
+                    
+                    if (mysqli_query($link, $sql1)) {   
+                        
+                        $result = mysqli_query($link, $sql2);
+                        
+                        while ($row = $result->fetch_assoc()) {
+                            $user_id = $row["user_id"];		
+                        }
+                        
+                        
+                        $sql3 = "INSERT INTO researcher (researcher_id, first_name, middle_name, last_name, email, 
+                        password_hash, street, street_no, city, country, zip, phone, verification_hash) 
+                        VALUES ('$user_id', '$f_name', '$m_name', '$l_name', '$email', '$psw', '$street', '$street_no', 
+                        '$city', '$country', '$zip', '$phone', '$verification_hash')"; 					
+                        
+                        if (mysqli_query($link, $sql3)){
                                 require_once(dirname(__DIR__).'/PHPMailer/PHPMailer.php');
                                 require_once(dirname(__DIR__).'/PHPMailer/SMTP.php');
                                 require_once(dirname(__DIR__).'/PHPMailer/Exception.php');

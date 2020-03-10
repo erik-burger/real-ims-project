@@ -140,7 +140,10 @@ if (isset($logedin) or isset($user)) {
                             $city = $row["city"];
                             $country = $row["country"];
                             $phone = $row["phone"];
+<<<<<<< HEAD
                             //$picture = $row["picture"]; 
+=======
+>>>>>>> 55695682b2032be39d38c5732de51dd497575994
                     
                             echo '<b>'."Name: ".'</b>'.$first_name." ".$last_name.'<br />';
                             echo '<b>'."ID: ".'</b>' .$doctor_id.'<br />';

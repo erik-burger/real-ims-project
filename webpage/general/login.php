@@ -123,6 +123,17 @@ if(!array_filter($error)){
     		font-size: 14px;
     		font-weight: bold;
     	} 
+		.button{
+			background-color: #669999; 
+			border: none;
+			color: white;
+			padding: 14px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline;
+			font-size: 16px;  
+			margin-top: 10px;    
+		}
         </style>
     </head>
 
@@ -161,7 +172,7 @@ if(!array_filter($error)){
               <input type="password" name="psw">
           	  <div class="error"><?php echo $error['psw_err']; ?></div><br>
           
-          	  <input type = "submit" name="submit" value="Login">
+          	  <input class = "button" type = "submit" name="submit" value="Login">
              <!-- <button type="submit">Login</button> --> 
               <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
