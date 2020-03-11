@@ -44,17 +44,18 @@ if (isset($logedin) or isset($user)) {
                             border-radius: 10px;
                             background-color: #f2f2f2;
                             padding-left: 20px;
-                            width:95%;
+                            width:100%;
                             margin-right: auto;
                             margin-left:auto;
                             margin-bottom: 20px; 
                             margin-top: 20px;
+                            text-align: justify;
                             } 
                             .page{
                                 margin-left: auto; 
                                 margin-right: auto; 
                                 padding: 10px;
-                                width: 95%; 
+                                width: 80%; 
                                 margin-bottom: 50px;   
                             }
                             
@@ -266,18 +267,20 @@ if (isset($logedin) or isset($user)) {
                                     margin-left: auto; 
                                     margin-right: auto; 
                                     padding: 10px;
-                                    width: 95%; 
-                                    margin-bottom: 50px;   
+                                    width: 80%; 
+                                    margin-bottom: 50px; 
+                                     
                                 }
                                 .container {
                                 border-radius: 10px;
                                 background-color: #f2f2f2;
                                 padding-left: 20px;
-                                width:95%;
+                                width:100%;
                                 margin-right: auto;
                                 margin-left:auto;
                                 margin-bottom: 20px; 
                                 margin-top: 20px;
+                                text-align: justify;
                             } 
                             </style>
                         </head>
@@ -403,17 +406,18 @@ if (isset($logedin) or isset($user)) {
                             border-radius: 10px;
                             background-color: #f2f2f2;
                             padding-left: 20px;
-                            width:95%;
+                            width:100%;
                             margin-right: auto;
                             margin-left:auto;
                             margin-bottom: 20px; 
                             margin-top: 20px;
+                            text-align: justify;
                         } 
                         .page{
                                 margin-left: auto; 
                                 margin-right: auto; 
                                 padding: 10px;
-                                width: 95%; 
+                                width: 80%; 
                                 margin-bottom: 50px;   
                             }
 

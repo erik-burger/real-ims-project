@@ -49,6 +49,13 @@
     border: 1px solid #ccc;
     border-radius; 4px;
     }
+    .page{
+        margin-left: auto; 
+        margin-right: auto; 
+        padding: 10px;
+        width: 80%; 
+        margin-bottom: 50px;   
+    }
     
 </style>
 </head>
@@ -286,6 +293,7 @@ if (isset($logedin) or isset($user)) {
                                 </ul>
                             </div>
                         </nav>
+                    <div class = "page">
                     <h1>Send a message</h1>
 
                     <form id="send-message" action="" method="post">
@@ -337,6 +345,7 @@ if (isset($logedin) or isset($user)) {
                     header("location: chat_home.php");
                     }
                     ?>
+                    </div>
                 <?php
                 break;
                 case 'R':

@@ -63,6 +63,13 @@ display: inline-block;
 font-size: 16px;
 
 }
+.page{
+    margin-left: auto; 
+    margin-right: auto; 
+    padding: 10px;
+    width: 80%; 
+    margin-bottom: 50px;   
+}
 </style>
 <?php
 session_start();
@@ -110,11 +117,12 @@ if (isset($logedin) or isset($user)) {
                             </div>
                         </nav>
 
+                    <div class = "page">
                     <h1>My Messages</h1>
                     <body>
                     <button onclick="window.location.href = 'chat.php';" class = newbutton>New Message</button>
                     <br><div text-align="center">
-                    <table style="width:50%" align="center" >
+                    <table style="width:80%" align="center" >
                         <tr>
                         <th align = 'center'>Time</th>
                         <th align = 'center'>First Name</th>
@@ -145,6 +153,7 @@ if (isset($logedin) or isset($user)) {
                     echo "</table>";
                     }  
                     ?>
+                    </div>
                     </html>
                 <?php
                 break;
@@ -177,10 +186,11 @@ if (isset($logedin) or isset($user)) {
                                 </ul>
                             </div>
                         </nav>
+                        <div class = "page">
                     <h1>My Messages</h1>
                     <body>
                     <button onclick="window.location.href = 'chat.php'" class = newbutton >New Message</button>
-                    <br><table style="width:50%" align="center">
+                    <br><table style="width:80%" align="center">
                         <tr>
                         <th align = "center">Time</th>
                         <th align = "center">First Name</th>
@@ -215,6 +225,7 @@ if (isset($logedin) or isset($user)) {
                     } 
                     ////<td><a href ='../patient/patientdoctor.php?id=$p_id'>". $p_id. "</a></td></tr>";//link timestamp to messsage  
                     ?>
+                    </div>
                     </html>
                                     <?php
                                     break;
@@ -236,12 +247,12 @@ if (isset($logedin) or isset($user)) {
                                                 </ul>
                                             </div>
                                         </nav>
-
+                                    <div class = "page">      
                                     <h1>My Messages</h1>
                                     <body>
                                     <br><button onclick="window.location.href = '../general/chat.php'" class = "newbutton">New Message</button>
                                     <br>
-                                    <table style="width:50%" align="center">
+                                    <table style="width:80%" align="center">
                                         <tr>
                                         <th align = 'center'>Time</th>
                                         <th align = 'center'>First Name</th>
@@ -283,5 +294,5 @@ if (isset($logedin) or isset($user)) {
                         
                     }
                     ?>
-
+                    </div> 
                     </html>
