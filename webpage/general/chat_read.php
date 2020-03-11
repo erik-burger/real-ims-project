@@ -249,7 +249,7 @@ if (isset($logedin) or isset($user)) {
                                 <?php print "<option value='$chat_message_id'>" . $first_name . " " . $last_name . "</option>";?>
                             </select><br><br<><br><br><br>
                                 <textarea name="message" id="message" style = "height:200px;width:1000px;position:absolute;left:13%"></textarea><br />
-                                <button class = newbutton type="submit" value="submit" name = "submit">Reply</button>
+                                <button class = newbutton type="submit" value="submit" name = "submit" style = "position:absolute;left:13%">Reply</button>
                             </form>
                         </div>
                         </div>
@@ -350,12 +350,12 @@ if (isset($logedin) or isset($user)) {
                     <br>
                     <div class="center">
                         <form action="" method="post">
-                        <label for="send_to" style = "position:absolute;left:13%"><b>Reply to:</b></label><br>
+                        <label for="send_to" style = "position:absolute;left:13%"><b>Reply to:</b></label><br>s
                         <select name = "send_to" style = "position:absolute;left:13%" required>
                             <?php print "<option value='$from_user_id'>" . $first_name . " " . $last_name . "</option>";?>
                             </select><br><br<><br><br><br>
                             <textarea name="message" id="message" style = "height:200px;width:1000px;position:absolute;left:13%"></textarea><br />
-                            <button class = newbutton type="submit" name = "submit" value="submit">Reply</button>
+                            <button class = newbutton type="submit" name = "submit" value="submit" style = "position:absolute;left:13%">Reply</button>
                         </form>
                     </div>
                     </div>

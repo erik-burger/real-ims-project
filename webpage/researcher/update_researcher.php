@@ -139,7 +139,7 @@ if(password_verify($psw, $password_hash)){
     if (mysqli_query($link, $sql)) {
         echo "New record created successfully";
         include dirname(__DIR__).'/general/closeDB.php';
-        header("location: researcherprofile.php");
+        header("location: ../general/profile_page.php");
 
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($link);
@@ -147,7 +147,7 @@ if(password_verify($psw, $password_hash)){
 }else{
     echo "Password incorrect.";
     include dirname(__DIR__).'/general/closeDB.php';
-    header("location: change_info_researcher.php");
+    header("location: change_info.php");
 }
 
 include dirname(__DIR__).'/general/closeDB.php';
