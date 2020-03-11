@@ -1,6 +1,9 @@
 <?php
 //Initialize the session
 session_start();
+$_SESSION["loggedin"] = false;
+$_SESSION["user"] = ""; 
+
 
 //Check if the user is already logged in
 

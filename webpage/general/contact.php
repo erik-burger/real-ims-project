@@ -1,3 +1,8 @@
+
+<?php
+    session_start();
+?>
+
 <html>
 <head>
         <meta charset="UTF-8">
@@ -96,13 +101,10 @@
                 <div class="navbar-header">
                     <img class="logo" src="../general/logo_small.png" width = 50>
                     <script>
-                    <?php
-                        session_start();
-                    ?>
                         var loged_in = <?php echo json_encode($_SESSION["loggedin"]);?>;
                         var user = <?php echo json_encode($_SESSION["user"]);?>;
-                        if (loged_in !== "undefined" && user !== "undefined") {
-                            if (loged_in == true ) {
+                        
+                     if (loged_in) {
                                 switch(user){
                                     case "D":
                                         document.write(
@@ -156,25 +158,7 @@
                                 '</div>'+  
                                     '<a href="../general/login.php">Login</a>'+
                                     '<a href="../general/info.html">About</a>'+
-                                    '<a href="../general/contact.php">Contact</a>'+
-                                    '<div class="dropdown">'+
-                                        '<button class="dropbtn">Register'+
-                                        '<i class="fa fa-caret-down"></i>'+
-                                        '</button>'+
-                                        '<div class="dropdown-content">'+
-                                        '<a href="../general/register.php?user=P">Patient</a>'+
-				                        '<a href="../general/register.php?user=D">Doctor</a>'+
-                                        '<a href="../general/register.php?user=R">Researcher</a>'+
-                                        '<a href="../general/register.php?user=C">Caregiver</a>'+
-                                        '</div>');
-                        }
-                    } else{
-                            //not logged in user
-                            document.write(
-                                '</div>'+  
-                                    '<a href="../general/login.php">Login</a>'+
-                                    '<a href="../general/info.html">About</a>'+
-                                    '<a href="../general/contact.php">Contact</a>'+
+                                    '<a class = "active" href="../general/contact.php">Contact</a>'+
                                     '<div class="dropdown">'+
                                         '<button class="dropbtn">Register'+
                                         '<i class="fa fa-caret-down"></i>'+
@@ -227,5 +211,3 @@
     </body>
 
 </html>
-
-
