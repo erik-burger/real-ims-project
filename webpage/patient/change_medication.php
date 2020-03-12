@@ -44,7 +44,14 @@ if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user
     	label {
     		padding: 12px 12px 12px 0;
     		display: inline-block;
-    	}
+      }
+      .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 20px;
+                width: 80%; 
+                margin-bottom: 50px;   
+            }
     	
     	button[type = "submit"]{
     		background-color: #c2d6d6;
@@ -64,10 +71,11 @@ if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user
  		 	border-radius: 5px;
   			background-color: #f2f2f2;
   			padding: 20px;
-  			width:80%;
+  			width:100%;
   			margin-right: auto;
 			margin-left:auto;
-			align: center;
+      align: center;
+     
 		}
     
     .error {
@@ -78,25 +86,28 @@ if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user
                 margin: 0;
                 padding: 0;
             }
+    
     </style>
 <body>
   <div class="navbar">
     <div class="navbar-header">
       <img class="logo" src="../general/logo_small.png" width = 50> 
       <ul class="nav navbar-nav">
-      <a href="../general/profile_page.php">Home</a>        
+      <a href="../general/profile_page.php">Back</a>        
       </ul>
     </div>  
   </div>
 
-
+    <div class = "page">
     <h1>Change Medication Information</h1>    
       
     <form action="update_medication.php" method="POST" id = "meds">
     <section class="container grey-text">
       
+    <div class = "form">
       <p id="a">Please fill in this form to add medication</p>
 
+      
       <label for="medication_id"><b>Medication Name</b></label><br>
       <select name = "medication_id" form = "meds" required>
         <?php
@@ -121,7 +132,7 @@ if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user
     
     </form>
     
-    <form action="remove_medication.php" method="POST" id = "remove_meds">
+    <form action="remove_medication.php" method="POST" id = "remove_meds" >
 
     <p>Please fill this in to remove medication from your profile.</p>
 
@@ -145,6 +156,8 @@ if ($_SESSION["user"] !== "P" or $_SESSION["loggedin"] == false){ // if the user
         ?> </select><br><br>
     <button type="submit">Remove Medication</button><br><br>
     </form>
+    </div>
+    </div>
 </body>
 
 </html>

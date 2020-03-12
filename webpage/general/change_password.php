@@ -63,7 +63,7 @@
  		 	border-radius: 12px;
   			background-color: #f2f2f2;
   			padding: 20px;
-  			width:70%;
+  			width:100%;
   			margin-right: auto;
 			margin-left:auto;
 			align: center;
@@ -83,7 +83,14 @@
 			display: inline;
 			font-size: 16px;  
 			margin-top: 10px;    
-		}
+        }
+        .page{
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 20px;
+                width: 80%; 
+                margin-bottom: 50px;   
+            }
 </style>
 
 <nav class="navbar navbar-inverse">
@@ -139,12 +146,12 @@
 
 
 
-    <section class="container grey-text"> 
 
-	<div class="container">
+	
 
+    <div class = "page">
       <h1>Change your password</h1>
-      
+    
       <p id="Password" >Please fill in this form to change your password</p>
       
       <label for="oldpsw"><b>Old Password</b></label>
@@ -159,7 +166,8 @@
       <input class = "button" type="submit" name="Change password" value="Change password" style = "font-size: 14px"> 
     
     </form>
-    
+    </div>
+    </div> 
 </body>
 
 </html>

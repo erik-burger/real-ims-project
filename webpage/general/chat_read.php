@@ -83,10 +83,10 @@ if (isset($logedin) or isset($user)) {
                                     <img class="logo" src="../general/logo_small.png" width = 50>
                                 </div>
                                 <ul class="nav navbar-nav">
-                                <li class="active"><a href="doctorstart.php">Home</a></li>
+                                <li class="active"><a href="start_page.php">Home</a></li>
                                 <li><a href="../general/contact.php">Contact</a></li>
                                 <li><a href="profile_page.php">Profile</a></li>
-                                <li><a href="doctorsearch.php">Patients</a></li>
+                                <li><a href="../doctor/doctorsearch.php">Patients</a></li>
                                 <li class="active"><a href="chat_home.php">Messages</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
@@ -313,7 +313,7 @@ if (isset($logedin) or isset($user)) {
                                 <div class="navbar-header">
                                     <img class="logo" src="../general/logo_small.png" width = 50>
                                     <ul class="nav navbar-nav">
-                                    <li><a href="caregiverstart.php">Home</a></li> 
+                                    <li><a href="start.php">Home</a></li> 
                                     <li><a href="../general/contact.php">Contact</a></li>
                                     <li><a href="profile_page.php">Profile</a></li>
                                     <li class="active"><a href="chat_home.php">Messages</a></li>            

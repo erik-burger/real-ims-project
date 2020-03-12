@@ -46,6 +46,13 @@
                 display: inline-block;
                 float: left; 
             }
+            .page{
+                    margin-left: auto; 
+                    margin-right: auto; 
+                    padding: 10px;
+                    width: 80%; 
+                    margin-bottom: 50px;   
+                }
 
           </style>
     </head>
@@ -64,8 +71,9 @@
 </br>
 </br>
 
-
+<div class = "page">
 <h1 align = "center">Sudoku</h1>
+</div>
 
 <?php //Sudoku template
 $sudoku = array(
@@ -176,6 +184,7 @@ $sudoku = array(
 
 </form>
 </div>
+
 
   </body>
 </html>

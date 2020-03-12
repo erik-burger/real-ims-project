@@ -11,6 +11,8 @@
         }
 </style>
 <link rel="stylesheet" href="top_menu_style.css">
+<link href="IMS_Style.css" rel="stylesheet">
+
 <?php
 session_start();
 $logedin = $_SESSION["loggedin"];

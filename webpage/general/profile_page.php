@@ -1,5 +1,13 @@
 <html>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="top_menu_style.css">
+    <link rel="stylesheet" href="../general/IMS_Style.css">                       
+</head>
+
+
 <style>
         ul{
                 list-style-type: none;
@@ -49,16 +57,13 @@
     		border: 1px solid #ccc;
     		border-radius; 4px;
             }
-            .center {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 400px;
-            }
             .column {
             float: left;
             width: 50%;
             padding: 10px; 
+            }
+            .doctor_col{
+                padding: 10px;  
             }
             .container {
                 border-radius: 10px;
@@ -77,6 +82,13 @@
                     width: 90%; 
                     margin-bottom: 50px;   
                 }
+            .doctor_page{
+                margin-left: auto; 
+                    margin-right: auto; 
+                    padding: 10px;
+                    width: 80%; 
+                    margin-bottom: 50px;   
+            }
         /*remove the number arrows*/
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -105,12 +117,6 @@ if (isset($logedin) or isset($user)) {
                 ?>
                 <html>
                     <meta http-equiv="refresh" content="3600;url=../general/logout.php" />
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1">
-                        <link rel="stylesheet" href="top_menu_style.css">
-                        <link href="IMS_Style.css" rel="stylesheet">
-                    </head>
                     <body>
                     <nav class="navbar navbar-inverse">
                         <div class="container-fluid">
@@ -130,7 +136,8 @@ if (isset($logedin) or isset($user)) {
                         </div>
                     </nav>
                     
-                    <div class = "page">
+                    <div class = "doctor_page">
+                        <div class = "doctor_col">
                         <h1>Your profile</h1>
                 
                     <div class = "container">
@@ -172,6 +179,7 @@ if (isset($logedin) or isset($user)) {
                     </div>
                     </div>
                     </div>
+                    </div>
                     </body>
                 </html>
                 <?php
@@ -180,14 +188,6 @@ if (isset($logedin) or isset($user)) {
                 ?>
                 <html>
                     <meta http-equiv="refresh" content="3600;url=../general/logout.php" />
-                    <head>
-                        <meta charset="UTF-utf-8">
-                        <meta name="description" content="Statistics page for patients">
-                        <title>Trackzheimers</title>
-                        <link rel="stylesheet" href="top_menu_style.css">
-                        <link rel="stylesheet" href="../general/IMS_Style.css">
-
-                    </head>
                     <body>
 
                     <div class="navbar">
@@ -387,13 +387,6 @@ if (isset($logedin) or isset($user)) {
             case 'C':
                 ?>
                 <html>               
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1">
-                            <link rel="stylesheet" href="top_menu_style.css">
-                            <link rel="stylesheet" href="IMS_Style.css">
-                        </head>
-
                         <body>
                             <style>
                                 table, th, td {
@@ -421,12 +414,11 @@ if (isset($logedin) or isset($user)) {
                             </div>
                         </nav>
 
-                        <div class="page">
-                        
-                        <div class = "column">
-                        <h1>Profile</h1>
-                        <div class = "container">
-                        <?php
+                        <div class="page">                       
+                            <div class = "column left">
+                            <h1>Profile</h1>
+                            <div class = "container">
+                            <?php
                             
                         /*if ( isset($_SESSION["id"]) === false) {
                             header("location: ../general/login.php");
@@ -461,8 +453,8 @@ if (isset($logedin) or isset($user)) {
 
                         ?>
                         
-
-                        <form action="../general/change_info.php" class = "profile">
+                        
+                        <form action="../general/change_info.php" class = "profile" >
                             <button type = "submit" class = "prof_button">Change Information</button>
                         </form>
                         <form action="../general/change_password.php" class = "profile">
@@ -471,7 +463,7 @@ if (isset($logedin) or isset($user)) {
                         </div>
                         </div>
 
-                        <div class = "column" style="text-align: center;" >
+                        <div class = "column right" style="text-align: center;" >
                             <h1>Your Connected To</h1>
                             <?php
                             include dirname(__DIR__).'/general/openDB.php';
@@ -483,7 +475,7 @@ if (isset($logedin) or isset($user)) {
                             or 
                             die("Could not issue MySQL query"); 
                         
-                            echo "<table align='center' style='width:80%;'>
+                            echo "<table align='center' style='width:100%;'>
                             <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
@@ -519,14 +511,7 @@ if (isset($logedin) or isset($user)) {
             case 'R':
                 ?>
                 <html>
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1">
-                        <link rel="stylesheet" href="top_menu_style.css">
-                        <link rel="stylesheet" href="../general/IMS_Style.css">
-                        
-                    </head>
-
+                    
                     <body>
                             <style>
                                     textarea {

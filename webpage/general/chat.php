@@ -24,25 +24,12 @@
         display: inline-block;
         font-size: 16px; 
         position:absolute;
-        right:13%;
+        right:22%;
         top: 90%;        
     }      
     * {
     box-sizing: border-box;
     }
-
-    .column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px; 
-    }
-
-    .page:after {
-    content: "";
-    display: table;
-    clear: both;
-    }  
 
     input[type = text], select , textarea{
     padding: 15px;
@@ -52,10 +39,11 @@
     .page{
         margin-left: auto; 
         margin-right: auto; 
-        padding: 10px;
+        padding: 20px;
         width: 80%; 
         margin-bottom: 50px;   
     }
+  
     
 </style>
 </head>
@@ -114,8 +102,8 @@ if (isset($logedin) or isset($user)) {
                                 <ul class="nav navbar-nav">
                                 <li><a href="doctorstart.php">Home</a></li>
                                 <li><a href="../general/contact.php">Contact</a></li>
-                                <li><a href="doctorprofile.php">Profile</a></li>
-                                <li><a href="doctorsearch.php">Patients</a></li>
+                                <li><a href="profile_page.php">Profile</a></li>
+                                <li><a href="../doctor/doctorsearch.php">Patients</a></li>
                                 <li class="active"><a href="chat_home.php">Messages</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
@@ -123,11 +111,13 @@ if (isset($logedin) or isset($user)) {
                                 </ul>
                             </div>
                         </nav>
+
+                    <div class = "page">
                     <h1>Send a message</h1>
 
                     <form id="send-message" action="" method="post" align = "center">
-                    <label for="send_to" style = "position:absolute;left:13%"><b>To:</b></label><br>
-                        <select name = "send_to" style = "position:absolute;left:13%" form = "send-message" required>
+                    <label for="send_to" style = "position:absolute;left:20%;"><b>To:</b></label><br>
+                        <select name = "send_to" style = "position:absolute;left:20%" form = "send-message" required>
                             <?php
                         
                             include dirname(__DIR__).'/general/openDB.php';
@@ -145,13 +135,14 @@ if (isset($logedin) or isset($user)) {
                                 print "<option value='$patient_id'>$first_name $last_name</option>";}
                             include dirname(__DIR__).'/general/closeDB.php';
                             ?> </select><br><br<><br><br><br>
-                        <label for="sendie" style = "position:absolute;left:13%"><b>Your message:</b></label><br>
-                        <textarea name="sendie" maxlength = '100' style="height:300px;width:1000px;position:absolute;left:13%"></textarea>
+                        <label for="sendie" style = "position:absolute;left:20%"><b>Your message:</b></label><br>
+                        <textarea name="sendie" maxlength = '100' style="height:300px;width:800px;position:absolute;left:20%"></textarea>
                         <button type="submit" name="submit" value="submit" class = newbutton>Send</button>
                             </div>
                     </form>
-                        
-
+                    
+                    </div>
+                   
                     </html>
                 <?php
                 break;
@@ -224,11 +215,13 @@ if (isset($logedin) or isset($user)) {
                                 </ul>
                             </div>
                         </nav>
+
+                    <div class = "page">
                     <h1>Send a message</h1>
 
                     <form id="send-message" action="" method="post">
-                    <label for="send_to" style = "position:absolute;left:13%"><b>To:</b></label><br>
-                        <select name = "send_to" style = "position:absolute;left:13%" form = "send-message" required>
+                    <label for="send_to" style = "position:absolute;left:20%"><b>To:</b></label><br>
+                        <select name = "send_to" style = "position:absolute;left:20%" form = "send-message" required>
                             <?php
                             
                             include dirname(__DIR__).'/general/openDB.php';
@@ -250,11 +243,12 @@ if (isset($logedin) or isset($user)) {
                                 print "<option value='$email'>$first_name $last_name</option>";}
                             include dirname(__DIR__).'/general/closeDB.php';
                             ?> </select><br><br<><br><br><br>
-                        <label for="sendie" style = "position:absolute;left:13%"><b>Your message:</b></label><br>
-                        <textarea name="sendie" style = "height:300px;width:1000px;position:absolute;left:13%"></textarea><br>
+                        <label for="sendie" style = "position:absolute;left:20%"><b>Your message:</b></label><br>
+                        <textarea name="sendie" style = "height:300px;width:800px;position:absolute;left:20%"></textarea><br>
                         <button type="submit" value = "submit" name = "submit" class = newbutton>Send</button>
                             </div>
                     </form>
+                    </div>
                     </html>
                 <!--Code-->
                 <?php
@@ -285,7 +279,7 @@ if (isset($logedin) or isset($user)) {
                                     <ul class="nav navbar-nav">
                                     <li class="active"><a href="caregiverstart.php">Home</a></li> 
                                     <li><a href="../general/contact.php">Contact</a></li>
-                                    <li><a href="caregiverprofile.php">Profile</a></li>
+                                    <li><a href="profile_page.php">Profile</a></li>
                                     <li><a href="chat_home.php">Messages</a></li>            
                                     </ul>
                                     <ul class="nav navbar-nav navbar-right">
@@ -293,12 +287,13 @@ if (isset($logedin) or isset($user)) {
                                 </ul>
                             </div>
                         </nav>
+
                     <div class = "page">
                     <h1>Send a message</h1>
 
                     <form id="send-message" action="" method="post">
-                    <label for="send_to" style = "position:absolute;left:13%"><b>To:</b></label><br>
-                        <select name = "send_to" style = "position:absolute;left:13%" form = "send-message" required>
+                    <label for="send_to" style = "position:absolute;left:20%"><b>To:</b></label><br>
+                        <select name = "send_to" style = "position:absolute;left:20%" form = "send-message" required>
                             <?php
                             include dirname(__DIR__).'/general/openDB.php';
 
@@ -315,8 +310,8 @@ if (isset($logedin) or isset($user)) {
                                 print "<option value='$patient_id'>$first_name $last_name</option>";}
                             include dirname(__DIR__).'/general/closeDB.php';
                             ?> </select><br><br<><br><br><br>
-                        <label for="sendie" style = "position:absolute;left:13%"><b>Your message:</b></label><br>
-                        <textarea name="sendie" maxlength = '100' style="height:300px;width:1000px;position:absolute;left:13%"></textarea>
+                        <label for="sendie" style = "position:absolute;left:20%"><b>Your message:</b></label><br>
+                        <textarea name="sendie" maxlength = '100' style="height:300px;width:800px;position:absolute;left:20%"></textarea>
                         <button type="submit" value = "submit" name = "submit" class=newbutton>Send</button>
                             </div>
                     </form>        

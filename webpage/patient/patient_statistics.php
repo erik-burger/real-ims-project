@@ -37,8 +37,8 @@ if (isset($_SESSION["user"]) or isset($_SESSION["loggedin"])) {
             .page{
                 margin-left: auto; 
                 margin-right: auto; 
-                padding: 10px;
-                width: 95%; 
+                padding: 20px;
+                width: 80%; 
                 margin-bottom: 50px;   
             }
             .container {

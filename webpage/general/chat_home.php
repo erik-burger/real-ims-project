@@ -42,10 +42,6 @@ ul{
     display: inline-block;
     float: left; 
 }
-.sideBySide{
-display: inline-block;
-padding: 20px
-}
 
 input[type = text], select , textarea{
     padding: 15px;
@@ -66,7 +62,7 @@ font-size: 16px;
 .page{
     margin-left: auto; 
     margin-right: auto; 
-    padding: 10px;
+    padding: 20px;
     width: 80%; 
     margin-bottom: 50px;   
 }
@@ -294,5 +290,5 @@ if (isset($logedin) or isset($user)) {
                         
                     }
                     ?>
-                    </div> 
+                    
                     </html>

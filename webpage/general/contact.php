@@ -23,12 +23,6 @@
                 display: inline-block;
                 float: left; 
             }
-            
-            .column {
-            float: left;
-            width: 50%;
-            padding: 10px; 
-            }
 
             .page:after {
             content: "";
@@ -75,6 +69,11 @@
                 margin-left: auto;
                 margin-right: auto;
                 width: 400px;
+            }
+            .column {
+            float: left;
+            width: 50%;
+            padding: 10px; 
             }
             .container {
                 border-radius: 10px;

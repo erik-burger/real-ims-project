@@ -127,8 +127,8 @@ table, th, td {
     .page{
                 margin-left: auto; 
                 margin-right: auto; 
-                padding: 10px;
-                width: 95%; 
+                padding: 20px;
+                width: 90%; 
                 margin-bottom: 50px;   
             }
 </style>

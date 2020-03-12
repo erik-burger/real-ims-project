@@ -13,7 +13,11 @@
                 display: inline-block;
                 float: left; 
             }
-    	
+            ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
     	input[type = text], select , textarea{
     		width: 100%;
     		padding: 12px;
@@ -53,24 +57,34 @@
  		 	border-radius: 5px;
   			background-color: #f2f2f2;
   			padding: 20px;
-  			width:80%;
+  			width:100%;
   			margin-right: auto;
 			margin-left:auto;
 			align: center;
 		}
-  		
+        .page{
+                    margin-left: auto; 
+                    margin-right: auto; 
+                    padding: 20px;
+                    width: 80%; 
+                    margin-bottom: 50px;   
+                }
     	.error {
     		color: #FF0000;
     	}
     </style>
 </head>
 <body>
-<div class="navbar">
-<div class="navbar-header">
-                <img class="logo" src="../general/logo_small.png" width = 50>
-            </div>
-            <a href="../general/profile_page.php">Back</a>
-            </div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img class="logo" src="../general/logo_small.png" width = 50>
+        </div>
+        <ul class="nav navbar-nav">
+        <li><a href="../general/profile_page.php">Back</a></li>
+        </ul>
+    </div>
+</nav>
     <?php
      session_start();
      $logedin = $_SESSION["loggedin"];
@@ -82,7 +96,7 @@
          if ($logedin == 1){
                 switch ($user) {
                  case 'D':
-                        $result = mysqli_query($link,"SELECT d.* u.email
+                        $result = mysqli_query($link,"SELECT d.*, u.email
                         from doctor as d, users as u
                         where d.doctor_id = '$id' and u.user_id = '$id'") 
                         or 
@@ -187,8 +201,9 @@
      include dirname(__DIR__).'/general/closeDB.php';  
     ?> 
     
-    <section class="container grey-text"> 
+    <div class = "page">
     <h1 class="center">Change your information</h1>  
+    <section class="container grey-text"> 
       <p id="a">Please fill in this form to change your account information</p>
       
       <label for="f_name"><b>First name</b></label>
@@ -227,7 +242,7 @@
       <button type="Submit Changes">Submit changes</button>
     
     </form>
-    
+    </div> 
 </body>
 
 </html>
