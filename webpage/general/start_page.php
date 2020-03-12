@@ -307,7 +307,7 @@ if (isset($logedin) or isset($user)) {
                             <h2>Information</h2>
                             <div class = "container">
                             <p1>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna justo, sagittis in bibendum vitae, auctor in ex. Nullam posuere, ex nec condimentum accumsan, sapien erat interdum erat, mattis accumsan tellus erat in tortor. Suspendisse a varius risus. Maecenas consectetur ligula elit, laoreet pharetra eros suscipit eget. Nunc molestie finibus mattis. Mauris quam lorem, placerat nec consequat a, laoreet vitae lorem. Donec a est at neque posuere varius quis consectetur orci. Phasellus justo justo, ornare ac elementum vel, dignissim ac lacus. Nam interdum nisl in neque molestie rutrum.
+                            The aim of Trackzheimers is to help Alzheimer’s patients, doctors, researchers and caregivers to track the progress of symptoms linked to the disease in patients over time. This is done by allowing the patients to take continuous memory tests through the web application in between visits at their physician. Doctors and caregivers or relatives of the patient are able to monitor the patient's mental state and progress continuously through the web application. In this way the doctors have a more accurate picture of their patient's mental state and progress and caregivers and relatives are kept updated on the status of their connected patient. Trackzheimers also allows researchers to collect data from patients which could be very valuable in solving the questions that still remain about Alzheimer's disease.
                             </p1>
                             </div>
                             <h2>Latest Updates</h2>
@@ -448,7 +448,7 @@ if (isset($logedin) or isset($user)) {
                         <h2>Information</h2>
                         <div class = "container">
                         <p1>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna justo, sagittis in bibendum vitae, auctor in ex. Nullam posuere, ex nec condimentum accumsan, sapien erat interdum erat, mattis accumsan tellus erat in tortor. Suspendisse a varius risus. Maecenas consectetur ligula elit, laoreet pharetra eros suscipit eget. Nunc molestie finibus mattis. Mauris quam lorem, placerat nec consequat a, laoreet vitae lorem. Donec a est at neque posuere varius quis consectetur orci. Phasellus justo justo, ornare ac elementum vel, dignissim ac lacus. Nam interdum nisl in neque molestie rutrum.
+                        The aim of Trackzheimers is to help Alzheimer’s patients, doctors, researchers and caregivers to track the progress of symptoms linked to the disease in patients over time. This is done by allowing the patients to take continuous memory tests through the web application in between visits at their physician. Doctors and caregivers or relatives of the patient are able to monitor the patient's mental state and progress continuously through the web application. In this way the doctors have a more accurate picture of their patient's mental state and progress and caregivers and relatives are kept updated on the status of their connected patient. Trackzheimers also allows researchers to collect data from patients which could be very valuable in solving the questions that still remain about Alzheimer's disease.
                         </p1>
                         </div>
                         <h1>Download</h1>

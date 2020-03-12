@@ -55,7 +55,8 @@ if (isset($logedin) or isset($user)) {
                                 <li><a href="../general/start_page.php">Home</a></li> 
                                 <li><a href="../general/contact.php">Contact</a></li>
                                 <li class="active"><a href="../general/profile_page.php">Profile</a></li>            
-                                </ul>
+                                <li><a href="chat_home.php">Messages</a></li>    
+                              </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                 <li><a href="../general/logout.php">Logout</a></li>
                             </ul>
