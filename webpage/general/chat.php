@@ -142,7 +142,7 @@ if (isset($logedin) or isset($user)) {
                     </form>
                     
                     </div>
-                   
+                  
                     </html>
                 <?php
                 break;

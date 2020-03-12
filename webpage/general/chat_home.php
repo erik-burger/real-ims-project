@@ -42,6 +42,10 @@ ul{
     display: inline-block;
     float: left; 
 }
+.sideBySide{
+display: inline-block;
+padding: 20px
+}
 
 input[type = text], select , textarea{
     padding: 15px;
@@ -62,7 +66,7 @@ font-size: 16px;
 .page{
     margin-left: auto; 
     margin-right: auto; 
-    padding: 20px;
+    padding: 0px;
     width: 80%; 
     margin-bottom: 50px;   
 }

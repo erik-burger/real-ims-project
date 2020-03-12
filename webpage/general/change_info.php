@@ -13,11 +13,11 @@
                 display: inline-block;
                 float: left; 
             }
-            ul{
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
     	input[type = text], select , textarea{
     		width: 100%;
     		padding: 12px;
