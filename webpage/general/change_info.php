@@ -18,28 +18,36 @@
             margin: 0;
             padding: 0;
         }
-    	input[type = text], select , textarea{
+    	input[type = text], select, textarea{
     		width: 100%;
     		padding: 12px;
     		border: 1px solid #ccc;
     		border-radius; 4px;
     		resize: vertical;
     	}
-    	
-    	input[type = number], select , textarea{
+        
+        input[type = password]{
+    		width: 50%;
+    		padding: 12px;
+            border: 1px solid #ccc;
+            margin-top: 50px; 
+    		border-radius; 4px;
+    		resize: vertical;
+        }
+        input[type = number]{
     		width: 100%;
     		padding: 12px;
     		border: 1px solid #ccc;
     		border-radius; 4px;
     		resize: vertical;
     	}
-    	
+        
     	label {
     		padding: 12px 12px 12px 0;
     		display: inline-block;
     	}
     	
-    	button[type = "Submit Changes"]{
+    	button[type = "submit"]{
     		background-color: #c2d6d6;
   			color: black;
   			padding: 12px 20px;
@@ -49,7 +57,7 @@
   			float: right;
   		}
   		
-  		button[type = "Submit Changes"] {
+  		button[type = "submit"] {
   			background-color: #b3cccc;
 		}
 		
@@ -239,7 +247,7 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" value= "" name="psw"><br>
         
-      <button type="Submit Changes">Submit changes</button>
+      <button type= "submit" class = "Submit Changes">Submit changes</button><br>
     
     </form>
     </div> 

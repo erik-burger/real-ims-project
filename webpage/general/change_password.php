@@ -58,9 +58,8 @@
   			background-color: #b3cccc;
 		}
   		
-  			
-		.container {
- 		 	border-radius: 12px;
+        .container {
+ 		 	border-radius: 5px;
   			background-color: #f2f2f2;
   			padding: 20px;
   			width:100%;
@@ -73,17 +72,19 @@
     		color: #FF0000;
     		font-size: 14px;
     	}
-        .button{
-			background-color: #669999; 
-			border: none;
-			color: white;
-			padding: 14px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline;
-			font-size: 16px;  
-			margin-top: 10px;    
-        }
+        button[type = "submit"]{
+    		background-color: #c2d6d6;
+  			color: black;
+  			padding: 12px 20px;
+ 		 	border: none;
+  			border-radius: 4px;
+  			cursor: pointer;
+  			float: right;
+  		}
+  		
+  		button[type = "submit"] {
+  			background-color: #b3cccc;
+		}
         .page{
                 margin-left: auto; 
                 margin-right: auto; 
@@ -141,16 +142,10 @@
      } 
      include dirname(__DIR__).'/general/closeDB.php';  
 ?> 
-    
-
-
-
-
-
-	
 
     <div class = "page">
       <h1>Change your password</h1>
+      <div class = "container">
     
       <p id="Password" >Please fill in this form to change your password</p>
       
@@ -163,9 +158,10 @@
       <label for="repeatpsw"><b>Repeat New Password</b></label>
       <input type="password" value= "" name="repeatpsw"><br><br>
         
-      <input class = "button" type="submit" name="Change password" value="Change password" style = "font-size: 14px"> 
+      <input class = "button" type="submit" name="Change password" value="Change password" style = "font-size: 14px"><br> 
     
     </form>
+    </div>
     </div>
     </div> 
 </body>
