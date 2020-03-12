@@ -30,7 +30,7 @@ if (isset($logedin) or isset($user)) {
                                 </div>
                                 <ul class="nav navbar-nav">
                                 <li><a href="../general/start_page.php">Home</a></li>
-                                <li><a href="../doctor/doctor_contact.php">Contact</a></li>
+                                <li><a href="../general/contact.php">Contact</a></li>
                                 <li><a href="../general/profile_page.php">Profile</a></li>
                                 <li class="active"><a href="../doctor/doctorsearch.php">Patients</a></li>
                                 <li><a href="chat_home.php">Messages</a></li>
