@@ -66,7 +66,7 @@ font-size: 16px;
 .page{
     margin-left: auto; 
     margin-right: auto; 
-    padding: 0px;
+    padding: 20px;
     width: 80%; 
     margin-bottom: 50px;   
 }
